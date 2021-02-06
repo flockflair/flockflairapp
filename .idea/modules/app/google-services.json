@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "961106814716",
+    "project_id": "flockflairapp-ac178",
+    "storage_bucket": "flockflairapp-ac178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961106814716:android:f0884ce43e97c8323fd979",
+        "android_client_info": {
+          "package_name": "com.example.flockflairapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961106814716-6rndffh86hs50qmal5bg642ha3chr0e9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flockflairapp",
+            "certificate_hash": "70472c77d4f55725a9c2e27ff8d96841b05d72de"
+          }
+        },
+        {
+          "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcGDW4jG2x-goujV3CJQ1n2jmm357ZNds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
