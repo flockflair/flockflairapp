@@ -3,7 +3,7 @@ package com.example.flockflairapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
+//rahul done firebase and github connection
 public class MainActivity extends AppCompatActivity {
 
     @Override
