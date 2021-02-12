@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -52,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Error", String.valueOf(queryRef));
 
                 if(phoneNum != null){
-                    Toast.makeText(MainActivity.this, phoneNum, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, phoneNum, Toast.LENGTH_SHORT).show();
                     queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                Toast.makeText(MainActivity.this, "Correct Number", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Correct Number", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), OtpActivity.class);
                                 intent.putExtra("phoneNum", phoneNum);
                                 startActivity(intent);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             else{
-                                Toast.makeText(MainActivity.this, "Number does not exist", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Number does not exist", Toast.LENGTH_LONG).show();
                                 editText.setText("");
                                 editText.requestFocus();
                             }
@@ -83,4 +84,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

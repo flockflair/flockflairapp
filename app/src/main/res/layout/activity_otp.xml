@@ -43,13 +43,13 @@
             android:id="@+id/TextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/TextView"
             android:layout_marginTop="20dp"
             android:text="Wait for the OTP"
-            android:layout_below="@id/TextView"
-            android:textSize="20dp"
-            android:textStyle="italic"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/editTextCode"
