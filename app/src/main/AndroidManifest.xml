@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayQuestions"></activity>
+        <activity android:name=".phonenumber"></activity>
+        <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
         <activity android:name=".MainActivity">
