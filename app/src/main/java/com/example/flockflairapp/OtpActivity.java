@@ -76,7 +76,7 @@ public class OtpActivity extends AppCompatActivity {
                 mCallBacks);
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
