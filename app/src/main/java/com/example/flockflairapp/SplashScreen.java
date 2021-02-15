@@ -31,20 +31,24 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         //Animations
 
-        //topAnim= AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        //bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        topAnim= AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
 
         //Hooks
         image = findViewById(R.id.logomain);
         logo = findViewById(R.id.appname);
 
-        //image.setAnimation(topAnim);
-        //logo.setAnimation(bottomAnim);
+        image.setAnimation(topAnim);
+        logo.setAnimation(bottomAnim);
 
-        Intent intent = new Intent(getApplicationContext(),phonenumber.class);
-        startActivity(intent);
-        finish();
-
+       new Handler().postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               Intent intent=new Intent(SplashScreen.this,phonenumber.class);
+               startActivity(intent);
+               finish();
+           }
+       },SPLASH_SCREEN);
 
 
 
