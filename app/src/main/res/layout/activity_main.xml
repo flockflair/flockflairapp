@@ -4,5 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:backgroundTint="#FFFFFF"
+    android:foregroundTint="#2D3C8F"
+    android:foregroundTintMode="src_over"
     tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="57dp"
+        android:text="Home"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
+
+    <Button
+        android:id="@+id/button_11"
+        android:layout_width="170dp"
+        android:layout_height="394dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="97dp"
+        android:backgroundTint="#8BE12424"
+        android:text="11"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#0B0A0B" />
+
+    <Button
+        android:id="@+id/button_12"
+        android:layout_width="163dp"
+        android:layout_height="389dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="19dp"
+        android:backgroundTint="#498FC6"
+        android:text="12"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#090909" />
+
+
 </RelativeLayout>

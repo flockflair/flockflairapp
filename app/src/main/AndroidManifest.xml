@@ -9,19 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".Chapters"></activity>
+        <activity android:name=".About" />
+        <activity android:name=".DashBoard" />
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayQuestions"></activity>
+        <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".OtpActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".phonenumber"/>
+        <activity android:name=".OtpActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".phonenumber" />
     </application>
 
 </manifest>
