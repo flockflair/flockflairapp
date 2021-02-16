@@ -1,0 +1,171 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_1.xml	(date 1613322749019)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_1.xml	(date 1613322749019)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]1" date="1613322688731" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]1/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14-02-2021 22:41 [Default Changelist]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42__Default_Changelist_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42__Default_Changelist_.xml	(date 1613322766321)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42__Default_Changelist_.xml	(date 1613322766321)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_14-02-2021_22_42_[Default_Changelist]" date="1613322751917" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42_[Default_Changelist]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14-02-2021 22:42 [Default Changelist]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42_[Default_Changelist]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42_[Default_Changelist]/shelved.patch	(date 1613322751917)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42_[Default_Changelist]/shelved.patch	(date 1613322751917)
+@@ -0,0 +1,15 @@
++Index: app/src/main/java/com/example/flockflairapp/MainActivity.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.example.flockflairapp;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.os.Bundle;\r\n//rahul done firebase and github connection\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    //yash_bitla\r\n    //sanika\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n    }\r\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/com/example/flockflairapp/MainActivity.java	(revision b71bf8f7b832cb3ea40d28ba946905865baa66c8)
+++++ app/src/main/java/com/example/flockflairapp/MainActivity.java	(date 1613322703552)
++@@ -14,4 +14,3 @@
++         super.onCreate(savedInstanceState);
++         setContentView(R.layout.activity_main);
++     }
++-}
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]/shelved.patch	(date 1613322663334)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]/shelved.patch	(date 1613322663334)
+@@ -0,0 +1,18 @@
++Index: build.gradle
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath 'com.google.gms:google-services:4.2.0'\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- build.gradle	(revision b71bf8f7b832cb3ea40d28ba946905865baa66c8)
+++++ build.gradle	(date 1612772892471)
++@@ -6,7 +6,7 @@
++     }
++     dependencies {
++         classpath "com.android.tools.build:gradle:4.0.1"
++-        classpath 'com.google.gms:google-services:4.2.0'
+++        classpath 'com.google.gms:google-services:4.3.5'
++ 
++         // NOTE: Do not place your application dependencies here; they belong
++         // in the individual module build.gradle files
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]1/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]1/shelved.patch	(date 1613322688731)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]1/shelved.patch	(date 1613322688731)
+@@ -0,0 +1,18 @@
++Index: build.gradle
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n        classpath 'com.google.gms:google-services:4.2.0'\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- build.gradle	(revision b71bf8f7b832cb3ea40d28ba946905865baa66c8)
+++++ build.gradle	(date 1613322663403)
++@@ -6,7 +6,7 @@
++     }
++     dependencies {
++         classpath "com.android.tools.build:gradle:4.0.1"
++-        classpath 'com.google.gms:google-services:4.2.0'
+++        classpath 'com.google.gms:google-services:4.3.5'
++ 
++         // NOTE: Do not place your application dependencies here; they belong
++         // in the individual module build.gradle files
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_.xml	(date 1613322678267)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_.xml	(date 1613322678267)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]" date="1613322663334" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41_[Default_Changelist]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14-02-2021 22:41 [Default Changelist]" />
++</changelist>
+\ No newline at end of file
+Index: app/google-services.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/google-services.json	(date 1612772883766)
++++ app/google-services.json	(date 1612772883766)
+@@ -0,0 +1,48 @@
++{
++  "project_info": {
++    "project_number": "961106814716",
++    "firebase_url": "https://flockflairapp-ac178-default-rtdb.firebaseio.com",
++    "project_id": "flockflairapp-ac178",
++    "storage_bucket": "flockflairapp-ac178.appspot.com"
++  },
++  "client": [
++    {
++      "client_info": {
++        "mobilesdk_app_id": "1:961106814716:android:f0884ce43e97c8323fd979",
++        "android_client_info": {
++          "package_name": "com.example.flockflairapp"
++        }
++      },
++      "oauth_client": [
++        {
++          "client_id": "961106814716-6rndffh86hs50qmal5bg642ha3chr0e9.apps.googleusercontent.com",
++          "client_type": 1,
++          "android_info": {
++            "package_name": "com.example.flockflairapp",
++            "certificate_hash": "70472c77d4f55725a9c2e27ff8d96841b05d72de"
++          }
++        },
++        {
++          "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
++          "client_type": 3
++        }
++      ],
++      "api_key": [
++        {
++          "current_key": "AIzaSyDcGDW4jG2x-goujV3CJQ1n2jmm357ZNds"
++        }
++      ],
++      "services": {
++        "appinvite_service": {
++          "other_platform_oauth_client": [
++            {
++              "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
++              "client_type": 3
++            }
++          ]
++        }
++      }
++    }
++  ],
++  "configuration_version": "1"
++}
+\ No newline at end of file
