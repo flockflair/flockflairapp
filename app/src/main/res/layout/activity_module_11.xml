@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chapters">
+    tools:context=".Module_11">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="SELECT CHAPTER"
+            android:text="MODULES-11"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintBottom_toTopOf="@+id/module_1"
@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="435dp"
-            android:text="Chapter 1"
+            android:text="Module 1"
             app:layout_constraintBottom_toTopOf="@+id/module_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -43,7 +43,7 @@
             android:id="@+id/module_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="CHAPTER 2"
+            android:text="Module 2"
             app:layout_constraintBottom_toTopOf="@+id/module_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:id="@+id/module_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="CHAPTER_3"
+            android:text="Module 3"
             app:layout_constraintBottom_toTopOf="@+id/module_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
             android:id="@+id/module_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="CHAPTER 4"
+            android:text="Module 4"
             app:layout_constraintBottom_toTopOf="@+id/module_5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="500dp"
-            android:text="CHAPTER 5"
+            android:text="Module 5"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,4 +96,8 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

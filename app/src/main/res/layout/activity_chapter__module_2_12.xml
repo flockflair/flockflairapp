@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chapters">
-
+    tools:context=".Chapter_Module_2_12">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
@@ -16,9 +15,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="SELECT CHAPTER"
+            android:layout_width="287dp"
+            android:layout_height="125dp"
+            android:text="CHAPTERS FOR Module 2"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintBottom_toTopOf="@+id/module_1"
@@ -53,7 +52,7 @@
             android:id="@+id/module_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="CHAPTER_3"
+            android:text="CHAPTER 3"
             app:layout_constraintBottom_toTopOf="@+id/module_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,4 +95,7 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
