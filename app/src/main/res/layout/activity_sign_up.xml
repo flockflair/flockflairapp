@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -32,65 +32,67 @@
             android:id="@+id/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="LOGIN"
+            android:text="SIGN UP"
             android:textSize="25dp"
             android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/TextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="May I have your phone number?"
             android:layout_below="@id/TextView"
-            android:textSize="20dp"
-            android:textStyle="italic"
+            android:paddingTop="20dp"
+            android:text="Name"
+            android:textSize="25dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary" />
 
         <EditText
-            android:id="@+id/editTextMobile"
+            android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/TextView1"
-            android:hint="Enter your mobile number"
+            android:layout_below="@+id/TextView1"
+            android:hint="Enter your name"
             android:textSize="20dp"
-            android:layout_marginTop="15dp"
-            android:inputType="phone"
-            android:digits="0123456789"
-            android:maxLength="10" />
+            android:layout_marginTop="10dp" />
+
 
         <TextView
-            android:id="@+id/SignUp"
+            android:id="@+id/TextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextMobile"
-            android:text="SIGN UP"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"
+            android:layout_below="@id/edit_name"
             android:paddingTop="20dp"
-            android:paddingLeft="280dp" />
+            android:text="Phone Number"
+            android:textSize="25dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextView2"
+            android:hint="Enter your phone number"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp" />
 
         <Button
-            android:id="@+id/buttonContinue"
+            android:id="@+id/buttonSignUp"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextMobile"
+            android:layout_below="@id/edit_phone"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Continue"
+            android:text="Sign Up"
             android:textSize="20dp"
             android:textAllCaps="false"
             android:textColor="#cdd8f1" />
 
-    </RelativeLayout>
 
+    </RelativeLayout>
 
 </RelativeLayout>

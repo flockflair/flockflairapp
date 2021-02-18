@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,7 @@ public class phonenumber extends AppCompatActivity {
     Button buttonContinue;
     DatabaseReference databaseReference;
     String phoneNum = null;
+    TextView SignUp;
 
 
     @Override
@@ -33,6 +35,8 @@ public class phonenumber extends AppCompatActivity {
 
         editText = findViewById(R.id.editTextMobile);
         buttonContinue = findViewById(R.id.buttonContinue);
+        SignUp = findViewById(R.id.SignUp);
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
         Log.d("Error", String.valueOf(databaseReference));
@@ -82,5 +86,15 @@ public class phonenumber extends AppCompatActivity {
 
             }
         });
+
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignUp.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }
