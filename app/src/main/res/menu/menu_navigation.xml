@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--Home-->
+    <item
+        android:id="@+id/dashboard"
+        android:title="Bookmarks"
+        android:icon="@drawable/ic_home_foreground"/>
+    <!--Bookmark save-->
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_dashboard_foreground"/>
+    <!--Profile-->
+    <item
+        android:id="@+id/about"
+        android:title="Profile"
+        android:icon="@drawable/ic_info_foreground"/>
+
+</menu>

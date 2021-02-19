@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flockflairapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +12,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SignUp"></activity>
+        <activity android:name=".Chapter_Module_5_12" />
+        <activity android:name=".Chapter_Module_4_12" />
+        <activity android:name=".Chapter_Module_3_12" />
+        <activity android:name=".Chapter_Module_2_12" />
+        <activity android:name=".Chapter_Module_1_12" />
+        <activity android:name=".Chapter_Module_5_11" />
+        <activity android:name=".Chapter_Module_4_11" />
+        <activity android:name=".Chapter_Module_3_11" />
+        <activity android:name=".Chapter_Module_2_11" />
+        <activity android:name=".Chapter_Module_1_11" />
+        <activity android:name=".Module_12" />
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <activity android:name=".Module_11" />
+        <activity android:name=".Chapters" />
+        <activity android:name=".About" />
+        <activity android:name=".DashBoard" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-               <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayQuestions"></activity>
+        <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".OtpActivity"/>
+        <activity android:name=".OtpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +54,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".phonenumber" />
     </application>
 
 </manifest>
