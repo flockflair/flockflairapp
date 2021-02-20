@@ -63,7 +63,7 @@ public class SignUp extends AppCompatActivity {
                 java_signUp.setName(name);
                 java_signUp.setPhoneNum(phoneNum);
 
-                databaseReference.child(String.valueOf(maxid+1)).setValue(java_signUp);
+                databaseReference.child(String.valueOf(maxid+1)).child("phone").setValue(java_signUp);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
             }
         });
