@@ -37,24 +37,19 @@
         <activity android:name=".Chapters" />
         <activity android:name=".About" />
         <activity android:name=".DashBoard" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+            <activity
+                android:name=".MainActivity"
+                android:theme="@style/Splash">
         </activity>
         <activity android:name=".phonenumber" />
     </application>
