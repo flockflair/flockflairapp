@@ -1,6 +1,7 @@
 package com.example.flockflairapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,7 @@ public class phonenumber extends AppCompatActivity {
     EditText editText;
     Button buttonContinue;
     DatabaseReference databaseReference;
+    DatabaseReference userReference;
     String phoneNum = null;
     TextView SignUp;
 
@@ -38,7 +41,8 @@ public class phonenumber extends AppCompatActivity {
         SignUp = findViewById(R.id.SignUp);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        userReference = databaseReference.child("user");
         Log.d("Error", String.valueOf(databaseReference));
 
         buttonContinue.setOnClickListener(new View.OnClickListener() {
@@ -46,20 +50,23 @@ public class phonenumber extends AppCompatActivity {
             public void onClick(View view) {
                 final String regexStr = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$";
                 phoneNum = editText.getText().toString();
+                Log.d("Phone", String.valueOf(phoneNum));
                 if (phoneNum.length() != 10 || !phoneNum.matches(regexStr)) {
                     editText.setError("Enter the proper number");
                     editText.requestFocus();
                     return;
                 }
 
-                final Query queryRef = databaseReference.orderByChild("phone").equalTo(phoneNum);
+                final Query queryRef = userReference.orderByChild("phone").equalTo(phoneNum);
                 Log.d("Error", String.valueOf(queryRef));
 
                 if(phoneNum != null){
-                    //Toast.makeText(MainActivity.this, phoneNum, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), phoneNum, Toast.LENGTH_SHORT).show();
                     queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Log.d("Snapshot", String.valueOf(snapshot));
+
                             if(snapshot.exists()){
                                 Toast.makeText(phonenumber.this, "Correct Number", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), OtpActivity.class);
@@ -67,14 +74,11 @@ public class phonenumber extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
-
                             else{
                                 Toast.makeText(phonenumber.this, "Number does not exist", Toast.LENGTH_LONG).show();
                                 editText.setText("");
                                 editText.requestFocus();
                             }
-
-
                         }
 
                         @Override
