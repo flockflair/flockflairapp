@@ -38,10 +38,10 @@
         <activity android:name=".About" />
         <activity android:name=".DashBoard" />
 
-        <activity android:name=".DisplayQuestions" />
+        <activity android:name=".SplashScreen" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".DisplayQuestions">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
