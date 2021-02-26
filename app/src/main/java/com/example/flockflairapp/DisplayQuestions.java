@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -46,6 +48,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private FloatingActionButton bookMarks;
     //next button
     private Button next_btn;
+    private Button explanation_btn;
     //question model list
     private List<QuestionModel> list;
     int count = 0;
@@ -63,6 +66,12 @@ public class DisplayQuestions extends AppCompatActivity {
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
 
+        //explanation
+        explanation_btn = findViewById(R.id.buttonExplain);
+        //builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(R.layout.explain);
+
         pg = new ProgressDialog(this);
         pg.setTitle("Please wait...");
         pg.setMessage("Loading Questions...");
@@ -71,6 +80,15 @@ public class DisplayQuestions extends AppCompatActivity {
         list = new ArrayList<>();
 
         //progressDialog
+
+        //Explaination Enabled
+        explanation_btn.setEnabled(false);
+        explanation_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAboutDialog();
+            }
+        });
 
         pg.show();
         //database fetch child
@@ -149,6 +167,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private void checkAnswer(final Button selectOption) {
         enableOption(false);
         next_btn.setEnabled(true);
+        explanation_btn.setEnabled(true);
         next_btn.setAlpha(1);
 
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
@@ -196,6 +215,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     next_btn.setEnabled(false);
+                    explanation_btn.setEnabled(false);
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
                     position++;
@@ -216,5 +236,19 @@ public class DisplayQuestions extends AppCompatActivity {
             Toast.makeText(DisplayQuestions.this, "Empty Questions", Toast.LENGTH_SHORT).show();
             finish();
         }
+    }
+
+    private void showAboutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Explanation");
+        builder.setView(R.layout.explain);
+        builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // dismiss dialog
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 }

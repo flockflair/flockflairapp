@@ -42,9 +42,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="36dp"
         android:translationY="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,51 +56,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@android:color/black"
             android:background="@drawable/rounded_buttons_in_display_questions"
-            android:text="" />
+            android:text=""
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@android:color/black"
             android:background="@drawable/rounded_buttons_in_display_questions"
-            android:text="" />
+            android:text=""
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="#000000"
             android:background="@drawable/rounded_buttons_in_display_questions"
-            android:text="" />
+            android:text=""
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/buttonOption4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@android:color/black"
             android:background="@drawable/rounded_buttons_in_display_questions"
-            android:text="" />
+            android:text=""
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        android:enabled="false"
         android:alpha="0.7"
+        android:enabled="false"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.534" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton5"
@@ -113,5 +113,18 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
         app:srcCompat="@drawable/bookmark"
         android:focusable="true" />
+
+    <Button
+        android:id="@+id/buttonExplain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Explaination"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
