@@ -1,14 +1,12 @@
 package com.example.flockflairapp;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -16,8 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,15 +27,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DisplayQuestions extends AppCompatActivity {
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = db.getReference();
+    //DatabaseReference chapter2 = db.getReference("HSC");
 
     //progressDailog
     private ProgressDialog pg;
@@ -49,7 +50,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private List<QuestionModel> list;
     int count = 0;
     int position = 0;
-    String setNo="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +67,30 @@ public class DisplayQuestions extends AppCompatActivity {
         pg.setTitle("Please wait...");
         pg.setMessage("Loading Questions...");
 
-        setNo = getIntent().getStringExtra("setNo");
-        //setNo = getIntent().getStringExtra("setNo");
-
         //creating list
         list = new ArrayList<>();
 
-        databasePath("chapter1");
-        databasePath("chapter2");
+        //progressDialog
+
+        pg.show();
+        //database fetch child
+        dbRef.child("Microbes").child("questions").orderByChild("question").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //data cache
+                dbRef.keepSynced(true);
+                //for each loop get value
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    list.add(snapshot1.getValue(QuestionModel.class));
+                }
+                McqAlgo();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     //animation for loading new question
@@ -129,20 +146,24 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
     }
-    private void checkAnswer(Button selectOption) {
+    private void checkAnswer(final Button selectOption) {
         enableOption(false);
         next_btn.setEnabled(true);
         next_btn.setAlpha(1);
 
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
             //correct Answer
+            //selectOption.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this,R.drawable.correct), null,null, null);
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+
 
         }else{
             //incorrect Answer
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
+
             Button correctOption = linearLayout.findViewWithTag(list.get(position).getCorrectAnswer());
             correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+
         }
     }
 
@@ -154,63 +175,46 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         }
     }
-
-    public void databasePath(String Chapters){
-        String chap = Chapters;
-
-        //progressDialog
-        //database fetch child
-        pg.show();
-        dbRef.child("HSC").child("module1").child(chap).child("questions").orderByChild("setNo").equalTo(setNo).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for each loop get value
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    list.add(snapshot1.getValue(QuestionModel.class));
-                }
-                //check if list is greater than zero
-                if (list.size()>0){
-                    for (int i = 0; i < 4; i++){
-                        //clickListener on option button
-                        pg.dismiss();
-                        linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                //method to compare options with correctAnswer
-                                checkAnswer((Button) view);
-                            }
-                        });
+    public void McqAlgo(){
+        //check if list is greater than zero
+        if (list.size()>0){
+            for (int i = 0; i < 4; i++){
+                //clickListener on option button
+                pg.dismiss();
+                linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //method to compare options with correctAnswer
+                        checkAnswer((Button) view);
                     }
-                    //loading first question
-                    animation(tvQuestions, 0, list.get(position).getQuestion());
-                    //to load next questions
-                    next_btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            next_btn.setEnabled(false);
-                            next_btn.setAlpha(0.7f);
-                            enableOption(true);
-                            position++;
+                });
+            }
+            //loading first question
+            animation(tvQuestions, 0, list.get(position).getQuestion());
+            //to load next questions
+            next_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    next_btn.setEnabled(false);
+                    next_btn.setAlpha(0.7f);
+                    enableOption(true);
+                    position++;
 
-                            if (position == list.size()){
-                                return;
-                            }
-                            //before calling animation variable count initialize to 0
-                            count = 0;
-                            animation(tvQuestions, 0,list.get(position).getQuestion());
-                        }
-                    });
-                }else {
-                    pg.dismiss();
-                    Toast.makeText(DisplayQuestions.this, "Empty Questions", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (position == list.size()){
+                        //end of question index
+                        Toast.makeText(DisplayQuestions.this, "Chapter finished", Toast.LENGTH_SHORT).show();
+                        finish();
+                        return;
+                    }
+                    //before calling animation variable count initialize to 0
+                    count = 0;
+                    animation(tvQuestions, 0,list.get(position).getQuestion());
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+            });
+        }else {
+            pg.dismiss();
+            Toast.makeText(DisplayQuestions.this, "Empty Questions", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 }

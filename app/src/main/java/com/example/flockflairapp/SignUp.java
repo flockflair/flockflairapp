@@ -3,8 +3,10 @@ package com.example.flockflairapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     EditText edit_phone;
     DatabaseReference databaseReference;
     Button ButtonSignUp;
-    Long phoneNum;
+    String phoneNum;
     String name;
     Java_SignUp java_signUp;
     long maxid = 0;
@@ -34,7 +36,6 @@ public class SignUp extends AppCompatActivity {
         edit_name = findViewById(R.id.edit_name);
         edit_phone = findViewById(R.id.edit_phone);
         ButtonSignUp = findViewById(R.id.buttonSignUp);
-        java_signUp = new Java_SignUp();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
 
@@ -58,14 +59,21 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
 
                 name = edit_name.getText().toString();
-                phoneNum = Long.parseLong(edit_phone.getText().toString().trim());
+                phoneNum = edit_phone.getText().toString().trim();
 
-                java_signUp.setName(name);
-                java_signUp.setPhoneNum(phoneNum);
+                Java_SignUp n = new Java_SignUp(name, phoneNum);
 
-                databaseReference.child(String.valueOf(maxid+1)).setValue(java_signUp);
+                databaseReference.push().setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        Intent i = new Intent(SignUp.this, phonenumber.class);
+        startActivity(i);
+        finish();
     }
 }

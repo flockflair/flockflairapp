@@ -10,22 +10,16 @@ public class QuestionModel {
 
 
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer, String setNo) {
+    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
-        this.setNo = setNo;
         this.correctAnswer = correctAnswer;
-    }
-    public String getSetNo() {
-        return setNo;
+        this.setNo = setNo;
     }
 
-    public void setSetNo(String setNo) {
-        this.setNo = setNo;
-    }
     public String getQuestion() {
         return question;
     }
@@ -72,5 +66,13 @@ public class QuestionModel {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public String getSetNo() {
+        return setNo;
+    }
+
+    public void setSetNo(String setNo) {
+        this.setNo = setNo;
     }
 }

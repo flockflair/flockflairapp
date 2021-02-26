@@ -9,11 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Chapter_Module_1_12 extends AppCompatActivity {
 
     private Button module1, module2,module3,module4,module5;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference database = db.getReference("HSC");
+    private List list = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +58,25 @@ public class Chapter_Module_1_12 extends AppCompatActivity {
             }
         });
 
+        database.child("Module1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               //change child and reterive name of value
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    list.add(ds.getValue(String.class));
+                }
+                    module1.setText(list.get(0).toString());
+                    module2.setText(list.get(1).toString());
+                    module3.setText(list.get(2).toString());
+                    module4.setText(list.get(3).toString());
+                    module5.setText(list.get(4).toString());
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //chapter module button
         module1 = findViewById(R.id.module_1);
@@ -56,20 +89,10 @@ public class Chapter_Module_1_12 extends AppCompatActivity {
         module1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Chapter_Module_1_12.this, DisplayQuestions.class);
-                intent.putExtra("setNo", "chapter1");
-                startActivity(intent);
+                Intent module1Intent = new Intent(Chapter_Module_1_12.this, DisplayQuestions.class);
+                module1Intent.putExtra("setNo", "Module1");
+                startActivity(module1Intent);
             }
         });
-
-        module2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Chapter_Module_1_12.this, DisplayQuestions.class);
-                intent.putExtra("setNo", "chapter2");
-                startActivity(intent);
-            }
-        });
-
     }
 }

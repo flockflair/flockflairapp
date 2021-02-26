@@ -51,5 +51,14 @@ public class Chapter_Module_1_11 extends AppCompatActivity {
         module4 = findViewById(R.id.module_4);
         module5 = findViewById(R.id.module_5);
 
+        /*module1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent = new Intent(Chapter_Module_1_11.this,DisplayQuestions.class);
+                newIntent.putExtra("setNo", "chapter1");
+                startActivity(newIntent);
+            }
+        });*/
+
     }
 }

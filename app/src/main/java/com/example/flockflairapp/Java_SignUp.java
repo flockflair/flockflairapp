@@ -1,25 +1,29 @@
 package com.example.flockflairapp;
 
 public class Java_SignUp {
-    private String Name;
-    private Long phoneNum;
+    private String name;
+    private String phone;
 
-    public Java_SignUp(){
-    }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public Long getPhoneNum() {
-        return phoneNum;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNum(Long phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Java_SignUp(String name, String phone){
+        this.name = name;
+        this.phone = phone;
+
     }
 }
