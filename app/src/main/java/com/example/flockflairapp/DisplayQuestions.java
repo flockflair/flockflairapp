@@ -92,9 +92,9 @@ public class DisplayQuestions extends AppCompatActivity {
 
         pg.show();
         //database fetch child
-        dbRef.child("Microbes").child("questions").orderByChild("question").addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRef.child("Microbes").child("questions").orderByChild("question").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot){
                 //data cache
                 dbRef.keepSynced(true);
                 //for each loop get value
