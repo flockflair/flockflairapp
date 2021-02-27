@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]" date="1614440699176" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/27/2021 9:12 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="app/src/main/res/drawable-mdpi/bookmark.png" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable-mdpi/bookmark.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/bookmark.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/src/main/res/drawable-xxhdpi/bookmark.png" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/delete.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/delete.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable-mdpi/delete.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/delete1.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/delete.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/delete2.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/res/drawable-xhdpi/delete.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_27_2021_9_12_PM_[Default_Changelist]/delete3.png" />
+  </binary>
+</changelist>
