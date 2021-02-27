@@ -45,7 +45,6 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:padding="36dp"
-        android:translationY="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,8 +120,7 @@
         android:layout_marginBottom="28dp"
         android:text="Explaination"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="1.0" />

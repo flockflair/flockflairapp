@@ -3,40 +3,41 @@ package com.example.flockflairapp;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DisplayQuestions extends AppCompatActivity {
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = db.getReference();
-    //DatabaseReference chapter2 = db.getReference("HSC");
+
+    DatabaseReference dbBookmarks = db.getReference();
+
+    //haptic for wrong option
+    private Vibrator vibrator;
 
     //progressDailog
     private ProgressDialog pg;
@@ -51,9 +52,13 @@ public class DisplayQuestions extends AppCompatActivity {
     private Button explanation_btn;
     //question model list
     private List<QuestionModel> list;
+    private List<QuestionModel> bookMarklist;
     int count = 0;
     int position = 0;
-
+    //for user id
+    String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    //matchedQuestionPosition
+    private int matchedQuestionPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,8 @@ public class DisplayQuestions extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayout);
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
+        vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+
 
         //explanation
         explanation_btn = findViewById(R.id.buttonExplain);
@@ -72,14 +79,30 @@ public class DisplayQuestions extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(R.layout.explain);
 
+        //bookmark button on displayQuestion
+        bookMarks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    //save bookmark in database
+                    setBookmarks();
+                    //bookmark image change to flled
+                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                    bookMarks.setEnabled(false);
+                    //for toast msg
+                    Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
+                    //for vibration
+                    vibrator.vibrate(50);
+            }
+        });
+
         pg = new ProgressDialog(this);
         pg.setTitle("Please wait...");
         pg.setMessage("Loading Questions...");
 
         //creating list
         list = new ArrayList<>();
-
-        //progressDialog
+        //list for bookmarks
+        bookMarklist = new ArrayList<>();
 
         //Explaination Enabled
         explanation_btn.setEnabled(false);
@@ -90,11 +113,12 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
 
+        //progressDialog
         pg.show();
         //database fetch child
-        dbRef.child("Microbes").child("questions").orderByChild("question").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRef.child("Microbes").child("questions").orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot){
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //data cache
                 dbRef.keepSynced(true);
                 //for each loop get value
@@ -110,6 +134,15 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
     }
+
+    //function to store Bookmarks to database
+    private void setBookmarks() {
+        //for retrieve data in question model
+        QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getCorrectAnswer());
+        //to save mcq at user profile
+        dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").push().setValue(questionModel);
+    }
+
 
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -145,6 +178,11 @@ public class DisplayQuestions extends AppCompatActivity {
                     try {
                         ((TextView)view).setText(data);
                         tvTotal.setText(position+1+"/"+list.size());
+                        if (modelMatch()){
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                        }else {
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                        }
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
@@ -175,9 +213,9 @@ public class DisplayQuestions extends AppCompatActivity {
             //selectOption.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this,R.drawable.correct), null,null, null);
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
 
-
         }else{
             //incorrect Answer
+            vibrator.vibrate(100);
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
 
             Button correctOption = linearLayout.findViewWithTag(list.get(position).getCorrectAnswer());
@@ -186,11 +224,29 @@ public class DisplayQuestions extends AppCompatActivity {
         }
     }
 
+    //MatchModel for Bookmark
+    boolean matched = false;
+    int i = 0;
+    private boolean modelMatch(){
+        int i = 0;
+        for (QuestionModel model:bookMarklist){
+            if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getCorrectAnswer()
+                    .equals(list.get(position).getCorrectAnswer())){
+                matched = true;
+                matchedQuestionPosition = i;
+            }
+            i++;
+        }
+        return matched;
+    }
+
     private void enableOption(boolean enable) {
         for (int i = 0; i < 4; i++){
             linearLayout.getChildAt(i).setEnabled(enable);
+
             if (enable){
                 linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#bdc3c7")));
+                bookMarks.setEnabled(true);
             }
         }
     }
@@ -222,7 +278,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
                     if (position == list.size()){
                         //end of question index
-                        Toast.makeText(DisplayQuestions.this, "Chapter finished", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DisplayQuestions.this, "for more question please buy premium version", Toast.LENGTH_SHORT).show();
                         finish();
                         return;
                     }

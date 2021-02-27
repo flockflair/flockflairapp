@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BookmarkActivity"/>
         <activity android:name=".SignUp" />
         <activity android:name=".Chapter_Module_5_12" />
         <activity android:name=".Chapter_Module_4_12" />
@@ -34,23 +37,22 @@
         </service>
 
         <activity android:name=".Module_11" />
-        <activity android:name=".Chapters" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".About" />
         <activity android:name=".DashBoard" />
-
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
-        <activity android:name=".DisplayQuestions">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <activity
-                android:name=".MainActivity"
-                android:theme="@style/Splash">
-        </activity>
+        <activity
+            android:name=".Chapters"
+            android:theme="@style/Splash"/>
         <activity android:name=".phonenumber" />
     </application>
 

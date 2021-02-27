@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,8 @@ public class SignUp extends AppCompatActivity {
     EditText edit_name;
     EditText edit_phone;
     DatabaseReference databaseReference;
+    //getting user UID
+    String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     Button ButtonSignUp;
     String phoneNum;
     String name;
@@ -63,7 +66,7 @@ public class SignUp extends AppCompatActivity {
 
                 Java_SignUp n = new Java_SignUp(name, phoneNum);
 
-                databaseReference.push().setValue(n);
+                databaseReference.child(uuid).setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
             }
         });

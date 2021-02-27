@@ -6,11 +6,11 @@ public class QuestionModel {
         //Empty constructor for firebase
     }
 
-    private String question, optionA, optionB, optionC, optionD, correctAnswer,setNo;
+    private String question, optionA, optionB, optionC, optionD, correctAnswer,setNo,explaination, difficulty;
 
 
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo) {
+    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo, String explaination, String difficulty) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
@@ -18,6 +18,13 @@ public class QuestionModel {
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
         this.setNo = setNo;
+        this.explaination = explaination;
+        this.difficulty = difficulty;
+    }
+
+    public QuestionModel(String question, String correctAnswer) {
+        this.question = question;
+        this.correctAnswer = correctAnswer;
     }
 
     public String getQuestion() {
@@ -74,5 +81,21 @@ public class QuestionModel {
 
     public void setSetNo(String setNo) {
         this.setNo = setNo;
+    }
+
+    public String getExplaination() {
+        return explaination;
+    }
+
+    public void setExplaination(String explaination) {
+        this.explaination = explaination;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 }
