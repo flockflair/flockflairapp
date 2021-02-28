@@ -24,8 +24,9 @@ import java.util.List;
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewholder> {
 
     private List<QuestionModel> list;
+    //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference dbBookmarks = db.getReference();
+    DatabaseReference dbBookmarks = db.getReference("user");
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     public BookmarkAdapter(List<QuestionModel> list) {

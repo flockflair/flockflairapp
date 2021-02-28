@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -72,6 +73,9 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
+        //prevent screenCapture
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
 
         //explanation
         explanation_btn = findViewById(R.id.buttonExplain);
@@ -116,7 +120,7 @@ public class DisplayQuestions extends AppCompatActivity {
         //progressDialog
         pg.show();
         //database fetch child
-        dbRef.child("Microbes").child("questions").orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRef.child("Diversity In The Living World").child("questions").orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //data cache

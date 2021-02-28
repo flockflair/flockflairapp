@@ -90,7 +90,6 @@ public class phonenumber extends AppCompatActivity {
                         }
                     });
                 }
-
             }
         });
 
@@ -102,9 +101,7 @@ public class phonenumber extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -112,15 +109,6 @@ public class phonenumber extends AppCompatActivity {
             Intent mainIntent = new Intent(phonenumber.this,MainActivity.class);
             mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(mainIntent);
-        }else{
-            SignUp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
         }
     }
 }

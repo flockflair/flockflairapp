@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="435dp"
-            android:text="Module 1"
+            android:text="@string/Module1"
             app:layout_constraintBottom_toTopOf="@+id/module_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

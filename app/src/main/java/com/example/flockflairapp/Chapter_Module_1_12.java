@@ -58,7 +58,7 @@ public class Chapter_Module_1_12 extends AppCompatActivity {
             }
         });
 
-        database.child("Module1").addValueEventListener(new ValueEventListener() {
+        database.child("Diversity In The Living World").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                //change child and reterive name of value
