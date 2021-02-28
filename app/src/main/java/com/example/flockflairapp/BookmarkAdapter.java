@@ -1,4 +1,5 @@
 package com.example.flockflairapp;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,14 +8,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.util.Strings;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +32,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     private List<QuestionModel> list;
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference dbBookmarks = db.getReference("user");
+    DatabaseReference dbBookmarks = db.getReference();
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     public BookmarkAdapter(List<QuestionModel> list) {
@@ -47,7 +53,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
         return list.size();
     }
 
-    class Viewholder extends RecyclerView.ViewHolder{
+    class Viewholder extends RecyclerView.ViewHolder {
 
         private ImageButton delete;
         private TextView question,answer;
@@ -67,23 +73,13 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
             this.question.setText(question);
             this.answer.setText(answer);
 
-            //for jumping to DisplayQuestion at which bookmark question is
-            /*linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });*/
-
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String pushkey = dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").push().getKey();
-                    if (pushkey != null){
-                        dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").child(pushkey).removeValue();
-                        list.remove(position);
-                        notifyItemRemoved(position);
-                    }
+                    dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").removeValue();
+                    notifyDataSetChanged();
+                    list.remove(position);
+                    notifyItemRemoved(position);
                 }
             });
         }

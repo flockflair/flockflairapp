@@ -141,13 +141,14 @@ public class DisplayQuestions extends AppCompatActivity {
     }
 
     //function to store Bookmarks to database
-    private void setBookmarks() {
+    public void setBookmarks() {
         //for retrieve data in question model
         QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getCorrectAnswer());
         //to save mcq at user profile
         dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").push().setValue(questionModel);
-    }
+        String pushKey = dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").getKey();
 
+    }
 
     //animation for loading new question
     private void animation(final View view, final int value, final String data){

@@ -54,6 +54,7 @@ public class BookmarkActivity extends AppCompatActivity {
                 }
                 BookmarkAdapter adapter = new BookmarkAdapter(list);
                 rv_bookmark.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
