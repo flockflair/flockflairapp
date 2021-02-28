@@ -76,7 +76,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").removeValue();
+                    dbBookmarks.child("user").child(uuid).removeValue();
                     notifyDataSetChanged();
                     list.remove(position);
                     notifyItemRemoved(position);

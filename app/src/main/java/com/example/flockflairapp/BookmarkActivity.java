@@ -44,7 +44,7 @@ public class BookmarkActivity extends AppCompatActivity {
 
         List<QuestionModel> list = new ArrayList<>();
 
-        dbR.child("user").child(uid).child("BookMarkQuestion").addListenerForSingleValueEvent(new ValueEventListener() {
+        dbR.child("user").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){

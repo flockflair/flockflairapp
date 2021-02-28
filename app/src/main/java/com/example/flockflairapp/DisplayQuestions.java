@@ -145,8 +145,8 @@ public class DisplayQuestions extends AppCompatActivity {
         //for retrieve data in question model
         QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getCorrectAnswer());
         //to save mcq at user profile
-        dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").push().setValue(questionModel);
-        String pushKey = dbBookmarks.child("user").child(uuid).child("BookMarkQuestion").getKey();
+        dbBookmarks.child("user").child(uuid).push().setValue(questionModel);
+        //String pushKey = dbBookmarks.child("user").child(uuid).getKey();
 
     }
 
