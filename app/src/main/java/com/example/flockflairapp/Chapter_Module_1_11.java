@@ -28,7 +28,7 @@ public class Chapter_Module_1_11 extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(),DashBoard.class));
+                        startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
