@@ -93,14 +93,14 @@ public class phonenumber extends AppCompatActivity {
             }
         });
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
+      /*  SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
     }
     @Override
     protected void onStart() {
