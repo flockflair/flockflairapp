@@ -65,6 +65,7 @@ public class DisplayQuestions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_questions);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         tvQuestions = findViewById(R.id.tvQuestions);
         tvTotal = findViewById(R.id.tvTotal);
