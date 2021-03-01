@@ -41,24 +41,26 @@ public class BookmarkActivity extends AppCompatActivity {
         rv_bookmark.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+
         layoutManager.setOrientation(RecyclerView.VERTICAL);
 
         rv_bookmark.setLayoutManager(layoutManager);
 
         List<QuestionModel> list = new ArrayList<>();
+        BookmarkAdapter adapter = new BookmarkAdapter(list);
 
         dbR.child("user").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                        list.add(dataSnapshot.getValue(QuestionModel.class));
-                    }
-                    BookmarkAdapter adapter = new BookmarkAdapter(list);
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    list.add(dataSnapshot.getValue(QuestionModel.class));
+                }
+                if (list.size()>0){
                     rv_bookmark.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
+                }else {
+                    Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
@@ -67,5 +69,6 @@ public class BookmarkActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }

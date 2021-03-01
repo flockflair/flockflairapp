@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -88,15 +89,15 @@ public class DisplayQuestions extends AppCompatActivity {
         bookMarks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    //save bookmark in database
-                    setBookmarks();
-                    //bookmark image change to flled
-                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
-                    bookMarks.setEnabled(false);
-                    //for toast msg
-                    Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
-                    //for vibration
-                    vibrator.vibrate(50);
+                //save bookmark in database
+                setBookmarks();
+                //bookmark image change to flled
+                bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                bookMarks.setEnabled(false);
+                //for toast msg
+                Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
+                //for vibration
+                vibrator.vibrate(50);
             }
         });
 
@@ -146,9 +147,7 @@ public class DisplayQuestions extends AppCompatActivity {
         QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getCorrectAnswer());
         //to save mcq at user profile
         dbBookmarks.child("user").child(uuid).push().setValue(questionModel);
-        String pushKey = dbBookmarks.child("user").child(uuid).getKey();
-
-
+        String pushKey = dbBookmarks.child("user").child(uuid).push().getKey();
     }
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -232,16 +231,16 @@ public class DisplayQuestions extends AppCompatActivity {
 
     //MatchModel for Bookmark
     boolean matched = false;
-    int i = 0;
+    int index = 0;
     private boolean modelMatch(){
-        int i = 0;
+        int index = 0;
         for (QuestionModel model:bookMarklist){
             if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getCorrectAnswer()
                     .equals(list.get(position).getCorrectAnswer())){
                 matched = true;
-                matchedQuestionPosition = i;
+                matchedQuestionPosition = index;
             }
-            i++;
+            index++;
         }
         return matched;
     }
@@ -303,7 +302,8 @@ public class DisplayQuestions extends AppCompatActivity {
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Explanation");
-        builder.setView(R.layout.explain);
+        builder.setMessage(list.get(position).getExplaination());
+        //builder.setView(R.layout.explain);
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
