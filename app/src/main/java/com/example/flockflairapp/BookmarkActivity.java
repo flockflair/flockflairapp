@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,8 @@ public class BookmarkActivity extends AppCompatActivity {
 
         rv_bookmark = findViewById(R.id.rv_bookmarks);
 
+        rv_bookmark.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
 
@@ -51,10 +54,11 @@ public class BookmarkActivity extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                         list.add(dataSnapshot.getValue(QuestionModel.class));
                     }
+                    BookmarkAdapter adapter = new BookmarkAdapter(list);
+                    rv_bookmark.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 }
-                BookmarkAdapter adapter = new BookmarkAdapter(list);
-                rv_bookmark.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override
