@@ -44,7 +44,7 @@ public class DisplayQuestions extends AppCompatActivity {
     //progressDailog
     private ProgressDialog pg;
     //textview
-    private TextView tvQuestions, tvTotal;
+    private TextView tvQuestions, tvTotal,difficulty;
 
     private LinearLayout linearLayout;
     //Bookmarks
@@ -74,6 +74,7 @@ public class DisplayQuestions extends AppCompatActivity {
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+        difficulty = (TextView)findViewById(R.id.difficulty);
 
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
@@ -110,6 +111,7 @@ public class DisplayQuestions extends AppCompatActivity {
         //list for bookmarks
         bookMarklist = new ArrayList<>();
 
+
         //Explaination Enabled
         explanation_btn.setEnabled(false);
         explanation_btn.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +133,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     list.add(snapshot1.getValue(QuestionModel.class));
                 }
+                difficulty.setText(list.get(position).getDifficulty());
                 McqAlgo();
             }
             @Override
@@ -140,6 +143,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
     }
+    static List<String> keyList = new ArrayList<>();
 
     //function to store Bookmarks to database
     public void setBookmarks() {
@@ -148,6 +152,7 @@ public class DisplayQuestions extends AppCompatActivity {
         //to save mcq at user profile
         dbBookmarks.child("user").child(uuid).push().setValue(questionModel);
         String pushKey = dbBookmarks.child("user").child(uuid).push().getKey();
+        keyList.add(pushKey);
     }
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -172,6 +177,8 @@ public class DisplayQuestions extends AppCompatActivity {
                     }
                     animation(linearLayout.getChildAt(count),0,option);
                     count++;
+                    //to get difficulty onloading question
+                    difficulty.setText(list.get(position).getDifficulty());
                 }
             }
 
