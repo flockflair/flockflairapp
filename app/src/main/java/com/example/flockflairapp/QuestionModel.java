@@ -8,8 +8,6 @@ public class QuestionModel {
 
     private String question, optionA, optionB, optionC, optionD, correctAnswer,setNo,explaination, difficulty;
 
-
-
     public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo, String explaination, String difficulty) {
         this.question = question;
         this.optionA = optionA;
@@ -98,4 +96,5 @@ public class QuestionModel {
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
+
 }

@@ -1,36 +1,28 @@
 package com.example.flockflairapp;
-import android.os.Message;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.common.util.Strings;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 import java.util.List;
-;import javax.sql.StatementEvent;
 
-import static com.example.flockflairapp.DisplayQuestions.keyList;
 
 
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewholder> {
 
+    private static final String TAG = "DeleteBookmark";
     private List<QuestionModel> list;
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -59,12 +51,9 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
 
         private ImageButton delete;
         private TextView question,answer;
-        private LinearLayout linearLayout;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-
-            linearLayout = itemView.findViewById(R.id.linearLayout);
 
             question = itemView.findViewById(R.id.questionBookmark);
             answer = itemView.findViewById(R.id.answerBookmark);
@@ -78,8 +67,24 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dbBookmarks.child("user").child(uuid).removeValue();
-                    notifyDataSetChanged();
+
+                    //for getting pushed Id and delete bookmark from database
+                    dbBookmarks.child("user").child(uuid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dss : snapshot.getChildren()){
+                                String pushKey = dss.getKey();
+                                dbBookmarks.child("user").child(uuid).child(pushKey).removeValue();
+                                notifyDataSetChanged();
+                                break;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.i(TAG, error.getMessage());
+                        }
+                    });
                     list.remove(position);
                     notifyItemRemoved(position);
                 }

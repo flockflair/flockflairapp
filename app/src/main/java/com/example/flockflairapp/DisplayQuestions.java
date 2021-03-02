@@ -8,7 +8,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -34,18 +33,16 @@ public class DisplayQuestions extends AppCompatActivity {
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
+    //rootRef
     DatabaseReference dbRef = db.getReference();
-
+    //bookmarkRef
     DatabaseReference dbBookmarks = db.getReference();
-
     //haptic for wrong option
     private Vibrator vibrator;
-
     //progressDailog
     private ProgressDialog pg;
     //textview
     private TextView tvQuestions, tvTotal,difficulty;
-
     private LinearLayout linearLayout;
     //Bookmarks
     private FloatingActionButton bookMarks;
@@ -54,6 +51,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private Button explanation_btn;
     //question model list
     private List<QuestionModel> list;
+    //bookmarklist
     private List<QuestionModel> bookMarklist;
     int count = 0;
     int position = 0;
@@ -91,7 +89,7 @@ public class DisplayQuestions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //save bookmark in database
-                setBookmarks();
+                dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getCorrectAnswer()));
                 //bookmark image change to flled
                 bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                 bookMarks.setEnabled(false);
@@ -110,7 +108,6 @@ public class DisplayQuestions extends AppCompatActivity {
         list = new ArrayList<>();
         //list for bookmarks
         bookMarklist = new ArrayList<>();
-
 
         //Explaination Enabled
         explanation_btn.setEnabled(false);
@@ -143,17 +140,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
     }
-    static List<String> keyList = new ArrayList<>();
 
-    //function to store Bookmarks to database
-    public void setBookmarks() {
-        //for retrieve data in question model
-        QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getCorrectAnswer());
-        //to save mcq at user profile
-        dbBookmarks.child("user").child(uuid).push().setValue(questionModel);
-        String pushKey = dbBookmarks.child("user").child(uuid).push().getKey();
-        keyList.add(pushKey);
-    }
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
 
@@ -239,8 +226,7 @@ public class DisplayQuestions extends AppCompatActivity {
     //MatchModel for Bookmark
     boolean matched = false;
     int index = 0;
-    private boolean modelMatch(){
-        int index = 0;
+    private boolean modelMatch() {
         for (QuestionModel model:bookMarklist){
             if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getCorrectAnswer()
                     .equals(list.get(position).getCorrectAnswer())){
