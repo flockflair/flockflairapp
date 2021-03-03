@@ -3,11 +3,14 @@ package com.example.flockflairapp;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -15,9 +18,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,11 +30,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class DisplayQuestions extends AppCompatActivity {
+
+    public static final String FILE_NAME = "FLOCKFLAIR";
+    public static final String KEY_NAME = "QUESTIONS";
+    private static final String TAG = "BookmarkRemoved";
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -59,6 +72,11 @@ public class DisplayQuestions extends AppCompatActivity {
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     //matchedQuestionPosition
     private int matchedQuestionPosition;
+    private List<QuestionModel> bookMarkListSharedPreferences;
+    //for sharedPreferences
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +91,11 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
+        preferences = getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        editor= preferences.edit();
+        gson = new Gson();
+
+        getBookMarks();
 
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
@@ -88,15 +111,25 @@ public class DisplayQuestions extends AppCompatActivity {
         bookMarks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save bookmark in database
-                dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getCorrectAnswer()));
+                if (modelMatch()){
+                    bookMarklist.remove(matchedQuestionPosition);
+                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                    removeBookmarksDatabase();
+                    Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    bookMarklist.add(list.get(position));
+                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                    //save bookmark in database
+                    dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getCorrectAnswer()));
+                    //for toast msg
+                    Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
+                    //for vibration
+                    vibrator.vibrate(50);
+                }
                 //bookmark image change to flled
-                bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
-                bookMarks.setEnabled(false);
-                //for toast msg
-                Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
-                //for vibration
-                vibrator.vibrate(50);
+                /*bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                bookMarks.setEnabled(false);*/
             }
         });
 
@@ -139,6 +172,12 @@ public class DisplayQuestions extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        storebBookmarks();
     }
 
     //animation for loading new question
@@ -244,7 +283,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
             if (enable){
                 linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#bdc3c7")));
-                bookMarks.setEnabled(true);
+                //bookMarks.setEnabled(true);
             }
         }
     }
@@ -306,4 +345,41 @@ public class DisplayQuestions extends AppCompatActivity {
         });
         builder.show();
     }
+
+    private void getBookMarks(){
+        String json = preferences.getString(KEY_NAME,"");
+
+        Type type = new TypeToken<List<QuestionModel>>(){}.getType();
+        bookMarklist = gson.fromJson(json, type);
+        if (bookMarklist == null){
+            bookMarklist = new ArrayList<>();
+        }
+    }
+
+    private void storebBookmarks(){
+        String json = gson.toJson(bookMarklist);
+        editor.putString(KEY_NAME, json);
+        editor.commit();
+    }
+
+    private void removeBookmarksDatabase(){
+        //for getting pushed Id and delete bookmark from database
+        dbBookmarks.child("user").child(uuid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dss : snapshot.getChildren()){
+                    String pushKey = dss.getKey();
+                    if (pushKey.equals(snapshot.getChildren())){
+                        dbBookmarks.child("user").child(uuid).child(pushKey).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i(TAG, error.getMessage());
+            }
+        });
+    }
+
 }

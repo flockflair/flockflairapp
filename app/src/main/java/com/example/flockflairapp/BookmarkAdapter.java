@@ -1,21 +1,26 @@
 package com.example.flockflairapp;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,6 +33,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbBookmarks = db.getReference();
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private String pushKey = "";
 
     public BookmarkAdapter(List<QuestionModel> list) {
         this.list = list;
@@ -51,42 +57,57 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
 
         private ImageButton delete;
         private TextView question,answer;
+        private LinearLayout linearLayout;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
             question = itemView.findViewById(R.id.questionBookmark);
             answer = itemView.findViewById(R.id.answerBookmark);
-
             delete = itemView.findViewById(R.id.deleteBookmarkBtn);
+            linearLayout = itemView.findViewById(R.id.linearLayoutBookmark);
+
         }
         private void setData(String question, String answer, int position){
             this.question.setText(question);
             this.answer.setText(answer);
 
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), DisplayQuestions.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
+
+            List<String> keyList = new ArrayList<>();
+
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     //for getting pushed Id and delete bookmark from database
-                    dbBookmarks.child("user").child(uuid).addListenerForSingleValueEvent(new ValueEventListener() {
+                    dbBookmarks.child("user").child(uuid).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot dss : snapshot.getChildren()){
-                                String pushKey = dss.getKey();
-                                dbBookmarks.child("user").child(uuid).child(pushKey).removeValue();
+                            for (DataSnapshot dss : snapshot.getChildren()) {
+                                pushKey = dss.getKey();
+                                keyList.add(pushKey);
+                            }
+                            if (keyList.size()>0) {
+                                dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
                                 notifyDataSetChanged();
-                                break;
+                                list.remove(position);
+                                notifyItemRemoved(position);
+                            }else {
+                                Toast.makeText(view.getContext(),"No BookMarks" , Toast.LENGTH_SHORT).show();
+                                Log.i(TAG, "KeyList is Empty");
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             Log.i(TAG, error.getMessage());
                         }
                     });
-                    list.remove(position);
-                    notifyItemRemoved(position);
                 }
             });
         }
