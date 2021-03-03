@@ -5,12 +5,12 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -114,7 +114,6 @@ public class DisplayQuestions extends AppCompatActivity {
                 if (modelMatch()){
                     bookMarklist.remove(matchedQuestionPosition);
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
-                    removeBookmarksDatabase();
                     Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
 
                 }else{
@@ -130,6 +129,15 @@ public class DisplayQuestions extends AppCompatActivity {
                 //bookmark image change to flled
                 /*bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                 bookMarks.setEnabled(false);*/
+            }
+        });
+        //longpress direct to bookmarks
+        bookMarks.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent bookmarkIntent = new Intent(getApplicationContext(),BookmarkActivity.class);
+                startActivity(bookmarkIntent);
+                return true;
             }
         });
 
@@ -361,25 +369,4 @@ public class DisplayQuestions extends AppCompatActivity {
         editor.putString(KEY_NAME, json);
         editor.commit();
     }
-
-    private void removeBookmarksDatabase(){
-        //for getting pushed Id and delete bookmark from database
-        dbBookmarks.child("user").child(uuid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dss : snapshot.getChildren()){
-                    String pushKey = dss.getKey();
-                    if (pushKey.equals(snapshot.getChildren())){
-                        dbBookmarks.child("user").child(uuid).child(pushKey).removeValue();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.i(TAG, error.getMessage());
-            }
-        });
-    }
-
 }

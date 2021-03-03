@@ -33,7 +33,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbBookmarks = db.getReference();
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private String pushKey = "";
+    public static String pushKey = "";
+    public static List<String> keyList = new ArrayList<>();
 
     public BookmarkAdapter(List<QuestionModel> list) {
         this.list = list;
@@ -80,7 +81,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                 }
             });
 
-            List<String> keyList = new ArrayList<>();
+
 
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
