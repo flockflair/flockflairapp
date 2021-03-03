@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -94,15 +93,11 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                                 pushKey = dss.getKey();
                                 keyList.add(pushKey);
                             }
-                            if (keyList.size()>0) {
-                                dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
-                                notifyDataSetChanged();
-                                list.remove(position);
-                                notifyItemRemoved(position);
-                            }else {
-                                Toast.makeText(view.getContext(),"No BookMarks" , Toast.LENGTH_SHORT).show();
-                                Log.i(TAG, "KeyList is Empty");
-                            }
+                            dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
+                            notifyDataSetChanged();
+                            keyList = new ArrayList<>();
+                            list.remove(position);
+                            notifyItemRemoved(position);
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

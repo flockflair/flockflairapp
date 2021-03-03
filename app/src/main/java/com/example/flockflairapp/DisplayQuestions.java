@@ -72,7 +72,6 @@ public class DisplayQuestions extends AppCompatActivity {
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     //matchedQuestionPosition
     private int matchedQuestionPosition;
-    private List<QuestionModel> bookMarkListSharedPreferences;
     //for sharedPreferences
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
