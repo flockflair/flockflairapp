@@ -43,7 +43,7 @@
             android:id="@+id/module_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Module 2"
+            android:text="@string/Module2"
             app:layout_constraintBottom_toTopOf="@+id/module_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:id="@+id/module_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Module 3"
+            android:text="@string/Module3"
             app:layout_constraintBottom_toTopOf="@+id/module_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
             android:id="@+id/module_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Module 4"
+            android:text="@string/Module4"
             app:layout_constraintBottom_toTopOf="@+id/module_5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="500dp"
-            android:text="Module 5"
+            android:text="@string/Module5"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,9 +96,5 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -148,27 +148,8 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
 
-        //progressDialog
-        pg.show();
-        //database fetch child
-        dbRef.child("Diversity In The Living World").child("questions").orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //data cache
-                dbRef.keepSynced(true);
-                //for each loop get value
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    list.add(snapshot1.getValue(QuestionModel.class));
-                }
-                difficulty.setText(list.get(position).getDifficulty());
-                McqAlgo();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+        String module1 = getIntent().getStringExtra("module1");
+        databaseConnection(module1,"questions");
     }
 
     @Override
@@ -290,7 +271,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         }
     }
-    public void McqAlgo(){
+    public void QuestioinLoader(){
         //check if list is greater than zero
         if (list.size()>0){
             for (int i = 0; i < 4; i++){
@@ -363,5 +344,29 @@ public class DisplayQuestions extends AppCompatActivity {
         String json = gson.toJson(bookMarklist);
         editor.putString(KEY_NAME, json);
         editor.commit();
+    }
+    //databaseFuction
+    public void databaseConnection(String Module, String Questions){
+        //progressDialog
+        pg.show();
+        //database fetch child
+        dbRef.child(Module).child(Questions).orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //data cache
+                dbRef.keepSynced(true);
+                //for each loop get value
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    list.add(snapshot1.getValue(QuestionModel.class));
+                }
+                difficulty.setText(list.get(position).getDifficulty());
+                QuestioinLoader();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 }

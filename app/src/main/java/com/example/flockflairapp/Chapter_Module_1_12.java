@@ -1,16 +1,15 @@
 package com.example.flockflairapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,9 +23,10 @@ import java.util.List;
 
 public class Chapter_Module_1_12 extends AppCompatActivity {
 
-    private Button module1, module2,module3,module4,module5;
+    private static final String TAG = "ChapterName";
+    private Button module1, module2,module3,module4;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference database = db.getReference("HSC");
+    private DatabaseReference database = db.getReference("FlockFlair");
     private List list = new ArrayList();
 
     @Override
@@ -58,40 +58,56 @@ public class Chapter_Module_1_12 extends AppCompatActivity {
             }
         });
 
-        database.child("Diversity In The Living World").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-               //change child and reterive name of value
-                for (DataSnapshot ds: snapshot.getChildren()) {
-                    list.add(ds.getValue(String.class));
-                }
-                    module1.setText(list.get(0).toString());
-                    module2.setText(list.get(1).toString());
-                    module3.setText(list.get(2).toString());
-                    module4.setText(list.get(3).toString());
-                    module5.setText(list.get(4).toString());
-                }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        DatabaseChapterName("Reproduction");
+        DatabaseChapterName("Genetics and Evolution");
+        DatabaseChapterName("Biology in Human Welfare");
+        DatabaseChapterName("Biotechnology");
+        DatabaseChapterName("Ecology");
 
         //chapter module button
         module1 = findViewById(R.id.module_1);
         module2 = findViewById(R.id.module_2);
         module3 = findViewById(R.id.module_3);
         module4 = findViewById(R.id.module_4);
-        module5 = findViewById(R.id.module_5);
 
         //to display question activity
         module1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent module1Intent = new Intent(Chapter_Module_1_12.this, DisplayQuestions.class);
-                module1Intent.putExtra("setNo", "Module1");
+               module1Intent.putExtra("module1", "Reproduction");
                 startActivity(module1Intent);
+            }
+        });
+
+        module2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent module2Intent = new Intent(Chapter_Module_1_12.this,DisplayQuestions.class);
+                //module2Intent.putExtra("module2","Human Physiology");
+                startActivity(module2Intent);
+            }
+        });
+
+    }
+    public void DatabaseChapterName(String ChapterName){
+
+        database.child("course-12").child("modules").child(ChapterName).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //change child and reterive name of value
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    list.add(ds.getValue(String.class));
+                }
+                module1.setText(list.get(0).toString());
+                module2.setText(list.get(1).toString());
+                module3.setText(list.get(2).toString());
+                module4.setText(list.get(3).toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG,error.getMessage());
             }
         });
     }

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Flockflairapp</string>
     <string name="next">Next</string>
-    <string name="Module1">Diversity In The Living World</string>
+    <string name="Module1">Reproduction</string>
+    <string name="Module2">Genetics and Evolution</string>
+    <string name="Module3">Biology in Human Welfare</string>
+    <string name="Module4">Biotechnology</string>
+    <string name="Module5">Ecology</string>
 </resources>
