@@ -1,14 +1,14 @@
 package com.example.flockflairapp;
 
+import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -41,13 +41,14 @@ public class BookmarkActivity extends AppCompatActivity {
         rv_bookmark.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
-
         rv_bookmark.setLayoutManager(layoutManager);
 
         List<QuestionModel> list = new ArrayList<>();
         BookmarkAdapter adapter = new BookmarkAdapter(list);
+        adapter.notifyDataSetChanged();
 
         dbR.child("user").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

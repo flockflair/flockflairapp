@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -130,15 +129,6 @@ public class DisplayQuestions extends AppCompatActivity {
                 bookMarks.setEnabled(false);*/
             }
         });
-        //longpress direct to bookmarks
-        bookMarks.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Intent bookmarkIntent = new Intent(getApplicationContext(),BookmarkActivity.class);
-                startActivity(bookmarkIntent);
-                return true;
-            }
-        });
 
         pg = new ProgressDialog(this);
         pg.setTitle("Please wait...");
@@ -179,6 +169,12 @@ public class DisplayQuestions extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override

@@ -94,6 +94,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                                 keyList.add(pushKey);
                             }
                             dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
+                            dbBookmarks.keepSynced(true);
                             notifyDataSetChanged();
                             keyList = new ArrayList<>();
                             list.remove(position);
