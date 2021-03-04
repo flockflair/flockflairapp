@@ -118,7 +118,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     bookMarklist.add(list.get(position));
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                     //save bookmark in database
-                    dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getCorrectAnswer()));
+                    dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getChapterName()));
                     //for toast msg
                     Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
                     //for vibration
@@ -251,7 +251,7 @@ public class DisplayQuestions extends AppCompatActivity {
     int index = 0;
     private boolean modelMatch() {
         for (QuestionModel model:bookMarklist){
-            if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getCorrectAnswer()
+            if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getChapterName()
                     .equals(list.get(position).getCorrectAnswer())){
                 matched = true;
                 matchedQuestionPosition = index;

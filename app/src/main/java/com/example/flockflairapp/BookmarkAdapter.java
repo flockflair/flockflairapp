@@ -46,7 +46,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     }
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        holder.setData(list.get(position).getQuestion(),list.get(position).getCorrectAnswer(),position);
+        holder.setData(list.get(position).getQuestion(),list.get(position).getChapterName(),position);
     }
     @Override
     public int getItemCount() {
@@ -56,21 +56,23 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     class Viewholder extends RecyclerView.ViewHolder {
 
         private ImageButton delete;
-        private TextView question,answer;
+        private TextView question,chapterName;
         private LinearLayout linearLayout;
+        //private TextView answer;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
             question = itemView.findViewById(R.id.questionBookmark);
-            answer = itemView.findViewById(R.id.answerBookmark);
+            //answer = itemView.findViewById(R.id.answerBookmark);
+            chapterName = itemView.findViewById(R.id.chapterName);
             delete = itemView.findViewById(R.id.deleteBookmarkBtn);
             linearLayout = itemView.findViewById(R.id.linearLayoutBookmark);
 
         }
-        private void setData(String question, String answer, int position){
+        private void setData(String question, String chapterName, int position){
             this.question.setText(question);
-            this.answer.setText(answer);
+            this.chapterName.setText(chapterName);
 
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

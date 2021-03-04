@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/questionBookmark"
         android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
         android:text="Question?"
         android:paddingStart="8dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/answerBookmark"
             android:layout_width="0dp"
             android:layout_marginTop="5dp"
@@ -30,6 +30,17 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:text="Answer"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>-->
+
+        <TextView
+            android:id="@+id/chapterName"
+            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:text="ChapterName"
             android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
 
