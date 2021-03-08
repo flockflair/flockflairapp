@@ -3,9 +3,7 @@ package com.example.flockflairapp;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,26 +27,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class DisplayQuestions extends AppCompatActivity {
 
-    public static final String FILE_NAME = "FLOCKFLAIR";
-    public static final String KEY_NAME = "QUESTIONS";
-    private static final String TAG = "BookmarkRemoved";
-
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     //rootRef
     DatabaseReference dbRef = db.getReference();
     //bookmarkRef
-    DatabaseReference dbBookmarks = db.getReference();
+    DatabaseReference dbBookmarks = db.getReference("user");
     //haptic for wrong option
     private Vibrator vibrator;
     //progressDailog
@@ -71,10 +62,6 @@ public class DisplayQuestions extends AppCompatActivity {
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     //matchedQuestionPosition
     private int matchedQuestionPosition;
-    //for sharedPreferences
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +76,6 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
-        preferences = getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
-        editor= preferences.edit();
-        gson = new Gson();
-
-        getBookMarks();
 
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
@@ -118,15 +100,12 @@ public class DisplayQuestions extends AppCompatActivity {
                     bookMarklist.add(list.get(position));
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                     //save bookmark in database
-                    dbBookmarks.child("user").child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getChapterName()));
+                    dbBookmarks.child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getChapterName()));
                     //for toast msg
                     Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
                     //for vibration
                     vibrator.vibrate(50);
                 }
-                //bookmark image change to flled
-                /*bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
-                bookMarks.setEnabled(false);*/
             }
         });
 
@@ -148,6 +127,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
 
+        //databsae question fetch
         String module1 = getIntent().getStringExtra("module1");
         databaseConnection(module1,"questions");
     }
@@ -156,12 +136,6 @@ public class DisplayQuestions extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        storebBookmarks();
     }
 
     //animation for loading new question
@@ -232,7 +206,6 @@ public class DisplayQuestions extends AppCompatActivity {
 
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
             //correct Answer
-            //selectOption.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this,R.drawable.correct), null,null, null);
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
 
         }else{
@@ -252,7 +225,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private boolean modelMatch() {
         for (QuestionModel model:bookMarklist){
             if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getChapterName()
-                    .equals(list.get(position).getCorrectAnswer())){
+                    .equals(list.get(position).getChapterName())){
                 matched = true;
                 matchedQuestionPosition = index;
             }
@@ -271,7 +244,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         }
     }
-    public void QuestioinLoader(){
+    public void QuestionLoader(){
         //check if list is greater than zero
         if (list.size()>0){
             for (int i = 0; i < 4; i++){
@@ -330,27 +303,12 @@ public class DisplayQuestions extends AppCompatActivity {
         builder.show();
     }
 
-    private void getBookMarks(){
-        String json = preferences.getString(KEY_NAME,"");
-
-        Type type = new TypeToken<List<QuestionModel>>(){}.getType();
-        bookMarklist = gson.fromJson(json, type);
-        if (bookMarklist == null){
-            bookMarklist = new ArrayList<>();
-        }
-    }
-
-    private void storebBookmarks(){
-        String json = gson.toJson(bookMarklist);
-        editor.putString(KEY_NAME, json);
-        editor.commit();
-    }
     //databaseFuction
     public void databaseConnection(String Module, String Questions){
         //progressDialog
         pg.show();
         //database fetch child
-        dbRef.child(Module).child(Questions).orderByChild("index").limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRef.child(Module).child(Questions).orderByKey().limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //data cache
@@ -360,7 +318,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     list.add(snapshot1.getValue(QuestionModel.class));
                 }
                 difficulty.setText(list.get(position).getDifficulty());
-                QuestioinLoader();
+                QuestionLoader();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

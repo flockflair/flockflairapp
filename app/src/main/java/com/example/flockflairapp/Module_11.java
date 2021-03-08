@@ -1,22 +1,43 @@
 package com.example.flockflairapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Module_11 extends AppCompatActivity {
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference database = db.getReference("FlockFlair");
+    private List list = new ArrayList();
+    private Button module1, module2, module3, module4,module5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_11);
+
+        //chapter module button
+        module1 = findViewById(R.id.module_1);
+        module2 = findViewById(R.id.module_2);
+        module3 = findViewById(R.id.module_3);
+        module4 = findViewById(R.id.module_4);
+        module5 = findViewById(R.id.module_5);
 
         Button button_1 = (Button) findViewById(R.id.module_1);
         button_1.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +105,26 @@ public class Module_11 extends AppCompatActivity {
                         return true;
                 }return false;
 
+            }
+        });
+
+        database.child("course-11").child("modules").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //change child and reterive name of value
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    list.add(ds.getKey());
+                }
+                module1.setText(list.get(0).toString());
+                module2.setText(list.get(1).toString());
+                module3.setText(list.get(2).toString());
+                module4.setText(list.get(3).toString());
+                module5.setText(list.get(4).toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("Firebase",error.getMessage());
             }
         });
 

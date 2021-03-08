@@ -63,7 +63,7 @@ public class Chapter_Module_1_11 extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //change child and reterive name of value
                 for (DataSnapshot ds: snapshot.getChildren()) {
-                    list.add(ds.getValue(String.class));
+                    list.add(ds.getKey());
                 }
                 module1.setText(list.get(0).toString());
                 module2.setText(list.get(1).toString());
