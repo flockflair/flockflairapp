@@ -19,7 +19,7 @@
         android:padding="30dp"
         android:paddingLeft="50dp"
         android:text=""
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
 
 
