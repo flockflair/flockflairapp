@@ -128,7 +128,6 @@ public class DisplayQuestions extends AppCompatActivity {
         });
 
         //databsae question fetch
-        String module1 = getIntent().getStringExtra("module1");
         databaseConnection("Diversity In The Living World","questions");
     }
 
