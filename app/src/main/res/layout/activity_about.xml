@@ -29,7 +29,8 @@
             android:layout_marginTop="100dp"
             android:drawableLeft="@drawable/ic_info_foreground"
             android:drawablePadding="10dp"
-            android:text="FirstName LastName"
+            android:editable="false"
+            android:hint="Name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="129dp"
@@ -43,14 +44,15 @@
             android:layout_marginTop="50dp"
             android:drawableLeft="@drawable/ic_phone_foreground"
             android:drawablePadding="10dp"
-            android:text="123456789"
+            android:editable="false"
+            android:hint="Mobile Number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
             tools:layout_conversion_absoluteHeight="129dp"
             tools:layout_conversion_absoluteWidth="214dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"

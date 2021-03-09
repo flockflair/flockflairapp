@@ -52,7 +52,7 @@ public class Module_11 extends AppCompatActivity {
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openChapter_Module_2();
+                openChapter_Module_1();
 
             }
         });
@@ -61,7 +61,7 @@ public class Module_11 extends AppCompatActivity {
         button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openChapter_Module_3();
+                openChapter_Module_1();
 
             }
         });
@@ -70,7 +70,7 @@ public class Module_11 extends AppCompatActivity {
         button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openChapter_Module_4();
+                openChapter_Module_1();
 
             }
         });
@@ -79,7 +79,7 @@ public class Module_11 extends AppCompatActivity {
         button_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openChapter_Module_5();
+                openChapter_Module_1();
 
             }
         });
@@ -130,23 +130,7 @@ public class Module_11 extends AppCompatActivity {
 
     }
     public void openChapter_Module_1(){
-        Intent intent = new Intent(this, Chapter_Module_1_11.class);
-        startActivity(intent);
-    }
-    public void openChapter_Module_2(){
-        Intent intent = new Intent(this, Chapter_Module_2_11.class);
-        startActivity(intent);
-    }
-    public void openChapter_Module_3(){
-        Intent intent = new Intent(this, Chapter_Module_3_11.class);
-        startActivity(intent);
-    }
-    public void openChapter_Module_4(){
-        Intent intent = new Intent(this, Chapter_Module_4_11.class);
-        startActivity(intent);
-    }
-    public void openChapter_Module_5(){
-        Intent intent = new Intent(this, Chapter_Module_5_11.class);
+        Intent intent = new Intent(this, RecyclerActivity.class);
         startActivity(intent);
     }
     }

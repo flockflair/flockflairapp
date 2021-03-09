@@ -16,7 +16,7 @@ public class Chapters extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.about);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -34,6 +34,9 @@ public class Chapters extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),About.class));
                         overridePendingTransition(0,0);
                         return true;
+
+
+
                 }return false;
 
             }

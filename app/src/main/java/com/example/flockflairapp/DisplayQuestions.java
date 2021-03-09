@@ -59,7 +59,7 @@ public class DisplayQuestions extends AppCompatActivity {
     int count = 0;
     int position = 0;
     //for user id
-    String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     //matchedQuestionPosition
     private int matchedQuestionPosition;
 
