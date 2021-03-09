@@ -129,7 +129,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
         //databsae question fetch
         String module1 = getIntent().getStringExtra("module1");
-        databaseConnection(module1,"questions");
+        databaseConnection("Diversity In The Living World","questions");
     }
 
     @Override
