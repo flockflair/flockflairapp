@@ -30,7 +30,6 @@ public class phonenumber extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference userReference;
     String phoneNum = null;
-    TextView SignUp;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -41,7 +40,6 @@ public class phonenumber extends AppCompatActivity {
 
         editText = findViewById(R.id.editTextMobile);
         buttonContinue = findViewById(R.id.buttonContinue);
-        SignUp = findViewById(R.id.SignUp);
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -60,47 +58,16 @@ public class phonenumber extends AppCompatActivity {
                     return;
                 }
 
-                final Query queryRef = userReference.orderByChild("phone").equalTo(phoneNum);
-                Log.d("Error", String.valueOf(queryRef));
-
-                if(phoneNum != null){
-                    Toast.makeText(getApplicationContext(), phoneNum, Toast.LENGTH_SHORT).show();
-                    queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Log.d("Snapshot", String.valueOf(snapshot));
-
-                            if(snapshot.exists()){
-                                Toast.makeText(phonenumber.this, "Correct Number", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), OtpActivity.class);
-                                intent.putExtra("phoneNum", phoneNum);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Toast.makeText(phonenumber.this, "Number does not exist", Toast.LENGTH_LONG).show();
-                                editText.setText("");
-                                editText.requestFocus();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                if(phoneNum!=null)
+                {
+                    Intent intent = new Intent(getApplicationContext(), OtpActivity.class);
+                    intent.putExtra("phoneNum", phoneNum);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUp.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
     @Override
     protected void onStart() {

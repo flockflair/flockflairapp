@@ -40,21 +40,23 @@ public class SignUp extends AppCompatActivity {
         ButtonSignUp = findViewById(R.id.buttonSignUp);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    maxid = (snapshot.getChildrenCount());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+//
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    maxid = (snapshot.getChildrenCount());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+        Intent intent = getIntent();
+        String mobile = intent.getStringExtra("phoneNum");
+        edit_phone.setText(mobile);
 
         ButtonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,9 @@ public class SignUp extends AppCompatActivity {
 
                 databaseReference.push().setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +38,10 @@ public class OtpActivity extends AppCompatActivity {
     private String mVerificationId;
     private EditText editTextCode;
     private FirebaseAuth mAuth;
+    DatabaseReference databaseReference;
+    DatabaseReference userReference;
     private Button buttonSignIn;
+
 
 
 
@@ -43,6 +53,9 @@ public class OtpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         editTextCode = findViewById(R.id.editTextCode);
         buttonSignIn = findViewById(R.id.buttonSignIn);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        userReference = databaseReference.child("user");
 
         Intent intent = getIntent();
         String mobile = intent.getStringExtra("phoneNum");
@@ -113,10 +126,35 @@ public class OtpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Intent intent = new Intent(OtpActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
+                            Intent intent = getIntent();
+                            String mobile = intent.getStringExtra("phoneNum");
+
+                            final Query queryRef = userReference.orderByChild("phone").equalTo(mobile);
+                            queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.exists()){
+                                        Toast.makeText(getApplicationContext(), "Welcome back", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                                        intent.putExtra("phoneNum", mobile);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    else{
+                                        Toast.makeText(getApplicationContext(), "Please Sign Up first", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), SignUp.class);
+                                        intent.putExtra("phoneNum", mobile);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
 
                         else {
@@ -135,7 +173,7 @@ public class OtpActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        Intent i = new Intent(OtpActivity.this, MainActivity.class);
+        Intent i = new Intent(OtpActivity.this, phonenumber.class);
         startActivity(i);
         finish();
     }

@@ -64,26 +64,13 @@
             android:digits="0123456789"
             android:maxLength="10" />
 
-        <TextView
-            android:id="@+id/SignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextMobile"
-            android:text="SIGN UP"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"
-            android:paddingTop="20dp"
-            android:paddingLeft="280dp" />
-
         <Button
             android:id="@+id/buttonContinue"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextMobile"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="50dp"
             android:background="@color/colorPrimaryDark"
             android:text="Continue"
             android:textSize="20dp"
