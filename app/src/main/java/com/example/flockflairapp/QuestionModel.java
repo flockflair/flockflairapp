@@ -21,10 +21,10 @@ public class QuestionModel {
         this.ChapterName = ChapterName;
     }
 
-    public QuestionModel(String question, String chapterName) {
+    /*public QuestionModel(String question, String chapterName) {
         this.question = question;
         this.ChapterName = chapterName;
-    }
+    }*/
 
     public String getQuestion() {
         return question;

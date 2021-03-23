@@ -88,7 +88,6 @@ public class Chapter_Module_1_11 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent newIntent = new Intent(Chapter_Module_1_11.this,DisplayQuestions.class);
-                newIntent.putExtra("module1", "Diversity In The Living World");
                 startActivity(newIntent);
             }
         });

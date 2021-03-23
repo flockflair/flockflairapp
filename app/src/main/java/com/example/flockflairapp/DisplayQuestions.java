@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
@@ -31,12 +32,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.flockflairapp.BookmarkAdapter.booKlist;
+
 
 public class DisplayQuestions extends AppCompatActivity {
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    //rootRef
     DatabaseReference dbRef = db.getReference();
     //bookmarkRef
     DatabaseReference dbBookmarks = db.getReference("user");
@@ -54,14 +56,11 @@ public class DisplayQuestions extends AppCompatActivity {
     private Button explanation_btn;
     //question model list
     private List<QuestionModel> list;
-    //bookmarklist
-    private List<QuestionModel> bookMarklist;
     int count = 0;
     int position = 0;
+
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    //matchedQuestionPosition
-    private int matchedQuestionPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,15 +91,19 @@ public class DisplayQuestions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (modelMatch()){
-                    bookMarklist.remove(matchedQuestionPosition);
+                    booKlist.remove(matchedQuestionPosition);
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                     Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    bookMarklist.add(list.get(position));
+                    booKlist.add(list.get(matchedQuestionPosition));
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                     //save bookmark in database
-                    dbBookmarks.child(uuid).push().setValue(new QuestionModel(list.get(position).getQuestion(), list.get(position).getChapterName()));
+                    QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getOptionA(),
+                            list.get(position).getOptionB(),list.get(position).getOptionC(),list.get(position).getOptionD(),list.get(position).getCorrectAnswer(),
+                            list.get(position).getSetNo(),list.get(position).getExplaination(),list.get(position).getDifficulty(),list.get(position).getChapterName());
+
+                    dbBookmarks.child(uuid).push().setValue(questionModel);
                     //for toast msg
                     Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
                     //for vibration
@@ -115,8 +118,6 @@ public class DisplayQuestions extends AppCompatActivity {
 
         //creating list
         list = new ArrayList<>();
-        //list for bookmarks
-        bookMarklist = new ArrayList<>();
 
         //Explaination Enabled
         explanation_btn.setEnabled(false);
@@ -127,15 +128,36 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
 
-        //databsae question fetch
-        databaseConnection("Diversity In The Living World","questions");
-    }
+        //question from bookmarkAdapter
+        String Qpos = getIntent().getStringExtra("Qpos");
+        
+        int chapter1 = getIntent().getIntExtra("chapter1", 0);
+        if (chapter1 == 1){
+            //databsae question fetch
+            databaseConnection("Diversity In The Living World","questions");
+        }else {
+                dbRef.child("Diversity In The Living World").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                            list.add(dataSnapshot.getValue(QuestionModel.class));
+                        }
+                        Bookanimation(tvQuestions,0,Qpos);
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("Bookmark Question", error.getMessage());
+                    }
+                });
+            }
+        }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
+
 
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -220,15 +242,20 @@ public class DisplayQuestions extends AppCompatActivity {
 
     //MatchModel for Bookmark
     boolean matched = false;
-    int index = 0;
+    int index;
+    int matchedQuestionPosition;
     private boolean modelMatch() {
-        for (QuestionModel model:bookMarklist){
-            if (model.getQuestion().equals(list.get(position).getQuestion()) && model.getChapterName()
-                    .equals(list.get(position).getChapterName())){
-                matched = true;
-                matchedQuestionPosition = index;
+        if (booKlist == null){
+            booKlist = new ArrayList<>();
+        }else{
+            for (QuestionModel model:booKlist){
+                if (model.getQuestion().equals(list.get(position).getQuestion())
+                        && model.getChapterName().equals(list.get(position).getChapterName())){
+                    matched = true;
+                    matchedQuestionPosition = index;
+                }
+                index++;
             }
-            index++;
         }
         return matched;
     }
@@ -239,7 +266,6 @@ public class DisplayQuestions extends AppCompatActivity {
 
             if (enable){
                 linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#bdc3c7")));
-                //bookMarks.setEnabled(true);
             }
         }
     }
@@ -307,7 +333,7 @@ public class DisplayQuestions extends AppCompatActivity {
         //progressDialog
         pg.show();
         //database fetch child
-        dbRef.child(Module).child(Questions).orderByKey().limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRef.child(Module).child(Questions).orderByKey().limitToFirst(20).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //data cache
@@ -323,6 +349,64 @@ public class DisplayQuestions extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
+            }
+        });
+    }
+
+    //animation for loading new question
+    private void Bookanimation(final View view, final int value, final String data){
+
+        String OApos = getIntent().getStringExtra("OApos");
+        String OBpos = getIntent().getStringExtra("OBpos");
+        String OCpos = getIntent().getStringExtra("OCpos");
+        String ODpos = getIntent().getStringExtra("ODpos");
+
+        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100)
+                .setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
+            @Override
+            //checking value and view count to start animation
+            public void onAnimationStart(Animator animator) {
+                if (value == 0 && count < 4){
+                    String option = ""; //check all option at location count value
+
+                    if (count == 0){
+                        option = OApos;
+                    }else if (count == 1){
+                        option = OBpos;
+                    }
+                    else if (count == 2){
+                        option = OCpos;
+                    }else if (count == 3){
+                        option = ODpos;
+                    }
+                    Bookanimation(linearLayout.getChildAt(count),0,option);
+                    count++;
+                }
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                //on question data changes
+                if (value == 0){
+                    try {
+                        ((TextView)view).setText(data);
+                    }catch (ClassCastException e){
+                        ((Button)view).setText(data);
+                    }
+                    view.setTag(data);
+                    Bookanimation(view, 1,data);
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
             }
         });
     }

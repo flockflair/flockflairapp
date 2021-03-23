@@ -27,7 +27,7 @@ import java.util.List;
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewholder> {
 
     private static final String TAG = "DeleteBookmark";
-    private List<QuestionModel> list;
+    public static List<QuestionModel> booKlist;
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbBookmarks = db.getReference();
@@ -35,8 +35,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     public static String pushKey = "";
     public static List<String> keyList = new ArrayList<>();
 
-    public BookmarkAdapter(List<QuestionModel> list) {
-        this.list = list;
+    public BookmarkAdapter(List<QuestionModel> booKlist) {
+        this.booKlist = booKlist;
     }
     @NonNull
     @Override
@@ -46,11 +46,11 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
     }
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        holder.setData(list.get(position).getQuestion(),list.get(position).getChapterName(),position);
+        holder.setData(booKlist.get(position).getQuestion(),booKlist.get(position).getChapterName(),position);
     }
     @Override
     public int getItemCount() {
-        return list.size();
+        return booKlist.size();
     }
 
     class Viewholder extends RecyclerView.ViewHolder {
@@ -78,6 +78,11 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), DisplayQuestions.class);
+                    intent.putExtra("Qpos", String.valueOf(booKlist.get(position).getQuestion()));
+                    intent.putExtra("OApos", String.valueOf(booKlist.get(position).getOptionA()));
+                    intent.putExtra("OBpos", String.valueOf(booKlist.get(position).getOptionB()));
+                    intent.putExtra("OCpos", String.valueOf(booKlist.get(position).getOptionC()));
+                    intent.putExtra("ODpos", String.valueOf(booKlist.get(position).getOptionD()));
                     view.getContext().startActivity(intent);
                 }
             });
@@ -91,6 +96,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                     dbBookmarks.child("user").child(uuid).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            keyList.clear();
                             for (DataSnapshot dss : snapshot.getChildren()) {
                                 pushKey = dss.getKey();
                                 keyList.add(pushKey);
@@ -98,8 +104,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                             dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
                             dbBookmarks.keepSynced(true);
                             notifyDataSetChanged();
-                            keyList = new ArrayList<>();
-                            list.remove(position);
+                            booKlist.remove(position);
                             notifyItemRemoved(position);
                         }
                         @Override

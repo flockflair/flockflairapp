@@ -48,16 +48,18 @@ public class BookmarkActivity extends AppCompatActivity {
 
         List<QuestionModel> list = new ArrayList<>();
         BookmarkAdapter adapter = new BookmarkAdapter(list);
-        adapter.notifyDataSetChanged();
+        rv_bookmark.setAdapter(adapter);
 
         dbR.child("user").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
-                    list.add(dataSnapshot.getValue(QuestionModel.class));
+                    if (snapshot.exists()){
+                        list.add(dataSnapshot.getValue(QuestionModel.class));
+                        dbR.keepSynced(true);
+                    }
                 }
                 if (list.size()>0){
-                    rv_bookmark.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }else {
                     Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
