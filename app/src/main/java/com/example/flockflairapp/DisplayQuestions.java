@@ -91,12 +91,10 @@ public class DisplayQuestions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (modelMatch()){
-                    booKlist.remove(matchedQuestionPosition);
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                     Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    booKlist.add(list.get(matchedQuestionPosition));
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                     //save bookmark in database
                     QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getOptionA(),
@@ -294,7 +292,11 @@ public class DisplayQuestions extends AppCompatActivity {
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
                     position++;
-
+                    if (modelMatch()){
+                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                    }else {
+                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                    }
                     if (position == list.size()){
                         //end of question index
                         Toast.makeText(DisplayQuestions.this, "for more question please buy premium version", Toast.LENGTH_SHORT).show();
@@ -391,6 +393,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 if (value == 0){
                     try {
                         ((TextView)view).setText(data);
+
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
