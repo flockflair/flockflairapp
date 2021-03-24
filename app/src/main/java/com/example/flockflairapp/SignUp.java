@@ -1,8 +1,5 @@
 package com.example.flockflairapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
 
@@ -29,6 +24,7 @@ public class SignUp extends AppCompatActivity {
     String name;
     Java_SignUp java_signUp;
     long maxid = 0;
+    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +63,7 @@ public class SignUp extends AppCompatActivity {
 
                 Java_SignUp n = new Java_SignUp(name, phoneNum);
 
-                databaseReference.push().setValue(n);
+                databaseReference.child(uid).setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), DashBoard.class);
                 startActivity(intent);
