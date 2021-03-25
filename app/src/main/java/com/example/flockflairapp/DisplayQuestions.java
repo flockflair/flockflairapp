@@ -77,7 +77,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
         BookMarkList = new ArrayList<>();
 
-        /*dbBookmarks.child(uuid).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbBookmarks.child(uuid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds:snapshot.getChildren()){
@@ -88,7 +88,7 @@ public class DisplayQuestions extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
@@ -117,7 +117,7 @@ public class DisplayQuestions extends AppCompatActivity {
                             list.get(position).getSetNo(),list.get(position).getExplaination(),list.get(position).getDifficulty(),list.get(position).getChapterName());
                     //limit for bookmark size
                     if (BookMarkList.size() < 2){
-                        dbBookmarks.child(uuid).push().setValue(questionModel);
+                        dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
                         BookMarkList.add(questionModel);
 
                         Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
