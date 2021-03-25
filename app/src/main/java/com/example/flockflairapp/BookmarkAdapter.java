@@ -93,7 +93,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                 @Override
                 public void onClick(View view) {
                     //for getting pushed Id and delete bookmark from database
-                    dbBookmarks.child("user").child(uuid).orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+                    dbBookmarks.child("user").child(uuid).child("Bookmarks").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             keyList.clear();
@@ -101,7 +101,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                                 pushKey = dss.getKey();
                                 keyList.add(pushKey);
                             }
-                            dbBookmarks.child("user").child(uuid).child(keyList.get(position)).removeValue();
+                            dbBookmarks.child("user").child(uuid).child("Bookmarks").child(keyList.get(position)).removeValue();
                             dbBookmarks.keepSynced(true);
                             notifyDataSetChanged();
                             booKlist.remove(position);

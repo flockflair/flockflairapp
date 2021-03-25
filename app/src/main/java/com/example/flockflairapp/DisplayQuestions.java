@@ -32,8 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.flockflairapp.BookmarkAdapter.booKlist;
-
 
 public class DisplayQuestions extends AppCompatActivity {
 
@@ -58,6 +56,7 @@ public class DisplayQuestions extends AppCompatActivity {
     private List<QuestionModel> list;
     int count = 0;
     int position = 0;
+    private List<QuestionModel> BookMarkList;
 
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -76,6 +75,21 @@ public class DisplayQuestions extends AppCompatActivity {
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
 
+        BookMarkList = new ArrayList<>();
+
+        dbBookmarks.child(uuid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds:snapshot.getChildren()){
+                    BookMarkList.add(ds.getValue(QuestionModel.class));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
@@ -92,6 +106,7 @@ public class DisplayQuestions extends AppCompatActivity {
             public void onClick(View view) {
                 if (modelMatch()){
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                    //remove bookmarks
                     Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
 
                 }else{
@@ -100,12 +115,18 @@ public class DisplayQuestions extends AppCompatActivity {
                     QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getOptionA(),
                             list.get(position).getOptionB(),list.get(position).getOptionC(),list.get(position).getOptionD(),list.get(position).getCorrectAnswer(),
                             list.get(position).getSetNo(),list.get(position).getExplaination(),list.get(position).getDifficulty(),list.get(position).getChapterName());
+                    //limit for bookmark size
+                    if (BookMarkList.size() < 2){
+                        dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
+                        BookMarkList.add(questionModel);
 
-                    dbBookmarks.child(uuid).push().setValue(questionModel);
-                    //for toast msg
-                    Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
-                    //for vibration
-                    vibrator.vibrate(50);
+                        Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
+                        //vibration
+                        vibrator.vibrate(50);
+                    }else{
+                        Toast.makeText(DisplayQuestions.this,"Bookmark list full", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -192,12 +213,12 @@ public class DisplayQuestions extends AppCompatActivity {
                 if (value == 0){
                     try {
                         ((TextView)view).setText(data);
-                        tvTotal.setText(position+1+"/"+list.size());
                         if (modelMatch()){
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                         }else {
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
+                        tvTotal.setText(position+1+"/"+list.size());
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
@@ -243,17 +264,12 @@ public class DisplayQuestions extends AppCompatActivity {
     int index;
     int matchedQuestionPosition;
     private boolean modelMatch() {
-        if (booKlist == null){
-            booKlist = new ArrayList<>();
-        }else{
-            for (QuestionModel model:booKlist){
-                if (model.getQuestion().equals(list.get(position).getQuestion())
-                        && model.getChapterName().equals(list.get(position).getChapterName())){
-                    matched = true;
-                    matchedQuestionPosition = index;
-                }
-                index++;
+        for (QuestionModel model:BookMarkList){
+            if (model.getQuestion().equals(list.get(position).getQuestion())){
+                matched = true;
+                matchedQuestionPosition = index;
             }
+            index++;
         }
         return matched;
     }
@@ -292,11 +308,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
                     position++;
-                    if (modelMatch()){
-                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
-                    }else {
-                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
-                    }
+
                     if (position == list.size()){
                         //end of question index
                         Toast.makeText(DisplayQuestions.this, "for more question please buy premium version", Toast.LENGTH_SHORT).show();

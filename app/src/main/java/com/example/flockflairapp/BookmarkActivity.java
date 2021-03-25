@@ -1,9 +1,9 @@
 package com.example.flockflairapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +25,7 @@ import java.util.List;
 public class BookmarkActivity extends AppCompatActivity {
 
     private RecyclerView rv_bookmark;
+    private TextView noBookmarksTv;
     private String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -40,6 +40,7 @@ public class BookmarkActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         rv_bookmark = findViewById(R.id.rv_bookmarks);
+        noBookmarksTv = findViewById(R.id.noBookmarks);
 
         rv_bookmark.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
@@ -53,18 +54,18 @@ public class BookmarkActivity extends AppCompatActivity {
         BookmarkAdapter adapter = new BookmarkAdapter(list);
         rv_bookmark.setAdapter(adapter);
 
-        dbR.child("user").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbR.child("user").child(uid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
-                    if (snapshot.exists()){
-                        list.add(dataSnapshot.getValue(QuestionModel.class));
-                        dbR.keepSynced(true);
-                    }
+                    list.add(dataSnapshot.getValue(QuestionModel.class));
+                    dbR.keepSynced(true);
                 }
                 if (list.size()>0){
                     adapter.notifyDataSetChanged();
                 }else {
+                    noBookmarksTv.setText("No bookmarks found");
+                    noBookmarksTv.setVisibility(View.VISIBLE);
                     Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
                 }
             }
@@ -75,9 +76,6 @@ public class BookmarkActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
 
     }
 }
