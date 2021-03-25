@@ -28,6 +28,7 @@
         <activity android:name=".Chapter_Module_1_11" />
         <activity android:name=".Module_12" />
 
+
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
             android:exported="false">
@@ -47,14 +48,18 @@
         </activity>
         <activity android:name=".About" />
         <activity android:name=".DashBoard" />
+        <activity android:name=".UpdateProfile">
+
+        </activity>
         <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity

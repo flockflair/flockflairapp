@@ -1,9 +1,22 @@
 package com.example.flockflairapp;
 
-public class Java_SignUp {
-    private String name;
-    private String phone;
+public class All_UserMember
+{
+    public All_UserMember()
+    {
 
+    }
+    String name;
+    String phone;
+    String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
 
 
@@ -23,14 +36,5 @@ public class Java_SignUp {
         this.phone = phone;
     }
 
-    public Java_SignUp(String name, String phone){
-        this.name = name;
-        this.phone = phone;
-
-    }
-    public Java_SignUp()
-    {
-
-    }
 
 }

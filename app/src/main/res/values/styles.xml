@@ -9,6 +9,8 @@
 
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
 
+        <item name="colorBackgroundFloating">#5B60DA</item>
+
     </style>
 
 </resources>

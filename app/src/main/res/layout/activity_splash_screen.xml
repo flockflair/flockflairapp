@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#5B60DA"
     android:textAlignment="center"
     tools:context=".SplashScreen">
 
 
-    <ImageView
+    <!--- <ImageView
         android:id="@+id/logomain"
         android:layout_width="113dp"
         android:layout_height="318dp"
@@ -22,20 +23,200 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.311"
+        />
+        -->
+
+
+    <ImageView
+        android:id="@+id/dna"
+        android:layout_width="85dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/dnaa"
+        app:layout_constraintBottom_toTopOf="@+id/testube3"
+        app:layout_constraintEnd_toStartOf="@+id/physics"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="172dp"
+        android:layout_height="217dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/download"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <ImageView
+        android:id="@+id/dna2"
+        android:layout_width="85dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="305dp"
+        android:src="@drawable/dnaa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <ImageView
+        android:id="@+id/bacteria"
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginBottom="47dp"
+        android:src="@drawable/bacteria"
+        app:layout_constraintBottom_toTopOf="@+id/appname"
+        app:layout_constraintEnd_toStartOf="@+id/testube"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bacteria2"
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="199dp"
+        android:layout_marginTop="624dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="23dp"
+        android:src="@drawable/bacteria"
+        app:layout_constraintBottom_toTopOf="@+id/physics3"
+        app:layout_constraintEnd_toStartOf="@+id/dna2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/testube"
+        android:layout_width="81dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="293dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginBottom="76dp"
+        android:src="@drawable/tt"
+        app:layout_constraintBottom_toTopOf="@+id/injection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/testube3"
+        android:layout_width="81dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="292dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="168dp"
+        android:src="@drawable/tt"
+        app:layout_constraintBottom_toTopOf="@+id/physics2"
+        app:layout_constraintEnd_toStartOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/testube2"
+        android:layout_width="81dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="783dp"
+        android:layout_marginEnd="110dp"
+        android:src="@drawable/tt"
+        app:layout_constraintEnd_toStartOf="@+id/physics3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/physics"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="221dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="149dp"
+        android:src="@drawable/phy"
+        app:layout_constraintBottom_toTopOf="@+id/appname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <ImageView
+        android:id="@+id/physics2"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="539dp"
+        android:layout_marginEnd="248dp"
+        android:layout_marginBottom="75dp"
+        android:src="@drawable/phy"
+        app:layout_constraintBottom_toTopOf="@+id/injection2"
+        app:layout_constraintEnd_toStartOf="@+id/dna2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/physics3"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="741dp"
+        android:src="@drawable/phy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/injection"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="305dp"
+        android:layout_marginTop="278dp"
+        android:layout_marginBottom="183dp"
+        android:src="@drawable/injection"
+        app:layout_constraintBottom_toTopOf="@+id/dna2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/injection2"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="698dp"
+        android:layout_marginEnd="197dp"
+        android:layout_marginBottom="69dp"
+        android:src="@drawable/injection"
+        app:layout_constraintBottom_toBottomOf="@+id/testube2"
+        app:layout_constraintEnd_toStartOf="@+id/physics3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/appname"
-        android:layout_width="117dp"
-        android:layout_height="96dp"
-        android:fontFamily="@font/adamina"
-        android:text="Quiz App"
+        android:layout_width="265dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginBottom="7dp"
+        android:text="BOTANIST"
         android:textAlignment="center"
-        android:textColor="#2B2727"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.808" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
