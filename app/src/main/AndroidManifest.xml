@@ -17,17 +17,7 @@
         <activity android:name=".BookmarkActivity"/>
         <activity android:name=".UpdateProfile"/>
         <activity android:name=".SignUp" />
-        <activity android:name=".Chapter_Module_5_12" />
-        <activity android:name=".Chapter_Module_4_12" />
-        <activity android:name=".Chapter_Module_3_12" />
-        <activity android:name=".Chapter_Module_2_12" />
-        <activity android:name=".Chapter_Module_1_12" />
-        <activity android:name=".Chapter_Module_5_11" />
-        <activity android:name=".Chapter_Module_4_11" />
-        <activity android:name=".Chapter_Module_3_11" />
-        <activity android:name=".Chapter_Module_2_11" />
-        <activity android:name=".Chapter_Module_1_11" />
-        <activity android:name=".Module_12" />
+
 
 
         <service
@@ -38,15 +28,12 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <activity android:name=".Module_11" />
         <activity android:name=".ExpandableModule2"/>
         <activity android:name=".ExpandableModule1"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".About" />
-        <activity android:name=".DashBoard" />
-        <activity android:name=".UpdateProfile">
 
-        </activity>
+
         <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
@@ -58,9 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Chapters"
-            android:theme="@style/Splash"/>
+
         <activity android:name=".phonenumber" />
     </application>
 
