@@ -1,24 +1,31 @@
 package com.example.flockflairapp;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseUser firebaseAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
 
         Button button = (Button) findViewById(R.id.button_11);
         button.setOnClickListener(new View.OnClickListener() {
@@ -70,4 +77,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ExpandableModule2.class);
         startActivity(intent);
     }
+
+
 }

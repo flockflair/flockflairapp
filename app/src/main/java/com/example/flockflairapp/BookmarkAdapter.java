@@ -28,12 +28,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
 
     private static final String TAG = "DeleteBookmark";
     public static List<QuestionModel> booKlist;
-    public static String pushKey = "";
-    public static List<String> keyList = new ArrayList<>();
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbBookmarks = db.getReference();
     String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public static String pushKey = "";
+    public static List<String> keyList = new ArrayList<>();
 
     public BookmarkAdapter(List<QuestionModel> booKlist) {
         this.booKlist = booKlist;

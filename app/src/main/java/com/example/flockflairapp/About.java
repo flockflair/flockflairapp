@@ -50,7 +50,7 @@ public class About extends AppCompatActivity
     private String user;
     private DatabaseReference reference;
     private String userID;
-    private List<String> list;
+
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -61,6 +61,7 @@ public class About extends AppCompatActivity
 
 
          firebaseAuth = FirebaseAuth.getInstance();
+
         logout = (Button)findViewById(R.id.button_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,23 +73,28 @@ public class About extends AppCompatActivity
             }
         });
 
+
+
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        list = new ArrayList<>();
+
         reference = FirebaseDatabase.getInstance().getReference("user");
 
 
         final TextView et_greet = (TextView)findViewById(R.id.greeting);
         final TextInputEditText et_name = findViewById(R.id.nameinputbox);
-        final TextInputEditText et_phone =findViewById(R.id.phoneinputbox);
+        final TextView et_phone =findViewById(R.id.phoneinputbox);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot:snapshot.getChildren())
-                {
-                   list.add(dataSnapshot.getValue(String.class));
-                }
-                et_name.setText(list.get(0));
-                et_phone.setText(list.get(1));
+                HashMap<String,String> hash = new HashMap<>();
+                hash.put("name",snapshot.child("name").getValue(String.class));
+                hash.put("phone",snapshot.child("phone").getValue(String.class));
+                et_greet.setText("Welcome "+hash.get("name") + " !");
+                et_name.setText(hash.get("name"));
+                et_phone.setText(hash.get("phone"));
+                reference.keepSynced(true);
+
+
 
 
 
@@ -149,7 +155,6 @@ public class About extends AppCompatActivity
                         return true;
 
                     case R.id.about:
-
                         return true;
                 }return false;
 

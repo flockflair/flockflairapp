@@ -135,7 +135,7 @@ public class OtpActivity extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.exists()){
                                         Toast.makeText(getApplicationContext(), "Welcome back", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         intent.putExtra("phoneNum", mobile);
                                         startActivity(intent);
                                         finish();

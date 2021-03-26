@@ -65,7 +65,7 @@ public class SignUp extends AppCompatActivity {
 
                 databaseReference.child(uid).setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }

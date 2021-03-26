@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,11 +23,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class UpdateProfile extends AppCompatActivity {
     //private FirebaseAuth firebaseAuth;
-    private EditText Ename, Ephone;
+    private EditText Ename;
+    private TextView Ephone;
     private Button save;
     private FirebaseAuth fAuth;
     FirebaseUser user;
@@ -33,8 +40,7 @@ public class UpdateProfile extends AppCompatActivity {
     DatabaseReference reference;
 
     String userID;
-    List<String> list = new ArrayList<>();
-    String userstring = "";
+
     //All_UserMember member;
     int position = 3;
 
@@ -48,14 +54,10 @@ public class UpdateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        //member = new All_UserMember();
 
-
-        // EditName= (EditText)findViewById(R.id.EditName);
-        //EditPhone =(EditText)findViewById(R.id.EditPhone);
         save = (Button) findViewById(R.id.save);
         Ename = (EditText) findViewById(R.id.EditName);
-        Ephone = (EditText) findViewById(R.id.EditPhone);
+        Ephone = (TextView) findViewById(R.id.EditPhone);
         //firebaseAuth = FirebaseAuth.getInstance();
 
         user = fAuth.getInstance().getCurrentUser();
@@ -63,24 +65,24 @@ public class UpdateProfile extends AppCompatActivity {
         userID = user.getUid();
 
 
-        //TextView greetingTextView = (TextView) findViewById(R.id.greeting);
-        // EditText EditName = (EditText) findViewById(R.id.EditName);
-        //EditText EditPhone = (EditText) findViewById(R.id.EditPhone);
-        //TextView phoneTextView = (TextView) findViewById(R.id.phoneinputbox);
-
-
-        //if(user.equals(list.get(position))) {
 
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                snapshot.getValue(Java_SignUp.class);
+                HashMap<String,String> hash = new HashMap<>();
+                hash.put("name",snapshot.child("name").getValue(String.class));
+                hash.put("phone",snapshot.child("phone").getValue(String.class));
+                Ename.setText(hash.get("name"));
+                Ephone.setText(hash.get("phone"));
+                reference.keepSynced(true);
+
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Something went wrong",LENGTH_SHORT).show();
 
             }
         });
@@ -93,42 +95,26 @@ public class UpdateProfile extends AppCompatActivity {
 
 
 
-      /*  save.setOnClickListener(new View.OnClickListener() {
+       save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 uploadData();
 
+
             }
 
             private void uploadData()
             {
-                String name  = EditName.getText().toString();
-                String phone  = EditPhone.getText().toString();
 
-                if(!TextUtils.isEmpty(name) || TextUtils.isEmpty(phone))
+
+                if(!TextUtils.isEmpty(Ename.getText().toString()) || !TextUtils.isEmpty(Ephone.getText().toString()))
                 {
-                    Map<String,String > profile = new HashMap<>();
-                    profile.put("name",name);
-                    profile.put("phone",phone);
-
-                    member.setName(name);
-                    member.setPhone(phone);
-                    databaseReference.child(userstring).setValue(member);
-                    documentReference.set(profile)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                 Toast.makeText(getApplicationContext(),"updated",Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-
-
-
-
-
-
+                    Java_SignUp obj = new Java_SignUp(Ename.getText().toString(),Ephone.getText().toString());
+                    Map<String,Object > profile = new HashMap<>();
+                    profile.put("name",obj.getName());
+                    reference.child(userID).updateChildren(profile);
+                    Toast.makeText(getApplicationContext(),"Updated", Toast.LENGTH_SHORT).show();
 
                 }
                 else
@@ -138,7 +124,7 @@ public class UpdateProfile extends AppCompatActivity {
                 }
 
             }
-        });*/
+        });
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -148,7 +134,7 @@ public class UpdateProfile extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DashBoard.class));
+                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
