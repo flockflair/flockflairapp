@@ -10,20 +10,10 @@
     android:backgroundTint="#FFFFFF"
     tools:context=".About">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".About"
-        tools:layout_conversion_absoluteHeight="731dp"
-        tools:layout_conversion_absoluteWidth="411dp">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameinputbox"
+            android:id="@+id/textInputEditText2"
             android:layout_width="300dp"
             android:layout_height="93dp"
             android:layout_marginStart="44dp"
@@ -37,22 +27,20 @@
             tools:layout_conversion_absoluteHeight="129dp"
             tools:layout_conversion_absoluteWidth="296dp" />
 
-
         <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/phoneinputbox"
-            android:layout_width="277dp"
-            android:layout_height="76dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/textInputEditText"
+            android:layout_width="300dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="28dp"
             android:drawableLeft="@drawable/ic_phone_foreground"
             android:drawablePadding="10dp"
             android:editable="false"
-            android:hint="Phone"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.417"
+            android:hint="Mobile Number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameinputbox" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
+            tools:layout_conversion_absoluteHeight="129dp"
+            tools:layout_conversion_absoluteWidth="214dp" />
 
         <Button
             android:id="@+id/button_logout"
@@ -74,26 +62,20 @@
             android:backgroundTint="#00BCD4"
             android:text="UPDATE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneinputbox"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
             tools:ignore="MissingConstraints"
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_conversion_absoluteWidth="129dp" />
 
-
         <TextView
-            android:id="@+id/greeting"
-            android:layout_width="match_parent"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint=""
-            android:text=""
-            android:textAlignment="center"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="173dp"
-            tools:layout_editor_absoluteY="61dp" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginStart="183dp"
+            android:layout_marginBottom="187dp"
+            android:text="Profile"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

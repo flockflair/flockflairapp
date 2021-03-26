@@ -5,7 +5,9 @@ public class Java_SignUp {
     private String phone;
 
 
+    public Java_SignUp(){
 
+    }
 
     public String getName() {
         return name;
@@ -28,9 +30,4 @@ public class Java_SignUp {
         this.phone = phone;
 
     }
-    public Java_SignUp()
-    {
-
-    }
-
 }
