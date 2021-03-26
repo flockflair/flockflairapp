@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -14,11 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookmarkActivity"/>
-        <activity android:name=".UpdateProfile"/>
+        <activity android:name=".subtopic"></activity>
+        <activity android:name=".BookmarkActivity" />
+        <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUp" />
-
-
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -28,24 +26,23 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <activity android:name=".ExpandableModule2"/>
-        <activity android:name=".ExpandableModule1"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".ExpandableModule2" />
+        <activity android:name=".ExpandableModule1" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".About" />
-
-
         <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".OtpActivity" />
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".phonenumber" />
     </application>
 
