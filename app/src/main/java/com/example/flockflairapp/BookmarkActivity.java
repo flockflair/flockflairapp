@@ -66,7 +66,7 @@ public class BookmarkActivity extends AppCompatActivity {
                 }else {
                     noBookmarksTv.setText("No bookmarks found");
                     noBookmarksTv.setVisibility(View.VISIBLE);
-                    Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
+                    Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_SHORT).show();
                 }
             }
 

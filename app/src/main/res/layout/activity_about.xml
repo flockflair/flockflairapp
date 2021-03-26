@@ -10,15 +10,6 @@
     android:backgroundTint="#FFFFFF"
     tools:context=".About">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".About"
-        tools:layout_conversion_absoluteHeight="731dp"
-        tools:layout_conversion_absoluteWidth="411dp">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -40,8 +31,8 @@
             android:id="@+id/textInputEditText"
             android:layout_width="300dp"
             android:layout_height="128dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="28dp"
             android:drawableLeft="@drawable/ic_phone_foreground"
             android:drawablePadding="10dp"
             android:editable="false"
@@ -85,9 +76,6 @@
             android:text="Profile"
             app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
             app:layout_constraintStart_toStartOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

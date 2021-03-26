@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".BookmarkActivity"/>
+        <activity android:name=".UpdateProfile"/>
         <activity android:name=".SignUp" />
         <activity android:name=".Chapter_Module_5_12" />
         <activity android:name=".Chapter_Module_4_12" />

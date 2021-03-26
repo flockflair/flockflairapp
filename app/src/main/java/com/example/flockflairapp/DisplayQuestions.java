@@ -116,7 +116,7 @@ public class DisplayQuestions extends AppCompatActivity {
                             list.get(position).getOptionB(),list.get(position).getOptionC(),list.get(position).getOptionD(),list.get(position).getCorrectAnswer(),
                             list.get(position).getSetNo(),list.get(position).getExplaination(),list.get(position).getDifficulty(),list.get(position).getChapterName());
                     //limit for bookmark size
-                    if (BookMarkList.size() < 2){
+                    if (BookMarkList.size() < 5){
                         dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
                         BookMarkList.add(questionModel);
 
@@ -171,12 +171,12 @@ public class DisplayQuestions extends AppCompatActivity {
                 });
             }
         }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
 
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -213,12 +213,12 @@ public class DisplayQuestions extends AppCompatActivity {
                 if (value == 0){
                     try {
                         ((TextView)view).setText(data);
+                        tvTotal.setText(position+1+"/"+list.size());
                         if (modelMatch()){
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                         }else {
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
-                        tvTotal.setText(position+1+"/"+list.size());
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
@@ -268,8 +268,11 @@ public class DisplayQuestions extends AppCompatActivity {
             if (model.getQuestion().equals(list.get(position).getQuestion())){
                 matched = true;
                 matchedQuestionPosition = index;
+                break;
+            }else{
+                index++;
+                matched = false;
             }
-            index++;
         }
         return matched;
     }
