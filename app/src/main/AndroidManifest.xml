@@ -28,7 +28,7 @@
 
         <activity android:name=".ExpandableModule2" />
         <activity android:name=".ExpandableModule1" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"  android:theme="@style/Splash"/>
         <activity android:name=".About" />
         <activity android:name=".DisplayQuestions" />
         <activity android:name=".ProfileActivity" />
