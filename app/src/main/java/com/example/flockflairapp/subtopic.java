@@ -20,6 +20,7 @@ public class subtopic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtopic);
+
         listView = findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(subtopic.this , android.R.layout.simple_dropdown_item_1line,subtopics);
         listView.setAdapter(adapter);
@@ -40,5 +41,8 @@ public class subtopic extends AppCompatActivity {
         });
 
 
+
     }
-}
+
+
+        }

@@ -61,8 +61,12 @@ public class ExpandableModule1 extends AppCompatActivity {
                 switch (selected) {
                     case "The Living World":
                         intent = new Intent(getApplicationContext(), subtopic.class);
-                        intent.putExtra("chapter1", 1);
-
+                        //intent.putExtra("sub1","sub1");
+                        startActivity(intent);
+                        break;
+                    case "Biological Classificaion":
+                        intent = new Intent(getApplicationContext(), subtopic.class);
+                        //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
 
