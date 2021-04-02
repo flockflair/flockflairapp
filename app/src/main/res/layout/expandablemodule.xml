@@ -48,6 +48,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Modules"
+        android:textColor="#5B60DA"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
