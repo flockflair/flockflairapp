@@ -106,8 +106,8 @@
         android:id="@+id/testube2"
         android:layout_width="107dp"
         android:layout_height="97dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="656dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="692dp"
         android:src="@drawable/tt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -137,10 +137,10 @@
 
     <ImageView
         android:id="@+id/physics3"
-        android:layout_width="100dp"
+        android:layout_width="109dp"
         android:layout_height="118dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="616dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="656dp"
         android:src="@drawable/phy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -159,10 +159,10 @@
 
     <ImageView
         android:id="@+id/injection2"
-        android:layout_width="93dp"
+        android:layout_width="107dp"
         android:layout_height="99dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="632dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="616dp"
         android:src="@drawable/injection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
