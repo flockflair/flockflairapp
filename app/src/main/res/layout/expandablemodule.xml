@@ -69,6 +69,8 @@
         android:layout_height="650dp"
         android:orientation="vertical"
         android:padding="20dp"
+        android:groupIndicator="@null"
+        android:divider="@null"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
