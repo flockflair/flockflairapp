@@ -45,8 +45,9 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class About extends AppCompatActivity
 {
-    Button Update,logout;
-    ImageButton Update1;
+    //Button Update,
+    Button logout;
+    ImageButton Update,Update1;
 
 
 
@@ -120,7 +121,17 @@ public class About extends AppCompatActivity
 
 
 
-        Update1 = (ImageButton)findViewById(R.id.imageButton_update);
+        Update = (ImageButton)findViewById(R.id.imageButton_update);
+        Update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext() ,UpdateProfile.class));
+                //finish();
+                openUpdateProfile();
+            }
+        });
+
+        Update1 = (ImageButton)findViewById(R.id.imageButton_update1);
         Update1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +141,7 @@ public class About extends AppCompatActivity
             }
         });
 
-        Update = (Button)findViewById(R.id.button_update);
+        /*Update = (Button)findViewById(R.id.button_update);
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +149,8 @@ public class About extends AppCompatActivity
                 //finish();
                 openUpdateProfile();
             }
-        });
+        });*/
+
 
 
 

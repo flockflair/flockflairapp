@@ -54,17 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameinputbox" />
 
-        <Button
-            android:id="@+id/button_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:text="LOGOUT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_update"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="88dp" />
-
+        <!--
         <Button
             android:id="@+id/button_update"
             android:layout_width="wrap_content"
@@ -79,6 +69,21 @@
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_conversion_absoluteWidth="129dp" />
 
+            -->
+
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGOUT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.702"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="88dp" />
 
         <TextView
             android:id="@+id/greeting"
@@ -97,6 +102,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="124dp"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/editbutton" />
+
+        <ImageButton
+            android:id="@+id/imageButton_update1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="264dp"
             android:backgroundTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.76"
