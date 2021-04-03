@@ -84,7 +84,7 @@ public class About extends AppCompatActivity
         reference = FirebaseDatabase.getInstance().getReference("user");
 
 
-        final TextView et_greet = (TextView)findViewById(R.id.greeting);
+        //final TextView et_greet = (TextView)findViewById(R.id.greeting);
         final TextInputEditText et_name = findViewById(R.id.nameinputbox);
         final TextView et_phone =findViewById(R.id.phoneinputbox);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,7 +93,7 @@ public class About extends AppCompatActivity
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
                 hash.put("phone",snapshot.child("phone").getValue(String.class));
-                et_greet.setText("Welcome "+hash.get("name") + " !");
+                //et_greet.setText("Welcome "+hash.get("name") + " !");
                 et_name.setText(hash.get("name"));
                 et_phone.setText(hash.get("phone"));
                 reference.keepSynced(true);

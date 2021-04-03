@@ -28,7 +28,7 @@
             android:layout_height="93dp"
             android:layout_marginStart="44dp"
             android:layout_marginTop="100dp"
-            android:drawableLeft="@drawable/ic_info_foreground"
+            android:drawableLeft="@drawable/customerprofile"
             android:drawablePadding="10dp"
             android:editable="false"
             android:hint="Name"
@@ -44,7 +44,7 @@
             android:layout_width="277dp"
             android:layout_height="76dp"
             android:layout_marginTop="60dp"
-            android:drawableLeft="@drawable/ic_phone_foreground"
+            android:drawableLeft="@drawable/phoneprofile"
             android:drawablePadding="10dp"
             android:editable="false"
             android:hint="Phone"
@@ -85,6 +85,7 @@
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_conversion_absoluteWidth="88dp" />
 
+        <!--
         <TextView
             android:id="@+id/greeting"
             android:layout_width="match_parent"
@@ -96,6 +97,7 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="173dp"
             tools:layout_editor_absoluteY="61dp" />
+        -->
 
         <ImageButton
             android:id="@+id/imageButton_update"
@@ -128,7 +130,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="0dp"
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/common_google_signin_btn_text_dark_focused"
         app:itemTextColor="@color/common_google_signin_btn_text_dark_focused"
