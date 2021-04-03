@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,8 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class About extends AppCompatActivity
 {
     Button Update,logout;
+    ImageButton Update1;
+
 
 
     private String user;
@@ -117,6 +120,15 @@ public class About extends AppCompatActivity
 
 
 
+        Update1 = (ImageButton)findViewById(R.id.imageButton_update);
+        Update1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext() ,UpdateProfile.class));
+                //finish();
+                openUpdateProfile();
+            }
+        });
 
         Update = (Button)findViewById(R.id.button_update);
         Update.setOnClickListener(new View.OnClickListener() {
