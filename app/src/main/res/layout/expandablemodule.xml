@@ -6,6 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="50dp"
+    android:background="@drawable/fs"
     tools:ignore="MissingConstraints">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,11 +25,7 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        >
+        android:layout_height="match_parent">
 
 
 
@@ -41,24 +38,36 @@
     android:orientation="vertical"
     tools:context=".ExpandableModule1">
 
+    <!--<TextView
+        android:id="@+id/textStudentName"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:textColor="#5B60DA"
+        android:textSize="28sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        -->
+
+
 
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="403dp"
+        android:layout_height="60dp"
+        android:paddingTop="20dp"
         android:text="Modules"
+        android:textAlignment="textStart"
         android:textColor="#5B60DA"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
         tools:layout_conversion_absoluteHeight="38dp"
         tools:layout_conversion_absoluteWidth="411dp"
-        tools:layout_editor_absoluteY="-1dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="-1dp">
 
     </TextView>
 
@@ -66,11 +75,12 @@
     <ExpandableListView
         android:id="@+id/Modules"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="580dp"
+        android:divider="@null"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:groupIndicator="@null"
         android:orientation="vertical"
         android:padding="20dp"
-        android:groupIndicator="@null"
-        android:divider="@null"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -81,6 +91,8 @@
 
 
     </ExpandableListView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

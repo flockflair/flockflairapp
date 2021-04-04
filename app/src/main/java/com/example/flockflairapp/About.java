@@ -60,7 +60,7 @@ public class About extends AppCompatActivity
 
 
 
-         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         logout = (Button)findViewById(R.id.button_logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +76,6 @@ public class About extends AppCompatActivity
 
 
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         reference = FirebaseDatabase.getInstance().getReference("user");
 
 
@@ -93,21 +92,7 @@ public class About extends AppCompatActivity
                 et_name.setText(hash.get("name"));
                 et_phone.setText(hash.get("phone"));
                 reference.keepSynced(true);
-
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(),"Something went wrong",LENGTH_SHORT).show();
