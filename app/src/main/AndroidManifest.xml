@@ -26,13 +26,13 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <activity android:name=".ExpandableModule2" android:screenOrientation="portrait"/>
-        <activity android:name=".ExpandableModule1" android:screenOrientation="portrait" />
+        <activity android:name=".ExpandableModule2"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
+        <activity android:name=".ExpandableModule1"  android:theme="@style/Splash" android:screenOrientation="portrait" />
         <activity android:name=".MainActivity"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
-        <activity android:name=".About" android:screenOrientation="portrait"/>
-        <activity android:name=".DisplayQuestions" android:screenOrientation="portrait" />
-        <activity android:name=".ProfileActivity" android:screenOrientation="portrait" />
-        <activity android:name=".OtpActivity" android:screenOrientation="portrait" />
+        <activity android:name=".About"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
+        <activity android:name=".DisplayQuestions"  android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity android:name=".ProfileActivity" android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity android:name=".OtpActivity"  android:theme="@style/Splash" android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
