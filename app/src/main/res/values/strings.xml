@@ -6,8 +6,4 @@
     <string name="Module3">Biology in Human Welfare</string>
     <string name="Module4">Biotechnology</string>
     <string name="Module5">Ecology</string>
-    
-    <string name="invalid_name">Enter Valid Name</string>
-    <string name="invalid_phone">Enter Valid Phone Number</string>
-
 </resources>
