@@ -47,7 +47,7 @@ public class About extends AppCompatActivity
 {
     //Button Update,
     Button logout;
-    ImageButton Update,Update1;
+    Button Update,Update1;
 
 
 
@@ -106,7 +106,7 @@ public class About extends AppCompatActivity
 
 
 
-        Update = (ImageButton)findViewById(R.id.imageButton_update);
+        /*Update = (ImageButton)findViewById(R.id.imageButton_update);
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,9 +124,9 @@ public class About extends AppCompatActivity
                 //finish();
                 openUpdateProfile();
             }
-        });
+        });*/
 
-        /*Update = (Button)findViewById(R.id.button_update);
+        Update = (Button)findViewById(R.id.button_update);
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +134,34 @@ public class About extends AppCompatActivity
                 //finish();
                 openUpdateProfile();
             }
-        });*/
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.about);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.about:
+                        startActivity(new Intent(getApplicationContext(), About.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                }
+                return false;
+
+            }
+
+        });
 
     }
 
