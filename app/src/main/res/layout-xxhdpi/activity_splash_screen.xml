@@ -107,7 +107,8 @@
         android:layout_width="82dp"
         android:layout_height="89dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="604dp"
+        android:layout_marginTop="572dp"
+        android:rotation="346"
         android:src="@drawable/tt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -140,7 +141,7 @@
         android:layout_width="94dp"
         android:layout_height="84dp"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="604dp"
+        android:layout_marginTop="576dp"
         android:src="@drawable/phy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -85,8 +85,8 @@
 
     <ExpandableListView
         android:id="@+id/Modules"
-        android:layout_width="407dp"
-        android:layout_height="455dp"
+        android:layout_width="421dp"
+        android:layout_height="458dp"
         android:layout_marginTop="180dp"
         android:divider="@null"
         android:groupIndicator="@null"
