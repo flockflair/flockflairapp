@@ -1,91 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/physics"
     tools:context=".OtpActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="277dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:text="Verify Phone"
+        android:textAlignment="center"
+        android:textColor="#5B60DA"
+        android:textSize="38dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_button" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number send to 9833143281"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="220dp"
+        android:layout_height="215dp"
+        android:background="@drawable/phone_verify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextCode"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+
+        android:textAlignment="center"
+        android:hint="Enter OTP"
+        android:textColorHint="#000000"
+        android:textSize="25dp"
+        android:background="@drawable/verify_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCode" />
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:text="Didn't receive a code? Request again"
+        android:textAlignment="center"
+        android:textColor="#5B60DA"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/progressbar"
+        tools:layout_editor_absoluteX="60dp" />
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_logo" />
+    <Button
+        android:id="@+id/buttonSignIn"
+        android:layout_width="258dp"
+        android:layout_height="53dp"
+        android:background="@drawable/custom_button"
+        android:text="Let's Start"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:layout_marginTop="25dp"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/relativeLayout"
-        android:padding="20dp">
-
-        <TextView
-            android:id="@+id/TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="OTP"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"/>
-
-        <TextView
-            android:id="@+id/TextView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/TextView"
-            android:layout_marginTop="20dp"
-            android:text="Wait for the OTP"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <EditText
-            android:id="@+id/editTextCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/TextView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:digits="0123456789"
-            android:drawablePadding="10dp"
-            android:textSize="20dp"
-            android:hint="Enter verification code"
-            android:inputType="phone"
-            android:maxLength="10" />
-
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:layout_below="@id/editTextCode"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonSignIn"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/progressbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Continue"
-            android:textSize="20dp"
-            android:textAllCaps="false"
-            android:textColor="#cdd8f1" />
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
