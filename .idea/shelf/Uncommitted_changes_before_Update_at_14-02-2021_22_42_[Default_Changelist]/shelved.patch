@@ -1,0 +1,15 @@
+Index: app/src/main/java/com/example/flockflairapp/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.os.Bundle;\r\n//rahul done firebase and github connection\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    //yash_bitla\r\n    //sanika\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/MainActivity.java	(revision b71bf8f7b832cb3ea40d28ba946905865baa66c8)
++++ app/src/main/java/com/example/flockflairapp/MainActivity.java	(date 1613322703552)
+@@ -14,4 +14,3 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+     }
+-}
+\ No newline at end of file
