@@ -10,6 +10,7 @@
     <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="colorBackgroundFloating">#5B60DA</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
     </style>
 

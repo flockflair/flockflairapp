@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".subtopic"></activity>
-        <activity android:name=".BookmarkActivity" />
+        <activity android:name=".BookmarkActivity"
+            android:theme="@style/Splash"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUp" />
 

@@ -6,6 +6,7 @@ public class QuestionModel {
         //Empty constructor for firebase
     }
 
+
     private String question, optionA, optionB, optionC, optionD, correctAnswer,setNo,explaination, difficulty,ChapterName;
 
     public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo, String explaination, String difficulty, String ChapterName) {
@@ -20,11 +21,6 @@ public class QuestionModel {
         this.difficulty = difficulty;
         this.ChapterName = ChapterName;
     }
-
-    /*public QuestionModel(String question, String chapterName) {
-        this.question = question;
-        this.ChapterName = chapterName;
-    }*/
 
     public String getQuestion() {
         return question;
