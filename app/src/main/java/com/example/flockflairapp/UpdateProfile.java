@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +40,7 @@ public class UpdateProfile extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference reference;
+    AwesomeValidation awesomeValidation;
 
     String userID;
 
@@ -59,10 +62,15 @@ public class UpdateProfile extends AppCompatActivity {
         Ename = (EditText) findViewById(R.id.EditName);
         Ephone = (TextView) findViewById(R.id.EditPhone);
         //firebaseAuth = FirebaseAuth.getInstance();
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+
 
         user = fAuth.getInstance().getCurrentUser();
         reference = database.getInstance().getReference("user");
         userID = user.getUid();
+       awesomeValidation.addValidation(this, R.id.EditName, "[a-zA-Z\\s]+", R.string.invalid_name);
+       //awesomeValidation.addValidation(this,R.id.EditPhone, "((\\+*)((0[ -]+)*|(91 )*)(\\d{12}|\\d{10}))|\\d{5}([- ]*)\\d{6}", R.string.invalid_phone);
 
 
 
@@ -99,7 +107,14 @@ public class UpdateProfile extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                uploadData();
+                if(awesomeValidation.validate()) {
+                    Toast.makeText(getApplicationContext(),"success", LENGTH_SHORT).show();
+                    uploadData();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"invalid name", LENGTH_SHORT).show();
+                }
 
 
             }

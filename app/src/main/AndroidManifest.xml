@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".subtopic"></activity>
-        <activity android:name=".BookmarkActivity"
+        <activity android:name=".subtopic" android:screenOrientation="portrait"></activity>
+        <activity android:name=".BookmarkActivity" android:screenOrientation="portrait"
             android:theme="@style/Splash"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".UpdateProfile" />
-        <activity android:name=".SignUp" />
+        <activity android:name=".UpdateProfile" android:screenOrientation="portrait" />
+        <activity android:name=".SignUp" android:screenOrientation="portrait"/>
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -28,15 +28,16 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <activity android:name=".ExpandableModule2" />
-        <activity android:name=".ExpandableModule1" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".About" />
-        <activity android:name=".DisplayQuestions" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".OtpActivity" />
+        <activity android:name=".ExpandableModule2"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
+        <activity android:name=".ExpandableModule1"  android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
+        <activity android:name=".About"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
+        <activity android:name=".DisplayQuestions"  android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity android:name=".ProfileActivity" android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity android:name=".OtpActivity"  android:theme="@style/Splash" android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".phonenumber" />
+        <activity android:name=".phonenumber" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

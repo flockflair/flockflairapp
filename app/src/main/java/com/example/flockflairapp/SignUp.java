@@ -19,7 +19,7 @@ public class SignUp extends AppCompatActivity {
     EditText edit_name;
     EditText edit_phone;
     DatabaseReference databaseReference;
-    Button ButtonSignUp;
+    Button ButtonSignUp, back_button;
     String phoneNum;
     String name;
     Java_SignUp java_signUp;
@@ -34,6 +34,7 @@ public class SignUp extends AppCompatActivity {
         edit_name = findViewById(R.id.edit_name);
         edit_phone = findViewById(R.id.edit_phone);
         ButtonSignUp = findViewById(R.id.buttonSignUp);
+        back_button = findViewById(R.id.back_button);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
 //
@@ -67,6 +68,16 @@ public class SignUp extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                Intent i = new Intent(SignUp.this, phonenumber.class);
+                startActivity(i);
                 finish();
             }
         });

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,10 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class About extends AppCompatActivity
 {
-    Button Update,logout;
+    //Button Update,
+    Button logout;
+    Button Update,Update1;
+
 
 
     private String user;
@@ -60,7 +64,7 @@ public class About extends AppCompatActivity
 
 
 
-         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         logout = (Button)findViewById(R.id.button_logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -76,12 +80,11 @@ public class About extends AppCompatActivity
 
 
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         reference = FirebaseDatabase.getInstance().getReference("user");
 
 
-        final TextView et_greet = (TextView)findViewById(R.id.greeting);
-        final TextInputEditText et_name = findViewById(R.id.nameinputbox);
+        //final TextView et_greet = (TextView)findViewById(R.id.greeting);
+        final TextView et_name = findViewById(R.id.nameinputbox);
         final TextView et_phone =findViewById(R.id.phoneinputbox);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -89,25 +92,11 @@ public class About extends AppCompatActivity
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
                 hash.put("phone",snapshot.child("phone").getValue(String.class));
-                et_greet.setText("Welcome "+hash.get("name") + " !");
+                //et_greet.setText("Welcome "+hash.get("name") + " !");
                 et_name.setText(hash.get("name"));
                 et_phone.setText(hash.get("phone"));
                 reference.keepSynced(true);
-
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(),"Something went wrong",LENGTH_SHORT).show();
@@ -117,6 +106,25 @@ public class About extends AppCompatActivity
 
 
 
+        /*Update = (ImageButton)findViewById(R.id.imageButton_update);
+        Update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext() ,UpdateProfile.class));
+                //finish();
+                openUpdateProfile();
+            }
+        });
+
+        Update1 = (ImageButton)findViewById(R.id.imageButton_update1);
+        Update1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(getApplicationContext() ,UpdateProfile.class));
+                //finish();
+                openUpdateProfile();
+            }
+        });*/
 
         Update = (Button)findViewById(R.id.button_update);
         Update.setOnClickListener(new View.OnClickListener() {
@@ -128,40 +136,32 @@ public class About extends AppCompatActivity
             }
         });
 
-
-
-
-
-
-
-
-
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.about);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId())
-                {
+                switch (menuItem.getItemId()) {
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.about:
+                        startActivity(new Intent(getApplicationContext(), About.class));
+                        overridePendingTransition(0, 0);
                         return true;
-                }return false;
+
+                }
+                return false;
 
             }
+
         });
-
-
 
     }
 

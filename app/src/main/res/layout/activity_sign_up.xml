@@ -1,98 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
     tools:context=".SignUp">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_logo" />
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="277dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="44dp"
+        android:text="SignUp"
+        android:textAlignment="center"
+        android:textColor="#5B60DA"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/relativeLayout"
-        android:padding="20dp">
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/border_edit"
+        android:drawableLeft="@drawable/customer"
+        android:drawablePadding="10dp"
+        android:hint="Full Name"
+        android:paddingLeft="10dp"
+        android:textColorHint="#5B60DA"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-        <TextView
-            android:id="@+id/TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SIGN UP"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary" />
+    <EditText
+        android:id="@+id/edit_phone"
+        android:layout_width="330dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/border_edit"
+        android:drawableLeft="@drawable/image"
+        android:drawablePadding="10dp"
+        android:hint="Phone No."
+        android:paddingLeft="10dp"
+        android:textColorHint="#5B60DA"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
-        <TextView
-            android:id="@+id/TextView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/TextView"
-            android:paddingTop="20dp"
-            android:text="Name"
-            android:textSize="25dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary" />
-
-        <EditText
-            android:id="@+id/edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TextView1"
-            android:hint="Enter your name"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp" />
-
-
-        <TextView
-            android:id="@+id/TextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edit_name"
-            android:paddingTop="20dp"
-            android:text="Phone Number"
-            android:textSize="25dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textColor="@color/colorPrimary" />
-
-        <EditText
-            android:id="@+id/edit_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TextView2"
-            android:hint="Enter your phone number"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp" />
-
-        <Button
-            android:id="@+id/buttonSignUp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edit_phone"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Sign Up"
-            android:textSize="20dp"
-            android:textAllCaps="false"
-            android:textColor="#cdd8f1" />
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="258dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="80dp"
+        android:text="Let's Start"
+        android:textAllCaps="false"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/custom_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_phone" />
 
 
-    </RelativeLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

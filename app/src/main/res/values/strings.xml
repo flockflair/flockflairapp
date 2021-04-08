@@ -6,4 +6,7 @@
     <string name="Module3">Biology in Human Welfare</string>
     <string name="Module4">Biotechnology</string>
     <string name="Module5">Ecology</string>
+    <string name="invalid_name">Invalid Name</string>
+    <string name="hint_size">Phone No</string>
+    <string name="login_text">You will receive a 6 digit code to verify</string>
 </resources>

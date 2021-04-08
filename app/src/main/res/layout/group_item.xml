@@ -8,21 +8,21 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".ExpandableModule1">
-
-
-
-
+    
     <TextView
         android:id="@+id/modules"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_modules"
+        android:drawableRight="@drawable/nextbutton"
         android:padding="30dp"
         android:paddingLeft="50dp"
+        android:paddingRight="10dp"
         android:text=""
-        android:textSize="20sp"/>
+        android:textColor="#060C8B"
+        android:textSize="20sp" />
 
 
 
 
 </LinearLayout>
-
