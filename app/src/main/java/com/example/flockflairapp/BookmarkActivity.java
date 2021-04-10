@@ -192,14 +192,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
             adapter.notifyDataSetChanged();
         }
         else if (item.getItemId()==R.id.item_selectAll){
-            for (int i = 0; i<list.size();i++){
-                //checkbox bug
-                selectionList.add(list.get(i));
-                counter++;
-                updateCounter(counter);
-                adapter.notifyDataSetChanged();
-            }
-            counter = 0;
+            selectAll_or_unSelectALL();
         }
         else if (item.getItemId()==R.id.item_search){
             Toast.makeText(BookmarkActivity.this, item+" clicked",Toast.LENGTH_SHORT).show();
@@ -226,6 +219,28 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         }else{
             super.onBackPressed();
             finish();
+        }
+    }
+    //selectAll bookmarks or unselectAll bookmarks
+    public void selectAll_or_unSelectALL(){
+        if (selectionList.isEmpty()){
+            selectionList.clear();
+            counter=0;
+            for (int i = 0; i<list.size();i++){
+                //checkbox bug
+                selectionList.add(list.get(i));
+                counter++;
+                updateCounter(counter);
+                adapter.notifyDataSetChanged();
+            }
+        }else{
+            selectionList.clear();
+            for (int j = 0; j < list.size();j++){
+                selectionList.remove(list.get(j));
+                counter--;
+                updateCounter(0);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 }

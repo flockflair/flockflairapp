@@ -145,6 +145,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                 checkBox.setVisibility(View.VISIBLE);
                 checkBox.setChecked(false);
             }
+            //checkbox setChecked if selectAll option is selected
+            if (bookmarkActivity.selectionList.size()==booKlist.size()){
+                checkBox.setChecked(true);
+            }else {
+                checkBox.setChecked(false);
+            }
 
             checkBox.setOnClickListener(view -> {
                 bookmarkActivity.prepareSelection(view, getAdapterPosition());
@@ -153,6 +159,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
 
         }
     }
+
     //delete selected
     public void updateAdapter(ArrayList<QuestionModel> list){
         for (QuestionModel questionModel:list){
