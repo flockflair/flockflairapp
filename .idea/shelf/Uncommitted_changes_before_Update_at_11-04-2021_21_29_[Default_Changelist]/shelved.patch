@@ -1,0 +1,148 @@
+Index: app/src/main/res/layout/activity_update_profile.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".UpdateProfile\"\r\n    tools:layout_editor_absoluteY=\"81dp\">\r\n\r\n\r\n    <TextView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:text=\"Profile\"\r\n        android:textSize=\"20sp\"\r\n        android:textAlignment=\"center\"\r\n        android:gravity=\"center_horizontal\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <com.google.android.material.textfield.TextInputEditText\r\n        android:id=\"@+id/EditName\"\r\n        android:layout_width=\"375dp\"\r\n        android:layout_height=\"125dp\"\r\n        android:layout_marginTop=\"108dp\"\r\n        android:drawableLeft=\"@drawable/ic_info_foreground\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Name\"\r\n        android:focusable=\"false\"\r\n        android:freezesText=\"true\"\r\n        android:inputType=\"textPersonName\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/button_edit\"\r\n        android:layout_width=\"52dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:layout_marginStart=\"332dp\"\r\n        android:layout_marginTop=\"144dp\"\r\n        android:background=\"@drawable/edit\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/EditPhone\"\r\n        android:layout_width=\"367dp\"\r\n        android:layout_height=\"102dp\"\r\n        android:layout_marginBottom=\"244dp\"\r\n        android:drawableLeft=\"@drawable/ic_phone_foreground\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Mobile Number\"\r\n        android:focusable=\"false\"\r\n        android:inputType=\"phone\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n\r\n    <Button\r\n        android:id=\"@+id/save\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"48dp\"\r\n        android:text=\"Save\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/EditPhone\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/logout_button\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"160dp\"\r\n        android:layout_marginTop=\"600dp\"\r\n        android:text=\"logout\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:itemBackground=\"@color/color1\"\r\n        app:itemIconTint=\"#FFFFFF\"\r\n        app:itemTextColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/module_5\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"1.0\"\r\n        app:menu=\"@menu/menu_navigation\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_update_profile.xml	(revision 04ca3821224643fdea4171d4fbb58ae3d195cf62)
++++ app/src/main/res/layout/activity_update_profile.xml	(date 1618155227650)
+@@ -69,6 +69,7 @@
+         android:layout_marginTop="48dp"
+         android:text="Save"
+         app:layout_constraintEnd_toEndOf="parent"
++        android:visibility="invisible"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
+Index: app/src/main/res/layout/expandablemodule.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:layout_editor_absoluteY=\"50dp\"\r\n    android:background=\"@drawable/fs\"\r\n    tools:ignore=\"MissingConstraints\">\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:itemBackground=\"@color/color1\"\r\n        app:itemIconTint=\"#FFFFFF\"\r\n        app:itemTextColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/module_5\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"1.0\"\r\n        app:menu=\"@menu/menu_navigation\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <ScrollView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"match_parent\"\r\n        >\r\n\r\n\r\n\r\n\r\n\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    android:id=\"@+id/linearLayout4\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".ExpandableModule1\">\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/StudentName\"\r\n        android:layout_width=\"342dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginStart=\"76dp\"\r\n        android:paddingTop=\"10dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:textColor=\"#5B60DA\"\r\n        android:textSize=\"20sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/backbuttonimg\"\r\n        android:layout_width=\"63dp\"\r\n        android:layout_height=\"63dp\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:layout_marginTop=\"9dp\"\r\n        android:src=\"@drawable/back\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView2\"\r\n        android:layout_width=\"403dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:paddingTop=\"20dp\"\r\n        android:text=\"Modules\"\r\n        android:paddingLeft=\"30dp\"\r\n        android:textAlignment=\"textStart\"\r\n        android:textColor=\"#5B60DA\"\r\n        android:textSize=\"28sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/questionofdayimg\"\r\n        tools:ignore=\"MissingConstraints\"\r\n        tools:layout_conversion_absoluteHeight=\"38dp\"\r\n        tools:layout_conversion_absoluteWidth=\"411dp\"\r\n        tools:layout_editor_absoluteY=\"-1dp\">\r\n\r\n    </TextView>\r\n\r\n\r\n    <ImageView\r\n        android:id=\"@+id/questionofdayimg\"\r\n        android:layout_width=\"333dp\"\r\n        android:layout_height=\"180dp\"\r\n        android:layout_marginStart=\"32dp\"\r\n        android:layout_marginTop=\"68dp\"\r\n        android:src=\"@drawable/questionofday\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n    <ExpandableListView\r\n        android:id=\"@+id/Modules\"\r\n        android:layout_width=\"418dp\"\r\n        android:layout_height=\"378dp\"\r\n        android:layout_marginTop=\"312dp\"\r\n        android:divider=\"@null\"\r\n        android:groupIndicator=\"@null\"\r\n        android:orientation=\"vertical\"\r\n        android:padding=\"20dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints,NotSibling\"\r\n        tools:layout_conversion_absoluteHeight=\"40dp\"\r\n        tools:layout_conversion_absoluteWidth=\"411dp\">\r\n\r\n\r\n    </ExpandableListView>\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n    </ScrollView>\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/expandablemodule.xml	(revision 04ca3821224643fdea4171d4fbb58ae3d195cf62)
++++ app/src/main/res/layout/expandablemodule.xml	(date 1618156043058)
+@@ -44,32 +44,32 @@
+         android:id="@+id/StudentName"
+         android:layout_width="342dp"
+         android:layout_height="55dp"
+-        android:layout_marginStart="76dp"
+-        android:paddingTop="10dp"
++        android:layout_marginStart="80dp"
+         android:layout_marginTop="16dp"
++        android:paddingTop="10dp"
+         android:textColor="#5B60DA"
+-        android:textSize="20sp"
++        android:textSize="23sp"
+         android:textStyle="bold"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+     <ImageView
+         android:id="@+id/backbuttonimg"
+-        android:layout_width="63dp"
+-        android:layout_height="63dp"
+-        android:layout_marginStart="10dp"
+-        android:layout_marginTop="9dp"
++        android:layout_width="54dp"
++        android:layout_height="49dp"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="16dp"
+         android:src="@drawable/back"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+     <TextView
+         android:id="@+id/textView2"
+-        android:layout_width="403dp"
+-        android:layout_height="60dp"
+-        android:paddingTop="20dp"
+-        android:text="Modules"
++        android:layout_width="405dp"
++        android:layout_height="43dp"
++        android:layout_marginTop="12dp"
+         android:paddingLeft="30dp"
++        android:text="Modules"
+         android:textAlignment="textStart"
+         android:textColor="#5B60DA"
+         android:textSize="28sp"
+@@ -80,28 +80,25 @@
+         app:layout_constraintTop_toBottomOf="@+id/questionofdayimg"
+         tools:ignore="MissingConstraints"
+         tools:layout_conversion_absoluteHeight="38dp"
+-        tools:layout_conversion_absoluteWidth="411dp"
+-        tools:layout_editor_absoluteY="-1dp">
++        tools:layout_conversion_absoluteWidth="411dp">
+ 
+     </TextView>
+ 
+-
+     <ImageView
+         android:id="@+id/questionofdayimg"
+-        android:layout_width="333dp"
+-        android:layout_height="180dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginTop="68dp"
++        android:layout_width="315dp"
++        android:layout_height="160dp"
++        android:layout_marginStart="48dp"
++        android:layout_marginTop="80dp"
+         android:src="@drawable/questionofday"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+-
+     <ExpandableListView
+         android:id="@+id/Modules"
+-        android:layout_width="418dp"
+-        android:layout_height="378dp"
+-        android:layout_marginTop="312dp"
++        android:layout_width="424dp"
++        android:layout_height="402dp"
++        android:layout_marginTop="296dp"
+         android:divider="@null"
+         android:groupIndicator="@null"
+         android:orientation="vertical"
+Index: app/src/main/java/com/example/flockflairapp/UpdateProfile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.text.TextUtils;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.basgeekball.awesomevalidation.AwesomeValidation;\r\nimport com.basgeekball.awesomevalidation.ValidationStyle;\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\nimport com.google.android.material.textfield.TextInputEditText;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport static android.widget.Toast.LENGTH_SHORT;\r\n\r\npublic class UpdateProfile extends AppCompatActivity {\r\n    //private FirebaseAuth firebaseAuth;\r\n    private TextInputEditText Ename;\r\n    private TextView Ephone;\r\n    private Button save;\r\n    private Button logout;\r\n    Button edit;\r\n    FirebaseAuth fAuth;\r\n    FirebaseUser user;\r\n    FirebaseDatabase database;\r\n    DatabaseReference reference;\r\n    AwesomeValidation awesomeValidation;\r\n\r\n    String userID;\r\n\r\n    //All_UserMember member;\r\n    int position = 3;\r\n\r\n    //FirebaseDatabase database = FirebaseDatabase.getInstance();\r\n    //DatabaseReference databaseReference;\r\n    //DocumentReference documentReference;\r\n    //FirebaseFirestore db = FirebaseFirestore.getInstance();\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_update_profile);\r\n        fAuth = FirebaseAuth.getInstance();\r\n\r\n        logout = (Button)findViewById(R.id.logout_button);\r\n        logout.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                fAuth.signOut();\r\n                finish();\r\n                startActivity(new Intent(getApplicationContext(),phonenumber.class));\r\n\r\n            }\r\n        });\r\n\r\n        save = (Button) findViewById(R.id.save);\r\n        Ename = (TextInputEditText) findViewById(R.id.EditName);\r\n        Ephone = (TextView) findViewById(R.id.EditPhone);\r\n        edit = (Button)findViewById(R.id.button_edit);\r\n        //firebaseAuth = FirebaseAuth.getInstance();\r\n        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);\r\n        user = fAuth.getInstance().getCurrentUser();\r\n        reference = database.getInstance().getReference(\"user\");\r\n        userID = user.getUid();\r\n       awesomeValidation.addValidation(this, R.id.EditName, \"[a-zA-Z\\\\s]+\", R.string.invalid_name);\r\n       //awesomeValidation.addValidation(this,R.id.EditPhone, \"((\\\\+*)((0[ -]+)*|(91 )*)(\\\\d{12}|\\\\d{10}))|\\\\d{5}([- ]*)\\\\d{6}\", R.string.invalid_phone);\r\n\r\n\r\n\r\n\r\n        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(@NonNull DataSnapshot snapshot) {\r\n                HashMap<String,String> hash = new HashMap<>();\r\n                hash.put(\"name\",snapshot.child(\"name\").getValue(String.class));\r\n                hash.put(\"phone\",snapshot.child(\"phone\").getValue(String.class));\r\n                Ename.setText(hash.get(\"name\"));\r\n                Ephone.setText(hash.get(\"phone\"));\r\n                reference.keepSynced(true);\r\n\r\n\r\n            }\r\n\r\n            @Override\r\n            public void onCancelled(@NonNull DatabaseError error) {\r\n                Toast.makeText(getApplicationContext(),\"Something went wrong\",LENGTH_SHORT).show();\r\n\r\n            }\r\n        });\r\n\r\n        //}\r\n\r\n\r\n        edit.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                TextInputEditText Ename = findViewById(R.id.EditName);\r\n                Ename.setFocusableInTouchMode(true);\r\n                Ename.isCursorVisible();\r\n\r\n            }\r\n        });\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n       save.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v)\r\n            {\r\n                if(awesomeValidation.validate()) {\r\n                    Toast.makeText(getApplicationContext(),\"success\", LENGTH_SHORT).show();\r\n                    uploadData();\r\n                }\r\n                else\r\n                {\r\n                    Toast.makeText(getApplicationContext(),\"invalid name\", LENGTH_SHORT).show();\r\n                }\r\n\r\n\r\n            }\r\n\r\n            private void uploadData()\r\n            {\r\n\r\n\r\n                if(!TextUtils.isEmpty(Ename.getText().toString()) || !TextUtils.isEmpty(Ephone.getText().toString()))\r\n                {\r\n                    Java_SignUp obj = new Java_SignUp(Ename.getText().toString(),Ephone.getText().toString());\r\n                    Map<String,Object > profile = new HashMap<>();\r\n                    profile.put(\"name\",obj.getName());\r\n                    reference.child(userID).updateChildren(profile);\r\n                    Toast.makeText(getApplicationContext(),\"Updated\", Toast.LENGTH_SHORT).show();\r\n\r\n                }\r\n                else\r\n                    {\r\n                        Toast.makeText(getApplicationContext(),\"pls fill data\", Toast.LENGTH_SHORT).show();\r\n\r\n                }\r\n\r\n            }\r\n        });\r\n\r\n\r\n        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);\r\n        bottomNavigationView.setSelectedItemId(R.id.about);\r\n        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {\r\n            @Override\r\n            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {\r\n                switch (menuItem.getItemId()) {\r\n                    case R.id.dashboard:\r\n                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));\r\n                        overridePendingTransition(0, 0);\r\n                        return true;\r\n                    case R.id.home:\r\n                        startActivity(new Intent(getApplicationContext(), MainActivity.class));\r\n                        overridePendingTransition(0, 0);\r\n                        return true;\r\n\r\n                    case R.id.about:\r\n                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));\r\n                        overridePendingTransition(0, 0);\r\n                        return true;\r\n\r\n                }\r\n                return false;\r\n\r\n            }\r\n\r\n        });\r\n\r\n\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/UpdateProfile.java	(revision 04ca3821224643fdea4171d4fbb58ae3d195cf62)
++++ app/src/main/java/com/example/flockflairapp/UpdateProfile.java	(date 1618155488783)
+@@ -114,6 +114,8 @@
+         edit.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
++                save = (Button) findViewById(R.id.save);
++                save.setVisibility(View.VISIBLE);
+                 TextInputEditText Ename = findViewById(R.id.EditName);
+                 Ename.setFocusableInTouchMode(true);
+                 Ename.isCursorVisible();
+@@ -140,8 +142,13 @@
+                     Toast.makeText(getApplicationContext(),"invalid name", LENGTH_SHORT).show();
+                 }
+ 
++                Button save = (Button) v ;
++                save.setVisibility(View.INVISIBLE);
++
+ 
+             }
++
++
+ 
+             private void uploadData()
+             {
+@@ -163,6 +170,8 @@
+                 }
+ 
+             }
++
++
+         });
+ 
+ 
