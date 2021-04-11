@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".subtopic" android:screenOrientation="portrait"></activity>
-        <activity android:name=".BookmarkActivity" android:screenOrientation="portrait" />
+        <activity android:name=".BookmarkActivity" android:screenOrientation="portrait"
+            android:theme="@style/Splash"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".UpdateProfile" android:screenOrientation="portrait" />
         <activity android:name=".SignUp" android:screenOrientation="portrait"/>
 

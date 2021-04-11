@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ import java.util.List;
 
 public class DisplayQuestions extends AppCompatActivity {
 
+    private final String TAG = "DisplayQuestions";
+    public static final int MAX_BOOKMARKS = 10;
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = db.getReference();
@@ -86,7 +89,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d(TAG, error.getMessage());
             }
         });
 
@@ -104,29 +107,43 @@ public class DisplayQuestions extends AppCompatActivity {
         bookMarks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //bookmark & unbookmark
                 if (modelMatch()){
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                     //remove bookmarks
-                    Toast.makeText(DisplayQuestions.this,"Bookmark Removed", Toast.LENGTH_SHORT).show();
-
+                    //Query for removing bookmarks for displayQuestion activity
+                    Query displayQueryUnBookmark = dbBookmarks.child(uuid).child("Bookmarks").orderByChild("question").equalTo(list.get(position).getQuestion());
+                    displayQueryUnBookmark.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                                dataSnapshot.getRef().removeValue();
+                                Toast.makeText(DisplayQuestions.this, "Bookmark removed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.d(TAG, "error" + error.getMessage());
+                        }
+                    });
                 }else{
-                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
-                    //save bookmark in database
-                    QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(),list.get(position).getOptionA(),
-                            list.get(position).getOptionB(),list.get(position).getOptionC(),list.get(position).getOptionD(),list.get(position).getCorrectAnswer(),
-                            list.get(position).getSetNo(),list.get(position).getExplaination(),list.get(position).getDifficulty(),list.get(position).getChapterName());
                     //limit for bookmark size
-                    if (BookMarkList.size() < 2){
-                        dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
-                        BookMarkList.add(questionModel);
+                    if (BookMarkList.size() < MAX_BOOKMARKS) {
+                        //save bookmark in database
+                        QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(), list.get(position).getOptionA(),
+                                list.get(position).getOptionB(), list.get(position).getOptionC(), list.get(position).getOptionD(), list.get(position).getCorrectAnswer(),
+                                list.get(position).getSetNo(), list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName());
 
-                        Toast.makeText(DisplayQuestions.this,"Bookmarked", Toast.LENGTH_SHORT).show();
+                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                        dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
+                        //BookMarkList.add(questionModel);
+
+                        Toast.makeText(DisplayQuestions.this, "Bookmarked", Toast.LENGTH_SHORT).show();
                         //vibration
                         vibrator.vibrate(50);
-                    }else{
-                        Toast.makeText(DisplayQuestions.this,"Bookmark list full", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(DisplayQuestions.this, "Bookmark list full", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         });
@@ -158,10 +175,22 @@ public class DisplayQuestions extends AppCompatActivity {
                 dbRef.child("Diversity In The Living World").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String DDpos = getIntent().getStringExtra("DDpos");
                         for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                             list.add(dataSnapshot.getValue(QuestionModel.class));
                         }
+                        for (int i = 0; i < 4; i++){
+                            //clickListener on option button
+                            linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    //method to compare options with correctAnswer
+                                    BookcheckAnswer((Button) view);
+                                }
+                            });
+                        }
                         Bookanimation(tvQuestions,0,Qpos);
+                        difficulty.setText(DDpos);
                     }
 
                     @Override
@@ -268,12 +297,15 @@ public class DisplayQuestions extends AppCompatActivity {
             if (model.getQuestion().equals(list.get(position).getQuestion())){
                 matched = true;
                 matchedQuestionPosition = index;
+                break;
+            }else{
+                index++;
+                matched = false;
             }
-            index++;
         }
         return matched;
     }
-
+    
     private void enableOption(boolean enable) {
         for (int i = 0; i < 4; i++){
             linearLayout.getChildAt(i).setEnabled(enable);
@@ -351,7 +383,6 @@ public class DisplayQuestions extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //data cache
-                dbRef.keepSynced(true);
                 //for each loop get value
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     list.add(snapshot1.getValue(QuestionModel.class));
@@ -405,7 +436,9 @@ public class DisplayQuestions extends AppCompatActivity {
                 if (value == 0){
                     try {
                         ((TextView)view).setText(data);
-
+                        if (modelMatch()){
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                        }
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
@@ -424,5 +457,24 @@ public class DisplayQuestions extends AppCompatActivity {
 
             }
         });
+    }
+    private void BookcheckAnswer(final Button selectOption) {
+        String CApos = getIntent().getStringExtra("CApos");
+        enableOption(false);
+        explanation_btn.setEnabled(true);
+
+        if (selectOption.getText().toString().equals(CApos)){
+            //correct Answer
+            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+
+        }else{
+            //incorrect Answer
+            vibrator.vibrate(100);
+            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
+
+            Button correctOption = linearLayout.findViewWithTag(CApos);
+            correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+
+        }
     }
 }

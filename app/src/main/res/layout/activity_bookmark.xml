@@ -7,10 +7,7 @@
     android:orientation="vertical"
     tools:context=".BookmarkActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_bookmarks"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <include layout="@layout/toolbar_layout"/>
 
     <TextView
         android:id="@+id/noBookmarks"
@@ -19,6 +16,14 @@
         android:textSize="20sp"
         android:layout_centerInParent="true"
         android:visibility="invisible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottom_navigation"
+        tools:listitem="@layout/bookmrk_single_item_layout"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

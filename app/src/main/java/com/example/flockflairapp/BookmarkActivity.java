@@ -97,7 +97,7 @@ public class BookmarkActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
+                        startActivity(new Intent(getApplicationContext(), About.class));
                         overridePendingTransition(0, 0);
                         return true;
 
