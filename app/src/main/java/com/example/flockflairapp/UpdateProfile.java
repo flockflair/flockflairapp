@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,10 +34,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class UpdateProfile extends AppCompatActivity {
     //private FirebaseAuth firebaseAuth;
-    private EditText Ename;
+    private TextInputEditText Ename;
     private TextView Ephone;
     private Button save;
-    private FirebaseAuth fAuth;
+    private Button logout;
+    Button edit;
+    FirebaseAuth fAuth;
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -57,15 +60,25 @@ public class UpdateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+        fAuth = FirebaseAuth.getInstance();
+
+        logout = (Button)findViewById(R.id.logout_button);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fAuth.signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(),phonenumber.class));
+
+            }
+        });
 
         save = (Button) findViewById(R.id.save);
-        Ename = (EditText) findViewById(R.id.EditName);
+        Ename = (TextInputEditText) findViewById(R.id.EditName);
         Ephone = (TextView) findViewById(R.id.EditPhone);
+        edit = (Button)findViewById(R.id.button_edit);
         //firebaseAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-
-
-
         user = fAuth.getInstance().getCurrentUser();
         reference = database.getInstance().getReference("user");
         userID = user.getUid();
@@ -96,6 +109,17 @@ public class UpdateProfile extends AppCompatActivity {
         });
 
         //}
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextInputEditText Ename = findViewById(R.id.EditName);
+                Ename.setFocusableInTouchMode(true);
+                Ename.isCursorVisible();
+
+            }
+        });
 
 
 
@@ -158,7 +182,7 @@ public class UpdateProfile extends AppCompatActivity {
                         return true;
 
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), About.class));
+                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
                         overridePendingTransition(0, 0);
                         return true;
 

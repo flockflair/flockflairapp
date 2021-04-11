@@ -30,13 +30,25 @@
             android:layout_marginTop="100dp"
             android:drawableLeft="@drawable/ic_info_foreground"
             android:drawablePadding="10dp"
-            android:editable="false"
             android:hint="Name"
+            android:focusable="false"
+            android:freezesText="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="129dp"
             tools:layout_conversion_absoluteWidth="296dp" />
 
+
+        <Button
+            android:id="@+id/buttonedit"
+            android:layout_width="62dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="344dp"
+            android:layout_marginTop="116dp"
+            android:text="edit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <com.google.android.material.textfield.TextInputEditText
 
@@ -80,6 +92,17 @@
             tools:layout_conversion_absoluteWidth="129dp" />
 
 
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="164dp"
+            android:text="save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneinputbox"
+            tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/greeting"
             android:layout_width="match_parent"
@@ -100,9 +123,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/common_google_signin_btn_text_dark_focused"
-        app:itemTextColor="@color/common_google_signin_btn_text_dark_focused"
+        app:itemBackground="@color/color1"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation"

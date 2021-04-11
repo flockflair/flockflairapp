@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -48,14 +50,14 @@ public class About extends AppCompatActivity
     //Button Update,
     Button logout;
     Button Update,Update1;
-
-
-
+    Button edit;
+    Button save;
     private String user;
     private DatabaseReference reference;
     private String userID;
-
     FirebaseAuth firebaseAuth;
+    AwesomeValidation awesomeValidation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,9 @@ public class About extends AppCompatActivity
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+        edit = (Button)findViewById(R.id.buttonedit);
+       // awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+       // awesomeValidation.addValidation(this, R.id.EditName, "[a-zA-Z\\s]+", R.string.invalid_name);
         logout = (Button)findViewById(R.id.button_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,14 +81,25 @@ public class About extends AppCompatActivity
             }
         });
 
+        edit = (Button)findViewById(R.id.buttonedit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 TextInputEditText et_name = findViewById(R.id.nameinputbox);
+                 et_name.setFocusableInTouchMode(true);
+                 et_name.isCursorVisible();
+
+            }
+        });
+
+
+
 
 
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reference = FirebaseDatabase.getInstance().getReference("user");
-
-
-        //final TextView et_greet = (TextView)findViewById(R.id.greeting);
-        final TextView et_name = findViewById(R.id.nameinputbox);
+        final TextView et_greet = (TextView)findViewById(R.id.greeting);
+        final TextInputEditText et_name = findViewById(R.id.nameinputbox);
         final TextView et_phone =findViewById(R.id.phoneinputbox);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -92,7 +107,7 @@ public class About extends AppCompatActivity
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
                 hash.put("phone",snapshot.child("phone").getValue(String.class));
-                //et_greet.setText("Welcome "+hash.get("name") + " !");
+                et_greet.setText("Welcome "+hash.get("name") + " !");
                 et_name.setText(hash.get("name"));
                 et_phone.setText(hash.get("phone"));
                 reference.keepSynced(true);
@@ -103,6 +118,32 @@ public class About extends AppCompatActivity
 
             }
         });
+
+        save = (Button)findViewById(R.id.save_button);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                TextInputEditText et_name = findViewById(R.id.nameinputbox);
+                et_name.setFocusableInTouchMode(false);
+                if(awesomeValidation.validate()) {
+                    Toast.makeText(getApplicationContext(),"success", LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"invalid name", LENGTH_SHORT).show();
+                }
+
+
+            }
+
+
+
+
+
+        });
+
 
 
 
@@ -127,6 +168,7 @@ public class About extends AppCompatActivity
         });*/
 
         Update = (Button)findViewById(R.id.button_update);
+
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +177,8 @@ public class About extends AppCompatActivity
                 openUpdateProfile();
             }
         });
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.about);
@@ -152,7 +196,7 @@ public class About extends AppCompatActivity
                         return true;
 
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), About.class));
+                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -170,4 +214,6 @@ public class About extends AppCompatActivity
         Intent intent = new Intent(this, UpdateProfile.class);
         startActivity(intent);
     }
+
+
 }

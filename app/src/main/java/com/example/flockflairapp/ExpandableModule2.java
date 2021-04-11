@@ -6,28 +6,63 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class ExpandableModule2 extends AppCompatActivity {
 
+    private String user;
+    private DatabaseReference reference;
     List<String> moduleList;
     List<String> chapterList;
     Map<String, List<String>> moduleCollection;
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
+    FirebaseAuth firebaseAuth;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        reference = FirebaseDatabase.getInstance().getReference("user");
+        final TextView greet =findViewById(R.id.StudentName);
+        reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final TextView greet =findViewById(R.id.StudentName);
+                HashMap<String,String> hash = new HashMap<>();
+                hash.put("name",snapshot.child("name").getValue(String.class));
+                //hash.put("phone",snapshot.child("phone").getValue(String.class));
+                greet.setText("Welcome "+hash.get("name") +"!");
+                reference.keepSynced(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Something went wrong",LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
@@ -71,6 +106,16 @@ public class ExpandableModule2 extends AppCompatActivity {
             }
         });
 
+        back = (ImageView)findViewById(R.id.backbuttonimg);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -87,7 +132,7 @@ public class ExpandableModule2 extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(),About.class));
+                        startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
                         overridePendingTransition(0,0);
                         return true;
                 }return false;

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,26 +31,29 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class ExpandableModule1 extends AppCompatActivity {
     private String user;
     private DatabaseReference reference;
-    TextView et_greet;
     List<String> moduleList;
     List<String> chapterList;
     Map<String, List<String>> moduleCollection;
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
+    FirebaseAuth firebaseAuth;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reference = FirebaseDatabase.getInstance().getReference("user");
-        //et_greet = (TextView)findViewById(R.id.textStudentName);
-        /*reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+        final TextView greet =findViewById(R.id.StudentName);
+        reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final TextView greet =findViewById(R.id.StudentName);
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
-                hash.put("phone",snapshot.child("phone").getValue(String.class));
-                et_greet.setText("Welcome "+hash.get("name") + " !");
+                //hash.put("phone",snapshot.child("phone").getValue(String.class));
+                greet.setText("Welcome "+hash.get("name") +"!");
                 reference.keepSynced(true);
             }
             @Override
@@ -58,9 +62,6 @@ public class ExpandableModule1 extends AppCompatActivity {
 
             }
         });
-
-         */
-
         setContentView(R.layout.expandablemodule);
         createmoduleList();
         createCollection();
@@ -106,6 +107,16 @@ public class ExpandableModule1 extends AppCompatActivity {
             }
         });
 
+        back = (ImageView)findViewById(R.id.backbuttonimg);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -122,7 +133,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(),About.class));
+                        startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
                         overridePendingTransition(0,0);
                         return true;
                 }return false;

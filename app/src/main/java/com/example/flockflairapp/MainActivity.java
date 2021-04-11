@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(),About.class));
+                        startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
                         overridePendingTransition(0,0);
                         return true;
                 }return false;
