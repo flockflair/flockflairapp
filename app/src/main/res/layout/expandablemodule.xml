@@ -44,32 +44,32 @@
         android:id="@+id/StudentName"
         android:layout_width="342dp"
         android:layout_height="55dp"
-        android:layout_marginStart="76dp"
-        android:paddingTop="10dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="16dp"
+        android:paddingTop="10dp"
         android:textColor="#5B60DA"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/backbuttonimg"
-        android:layout_width="63dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="54dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="403dp"
-        android:layout_height="60dp"
-        android:paddingTop="20dp"
-        android:text="Modules"
+        android:layout_width="405dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="12dp"
         android:paddingLeft="30dp"
+        android:text="Modules"
         android:textAlignment="textStart"
         android:textColor="#5B60DA"
         android:textSize="28sp"
@@ -80,28 +80,25 @@
         app:layout_constraintTop_toBottomOf="@+id/questionofdayimg"
         tools:ignore="MissingConstraints"
         tools:layout_conversion_absoluteHeight="38dp"
-        tools:layout_conversion_absoluteWidth="411dp"
-        tools:layout_editor_absoluteY="-1dp">
+        tools:layout_conversion_absoluteWidth="411dp">
 
     </TextView>
 
-
     <ImageView
         android:id="@+id/questionofdayimg"
-        android:layout_width="333dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="315dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/questionofday"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ExpandableListView
         android:id="@+id/Modules"
-        android:layout_width="418dp"
-        android:layout_height="378dp"
-        android:layout_marginTop="312dp"
+        android:layout_width="424dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="296dp"
         android:divider="@null"
         android:groupIndicator="@null"
         android:orientation="vertical"

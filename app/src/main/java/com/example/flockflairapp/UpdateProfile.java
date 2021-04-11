@@ -114,6 +114,8 @@ public class UpdateProfile extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save = (Button) findViewById(R.id.save);
+                save.setVisibility(View.VISIBLE);
                 TextInputEditText Ename = findViewById(R.id.EditName);
                 Ename.setFocusableInTouchMode(true);
                 Ename.isCursorVisible();
@@ -140,8 +142,13 @@ public class UpdateProfile extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"invalid name", LENGTH_SHORT).show();
                 }
 
+                Button save = (Button) v ;
+                save.setVisibility(View.INVISIBLE);
+
 
             }
+
+
 
             private void uploadData()
             {
@@ -163,6 +170,8 @@ public class UpdateProfile extends AppCompatActivity {
                 }
 
             }
+
+
         });
 
 
