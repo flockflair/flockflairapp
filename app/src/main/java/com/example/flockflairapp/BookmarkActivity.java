@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.flockflairapp.BookmarkAdapter.booKlist;
 
 public class BookmarkActivity extends AppCompatActivity implements View.OnLongClickListener {
 
@@ -126,7 +129,51 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_bookmark, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.item_search);
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        if (searchItem.expandActionView()){
+            text_title.setVisibility(View.GONE);
+        }else{
+            text_title.setVisibility(View.VISIBLE);
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filter(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return false;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                Toast.makeText(BookmarkActivity.this, "Close", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        adapter.notifyDataSetChanged();
         return true;
+    }
+    //SearchFilter method
+    public void filter(String newText) {
+        ArrayList<QuestionModel> filteredList = new ArrayList<>();
+        for (QuestionModel item: list){
+            if (item.getQuestion().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(BookmarkActivity.this, "No Data found...", Toast.LENGTH_SHORT).show();
+        }else {
+            BookmarkAdapter bookmarkAdapter = new BookmarkAdapter(booKlist,BookmarkActivity.this);
+            bookmarkAdapter.filterList(filteredList);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

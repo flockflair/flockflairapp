@@ -47,6 +47,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
         this.context = context;
         this.bookmarkActivity = (BookmarkActivity) context;
     }
+
+    public void  filterList(ArrayList<QuestionModel> filterList){
+        booKlist = filterList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

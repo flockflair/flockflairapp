@@ -110,9 +110,9 @@ public class DisplayQuestions extends AppCompatActivity {
                 //bookmark & unbookmark
                 if (modelMatch()){
                     bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
-                    //remove bookmarks
                     //Query for removing bookmarks for displayQuestion activity
                     Query displayQueryUnBookmark = dbBookmarks.child(uuid).child("Bookmarks").orderByChild("question").equalTo(list.get(position).getQuestion());
+
                     displayQueryUnBookmark.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -128,21 +128,18 @@ public class DisplayQuestions extends AppCompatActivity {
                     });
                 }else{
                     //limit for bookmark size
-                    if (BookMarkList.size() < MAX_BOOKMARKS) {
+                    if (BookMarkList.size() < MAX_BOOKMARKS){
                         //save bookmark in database
                         QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(), list.get(position).getOptionA(),
-                                list.get(position).getOptionB(), list.get(position).getOptionC(), list.get(position).getOptionD(), list.get(position).getCorrectAnswer(),
-                                list.get(position).getSetNo(), list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName());
+                                list.get(position).getOptionB(), list.get(position).getOptionC(), list.get(position).getOptionD(), list.get(position).getCorrectAnswer()
+                                ,list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName());
 
                         bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                         dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
-                        //BookMarkList.add(questionModel);
-
+                        BookMarkList.add(questionModel);
                         Toast.makeText(DisplayQuestions.this, "Bookmarked", Toast.LENGTH_SHORT).show();
                         //vibration
                         vibrator.vibrate(50);
-                    } else {
-                        Toast.makeText(DisplayQuestions.this, "Bookmark list full", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

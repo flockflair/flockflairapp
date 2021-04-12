@@ -7,16 +7,15 @@ public class QuestionModel {
     }
 
 
-    private String question, optionA, optionB, optionC, optionD, correctAnswer,setNo,explaination, difficulty,ChapterName;
+    private String question, optionA, optionB, optionC, optionD, correctAnswer,explaination, difficulty,ChapterName;
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,String setNo, String explaination, String difficulty, String ChapterName) {
+    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explaination, String difficulty, String ChapterName) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
-        this.setNo = setNo;
         this.explaination = explaination;
         this.difficulty = difficulty;
         this.ChapterName = ChapterName;
@@ -68,14 +67,6 @@ public class QuestionModel {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
-    }
-
-    public String getSetNo() {
-        return setNo;
-    }
-
-    public void setSetNo(String setNo) {
-        this.setNo = setNo;
     }
 
     public String getExplaination() {
