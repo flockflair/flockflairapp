@@ -182,6 +182,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         text_title.setVisibility(View.GONE);
         toolbar.inflateMenu(R.menu.menu_action_mode);
         text_toolbar.setVisibility(View.VISIBLE);
+        updateCounter(0);
         isActionMode = true;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         adapter.notifyDataSetChanged();
