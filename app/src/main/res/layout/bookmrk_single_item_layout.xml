@@ -48,11 +48,16 @@
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:background="@drawable/dustbin" />
+
         <CheckBox
             android:id="@+id/CheckBox"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-8dp"
+            android:layout_marginRight="-7dp"
+            android:checked="false"
+            android:buttonTint="#5B60DA"/>
     </RelativeLayout>
 
 </LinearLayout>
