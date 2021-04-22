@@ -118,6 +118,7 @@ public class UpdateProfile extends AppCompatActivity {
                 save.setVisibility(View.VISIBLE);
                 TextInputEditText Ename = findViewById(R.id.EditName);
                 Ename.setFocusableInTouchMode(true);
+                Ename.setCursorVisible(true);
                 Ename.isCursorVisible();
 
             }
@@ -144,6 +145,14 @@ public class UpdateProfile extends AppCompatActivity {
 
                 Button save = (Button) v ;
                 save.setVisibility(View.INVISIBLE);
+                TextInputEditText Ename = findViewById(R.id.EditName);
+                Ename.setFocusableInTouchMode(false);
+                Ename.setCursorVisible(false);
+                Ename.setFocusable(false);
+
+
+
+
 
 
             }

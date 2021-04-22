@@ -18,56 +18,43 @@
         app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/module_5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        >
 
 
 
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/linearLayout4"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ExpandableModule1">
 
+            <TextView
+                android:id="@+id/StudentName"
+                android:layout_width="342dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="16dp"
+                android:paddingTop="10dp"
+                android:textColor="#5B60DA"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/StudentName"
-        android:layout_width="342dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="16dp"
-        android:paddingTop="10dp"
-        android:textColor="#5B60DA"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/backbuttonimg"
-        android:layout_width="54dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/backbuttonimg"
+                android:layout_width="54dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="405dp"
         android:layout_height="43dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:paddingLeft="30dp"
         android:text="Modules"
         android:textAlignment="textStart"
@@ -75,7 +62,7 @@
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionofdayimg"
         tools:ignore="MissingConstraints"
@@ -88,34 +75,34 @@
         android:id="@+id/questionofdayimg"
         android:layout_width="315dp"
         android:layout_height="160dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="76dp"
         android:src="@drawable/questionofday"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ExpandableListView
         android:id="@+id/Modules"
-        android:layout_width="424dp"
-        android:layout_height="402dp"
-        android:layout_marginTop="296dp"
+        android:layout_width="429dp"
+        android:layout_height="438dp"
+        android:layout_marginStart="16dp"
         android:divider="@null"
         android:groupIndicator="@null"
         android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:paddingLeft="10dp"
+        android:scrollbars="vertical"
+        android:smoothScrollbar="true"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.303"
         tools:ignore="MissingConstraints,NotSibling"
-        tools:layout_conversion_absoluteHeight="40dp"
+        tools:layout_conversion_absoluteHeight="0dp"
         tools:layout_conversion_absoluteWidth="411dp">
 
 
     </ExpandableListView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
