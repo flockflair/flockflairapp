@@ -81,23 +81,30 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="372dp"
         android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
         android:visibility="invisible"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
 
     <Button
         android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="600dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/rectanglebutton"
         android:text="logout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -152,5 +159,96 @@
         android:background="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="132dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="42dp"
+        android:gravity="center"
+        android:text="Modules\nCompleted"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="132dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="34dp"
+        android:gravity="center"
+        android:text="Overall\nPercentage"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="6dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/EditPhone"
+        app:srcCompat="@drawable/rectangleshape" />
+
+    <TextView
+        android:id="@+id/tvcompleted"
+        android:layout_width="53dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/circleshape"
+        android:gravity="center"
+        android:text="46"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/tvoverall"
+        android:layout_width="53dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="76dp"
+        android:background="@drawable/circleshape"
+        android:gravity="center"
+        android:text="46"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="42dp"
+        android:text="Favourite Chapters"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="190dp"
+        android:background="@drawable/star1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
