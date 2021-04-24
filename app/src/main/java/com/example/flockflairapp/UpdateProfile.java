@@ -3,6 +3,7 @@ package com.example.flockflairapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -35,9 +36,11 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class UpdateProfile extends AppCompatActivity {
     //private FirebaseAuth firebaseAuth;
     private TextInputEditText Ename;
-    private TextView Ephone;
+    private TextInputEditText Ephone;
+    //private TextView Ephone;
     private Button save;
     private Button logout;
+    private Button back;
     Button edit;
     FirebaseAuth fAuth;
     FirebaseUser user;
@@ -56,6 +59,7 @@ public class UpdateProfile extends AppCompatActivity {
     //FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +79,8 @@ public class UpdateProfile extends AppCompatActivity {
 
         save = (Button) findViewById(R.id.save);
         Ename = (TextInputEditText) findViewById(R.id.EditName);
-        Ephone = (TextView) findViewById(R.id.EditPhone);
+        Ephone = (TextInputEditText) findViewById(R.id.EditPhone);
+        back = (Button)findViewById(R.id.button_back);
         edit = (Button)findViewById(R.id.button_edit);
         //firebaseAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
@@ -109,7 +114,12 @@ public class UpdateProfile extends AppCompatActivity {
         });
 
         //}
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
