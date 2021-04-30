@@ -16,19 +16,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0 item selected"
+            android:text="0 Item Selected"
             android:id="@+id/text_toolbar"
             android:textSize="18sp"
-            android:textColor="@android:color/white"
+            android:textColor="#FFFFFf"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BOOKMARKS"
+            android:text="BookMarks"
             android:id="@+id/text_title"
             android:textSize="18sp"
-            android:textColor="@android:color/white"
+            android:textColor="#ffffff"
             android:textStyle="bold"/>
         
     </RelativeLayout>

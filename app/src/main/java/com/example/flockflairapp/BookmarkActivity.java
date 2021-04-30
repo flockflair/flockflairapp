@@ -63,6 +63,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         rv_bookmark = findViewById(R.id.rv_bookmarks);
         noBookmarksTv = findViewById(R.id.noBookmarks);
 
+        rv_bookmark.setVisibility(View.INVISIBLE);
+
         rv_bookmark.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -89,9 +91,11 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                     dbR.keepSynced(true);
                 }
                 if (list.size()>0){
+                    rv_bookmark.setVisibility(View.VISIBLE);
                     adapter.notifyDataSetChanged();
                 }else {
-                    noBookmarksTv.setText("No bookmarks found");
+                    rv_bookmark.setVisibility(View.INVISIBLE);
+                    noBookmarksTv.setText("No Bookmarks Found");
                     noBookmarksTv.setVisibility(View.VISIBLE);
                     Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
                 }
