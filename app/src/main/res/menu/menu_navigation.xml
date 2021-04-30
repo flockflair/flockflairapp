@@ -4,16 +4,17 @@
     <item
         android:id="@+id/dashboard"
         android:title="Bookmarks"
-        android:icon="@drawable/ic_home_foreground"/>
+        android:icon="@mipmap/ic_bookmarkicon_bottomnav_foreground"/>
     <!--Bookmark save-->
     <item
         android:id="@+id/home"
         android:title="Home"
-        android:icon="@drawable/ic_dashboard_foreground"/>
+        android:icon="@mipmap/ic_homeicon_bottomnav_foreground"
+        />
     <!--Profile-->
     <item
         android:id="@+id/about"
         android:title="Profile"
-        android:icon="@drawable/ic_info_foreground"/>
+        android:icon="@mipmap/ic_profileicon_bottomnav_xxhdpi_foreground"/>
 
 </menu>

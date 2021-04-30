@@ -13,12 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".subtopic" android:screenOrientation="portrait"></activity>
-        <activity android:name=".BookmarkActivity" android:screenOrientation="portrait"
-            android:theme="@style/Splash"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".UpdateProfile" android:screenOrientation="portrait" />
-        <activity android:name=".SignUp" android:screenOrientation="portrait"/>
+        <activity android:name=".landing"></activity>
+        <activity
+            android:name=".subtopic"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookmarkActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".UpdateProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUp"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -28,13 +37,38 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <activity android:name=".ExpandableModule2"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
-        <activity android:name=".ExpandableModule1"  android:theme="@style/Splash" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
-        <activity android:name=".About"  android:theme="@style/Splash" android:screenOrientation="portrait"/>
-        <activity android:name=".DisplayQuestions"  android:theme="@style/Splash" android:screenOrientation="portrait" />
-        <activity android:name=".ProfileActivity" android:theme="@style/Splash" android:screenOrientation="portrait" />
-        <activity android:name=".OtpActivity"  android:theme="@style/Splash" android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExpandableModule2"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ExpandableModule1"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".About"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".DisplayQuestions"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".subtopic_2_11"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
+        <activity
+            android:name=".OtpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
@@ -46,7 +80,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".phonenumber" android:screenOrientation="portrait" />
+        <activity
+            android:name=".phonenumber"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"

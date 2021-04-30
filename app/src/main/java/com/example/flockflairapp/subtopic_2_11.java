@@ -2,10 +2,7 @@ package com.example.flockflairapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,32 +10,30 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.rpc.context.AttributeContext;
-
-public class subtopic extends AppCompatActivity {
+public class subtopic_2_11 extends AppCompatActivity {
 
     ListView listView;
-    String[] subtopics = {"What is living?","Diversity in the living","Taxonomic categories","Taxonomic Aids"};
-
+    String[] subtopics1 = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia","Virus, viroids, prions, lichens"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtopic);
+
         listView = findViewById(R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(subtopic.this , android.R.layout.simple_dropdown_item_1line,subtopics);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(subtopic_2_11.this , android.R.layout.simple_dropdown_item_1line,subtopics1);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(subtopic.this,"Selected " + subtopics[position] , Toast.LENGTH_SHORT).show();
+                Toast.makeText(subtopic_2_11.this,"Selected " + subtopics1[position] , Toast.LENGTH_SHORT).show();
 
                 if(position==0)
                 {
-                    Intent intent = new Intent(getApplicationContext(), DisplayQuestions.class);
-                    intent.putExtra("chapter1", 1);
-                    startActivity(intent);
+                    //Intent intent = new Intent(getApplicationContext(), DisplayQuestions.class);
+                    //intent.putExtra("chapter1", 1);
+                    //startActivity(intent);
                 }
 
 
@@ -50,4 +45,4 @@ public class subtopic extends AppCompatActivity {
     }
 
 
-        }
+}
