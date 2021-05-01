@@ -53,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.id.dashboard:
                         startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.about:
                         startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                 }return false;
 
@@ -70,16 +70,21 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openModule_11(){
         Intent intent = new Intent(this, ExpandableModule1.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         startActivity(intent);
     }
     public void openModule_12(){
         Intent intent = new Intent(this, ExpandableModule2.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
     }
 }

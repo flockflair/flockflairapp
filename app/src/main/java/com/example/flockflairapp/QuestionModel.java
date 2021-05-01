@@ -6,10 +6,10 @@ public class QuestionModel {
         //Empty constructor for firebase
     }
 
-
+    private int index;
     private String question, optionA, optionB, optionC, optionD, correctAnswer,explaination, difficulty,ChapterName;
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explaination, String difficulty, String ChapterName) {
+    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explaination, String difficulty, String ChapterName, int index) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
@@ -19,6 +19,7 @@ public class QuestionModel {
         this.explaination = explaination;
         this.difficulty = difficulty;
         this.ChapterName = ChapterName;
+        this.index = index;
     }
 
     public String getQuestion() {
@@ -91,5 +92,13 @@ public class QuestionModel {
 
     public void setChapterName(String chapterName) {
         this.ChapterName = chapterName;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

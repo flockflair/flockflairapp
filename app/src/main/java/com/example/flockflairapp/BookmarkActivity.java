@@ -113,17 +113,15 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.dashboard:
-                    startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
-                    overridePendingTransition(0, 0);
                     return true;
                 case R.id.home:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     return true;
 
                 case R.id.about:
                     startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
-                    overridePendingTransition(0, 0);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     return true;
             }
             return false;
@@ -136,11 +134,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
 
         MenuItem searchItem = menu.findItem(R.id.item_search);
         androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
-        if (searchItem.expandActionView()){
-            text_title.setVisibility(View.GONE);
-        }else{
-            text_title.setVisibility(View.VISIBLE);
-        }
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -186,6 +180,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         text_title.setVisibility(View.GONE);
         toolbar.inflateMenu(R.menu.menu_action_mode);
         text_toolbar.setVisibility(View.VISIBLE);
+        updateCounter(0);
         isActionMode = true;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         adapter.notifyDataSetChanged();
@@ -245,9 +240,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         else if (item.getItemId()==R.id.item_selectAll){
             selectAll_or_unSelectALL();
         }
-        else if (item.getItemId()==R.id.item_search){
+        /*else if (item.getItemId()==R.id.item_search){
             Toast.makeText(BookmarkActivity.this, item+" clicked",Toast.LENGTH_SHORT).show();
-        }
+        }*/
         return true;
     }
 
@@ -269,6 +264,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
             adapter.notifyDataSetChanged();
         }else{
             super.onBackPressed();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
         }
     }

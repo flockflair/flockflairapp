@@ -132,15 +132,15 @@ public class ExpandableModule1 extends AppCompatActivity {
                 {
                     case R.id.dashboard:
                         startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                     case R.id.about:
                         startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                 }return false;
 
@@ -196,6 +196,14 @@ public class ExpandableModule1 extends AppCompatActivity {
         moduleList.add("Human Physiology");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }
 
 
