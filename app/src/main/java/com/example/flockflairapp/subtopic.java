@@ -1,11 +1,6 @@
 package com.example.flockflairapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.rpc.context.AttributeContext;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class subtopic extends AppCompatActivity {
 
@@ -38,6 +33,8 @@ public class subtopic extends AppCompatActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), DisplayQuestions.class);
                     intent.putExtra("chapter1", 1);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     startActivity(intent);
                 }
 

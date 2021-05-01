@@ -113,17 +113,15 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.dashboard:
-                    startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
-                    overridePendingTransition(0, 0);
                     return true;
                 case R.id.home:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     return true;
 
                 case R.id.about:
                     startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
-                    overridePendingTransition(0, 0);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     return true;
             }
             return false;
@@ -266,6 +264,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
             adapter.notifyDataSetChanged();
         }else{
             super.onBackPressed();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
         }
     }
