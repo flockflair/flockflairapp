@@ -64,7 +64,6 @@ public class SignUp extends AppCompatActivity {
                 phoneNum = edit_phone.getText().toString().trim();
 
                 Java_SignUp n = new Java_SignUp(name, phoneNum);
-
                 databaseReference.child(uid).setValue(n);
                 Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -79,4 +78,15 @@ public class SignUp extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
     }
+
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        if(uid!=null){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+    }*/
 }
