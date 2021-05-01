@@ -32,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class DisplayQuestions extends AppCompatActivity {
@@ -58,9 +59,11 @@ public class DisplayQuestions extends AppCompatActivity {
     //question model list
     private List<QuestionModel> list;
     int count = 0;
-    int position = 0;
-    private List<QuestionModel> BookMarkList;
 
+    private List<QuestionModel> BookMarkList;
+    //random number for question
+    Random rand = new Random();
+    int position= rand.nextInt(20-2)+2;
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -132,7 +135,7 @@ public class DisplayQuestions extends AppCompatActivity {
                         //save bookmark in database
                         QuestionModel questionModel = new QuestionModel(list.get(position).getQuestion(), list.get(position).getOptionA(),
                                 list.get(position).getOptionB(), list.get(position).getOptionC(), list.get(position).getOptionD(), list.get(position).getCorrectAnswer()
-                                ,list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName());
+                                ,list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName(),list.get(position).getIndex());
 
                         bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
                         dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
@@ -167,9 +170,9 @@ public class DisplayQuestions extends AppCompatActivity {
         int chapter1 = getIntent().getIntExtra("chapter1", 0);
         if (chapter1 == 1){
             //databsae question fetch
-            databaseConnection("Diversity In The Living World","questions");
+            databaseConnection("Diversity In The Living World","What is living","questions");
         }else {
-                dbRef.child("Diversity In The Living World").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+                dbRef.child("Diversity In The Living World").child("What is living").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String DDpos = getIntent().getStringExtra("DDpos");
@@ -336,7 +339,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     explanation_btn.setEnabled(false);
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
-                    position++;
+                    position= rand.nextInt(20);
 
                     if (position == list.size()){
                         //end of question index
@@ -372,27 +375,27 @@ public class DisplayQuestions extends AppCompatActivity {
     }
 
     //databaseFuction
-    public void databaseConnection(String Module, String Questions){
+    public void databaseConnection(String Module, String Sub,String Questions){
         //progressDialog
         pg.show();
-        //database fetch child
-        dbRef.child(Module).child(Questions).orderByKey().limitToFirst(20).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //data cache
-                //for each loop get value
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    list.add(snapshot1.getValue(QuestionModel.class));
+            //database fetch child
+            dbRef.child(Module).child(Sub).child(Questions).orderByChild("index").limitToFirst(20).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    //data cache
+                    //for each loop get value
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        list.add(snapshot1.getValue(QuestionModel.class));
+                    }
+                    //difficulty.setText(list.get(position).getDifficulty());
+                    QuestionLoader();
                 }
-                difficulty.setText(list.get(position).getDifficulty());
-                QuestionLoader();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(DisplayQuestions.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
     }
 
     //animation for loading new question
