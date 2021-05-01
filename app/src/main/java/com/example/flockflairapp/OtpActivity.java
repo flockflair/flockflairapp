@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,6 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.concurrent.TimeUnit;
 
 public class OtpActivity extends AppCompatActivity {
@@ -41,6 +44,11 @@ public class OtpActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference userReference;
     private Button buttonSignIn;
+    private TextView textView;
+    private String txt;
+    private Button backbtn;
+    private TextView resend;
+    private String mobile;
 
 
 
@@ -53,14 +61,28 @@ public class OtpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         editTextCode = findViewById(R.id.editTextCode);
         buttonSignIn = findViewById(R.id.buttonSignIn);
+        textView = findViewById(R.id.textView7);
+        backbtn = findViewById(R.id.back_button);
+        resend = findViewById(R.id.textView8);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         userReference = databaseReference.child("user");
 
         Intent intent = getIntent();
-        String mobile = intent.getStringExtra("phoneNum");
+        mobile = intent.getStringExtra("phoneNum");
         mobile = "+91"+mobile;
         sendVerificationCode(mobile);
+
+        txt = "OTP sent to "+mobile;
+        textView.setText(txt);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +96,13 @@ public class OtpActivity extends AppCompatActivity {
 
                 verifyVerificationCode(code);
 
+            }
+        });
+
+        resend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendVerificationCode(mobile);
             }
         });
     }

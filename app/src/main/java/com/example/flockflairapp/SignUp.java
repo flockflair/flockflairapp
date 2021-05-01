@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -72,22 +73,10 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                Intent i = new Intent(SignUp.this, phonenumber.class);
-                startActivity(i);
-                finish();
-            }
-        });
     }
 
+    @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        Intent i = new Intent(SignUp.this, phonenumber.class);
-        startActivity(i);
-        finish();
+        Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
     }
 }
