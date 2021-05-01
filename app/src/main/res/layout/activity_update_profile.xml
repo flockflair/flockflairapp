@@ -80,13 +80,20 @@
 
     <Button
         android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:text="Save"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/rectanglebutton"
+        android:text="SAVE"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/logout_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
 
@@ -96,7 +103,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="154dp"
         android:layout_marginEnd="137dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/rectanglebutton"
         android:text="logout"
 
@@ -121,16 +128,6 @@
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/button_edit1"
-        android:layout_width="28dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/edit"
-        app:layout_constraintStart_toStartOf="@+id/EditPhone"
-        app:layout_constraintTop_toTopOf="@+id/EditPhone" />
 
     <Button
         android:id="@+id/button2"
@@ -247,10 +244,12 @@
         android:id="@+id/button5"
         android:layout_width="23dp"
         android:layout_height="23dp"
+        android:layout_marginStart="193dp"
         android:layout_marginTop="43dp"
         android:layout_marginEnd="190dp"
         android:background="@drawable/star1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
