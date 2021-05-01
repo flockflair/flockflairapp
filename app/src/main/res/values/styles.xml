@@ -14,4 +14,8 @@
 
     </style>
 
+    <style name="bottomnav" parent="Theme.Design.Light.NoActionBar">
+
+          </style>
+
 </resources>

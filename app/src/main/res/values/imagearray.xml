@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="subtopic_array">
+        <item>@drawable/dna</item>
+        <item>@drawable/flower</item>
+        <item>@drawable/nutrition</item>
+        <item>@drawable/physiology</item>
+
+    </array>
+</resources>
