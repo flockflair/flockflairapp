@@ -104,7 +104,7 @@ public class UpdateProfile extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"Something went wrong",LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Something went wrong please try again",LENGTH_SHORT).show();
 
             }
         });
@@ -141,12 +141,12 @@ public class UpdateProfile extends AppCompatActivity {
             public void onClick(View v)
             {
                 if(awesomeValidation.validate()) {
-                    Toast.makeText(getApplicationContext(),"success", LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Successful Operation", LENGTH_SHORT).show();
                     uploadData();
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"invalid name", LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Invalid Name", LENGTH_SHORT).show();
                 }
 
                 Button save = (Button) v ;
@@ -175,12 +175,12 @@ public class UpdateProfile extends AppCompatActivity {
                     Map<String,Object > profile = new HashMap<>();
                     profile.put("name",obj.getName());
                     reference.child(userID).updateChildren(profile);
-                    Toast.makeText(getApplicationContext(),"Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Your Profile is Updated", Toast.LENGTH_SHORT).show();
 
                 }
                 else
                     {
-                        Toast.makeText(getApplicationContext(),"pls fill data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Please provide correct Information", Toast.LENGTH_SHORT).show();
 
                 }
 
