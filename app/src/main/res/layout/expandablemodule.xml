@@ -28,28 +28,28 @@
 
 
 
-            <TextView
-                android:id="@+id/StudentName"
-                android:layout_width="342dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="16dp"
-                android:paddingTop="10dp"
-                android:textColor="#5B60DA"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/StudentName"
+        android:layout_width="342dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="10dp"
+        android:textColor="#5B60DA"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/backbuttonimg"
-                android:layout_width="54dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/backbuttonimg"
+        android:layout_width="54dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
@@ -107,4 +107,3 @@
     </ExpandableListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
