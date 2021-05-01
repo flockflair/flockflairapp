@@ -136,11 +136,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
 
         MenuItem searchItem = menu.findItem(R.id.item_search);
         androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
-        if (searchItem.expandActionView()){
-            text_title.setVisibility(View.GONE);
-        }else{
-            text_title.setVisibility(View.VISIBLE);
-        }
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -246,9 +242,9 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         else if (item.getItemId()==R.id.item_selectAll){
             selectAll_or_unSelectALL();
         }
-        else if (item.getItemId()==R.id.item_search){
+        /*else if (item.getItemId()==R.id.item_search){
             Toast.makeText(BookmarkActivity.this, item+" clicked",Toast.LENGTH_SHORT).show();
-        }
+        }*/
         return true;
     }
 
