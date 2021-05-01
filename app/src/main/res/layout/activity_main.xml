@@ -45,12 +45,12 @@
         app:itemBackground="@color/color1"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
-        app:itemTextAppearanceActive="@style/bottomnav"
-        app:itemIconSize="40dp"
+        app:itemIconSize="50dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_navigation" />
+        app:menu="@menu/menu_navigation"
+        />
 
 
     <Button

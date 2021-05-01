@@ -16,6 +16,7 @@
         app:itemBackground="@color/color1"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
+        app:itemIconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/module_5"
         app:menu="@menu/menu_navigation"
@@ -73,11 +74,12 @@
 
     <ImageView
         android:id="@+id/questionofdayimg"
-        android:layout_width="315dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="359dp"
+        android:layout_height="196dp"
+        android:layout_marginTop="68dp"
         android:src="@drawable/questionofday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

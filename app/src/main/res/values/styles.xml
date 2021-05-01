@@ -15,7 +15,7 @@
     </style>
 
     <style name="bottomnav" parent="Theme.Design.Light.NoActionBar">
-
+      <item name="itemIconPadding">20dp</item>
           </style>
 
 </resources>

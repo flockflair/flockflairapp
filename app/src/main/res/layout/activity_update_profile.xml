@@ -114,6 +114,7 @@
         app:itemBackground="@color/color1"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
+        app:itemIconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/module_5"
         app:layout_constraintTop_toTopOf="parent"

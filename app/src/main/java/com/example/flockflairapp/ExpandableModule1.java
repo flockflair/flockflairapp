@@ -95,7 +95,11 @@ public class ExpandableModule1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case "Biological Classification":
-                        intent = new Intent(getApplicationContext(), subtopic_2_11.class);
+                        //String[] array2 = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia",
+                                //"Virus, viroids, prions, lichens"};
+                        intent = new Intent(getApplicationContext(), listviewimg.class);
+                        //intent.putExtra("array2",array2);
+
                         //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;

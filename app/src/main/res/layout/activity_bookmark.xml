@@ -40,6 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="2dp"
+        app:itemIconSize="50dp"
         app:itemBackground="@color/color1"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
