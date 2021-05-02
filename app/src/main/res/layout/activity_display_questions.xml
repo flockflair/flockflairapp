@@ -4,28 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/flaskdisplay"
     tools:context=".DisplayQuestions">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ddff99"
+        android:layout_height="350dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+        <TextView
+            android:id="@+id/difficulty"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circledifficulty"
+            android:gravity="center"
+            android:text="E"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:translationY="85dp"
+            tools:ignore="ObsoleteLayoutParam" />
+
         <TextView
             android:id="@+id/tvQuestions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="343dp"
+            android:layout_height="215dp"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_textview"
             android:padding="50dp"
             android:text=""
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:translationX="20dp"
+            android:translationY="50dp" />
 
+
+        <!--
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="match_parent"
@@ -36,6 +55,7 @@
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold" />
+            -->
     </LinearLayout>
 
     <LinearLayout
@@ -52,36 +72,40 @@
 
         <Button
             android:id="@+id/buttonOption1"
-            android:layout_width="match_parent"
+            android:layout_width="344dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption2"
-            android:layout_width="match_parent"
+            android:layout_width="344dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption3"
-            android:layout_width="match_parent"
+            android:layout_width="344dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="#000000" />
 
         <Button
             android:id="@+id/buttonOption4"
-            android:layout_width="match_parent"
+            android:layout_width="344dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -89,14 +113,19 @@
 
     <Button
         android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_width="107dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:alpha="0.7"
+        android:background="@drawable/rectanglebutton"
         android:enabled="false"
         android:text="@string/next"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonExplain"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.462" />
 
@@ -114,16 +143,22 @@
 
     <Button
         android:id="@+id/buttonExplain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="28dp"
+        android:background="@drawable/rectanglebutton"
         android:text="Explaination"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.923" />
 
+    <!--
     <TextView
         android:id="@+id/difficulty"
         android:layout_width="wrap_content"
@@ -137,5 +172,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
-
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

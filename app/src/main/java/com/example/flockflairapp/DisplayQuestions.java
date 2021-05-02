@@ -50,7 +50,8 @@ public class DisplayQuestions extends AppCompatActivity {
     //progressDailog
     private ProgressDialog pg;
     //textview
-    private TextView tvQuestions, tvTotal,difficulty;
+    private TextView tvQuestions, difficulty;
+    //private TextView tvTotal;
     private LinearLayout linearLayout;
     //Bookmarks
     private FloatingActionButton bookMarks;
@@ -75,7 +76,7 @@ public class DisplayQuestions extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         tvQuestions = findViewById(R.id.tvQuestions);
-        tvTotal = findViewById(R.id.tvTotal);
+        //tvTotal = findViewById(R.id.tvTotal);
         linearLayout = findViewById(R.id.linearLayout);
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
@@ -251,7 +252,7 @@ public class DisplayQuestions extends AppCompatActivity {
                         }else {
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
-                        tvTotal.setText(position+1+"/"+list.size());
+                       // tvTotal.setText(position+1+"/"+list.size());
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
