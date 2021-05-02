@@ -97,7 +97,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                     rv_bookmark.setVisibility(View.INVISIBLE);
                     noBookmarksTv.setText("No Bookmarks Found");
                     noBookmarksTv.setVisibility(View.VISIBLE);
-                    Toast.makeText(BookmarkActivity.this,"No Bookmarks",Toast.LENGTH_LONG).show();
+                    Toast.makeText(BookmarkActivity.this,"No BookMarks Found",Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -291,3 +291,4 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         }
     }
 }
+
