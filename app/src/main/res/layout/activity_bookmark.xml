@@ -31,7 +31,6 @@
         android:layout_below="@id/toolbar"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="22dp"
-
         android:layout_marginBottom="22dp"
         android:background="@drawable/rectangle"
         tools:listitem="@layout/bookmrk_single_item_layout" />
