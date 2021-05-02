@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_linear"
+    android:paddingTop="20dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="79dp"
-        android:layout_height="82dp"
-        android:layout_margin="10dp" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="96dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textvieww1"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_width="360dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_modules"
+            android:drawableRight="@drawable/nextbutton"
+            android:paddingStart="75dp"
             android:paddingTop="20sp"
-            android:text="Title"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="Virus, viroids, prions, lichens"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,NotSibling"
+            tools:layout_conversion_absoluteHeight="86dp"
+            tools:layout_conversion_absoluteWidth="411dp" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="67dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/android4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.526"
+            tools:layout_conversion_absoluteHeight="85dp"
+            tools:layout_conversion_absoluteWidth="111dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
+
+
+
+
+
+

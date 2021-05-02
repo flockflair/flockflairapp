@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,12 +52,26 @@ public class ProgramAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"You clicked "+name[position],Toast.LENGTH_SHORT).show();
-                if(name.equals("Introduction"))
-                {
-                   //Intent intent = new Intent();
-                   //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
 
-                   }
+
+                if(name[position].equals("Introduction"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
+                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                }
+
+                if(name[position].equals("Introduction Plantae"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
+                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                }
+
+
+
             }
         });
         return singleItem;
