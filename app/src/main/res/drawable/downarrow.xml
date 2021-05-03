@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent">
+    <item>
+        <shape  android:shape="oval" android:padding="10dp">
+            <size
+                android:width="5dp"
+                android:height="5dp"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/down" />
+
+</layer-list>

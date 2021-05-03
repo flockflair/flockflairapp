@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".listviewimg"></activity>
+        <activity android:name=".fav_star"></activity>
+        <activity android:name=".listviewimg" />
         <activity android:name=".landing" />
         <activity
             android:name=".subtopic"
@@ -82,7 +83,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".phonenumber"
             android:screenOrientation="portrait" />

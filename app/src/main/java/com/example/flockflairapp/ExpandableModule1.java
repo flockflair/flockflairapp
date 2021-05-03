@@ -38,7 +38,7 @@ public class ExpandableModule1 extends AppCompatActivity {
     ExpandableListAdapter expandableListAdapter;
     FirebaseAuth firebaseAuth;
     ImageView back;
-
+    TextView item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +46,7 @@ public class ExpandableModule1 extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reference = FirebaseDatabase.getInstance().getReference("user");
         final TextView greet =findViewById(R.id.StudentName);
+        item = (TextView)findViewById(R.id.modules);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,14 +70,19 @@ public class ExpandableModule1 extends AppCompatActivity {
         expandableListAdapter = new MyExpandableListAdapter(this, moduleList, moduleCollection);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
             int lastExpandedPosition = -1;
+
 
             @Override
             public void onGroupExpand(int i) {
                 if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
                     expandableListView.collapseGroup(lastExpandedPosition);
+
+
                 }
                 lastExpandedPosition = i;
+
 
 
             }
@@ -136,6 +142,8 @@ public class ExpandableModule1 extends AppCompatActivity {
             }
         });
 
+
+
         back = (ImageView)findViewById(R.id.backbuttonimg);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +154,6 @@ public class ExpandableModule1 extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

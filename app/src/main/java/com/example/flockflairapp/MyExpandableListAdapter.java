@@ -1,8 +1,6 @@
 package com.example.flockflairapp;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.sql.BatchUpdateException;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +19,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private Map<String , List<String>> moduleCollection;
     private List<String> moduleList;
 
-    public MyExpandableListAdapter(Context context , List<String> moduleList, Map<String , List<String>>moduleCollection){
+    public MyExpandableListAdapter(Context context, List<String> moduleList, Map<String, List<String>> moduleCollection){
         this.context = context;
         this.moduleCollection = moduleCollection;
         this.moduleList = moduleList;
@@ -76,6 +74,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         item.setTypeface(null, Typeface.BOLD);
         item.setText(Name);
         return view;
+
     }
 
     @Override
@@ -85,6 +84,24 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.child_item,null);
         }
+        ImageView star_fav = view.findViewById(R.id.star_fav);
+        ImageView star = view.findViewById(R.id.star);
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"added to fav",Toast.LENGTH_SHORT).show();
+                star_fav.setVisibility(View.VISIBLE);
+                star.setVisibility(View.INVISIBLE);
+            }
+        });
+        star_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"removed from fav",Toast.LENGTH_SHORT).show();
+                star_fav.setVisibility(View.INVISIBLE);
+                star.setVisibility(View.VISIBLE);
+            }
+        });
         TextView item = view.findViewById(R.id.model);
         item.setText(model);
         return view;

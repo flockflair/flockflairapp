@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,8 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="50dp"
     android:background="@drawable/fs"
-    tools:ignore="MissingConstraints">
+    tools:ignore="MissingConstraints"
+    >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -89,7 +91,8 @@
         android:layout_height="438dp"
         android:layout_marginStart="16dp"
         android:divider="@null"
-        android:groupIndicator="@null"
+        android:groupIndicator="@drawable/arrows_expandable"
+        android:layoutDirection="rtl"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:scrollbars="vertical"

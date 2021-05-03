@@ -26,9 +26,6 @@ public class ProgramAdapter extends ArrayAdapter<String> {
         this.name = name;
 
     }
-
-
-
     @NonNull
     @Override
     public View getView(int position,  View convertView, ViewGroup parent) {
@@ -54,7 +51,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 Toast.makeText(getContext(),"You clicked "+name[position],Toast.LENGTH_SHORT).show();
 
 
-                if(name[position].equals("Introduction"))
+                if(name[position].equals("What is living?"))
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
@@ -62,7 +59,21 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
                 }
 
+                if(name[position].equals("Introduction"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
+                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                }
                 if(name[position].equals("Introduction Plantae"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
+                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                }
+                if(name[position].equals("Basis of classification"))
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
