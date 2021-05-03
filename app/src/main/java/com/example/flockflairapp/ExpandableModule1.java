@@ -90,24 +90,43 @@ public class ExpandableModule1 extends AppCompatActivity {
 
                 switch (selected) {
                     case "The Living World":
-                        intent = new Intent(getApplicationContext(), subtopic.class);
+                        String[] subchaptername = {"What is living?","Diversity in the living","Taxonomic categories","Taxonomic Aids"};
+                        int[] subchapImages = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular};
+                        intent = new Intent(getApplicationContext(), listviewimg.class);
+                        intent.putExtra("subchaptername",subchaptername);
+                        intent.putExtra("subchapImages",subchapImages);
                         //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
                     case "Biological Classification":
-                        //String[] array2 = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia",
-                                //"Virus, viroids, prions, lichens"};
+                        String[] subchaptername1 = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia","Virus, viroids, prions, lichens"};
+                        int[] subchapImages1 = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular};
                         intent = new Intent(getApplicationContext(), listviewimg.class);
-                        //intent.putExtra("array2",array2);
-
+                        intent.putExtra("subchaptername",subchaptername1);
+                        intent.putExtra("subchapImages",subchapImages1);
                         //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
                     case "Plant Kingdom":
-                        intent = new Intent(getApplicationContext(), subtopic_2_11.class);
+                        String[] subchaptername2 = {"Introduction Plantae","Division Thallophyta(Algae)","Division Bryophyta","Division Pteridophyta","Division Gymnospermae","Division Angiospermae","Plant life cycle and alternation of generation"};
+                        int[] subchapImages2 = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular,R.drawable.atom};
+                        intent = new Intent(getApplicationContext(), listviewimg.class);
+                        intent.putExtra("subchaptername",subchaptername2);
+                        intent.putExtra("subchapImages",subchapImages2);
                         //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
+
+                    case "Animal Kingdom":
+                        String[] subchaptername3 = {"Basis of classification","Phylum Porifera","Phylum Coelenterata(Cnidaria)","Phylum platyhelminthes","Phylum Aschelminthes","Phylum Annelida","Phylum Arthropoda","Phylum Mollusca","Phylum Echinodermata","Phylum Hemichordata","Phylum Chordata","Super Class Pisces","Super Class Tetrapoda"};
+                        int[] subchapImages3 = {R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular,R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.atom,R.drawable.android_1};
+                        intent = new Intent(getApplicationContext(), listviewimg.class);
+                        intent.putExtra("subchaptername",subchaptername3);
+                        intent.putExtra("subchapImages",subchapImages3);
+                        startActivity(intent);
+                        break;
+
+
 
 
 
@@ -124,6 +143,7 @@ public class ExpandableModule1 extends AppCompatActivity {
             {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 
@@ -203,10 +223,11 @@ public class ExpandableModule1 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }
 

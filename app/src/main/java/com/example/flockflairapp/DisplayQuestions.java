@@ -50,7 +50,8 @@ public class DisplayQuestions extends AppCompatActivity {
     //progressDailog
     private ProgressDialog pg;
     //textview
-    private TextView tvQuestions, tvTotal,difficulty;
+    private TextView tvQuestions, difficulty;
+    //private TextView tvTotal;
     private LinearLayout linearLayout;
     //Bookmarks
     private FloatingActionButton bookMarks;
@@ -75,7 +76,7 @@ public class DisplayQuestions extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         tvQuestions = findViewById(R.id.tvQuestions);
-        tvTotal = findViewById(R.id.tvTotal);
+        //tvTotal = findViewById(R.id.tvTotal);
         linearLayout = findViewById(R.id.linearLayout);
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
@@ -204,7 +205,7 @@ public class DisplayQuestions extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, ExpandableModule1.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         startActivity(intent);
@@ -251,7 +252,7 @@ public class DisplayQuestions extends AppCompatActivity {
                         }else {
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
-                        tvTotal.setText(position+1+"/"+list.size());
+                       // tvTotal.setText(position+1+"/"+list.size());
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
