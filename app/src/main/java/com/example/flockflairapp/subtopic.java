@@ -33,12 +33,10 @@ public class subtopic extends AppCompatActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), DisplayQuestions.class);
                     intent.putExtra("chapter1", 1);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
-
-
             }
         });
 
