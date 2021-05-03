@@ -80,6 +80,8 @@ public class SignUp extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 
     /*@Override

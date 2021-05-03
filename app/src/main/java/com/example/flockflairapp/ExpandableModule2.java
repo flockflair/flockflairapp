@@ -113,6 +113,8 @@ public class ExpandableModule2 extends AppCompatActivity {
             {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
 
@@ -125,15 +127,15 @@ public class ExpandableModule2 extends AppCompatActivity {
                 {
                     case R.id.dashboard:
                         startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                     case R.id.about:
                         startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
                 }return false;
 
@@ -189,6 +191,15 @@ public class ExpandableModule2 extends AppCompatActivity {
         moduleList.add("Ecology");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
 }
 
 

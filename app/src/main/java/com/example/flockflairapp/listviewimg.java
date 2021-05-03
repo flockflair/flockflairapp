@@ -36,12 +36,14 @@ public class listviewimg extends AppCompatActivity {
                 Intent i = new Intent();
                 i = new Intent(getApplicationContext(),ExpandableModule1.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 
 
 
         Intent intent = getIntent();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         String[] subchaptername = intent.getStringArrayExtra("subchaptername");
         int[] subchapImages = intent.getIntArrayExtra("subchapImages");
         lvProgram = findViewById(R.id.lvProgram);
@@ -71,5 +73,12 @@ public class listviewimg extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

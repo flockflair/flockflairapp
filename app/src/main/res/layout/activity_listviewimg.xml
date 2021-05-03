@@ -51,7 +51,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:paddingStart="30dp"
-                android:text="Chapter Name"
+                android:text="Sub-Chapter Name"
                 android:textSize="25dp" />
 
 

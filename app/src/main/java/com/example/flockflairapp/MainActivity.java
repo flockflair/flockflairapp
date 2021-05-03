@@ -71,14 +71,14 @@ public class MainActivity extends AppCompatActivity {
     public void openModule_11(){
         Intent intent = new Intent(this, ExpandableModule1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
     public void openModule_12(){
         Intent intent = new Intent(this, ExpandableModule2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
     @Override
