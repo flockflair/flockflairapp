@@ -1,0 +1,1188 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/relativeLayout2\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/flask4\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView3\"\r\n        android:layout_width=\"420dp\"\r\n        android:layout_height=\"56dp\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_centerVertical=\"true\"\r\n        android:layout_marginTop=\"107dp\"\r\n        android:text=\"Welcome Future Doctor\"\r\n        android:textAlignment=\"center\"\r\n        android:textColor=\"#5B60DA\"\r\n        android:textSize=\"36dp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.0\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView\"\r\n        android:layout_width=\"249dp\"\r\n        android:layout_height=\"247dp\"\r\n        android:layout_marginStart=\"87dp\"\r\n        android:layout_marginTop=\"192dp\"\r\n        android:src=\"@drawable/stethoscope1\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:itemBackground=\"@color/color1\"\r\n        app:itemIconTint=\"#FFFFFF\"\r\n        app:itemTextColor=\"#FFFFFF\"\r\n        app:itemIconSize=\"50dp\"\r\n        android:textAlignment=\"center\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:menu=\"@menu/menu_navigation\"\r\n        />\r\n\r\n\r\n    <Button\r\n        android:id=\"@+id/button_11\"\r\n        android:layout_width=\"143dp\"\r\n        android:layout_height=\"142dp\"\r\n        android:layout_marginStart=\"40dp\"\r\n        android:layout_marginTop=\"488dp\"\r\n        android:background=\"@drawable/button11_shape\"\r\n        android:drawableTintMode=\"add\"\r\n        android:text=\"11\"\r\n        android:textColor=\"#00FFFFFF\"\r\n        android:textColorHint=\"#00FFFFFF\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n    <Button\r\n        android:id=\"@+id/button_12\"\r\n        android:layout_width=\"144dp\"\r\n        android:layout_height=\"142dp\"\r\n        android:layout_marginStart=\"232dp\"\r\n        android:layout_marginTop=\"488dp\"\r\n        android:background=\"@drawable/button12_shape\"\r\n        android:textAppearance=\"@style/TextAppearance.AppCompat.Display3\"\r\n        android:textColor=\"#090909\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/layout/activity_main.xml	(date 1619989704329)
+@@ -40,17 +40,18 @@
+ 
+     <com.google.android.material.bottomnavigation.BottomNavigationView
+         android:id="@+id/bottom_navigation"
+-        android:layout_width="match_parent"
++        android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:itemBackground="@color/color1"
+         app:itemIconTint="#FFFFFF"
+         app:itemTextColor="#FFFFFF"
+         app:itemIconSize="50dp"
+-        android:textAlignment="center"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintStart_toStartOf="@+id/module_5"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="1.0"
+         app:menu="@menu/menu_navigation"
+-        />
++        tools:ignore="MissingConstraints" />
+ 
+ 
+     <Button
+Index: app/src/main/res/menu/menu_navigation.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    >\r\n\r\n<!--Home-->\r\n    <item\r\n        android:id=\"@+id/dashboard\"\r\n        android:title=\"\"\r\n        android:icon=\"@mipmap/ic_bookmarkicon_bottomnav_foreground\"\r\n        />\r\n    <!--Bookmark save-->\r\n    <item\r\n        android:id=\"@+id/home\"\r\n        android:title=\"\"\r\n        android:icon=\"@mipmap/ic_homeicon_bottomnav_foreground\"\r\n        />\r\n\r\n    <!--Profile-->\r\n    <item\r\n        android:id=\"@+id/about\"\r\n        android:title=\"\"\r\n        android:icon=\"@mipmap/ic_profileicon_bottomnav_xxhdpi_foreground\"/>\r\n\r\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/menu_navigation.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/menu/menu_navigation.xml	(date 1619989416933)
+@@ -8,13 +8,13 @@
+     <item
+         android:id="@+id/dashboard"
+         android:title=""
+-        android:icon="@mipmap/ic_bookmarkicon_bottomnav_foreground"
++        android:icon="@mipmap/ic_bookmarkiconeb_bottomnav_xxhdpi_foreground"
+         />
+     <!--Bookmark save-->
+     <item
+         android:id="@+id/home"
+         android:title=""
+-        android:icon="@mipmap/ic_homeicon_bottomnav_foreground"
++        android:icon="@mipmap/ic_homeiconed_bottomnav_xxhdpi_foreground"
+         />
+ 
+     <!--Profile-->
+Index: app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav_round.xml
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav_round.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav_round.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_bookmarkicon_bottomnav_background"/>
+-    <foreground android:drawable="@mipmap/ic_bookmarkicon_bottomnav_foreground"/>
+-</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav_round.xml
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav_round.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav_round.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_homeicon_bottomnav_background"/>
+-    <foreground android:drawable="@mipmap/ic_homeicon_bottomnav_foreground"/>
+-</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi_round.xml	(date 1619988830013)
++++ app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi_round.xml	(date 1619988830013)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_homeiconed_bottomnav_xxhdpi_background"/>
++    <foreground android:drawable="@mipmap/ic_homeiconed_bottomnav_xxhdpi_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/drawable/downarrow.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/downarrow.xml	(date 1619972057259)
++++ app/src/main/res/drawable/downarrow.xml	(date 1619972057259)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
++    android:layout_width="match_parent">
++    <item>
++        <shape  android:shape="oval" android:padding="10dp">
++            <size
++                android:width="5dp"
++                android:height="5dp"/>
++        </shape>
++    </item>
++    <item android:drawable="@drawable/down" />
++
++</layer-list>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi.xml	(date 1619988830051)
++++ app/src/main/res/mipmap-anydpi-v26/ic_homeiconed_bottomnav_xxhdpi.xml	(date 1619988830051)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_homeiconed_bottomnav_xxhdpi_background"/>
++    <foreground android:drawable="@mipmap/ic_homeiconed_bottomnav_xxhdpi_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_homeicon_bottomnav_background\"/>\r\n    <foreground android:drawable=\"@mipmap/ic_homeicon_bottomnav_foreground\"/>\r\n</adaptive-icon>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/mipmap-anydpi-v26/ic_homeicon_bottomnav.xml	(date 1619989991259)
+@@ -1,5 +1,4 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+     <background android:drawable="@drawable/ic_homeicon_bottomnav_background"/>
+-    <foreground android:drawable="@mipmap/ic_homeicon_bottomnav_foreground"/>
+-</adaptive-icon>
+\ No newline at end of file
++   </adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/layout/single_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:id=\"@+id/layout_linear\"\r\n    android:paddingTop=\"20dp\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:orientation=\"vertical\" android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/linearLayout5\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"96dp\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/textvieww1\"\r\n            android:layout_width=\"360dp\"\r\n            android:layout_height=\"81dp\"\r\n            android:layout_marginStart=\"16dp\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:background=\"@drawable/button_modules\"\r\n            android:drawableRight=\"@drawable/nextbutton\"\r\n            android:paddingStart=\"75dp\"\r\n            android:paddingTop=\"20sp\"\r\n            android:paddingRight=\"10dp\"\r\n            android:paddingBottom=\"10dp\"\r\n            android:text=\"Virus, viroids, prions, lichens\"\r\n            android:textAlignment=\"center\"\r\n            android:textSize=\"20sp\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            tools:ignore=\"MissingConstraints,NotSibling\"\r\n            tools:layout_conversion_absoluteHeight=\"86dp\"\r\n            tools:layout_conversion_absoluteWidth=\"411dp\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView6\"\r\n            android:layout_width=\"67dp\"\r\n            android:layout_height=\"53dp\"\r\n            android:layout_marginStart=\"28dp\"\r\n            android:layout_marginTop=\"4dp\"\r\n            android:src=\"@drawable/android4\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:layout_constraintVertical_bias=\"0.526\"\r\n            tools:layout_conversion_absoluteHeight=\"85dp\"\r\n            tools:layout_conversion_absoluteWidth=\"111dp\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</LinearLayout>\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/single_item.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/layout/single_item.xml	(date 1619965058384)
+@@ -21,14 +21,14 @@
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="8dp"
+             android:background="@drawable/button_modules"
+-            android:drawableRight="@drawable/nextbutton"
+             android:paddingStart="75dp"
++            android:textColor="@color/colorPrimary"
+             android:paddingTop="20sp"
+             android:paddingRight="10dp"
+             android:paddingBottom="10dp"
+             android:text="Virus, viroids, prions, lichens"
+             android:textAlignment="center"
+-            android:textSize="20sp"
++            android:textSize="17sp"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             tools:ignore="MissingConstraints,NotSibling"
+Index: app/src/main/res/drawable/ic_homeiconed_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_homeiconed_bottomnav_xxhdpi_background.xml	(date 1619988830169)
++++ app/src/main/res/drawable/ic_homeiconed_bottomnav_xxhdpi_background.xml	(date 1619988830169)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/drawable/ic_bookmarkiconeb_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_bookmarkiconeb_bottomnav_xxhdpi_background.xml	(date 1619988162984)
++++ app/src/main/res/drawable/ic_bookmarkiconeb_bottomnav_xxhdpi_background.xml	(date 1619988162984)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/drawable/ic_home__one_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_home__one_.xml	(date 1619985753561)
++++ app/src/main/res/drawable/ic_home__one_.xml	(date 1619985753561)
+@@ -0,0 +1,5 @@
++<vector android:alpha="0.54" android:autoMirrored="true"
++    android:height="45dp" android:viewportHeight="45"
++    android:viewportWidth="45" android:width="45dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:pathData="M0,0h45v45h-45z"/>
++</vector>
+Index: app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_bookmarkicon_bottomnav_background\"/>\r\n    <foreground android:drawable=\"@mipmap/ic_bookmarkicon_bottomnav_foreground\"/>\r\n</adaptive-icon>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/mipmap-anydpi-v26/ic_bookmarkicon_bottomnav.xml	(date 1619989979441)
+@@ -1,5 +1,4 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+     <background android:drawable="@drawable/ic_bookmarkicon_bottomnav_background"/>
+-    <foreground android:drawable="@mipmap/ic_bookmarkicon_bottomnav_foreground"/>
+-</adaptive-icon>
+\ No newline at end of file
++    </adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi_round.xml	(date 1619988163077)
++++ app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi_round.xml	(date 1619988163077)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_bookmarkiconeb_bottomnav_xxhdpi_background"/>
++    <foreground android:drawable="@mipmap/ic_bookmarkiconeb_bottomnav_xxhdpi_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi.xml	(date 1619988163084)
++++ app/src/main/res/mipmap-anydpi-v26/ic_bookmarkiconeb_bottomnav_xxhdpi.xml	(date 1619988163084)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_bookmarkiconeb_bottomnav_xxhdpi_background"/>
++    <foreground android:drawable="@mipmap/ic_bookmarkiconeb_bottomnav_xxhdpi_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\napply plugin: 'com.google.gms.google-services'\r\n\r\nandroid {\r\n    compileOptions {\r\n        sourceCompatibility 1.8\r\n        targetCompatibility 1.8\r\n    }\r\n}\r\nandroid {\r\n    defaultConfig {\r\n        minSdkVersion 26\r\n    }\r\n}\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion '30.0.3'\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.flockflairapp\"\r\n        minSdkVersion 23\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.browser:browser:1.3.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    implementation 'com.google.firebase:firebase-database:19.6.0'\r\n    implementation 'com.google.firebase:firebase-auth:20.0.2'\r\n    implementation 'com.firebaseui:firebase-ui-database:7.1.1'\r\n    implementation 'com.google.android.material:material:1.3.0'\r\n    implementation \"androidx.recyclerview:recyclerview:1.1.0\"\r\n    implementation \"androidx.recyclerview:recyclerview-selection:1.1.0\"\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'com.google.firebase:firebase-storage:19.2.1'\r\n    implementation 'com.google.firebase:firebase-firestore:22.1.1'\r\n    implementation 'de.hdodenhof:circleimageview:3.1.0'\r\n    implementation 'com.mikhaellopez:circularimageview:4.2.0'\r\n    testImplementation 'junit:junit:4.13.1'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    implementation 'com.google.code.gson:gson:2.8.6'\r\n    implementation 'com.basgeekball:awesome-validation:4.2'\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/build.gradle	(date 1619976162861)
+@@ -38,6 +38,7 @@
+ dependencies {
+     implementation fileTree(dir: "libs", include: ["*.jar"])
+     implementation 'androidx.appcompat:appcompat:1.2.0'
++    implementation  'com.google.android.material:material:1.1.0'
+     implementation 'androidx.browser:browser:1.3.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+     implementation 'com.google.firebase:firebase-database:19.6.0'
+Index: app/src/main/res/drawable/ic_homeiconef_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_homeiconef_bottomnav_xxhdpi_background.xml	(date 1619989003011)
++++ app/src/main/res/drawable/ic_homeiconef_bottomnav_xxhdpi_background.xml	(date 1619989003011)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/java/com/example/flockflairapp/ExpandableModule1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.ExpandableListAdapter;\r\nimport android.widget.ExpandableListView;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\nimport static android.widget.Toast.LENGTH_SHORT;\r\n\r\npublic class ExpandableModule1 extends AppCompatActivity {\r\n    private String user;\r\n    private DatabaseReference reference;\r\n    List<String> moduleList;\r\n    List<String> chapterList;\r\n    Map<String, List<String>> moduleCollection;\r\n    ExpandableListView expandableListView;\r\n    ExpandableListAdapter expandableListAdapter;\r\n    FirebaseAuth firebaseAuth;\r\n    ImageView back;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        firebaseAuth = FirebaseAuth.getInstance();\r\n        user = FirebaseAuth.getInstance().getCurrentUser().getUid();\r\n        reference = FirebaseDatabase.getInstance().getReference(\"user\");\r\n        final TextView greet =findViewById(R.id.StudentName);\r\n        reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(@NonNull DataSnapshot snapshot) {\r\n                final TextView greet =findViewById(R.id.StudentName);\r\n                HashMap<String,String> hash = new HashMap<>();\r\n                hash.put(\"name\",snapshot.child(\"name\").getValue(String.class));\r\n                //hash.put(\"phone\",snapshot.child(\"phone\").getValue(String.class));\r\n                greet.setText(\"Welcome \"+hash.get(\"name\") +\"!\");\r\n                reference.keepSynced(true);\r\n            }\r\n            @Override\r\n            public void onCancelled(@NonNull DatabaseError error) {\r\n                Toast.makeText(getApplicationContext(),\"Something went wrong\",LENGTH_SHORT).show();\r\n\r\n            }\r\n        });\r\n        setContentView(R.layout.expandablemodule);\r\n        createmoduleList();\r\n        createCollection();\r\n        expandableListView = findViewById(R.id.Modules);\r\n        expandableListAdapter = new MyExpandableListAdapter(this, moduleList, moduleCollection);\r\n        expandableListView.setAdapter(expandableListAdapter);\r\n        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {\r\n            int lastExpandedPosition = -1;\r\n\r\n            @Override\r\n            public void onGroupExpand(int i) {\r\n                if (lastExpandedPosition != -1 && i != lastExpandedPosition) {\r\n                    expandableListView.collapseGroup(lastExpandedPosition);\r\n                }\r\n                lastExpandedPosition = i;\r\n\r\n\r\n            }\r\n        });\r\n        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {\r\n            @Override\r\n            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {\r\n                String selected = expandableListAdapter.getChild(i, i1).toString();\r\n                Toast.makeText(getApplicationContext(), \"Selected \" + selected, Toast.LENGTH_SHORT).show();\r\n                Intent intent;\r\n\r\n                switch (selected) {\r\n                    case \"The Living World\":\r\n                        String[] subchaptername = {\"What is living?\",\"Diversity in the living\",\"Taxonomic categories\",\"Taxonomic Aids\"};\r\n                        int[] subchapImages = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular};\r\n                        intent = new Intent(getApplicationContext(), listviewimg.class);\r\n                        intent.putExtra(\"subchaptername\",subchaptername);\r\n                        intent.putExtra(\"subchapImages\",subchapImages);\r\n                        //intent.putExtra(\"sub1\",\"sub1\");\r\n                        startActivity(intent);\r\n                        break;\r\n                    case \"Biological Classification\":\r\n                        String[] subchaptername1 = {\"Introduction\",\"Kingdom Monera\",\"Kingdom Protista\",\"Kingdom Fungi\",\"Kingdom Plantae and Kingdom Animalia\",\"Virus, viroids, prions, lichens\"};\r\n                        int[] subchapImages1 = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular};\r\n                        intent = new Intent(getApplicationContext(), listviewimg.class);\r\n                        intent.putExtra(\"subchaptername\",subchaptername1);\r\n                        intent.putExtra(\"subchapImages\",subchapImages1);\r\n                        //intent.putExtra(\"sub1\",\"sub1\");\r\n                        startActivity(intent);\r\n                        break;\r\n                    case \"Plant Kingdom\":\r\n                        String[] subchaptername2 = {\"Introduction Plantae\",\"Division Thallophyta(Algae)\",\"Division Bryophyta\",\"Division Pteridophyta\",\"Division Gymnospermae\",\"Division Angiospermae\",\"Plant life cycle and alternation of generation\"};\r\n                        int[] subchapImages2 = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular,R.drawable.atom};\r\n                        intent = new Intent(getApplicationContext(), listviewimg.class);\r\n                        intent.putExtra(\"subchaptername\",subchaptername2);\r\n                        intent.putExtra(\"subchapImages\",subchapImages2);\r\n                        //intent.putExtra(\"sub1\",\"sub1\");\r\n                        startActivity(intent);\r\n                        break;\r\n\r\n                    case \"Animal Kingdom\":\r\n                        String[] subchaptername3 = {\"Basis of classification\",\"Phylum Porifera\",\"Phylum Coelenterata(Cnidaria)\",\"Phylum platyhelminthes\",\"Phylum Aschelminthes\",\"Phylum Annelida\",\"Phylum Arthropoda\",\"Phylum Mollusca\",\"Phylum Echinodermata\",\"Phylum Hemichordata\",\"Phylum Chordata\",\"Super Class Pisces\",\"Super Class Tetrapoda\"};\r\n                        int[] subchapImages3 = {R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular,R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.atom,R.drawable.android_1};\r\n                        intent = new Intent(getApplicationContext(), listviewimg.class);\r\n                        intent.putExtra(\"subchaptername\",subchaptername3);\r\n                        intent.putExtra(\"subchapImages\",subchapImages3);\r\n                        startActivity(intent);\r\n                        break;\r\n\r\n\r\n\r\n\r\n\r\n                }\r\n\r\n                return true;\r\n            }\r\n        });\r\n\r\n        back = (ImageView)findViewById(R.id.backbuttonimg);\r\n        back.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v)\r\n            {\r\n                Intent intent = new Intent(getApplicationContext(), MainActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);\r\n        bottomNavigationView.setSelectedItemId(R.id.home);\r\n        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {\r\n            @Override\r\n            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {\r\n                switch (menuItem.getItemId())\r\n                {\r\n                    case R.id.dashboard:\r\n                        startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));\r\n                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);\r\n                        return true;\r\n                    case R.id.home:\r\n                        startActivity(new Intent(getApplicationContext(),MainActivity.class));\r\n                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);\r\n                        return true;\r\n                    case R.id.about:\r\n                        startActivity(new Intent(getApplicationContext(),UpdateProfile.class));\r\n                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);\r\n                        return true;\r\n                }return false;\r\n\r\n            }\r\n        });\r\n\r\n    }\r\n\r\n\r\n    private void createCollection() {\r\n        String[] ModuleOne = {\"The Living World\", \"Biological Classification\", \"Plant Kingdom\", \"Animal Kingdom\"};\r\n        String[] ModuleTwo = {\"Morphology of Flowering Plants\", \"Anatomy of Flowering Plants \", \"Structural Organisation in Animals\"};\r\n        String[] ModuleThree = {\"Cell:The Unit of Life\", \"Biomolecules\", \"Cell Cycle\"};\r\n        String[] ModuleFour = {\"Transport in Plants\", \"Mineral Nutrition\", \"Photosynthesis in Higher Plants\", \"Plant Growth and Development\"};\r\n        String[] ModuleFive = {\"Digestion and Absorption\", \"Breathing and Exchange of Gases\", \"Body Fluids and Circulation\", \"Excretory Products and their Elimination\", \"Locomotion and Movement\", \"Neural Control and Coordination\", \"Chemical Coordination and Integration\"};\r\n        moduleCollection = new HashMap<String, List<String>>();\r\n        for (String group : moduleList) {\r\n            if (group.equals(\"Diversity in the living world\")) {\r\n                loadChild(ModuleOne);\r\n\r\n            } else if (group.equals(\"Structural Organisation in Plants and Animals\")) {\r\n                loadChild(ModuleTwo);\r\n\r\n            } else if (group.equals(\"Structure and Functions\")) {\r\n                loadChild(ModuleThree);\r\n\r\n            } else if (group.equals(\"Plant Physiology\")) {\r\n                loadChild(ModuleFour);\r\n\r\n            } else\r\n\r\n                loadChild(ModuleFive);\r\n            moduleCollection.put(group, chapterList);\r\n\r\n        }\r\n    }\r\n\r\n    private void loadChild(String[] Module) {\r\n        chapterList = new ArrayList<>();\r\n        for (String model : Module) {\r\n            chapterList.add(model);\r\n\r\n        }\r\n\r\n    }\r\n\r\n    private void createmoduleList() {\r\n        moduleList = new ArrayList<>();\r\n        moduleList.add(\"Diversity in the living world\");\r\n        moduleList.add(\"Structural Organisation in Plants and Animals\");\r\n        moduleList.add(\"Structure and Functions\");\r\n        moduleList.add(\"Plant Physiology\");\r\n        moduleList.add(\"Human Physiology\");\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed() {\r\n        super.onBackPressed();\r\n        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);\r\n        Intent intent = new Intent(this, MainActivity.class);\r\n        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);\r\n        startActivity(intent);\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/ExpandableModule1.java	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/java/com/example/flockflairapp/ExpandableModule1.java	(date 1619962205422)
+@@ -2,7 +2,9 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.DisplayMetrics;
+ import android.view.MenuItem;
++import android.view.MotionEvent;
+ import android.view.View;
+ import android.widget.ExpandableListAdapter;
+ import android.widget.ExpandableListView;
+@@ -20,6 +22,7 @@
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
+ import com.google.firebase.database.ValueEventListener;
++import com.google.protobuf.Int32Value;
+ 
+ import java.util.ArrayList;
+ import java.util.HashMap;
+@@ -38,6 +41,8 @@
+     ExpandableListAdapter expandableListAdapter;
+     FirebaseAuth firebaseAuth;
+     ImageView back;
++    TextView item;
++
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -46,6 +51,7 @@
+         user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+         reference = FirebaseDatabase.getInstance().getReference("user");
+         final TextView greet =findViewById(R.id.StudentName);
++        item = (TextView)findViewById(R.id.modules);
+         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+@@ -69,16 +75,21 @@
+         expandableListAdapter = new MyExpandableListAdapter(this, moduleList, moduleCollection);
+         expandableListView.setAdapter(expandableListAdapter);
+         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
++
+             int lastExpandedPosition = -1;
+ 
++
+             @Override
+             public void onGroupExpand(int i) {
+                 if (lastExpandedPosition != -1 && i != lastExpandedPosition) {
+                     expandableListView.collapseGroup(lastExpandedPosition);
++
++
+                 }
+                 lastExpandedPosition = i;
+ 
+ 
++
+             }
+         });
+         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+@@ -136,6 +147,8 @@
+             }
+         });
+ 
++
++
+         back = (ImageView)findViewById(R.id.backbuttonimg);
+         back.setOnClickListener(new View.OnClickListener() {
+             @Override
+Index: app/src/main/res/drawable/ic_homeiconeb_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_homeiconeb_bottomnav_xxhdpi_background.xml	(date 1619988520593)
++++ app/src/main/res/drawable/ic_homeiconeb_bottomnav_xxhdpi_background.xml	(date 1619988520593)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/drawable/ic_homeicone_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_homeicone_bottomnav_xxhdpi_background.xml	(date 1619987742158)
++++ app/src/main/res/drawable/ic_homeicone_bottomnav_xxhdpi_background.xml	(date 1619987742158)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/drawable/ic_profileicone_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_profileicone_bottomnav_xxhdpi_background.xml	(date 1619989258744)
++++ app/src/main/res/drawable/ic_profileicone_bottomnav_xxhdpi_background.xml	(date 1619989258744)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/drawable/down.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/down.xml	(date 1619965793462)
++++ app/src/main/res/drawable/down.xml	(date 1619965793462)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
++    <item android:drawable="@drawable/next_one"></item>
++
++</layer-list>
+\ No newline at end of file
+Index: app/src/main/res/drawable/nextbutton.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<layer-list xmlns:android=\"http://schemas.android.com/apk/res/android\"  android:layout_height=\"match_parent\"\r\n    android:layout_width=\"match_parent\">\r\n    <item>\r\n        <shape  android:shape=\"oval\" android:padding=\"10dp\">\r\n           <size\r\n               android:width=\"30dp\"\r\n               android:height=\"30dp\"/>\r\n        </shape>\r\n    </item>\r\n    <item android:drawable=\"@drawable/next\" />\r\n</layer-list>
+===================================================================
+--- app/src/main/res/drawable/nextbutton.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/drawable-mdpi/uparrow.xml	(date 1619971713148)
+@@ -4,8 +4,8 @@
+     <item>
+         <shape  android:shape="oval" android:padding="10dp">
+            <size
+-               android:width="30dp"
+-               android:height="30dp"/>
++               android:width="5dp"
++               android:height="5dp"/>
+         </shape>
+     </item>
+     <item android:drawable="@drawable/next" />
+Index: app/src/main/res/drawable/arrows_expandable.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/arrows_expandable.xml	(date 1619972105730)
++++ app/src/main/res/drawable/arrows_expandable.xml	(date 1619972105730)
+@@ -0,0 +1,34 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item android:state_expanded="false">
++        <layer-list>
++            <item
++
++                android:left="40dp"
++                android:right="20dp"
++                android:gravity="right"
++                android:top="41dp"
++                android:width="25dp"
++                android:height="25dp"
++                android:bottom="10dp"
++                android:drawable="@drawable/uparrow">
++            </item>
++        </layer-list>
++    </item>
++
++    <item android:state_expanded="true">
++        <layer-list>
++            <item
++                android:left="40dp"
++                android:right="20dp"
++                android:gravity="right"
++                android:top="41dp"
++                android:width="25dp"
++                android:height="25dp"
++                android:bottom="10dp"
++                android:drawable="@drawable/down">
++            </item>
++        </layer-list>
++    </item>
++
++</selector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_homeiconec_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_homeiconec_bottomnav_xxhdpi_background.xml	(date 1619988632096)
++++ app/src/main/res/drawable/ic_homeiconec_bottomnav_xxhdpi_background.xml	(date 1619988632096)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/java/com/example/flockflairapp/MyExpandableListAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\n\r\nimport android.app.AlertDialog;\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.graphics.Typeface;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.BaseExpandableListAdapter;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport java.sql.BatchUpdateException;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\npublic class MyExpandableListAdapter extends BaseExpandableListAdapter {\r\n\r\n    private Context context;\r\n    private Map<String , List<String>> moduleCollection;\r\n    private List<String> moduleList;\r\n\r\n    public MyExpandableListAdapter(Context context , List<String> moduleList, Map<String , List<String>>moduleCollection){\r\n        this.context = context;\r\n        this.moduleCollection = moduleCollection;\r\n        this.moduleList = moduleList;\r\n\r\n    }\r\n    @Override\r\n    public int getGroupCount() {\r\n        return moduleCollection.size();\r\n    }\r\n\r\n    @Override\r\n    public int getChildrenCount(int i) {\r\n        return moduleCollection.get(moduleList.get(i)).size();\r\n    }\r\n\r\n    @Override\r\n    public Object getGroup(int i) {\r\n        return moduleList.get(i);\r\n    }\r\n\r\n    @Override\r\n    public Object getChild(int i, int i1) {\r\n        return moduleCollection.get(moduleList.get(i)).get(i1);\r\n    }\r\n\r\n    @Override\r\n    public long getGroupId(int i) {\r\n        return i;\r\n    }\r\n\r\n    @Override\r\n    public long getChildId(int i, int i1) {\r\n        return i1;\r\n    }\r\n\r\n    @Override\r\n    public boolean hasStableIds() {\r\n        return true;\r\n    }\r\n\r\n\r\n    @Override\r\n    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {\r\n        String Name = moduleList.get(i);\r\n        if(view == null)\r\n        {\r\n            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);\r\n            view = inflater.inflate(R.layout.group_item, null);\r\n\r\n        }\r\n        TextView item = view.findViewById(R.id.modules);\r\n        item.setTypeface(null, Typeface.BOLD);\r\n        item.setText(Name);\r\n        return view;\r\n    }\r\n\r\n    @Override\r\n    public View getChildView(int i, int i1, boolean b, View view, ViewGroup parent) {\r\n        String model = moduleCollection.get(moduleList.get(i)).get(i1);\r\n        if(view == null) {\r\n            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);\r\n            view = inflater.inflate(R.layout.child_item,null);\r\n        }\r\n        TextView item = view.findViewById(R.id.model);\r\n        item.setText(model);\r\n        return view;\r\n    }\r\n\r\n    @Override\r\n    public boolean isChildSelectable(int i, int i1) {\r\n        return true;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/MyExpandableListAdapter.java	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/java/com/example/flockflairapp/MyExpandableListAdapter.java	(date 1619966360990)
+@@ -1,10 +1,12 @@
+ package com.example.flockflairapp;
+ 
++import android.annotation.SuppressLint;
+ import android.app.AlertDialog;
+ import android.content.Context;
+ import android.content.DialogInterface;
+ import android.graphics.Typeface;
+ import android.view.LayoutInflater;
++import android.view.MotionEvent;
+ import android.view.View;
+ import android.view.ViewGroup;
+ import android.widget.BaseExpandableListAdapter;
+@@ -76,11 +78,13 @@
+         item.setTypeface(null, Typeface.BOLD);
+         item.setText(Name);
+         return view;
++
+     }
+ 
+     @Override
+     public View getChildView(int i, int i1, boolean b, View view, ViewGroup parent) {
+         String model = moduleCollection.get(moduleList.get(i)).get(i1);
++
+         if(view == null) {
+             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+             view = inflater.inflate(R.layout.child_item,null);
+Index: app/src/main/res/drawable/ic_bookmarkicone_bottomnav_xxhdpi_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_bookmarkicone_bottomnav_xxhdpi_background.xml	(date 1619987960800)
++++ app/src/main/res/drawable/ic_bookmarkicone_bottomnav_xxhdpi_background.xml	(date 1619987960800)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/layout/group_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:orientation=\"vertical\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:padding=\"10dp\"\r\n    tools:context=\".ExpandableModule1\">\r\n    \r\n    <TextView\r\n        android:id=\"@+id/modules\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@drawable/button_modules\"\r\n        android:drawableRight=\"@drawable/nextbutton\"\r\n        android:padding=\"30dp\"\r\n        android:paddingLeft=\"50dp\"\r\n        android:paddingRight=\"10dp\"\r\n        android:text=\"\"\r\n        android:textColor=\"#060C8B\"\r\n        android:textSize=\"20sp\" />\r\n\r\n\r\n\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/group_item.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/layout/group_item.xml	(date 1619966125773)
+@@ -8,13 +8,12 @@
+     android:layout_height="match_parent"
+     android:padding="10dp"
+     tools:context=".ExpandableModule1">
+-    
++
+     <TextView
+         android:id="@+id/modules"
+-        android:layout_width="350dp"
++        android:layout_width="367dp"
+         android:layout_height="wrap_content"
+         android:background="@drawable/button_modules"
+-        android:drawableRight="@drawable/nextbutton"
+         android:padding="30dp"
+         android:paddingLeft="50dp"
+         android:paddingRight="10dp"
+@@ -22,7 +21,5 @@
+         android:textColor="#060C8B"
+         android:textSize="20sp" />
+ 
+-
+-
++</LinearLayout>
+ 
+-</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/expandablemodule.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:layout_editor_absoluteY=\"50dp\"\r\n    android:background=\"@drawable/fs\"\r\n    tools:ignore=\"MissingConstraints\">\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:itemBackground=\"@color/color1\"\r\n        app:itemIconTint=\"#FFFFFF\"\r\n        app:itemTextColor=\"#FFFFFF\"\r\n        app:itemIconSize=\"50dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/module_5\"\r\n        app:menu=\"@menu/menu_navigation\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/StudentName\"\r\n        android:layout_width=\"342dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginStart=\"80dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:paddingTop=\"10dp\"\r\n        android:textColor=\"#5B60DA\"\r\n        android:textSize=\"23sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/backbuttonimg\"\r\n        android:layout_width=\"54dp\"\r\n        android:layout_height=\"49dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:src=\"@drawable/back\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView2\"\r\n        android:layout_width=\"405dp\"\r\n        android:layout_height=\"43dp\"\r\n        android:layout_marginTop=\"8dp\"\r\n        android:paddingLeft=\"30dp\"\r\n        android:text=\"Modules\"\r\n        android:textAlignment=\"textStart\"\r\n        android:textColor=\"#5B60DA\"\r\n        android:textSize=\"28sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/questionofdayimg\"\r\n        tools:ignore=\"MissingConstraints\"\r\n        tools:layout_conversion_absoluteHeight=\"38dp\"\r\n        tools:layout_conversion_absoluteWidth=\"411dp\">\r\n\r\n    </TextView>\r\n\r\n    <ImageView\r\n        android:id=\"@+id/questionofdayimg\"\r\n        android:layout_width=\"359dp\"\r\n        android:layout_height=\"196dp\"\r\n        android:layout_marginTop=\"68dp\"\r\n        android:src=\"@drawable/questionofday\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.532\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ExpandableListView\r\n        android:id=\"@+id/Modules\"\r\n        android:layout_width=\"429dp\"\r\n        android:layout_height=\"438dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:divider=\"@null\"\r\n        android:groupIndicator=\"@null\"\r\n        android:orientation=\"vertical\"\r\n        android:paddingLeft=\"10dp\"\r\n        android:scrollbars=\"vertical\"\r\n        android:smoothScrollbar=\"true\"\r\n        android:textAlignment=\"center\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/bottom_navigation\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView2\"\r\n        app:layout_constraintVertical_bias=\"0.303\"\r\n        tools:ignore=\"MissingConstraints,NotSibling\"\r\n        tools:layout_conversion_absoluteHeight=\"0dp\"\r\n        tools:layout_conversion_absoluteWidth=\"411dp\">\r\n\r\n\r\n    </ExpandableListView>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/expandablemodule.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/layout/expandablemodule.xml	(date 1619966634787)
+@@ -89,7 +89,8 @@
+         android:layout_height="438dp"
+         android:layout_marginStart="16dp"
+         android:divider="@null"
+-        android:groupIndicator="@null"
++        android:groupIndicator="@drawable/arrows_expandable"
++        android:layoutDirection="rtl"
+         android:orientation="vertical"
+         android:paddingLeft="10dp"
+         android:scrollbars="vertical"
+Index: app/src/main/res/layout/activity_listviewimg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    android:orientation=\"vertical\">\r\n\r\n\r\n\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:background=\"@drawable/math1\"\r\n        android:orientation=\"vertical\"\r\n        android:backgroundTintMode=\"screen\"\r\n        android:layout_height=\"match_parent\"\r\n        tools:context=\".listviewimg\">\r\n\r\n\r\n\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:orientation=\"horizontal\"\r\n            android:background=\"@color/color2\"\r\n            android:layout_height=\"75dp\"\r\n            tools:context=\".listviewimg\">\r\n\r\n\r\n\r\n            <ImageView\r\n                android:id=\"@+id/backbuttonimglist\"\r\n                android:layout_width=\"54dp\"\r\n                android:layout_height=\"49dp\"\r\n                android:layout_marginStart=\"16dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:src=\"@drawable/back\"\r\n                android:clickable=\"true\"\r\n                android:contextClickable=\"true\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"75dp\"\r\n                android:paddingTop=\"23dp\"\r\n                android:textColor=\"@color/colorPrimary\"\r\n                android:textStyle=\"bold\"\r\n                android:paddingStart=\"30dp\"\r\n                android:text=\"Chapter Name\"\r\n                android:textSize=\"25dp\" />\r\n\r\n\r\n        </LinearLayout>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:background=\"@drawable/math1\"\r\n            android:orientation=\"vertical\"\r\n            android:backgroundTintMode=\"screen\"\r\n            android:layout_height=\"683dp\"\r\n            tools:context=\".listviewimg\">\r\n\r\n            <ListView\r\n                android:id=\"@+id/lvProgram\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"683dp\"\r\n                android:divider=\"@color/color2\"></ListView>\r\n\r\n\r\n        </LinearLayout>\r\n\r\n\r\n    </LinearLayout>\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:itemBackground=\"@color/color1\"\r\n        app:itemIconSize=\"50dp\"\r\n        app:itemIconTint=\"#FFFFFF\"\r\n        app:itemTextColor=\"#FFFFFF\"\r\n        app:menu=\"@menu/menu_navigation\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n\r\n</LinearLayout>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_listviewimg.xml	(revision 9da76b9d9e39a2733a8044d64c2399aefc70ac58)
++++ app/src/main/res/layout/activity_listviewimg.xml	(date 1619977508897)
+@@ -80,7 +80,7 @@
+             <ListView
+                 android:id="@+id/lvProgram"
+                 android:layout_width="match_parent"
+-                android:layout_height="683dp"
++                android:layout_height="wrap_content"
+                 android:divider="@color/color2"></ListView>
+ 
+ 
+@@ -88,17 +88,23 @@
+ 
+ 
+     </LinearLayout>
+-
++    <RelativeLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
+     <com.google.android.material.bottomnavigation.BottomNavigationView
+         android:id="@+id/bottom_navigation"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
++        android:layout_alignParentBottom="true"
+         app:itemBackground="@color/color1"
+         app:itemIconSize="50dp"
+         app:itemIconTint="#FFFFFF"
+         app:itemTextColor="#FFFFFF"
+         app:menu="@menu/menu_navigation"
+         tools:ignore="MissingConstraints" />
++    </RelativeLayout>
++
++
+ 
+ 
+ </LinearLayout>
