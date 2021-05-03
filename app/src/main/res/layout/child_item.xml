@@ -4,25 +4,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout4"
+    tools:context=".ExpandableModule1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <TextView
         android:id="@+id/model"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_modules"
+        android:layoutDirection="ltr"
         android:padding="15dp"
-        android:paddingLeft="50dp"
+        android:paddingEnd="40dp"
+        android:paddingLeft="60dp"
         android:paddingRight="10dp"
-        android:text="hello"
-        android:textAlignment="center"
+        android:text="Chemical Coordination and Integration"
         android:textColor="#060C8B"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTintMode="multiply"
+        android:foreground="@drawable/ic_star_xxhdpi_foreground"
+        android:foregroundTint="#FFEB3B"
+        android:layoutDirection="ltr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/star_fav"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTintMode="multiply"
+        android:foreground="@drawable/ic_star_fav_xxhdpi_foreground"
+        android:foregroundTint="#FFEB3B"
+        android:layoutDirection="ltr"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

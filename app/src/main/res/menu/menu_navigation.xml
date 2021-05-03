@@ -8,13 +8,13 @@
     <item
         android:id="@+id/dashboard"
         android:title=""
-        android:icon="@mipmap/ic_bookmarkicon_bottomnav_foreground"
+        android:icon="@mipmap/ic_bookmarkiconeb_bottomnav_xxhdpi_foreground"
         />
     <!--Bookmark save-->
     <item
         android:id="@+id/home"
         android:title=""
-        android:icon="@mipmap/ic_homeicon_bottomnav_foreground"
+        android:icon="@mipmap/ic_homeiconed_bottomnav_xxhdpi_foreground"
         />
 
     <!--Profile-->

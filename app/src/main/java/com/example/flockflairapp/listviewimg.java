@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class listviewimg extends AppCompatActivity {
 
     ListView lvProgram;
     ImageView backbutton;
+    ImageView star;
 
     //String[] subchaptername = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia",
             //"Virus, viroids, prions, lichens"};
@@ -39,9 +41,6 @@ public class listviewimg extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
-
-
-
         Intent intent = getIntent();
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         String[] subchaptername = intent.getStringArrayExtra("subchaptername");
