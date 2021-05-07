@@ -10,21 +10,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
+    Map<Integer,List<Integer>> imageCollection;
     private Map<String , List<String>> moduleCollection;
+    List<Integer> groupList;
     private List<String> moduleList;
 
-    public MyExpandableListAdapter(Context context, List<String> moduleList, Map<String, List<String>> moduleCollection){
+
+    public MyExpandableListAdapter(Context context, List<String> moduleList, Map<String, List<String>> moduleCollection,List<Integer> groupList,Map<Integer,List<Integer>> imageCollection){
         this.context = context;
+        this.imageCollection = imageCollection;
         this.moduleCollection = moduleCollection;
+        this.groupList = groupList;
         this.moduleList = moduleList;
 
     }
+
+
     @Override
     public int getGroupCount() {
         return moduleCollection.size();
@@ -70,10 +78,14 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             view = inflater.inflate(R.layout.group_item, null);
 
         }
+        ImageView imageView = view.findViewById(R.id.groupitem_image);
+        int id = this.groupList.get(i);
+
         TextView item = view.findViewById(R.id.modules);
         item.setTypeface(null, Typeface.BOLD);
         item.setText(Name);
         return view;
+
 
     }
 
@@ -84,6 +96,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.child_item,null);
         }
+        ImageView imageView = view.findViewById(R.id.childitem_image);
+        int id = imageCollection.get(groupList.get(i)).get(i1);
+        imageView.setImageResource(id);
         ImageView star_fav = view.findViewById(R.id.star_fav);
         ImageView star = view.findViewById(R.id.star);
         star.setOnClickListener(new View.OnClickListener() {

@@ -8,24 +8,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/model"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_modules"
         android:layoutDirection="ltr"
         android:padding="15dp"
-        android:paddingEnd="40dp"
+        android:paddingStart="70dp"
         android:paddingLeft="60dp"
+        android:paddingEnd="40dp"
         android:paddingRight="10dp"
         android:text="Chemical Coordination and Integration"
         android:textColor="#060C8B"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/childitem_image"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layoutDirection="ltr"
+        android:src="@drawable/android_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/star"

@@ -8,7 +8,7 @@
     android:background="@drawable/cone2">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/landingback"
         android:layout_width="63dp"
         android:layout_height="64dp"
         android:layout_marginStart="13dp"
@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/subchaptername"
         android:layout_width="285dp"
         android:layout_height="33dp"
         android:text="Sub Chapter Name"
@@ -26,46 +27,48 @@
         android:textColor="@color/color1"
         android:layout_marginStart="72dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/landingback"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:layout_width="301dp"
         android:layout_height="526dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="149dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="112dp"
         android:src="@drawable/rectangle24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/subchapterimage"
         android:layout_width="197dp"
         android:layout_height="293dp"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="192dp"
-        android:id="@+id/imagesubchap"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="152dp"
         android:src="@drawable/cone1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:id="@+id/subchapterdescription"
         android:layout_width="249dp"
         android:layout_height="135dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="464dp"
         android:background="@drawable/rectangle26"
         android:text="Description  \nof the \nchapter"
         android:textAlignment="center"
         android:textColor="#060C8B"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:textSize="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/startquiz"
         android:layout_width="201dp"
         android:layout_height="50dp"
         android:layout_marginStart="110dp"
@@ -85,9 +88,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemBackground="@color/color1"
+        app:itemIconSize="50dp"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
-        app:itemIconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
