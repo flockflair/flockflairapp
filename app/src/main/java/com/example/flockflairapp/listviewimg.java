@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class listviewimg extends AppCompatActivity {
     ListView lvProgram;
     ImageView backbutton;
     ImageView star;
+    TextView name1;
 
     //String[] subchaptername = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia",
             //"Virus, viroids, prions, lichens"};
@@ -31,13 +33,12 @@ public class listviewimg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listviewimg);
+        name1 = findViewById(R.id.name_sub);
         backbutton = (ImageView)findViewById(R.id.backbuttonimglist);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i = new Intent(getApplicationContext(),ExpandableModule1.class);
-                startActivity(i);
+                onBackPressed();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -45,9 +46,14 @@ public class listviewimg extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         String[] subchaptername = intent.getStringArrayExtra("subchaptername");
         int[] subchapImages = intent.getIntArrayExtra("subchapImages");
+        String name = intent.getStringExtra("name");
+        name1.setText(name);
+
         lvProgram = findViewById(R.id.lvProgram);
         ProgramAdapter programAdapter = new ProgramAdapter(this, subchaptername,subchapImages);
         lvProgram.setAdapter(programAdapter);
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);

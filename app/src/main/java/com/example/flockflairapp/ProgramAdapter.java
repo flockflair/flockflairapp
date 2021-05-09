@@ -54,17 +54,22 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 if(name[position].equals("What is living?"))
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
-                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "What is Living";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.thelivingworld;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
                 }
 
                 if(name[position].equals("Introduction"))
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
+                    Intent intent = new Intent();//change intent as above
                     //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
-                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                    v.getContext().startActivity(new Intent(v.getContext(),landing.class));
                 }
                 if(name[position].equals("Introduction Plantae"))
                 {
