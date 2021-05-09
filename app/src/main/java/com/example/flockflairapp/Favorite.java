@@ -12,48 +12,72 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Favorite {
-    private FirebaseDatabase ds = FirebaseDatabase.getInstance();
-    private DatabaseReference favRef = ds.getReference();
-    private String uid = FirebaseAuth.getInstance().getUid();
+    public static FirebaseDatabase ds = FirebaseDatabase.getInstance();
+    public static DatabaseReference favRef = ds.getReference("user");
+    public static String uid = FirebaseAuth.getInstance().getUid();
+    boolean matched = false;
+    List<FavoriteModel> FavList = new ArrayList<>();
 
-    public void setFavorite(FavoriteModel favoriteModel){
-        favRef.child("user").child(uid).child("Favorite").push().setValue(favoriteModel);
+    //SetData to database working
+    public static void setFavorite(FavoriteModel favoriteModel){
+        favRef.child(uid).child("Favorite").push().setValue(favoriteModel);
     }
 
-    public void getFavorite(List<FavoriteModel> getFavoriteName){
-
-        favRef.child("user").child(uid).child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+    //GetData from database Not Working
+    /*public List<FavoriteModel> getFavorite() {
+        favRef.child(uid).child("Favorite").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds:snapshot.getChildren()){
-                    getFavoriteName.add(ds.getValue(FavoriteModel.class));
+                    FavoriteModel value = ds.getValue(FavoriteModel.class);
+                    FavList.add(value);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("getFavoriteName", error.getMessage());
+                Log.d("error", error.getDetails());
             }
         });
-    }
+        return FavList;
+    }*/
 
-    public void removeFavorite(){
-        FavoriteModel model = new FavoriteModel();
+    /*public boolean CheckData(List<FavoriteModel> list,int pos){
+        int next = 0;
+        int matchedPos =0;
+        for (FavoriteModel model:getFavorite()){
+            if (model.getFavoriteName().equals(list.get(pos).getFavoriteName())){
+                matched = true;
+                matchedPos = next;
+            }else{
+                next++;
+                matched = false;
+            }
+        }
+        return matched;
+    }*/
 
-        Query removeFavorite = favRef.child("user").child(uid).child("Favorite").orderByChild("FavoriteName").equalTo(model.getFavoriteName());
+    //Favorite removed from database
+    public static void removeFavorite(FavoriteModel model){
+        Query dele = favRef.child(uid).child("Favorite").orderByChild("favoriteName").equalTo(model.getFavoriteName());
 
-        removeFavorite.addListenerForSingleValueEvent(new ValueEventListener() {
+        dele.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    dataSnapshot.getRef().removeValue();
+                    if (dataSnapshot.child("favoriteName").exists()){
+                        dataSnapshot.getRef().removeValue();
+                    }
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("removeFavorite", error.getMessage());
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.d("ExpandableListView", error.getDetails());
             }
         });
     }

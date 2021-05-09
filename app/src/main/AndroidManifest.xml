@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fav_star"></activity>
         <activity android:name=".listviewimg" />
         <activity android:name=".landing" />
         <activity
@@ -22,6 +21,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".BookmarkActivity"
+            android:label="Bookmarks"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />

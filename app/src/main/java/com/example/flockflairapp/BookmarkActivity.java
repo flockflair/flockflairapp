@@ -37,14 +37,14 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
 
     boolean isActionMode = false;
     private Toolbar toolbar;
-    private TextView text_toolbar,text_title;
+    private TextView text_toolbar; //text_title;
     private RecyclerView rv_bookmark;
     RecyclerView.Adapter adapter;
     private TextView noBookmarksTv;
     List<QuestionModel> list;
     List<QuestionModel> selectionList = new ArrayList<>();
     int counter = 0;
-    private String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private final String uid = FirebaseAuth.getInstance().getUid();
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbR = db.getReference();
@@ -75,8 +75,8 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
 
         text_toolbar = findViewById(R.id.text_toolbar);
         text_toolbar.setVisibility(View.GONE);
-        text_title = findViewById(R.id.text_title);
-        text_title.setVisibility(View.VISIBLE);
+        /*text_title = findViewById(R.id.text_title);
+        text_title.setVisibility(View.VISIBLE);*/
 
         list = new ArrayList<>();
 
@@ -95,7 +95,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                     adapter.notifyDataSetChanged();
                 }else {
                     rv_bookmark.setVisibility(View.INVISIBLE);
-                    noBookmarksTv.setText("No Bookmarks Found");
+                    noBookmarksTv.setText(R.string.No_Bookmarks_Found);
                     noBookmarksTv.setVisibility(View.VISIBLE);
                     Toast.makeText(BookmarkActivity.this,"No BookMarks Found",Toast.LENGTH_LONG).show();
                 }
@@ -147,13 +147,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                 return false;
             }
         });
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                Toast.makeText(BookmarkActivity.this, "Close", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
         adapter.notifyDataSetChanged();
         return true;
     }
@@ -177,7 +170,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
     @Override
     public boolean onLongClick(View view) {
         toolbar.getMenu().clear();
-        text_title.setVisibility(View.GONE);
+        //text_title.setVisibility(View.GONE);
         toolbar.inflateMenu(R.menu.menu_action_mode);
         text_toolbar.setVisibility(View.VISIBLE);
         updateCounter(0);
@@ -252,7 +245,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         toolbar.inflateMenu(R.menu.menu_activity_bookmark);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         text_toolbar.setVisibility(View.GONE);
-        text_title.setVisibility(View.VISIBLE);
+        //text_title.setVisibility(View.VISIBLE);
         counter = 0;
         selectionList.clear();
     }
@@ -271,7 +264,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
     //selectAll bookmarks or unselectAll bookmarks
     public void selectAll_or_unSelectALL(){
         if (selectionList.isEmpty()){
-            selectionList.clear();
             counter=0;
             for (int i = 0; i<list.size();i++){
                 //checkbox bug

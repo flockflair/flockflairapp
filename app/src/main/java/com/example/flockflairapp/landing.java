@@ -43,6 +43,7 @@ public class landing extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i1 = new Intent();
                 i1 = new Intent(getApplicationContext(),DisplayQuestions.class);
+                i1.putExtra("chapter1", 1);
                 startActivity(i1);
             }
         });

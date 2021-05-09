@@ -9,4 +9,7 @@
     <string name="invalid_name">Invalid Name</string>
     <string name="hint_size">Phone No</string>
     <string name="login_text">You will receive a 6 digit code to verify</string>
+    <string name="No_Bookmarks_Found">No Bookmarks Found</string>
+    <string name="selected_counter_no">0 Item Selected</string>
+    <string name="bookmarks_title">Bookmarks</string>
 </resources>

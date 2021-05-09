@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static com.example.flockflairapp.Favorite.favRef;
+import static com.example.flockflairapp.Favorite.uid;
 
 public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -96,27 +109,68 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.child_item,null);
         }
+
+        ImageView star_fav = view.findViewById(R.id.star_fav);//favorite
+        ImageView star = view.findViewById(R.id.star);//unfavorite
+
         ImageView imageView = view.findViewById(R.id.childitem_image);
         int id = imageCollection.get(groupList.get(i)).get(i1);
         imageView.setImageResource(id);
-        ImageView star_fav = view.findViewById(R.id.star_fav);
-        ImageView star = view.findViewById(R.id.star);
+
+        //Favorite favorite = new Favorite();
+        FavoriteModel favoriteModel = new FavoriteModel(model);
+
+        List<FavoriteModel> list = new ArrayList<>();
+
+        Query check = favRef.child(uid).child("Favorite").orderByChild("favoriteName");
+        check.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    if (data.hasChild("favoriteName")){
+                        list.add(data.getValue(FavoriteModel.class));
+                    }
+                }
+                for (int k=0;k< list.size();k++){
+                    if(model.equals(list.get(k).getFavoriteName())){
+                        star_fav.setVisibility(View.VISIBLE);
+                        star.setVisibility(View.INVISIBLE);
+                        break;
+                    }else {
+                        star_fav.setVisibility(View.INVISIBLE);
+                        star.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.d("MyExpandableListAdapter", error.getDetails());
+            }
+        });
+
+
         star.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"added to fav",Toast.LENGTH_SHORT).show();
+                Favorite.setFavorite(favoriteModel);
+                Toast.makeText(context,"fav added",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.VISIBLE);
                 star.setVisibility(View.INVISIBLE);
+                notifyDataSetChanged();
             }
         });
+
         star_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Favorite.removeFavorite(favoriteModel);
                 Toast.makeText(context,"removed from fav",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.INVISIBLE);
                 star.setVisibility(View.VISIBLE);
+                notifyDataSetChanged();
             }
         });
+
         TextView item = view.findViewById(R.id.model);
         item.setText(model);
         return view;
