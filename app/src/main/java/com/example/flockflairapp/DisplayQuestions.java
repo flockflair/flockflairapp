@@ -12,6 +12,8 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -236,7 +238,6 @@ public class DisplayQuestions extends AppCompatActivity {
                     animation(linearLayout.getChildAt(count),0,option);
                     count++;
                     //to get difficulty onloading question
-                    difficulty.setText(list.get(position).getDifficulty());
                 }
             }
 
@@ -335,6 +336,11 @@ public class DisplayQuestions extends AppCompatActivity {
                 });
             }
             //loading first question
+            animation(difficulty, 0, list.get(position).getDifficulty());
+            //animation for bookmarkBtn before NextBtn click
+            Animation an = AnimationUtils.loadAnimation(DisplayQuestions.this, R.anim.top_animation);
+            bookMarks.startAnimation(an);
+
             animation(tvQuestions, 0, list.get(position).getQuestion());
             //to load next questions
             next_btn.setOnClickListener(new View.OnClickListener() {
@@ -354,6 +360,9 @@ public class DisplayQuestions extends AppCompatActivity {
                     }
                     //before calling animation variable count initialize to 0
                     count = 0;
+                    animation(difficulty, 0, list.get(position).getDifficulty());
+                    //animation for BookmarkBtn After Nextbtn click
+                    bookMarks.startAnimation(an);
                     animation(tvQuestions, 0,list.get(position).getQuestion());
                 }
             });
@@ -405,7 +414,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
     //animation for loading new question
     private void Bookanimation(final View view, final int value, final String data){
-
+        next_btn.setVisibility(View.GONE);
         String OApos = getIntent().getStringExtra("OApos");
         String OBpos = getIntent().getStringExtra("OBpos");
         String OCpos = getIntent().getStringExtra("OCpos");
@@ -434,7 +443,6 @@ public class DisplayQuestions extends AppCompatActivity {
                 }
             }
 
-            @SuppressLint("SetTextI18n")
             @Override
             public void onAnimationEnd(Animator animator) {
                 //on question data changes

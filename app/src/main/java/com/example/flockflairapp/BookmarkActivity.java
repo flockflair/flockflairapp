@@ -170,6 +170,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
     @Override
     public boolean onLongClick(View view) {
         toolbar.getMenu().clear();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //text_title.setVisibility(View.GONE);
         toolbar.inflateMenu(R.menu.menu_action_mode);
         text_toolbar.setVisibility(View.VISIBLE);
@@ -245,6 +246,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         toolbar.inflateMenu(R.menu.menu_activity_bookmark);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         text_toolbar.setVisibility(View.GONE);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         //text_title.setVisibility(View.VISIBLE);
         counter = 0;
         selectionList.clear();

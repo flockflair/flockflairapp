@@ -47,26 +47,11 @@ public class Favorite {
         return FavList;
     }*/
 
-    /*public boolean CheckData(List<FavoriteModel> list,int pos){
-        int next = 0;
-        int matchedPos =0;
-        for (FavoriteModel model:getFavorite()){
-            if (model.getFavoriteName().equals(list.get(pos).getFavoriteName())){
-                matched = true;
-                matchedPos = next;
-            }else{
-                next++;
-                matched = false;
-            }
-        }
-        return matched;
-    }*/
-
     //Favorite removed from database
     public static void removeFavorite(FavoriteModel model){
         Query dele = favRef.child(uid).child("Favorite").orderByChild("favoriteName").equalTo(model.getFavoriteName());
 
-        dele.addValueEventListener(new ValueEventListener() {
+        dele.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){

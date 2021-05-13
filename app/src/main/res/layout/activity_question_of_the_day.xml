@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/flaskdisplay"
-    tools:context=".DisplayQuestions">
+    android:background="@drawable/flaskdisplay">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -20,17 +19,17 @@
 
         <TextView
             android:id="@+id/difficulty"
-            android:layout_width="69dp"
-            android:layout_height="69dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/circledifficulty"
+            android:elevation="2dp"
             android:gravity="center"
             android:text=""
-            android:textSize="30sp"
             android:textColor="@android:color/white"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:elevation="1dp"
-            android:translationY="95dp"
+            android:translationY="55dp"
             tools:ignore="ObsoleteLayoutParam" />
 
         <TextView
@@ -41,9 +40,10 @@
             android:background="@drawable/rounded_textview"
             android:padding="50dp"
             android:text=""
+            android:elevation="0dp"
             android:textColor="#000000"
-            android:translationX="20dp"
-            android:translationY="50dp" />
+            android:translationX="10dp"
+            android:translationY="1dp" />
 
 
         <!--
@@ -113,13 +113,14 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <Button
+    <!--<Button
         android:id="@+id/buttonNext"
         android:layout_width="107dp"
         android:layout_height="30dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
+        android:alpha="0.7"
         android:background="@drawable/rectanglebutton"
         android:enabled="false"
         android:text="@string/next"
@@ -128,9 +129,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonExplain"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.462" />
+        app:layout_constraintVertical_bias="0.462" />-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,28 +144,25 @@
         android:backgroundTint="#ffffff"
         app:srcCompat="@drawable/bookmarknew"
         app:maxImageSize="35dp"
-        android:focusable="true"/>
+        android:focusable="true"/>-->
 
     <Button
         android:id="@+id/buttonExplain"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/rectanglebutton"
         android:text="Explaination"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.923" />
 
     <!--
     <TextView
-    android:alpha="0.7"
         android:id="@+id/difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
