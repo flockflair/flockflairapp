@@ -63,20 +63,120 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     i.putExtra("sub_chap_img",subimage);
                     v.getContext().startActivity(i);
                 }
-
-                if(name[position].equals("Introduction"))
+                if(name[position].equals("Diversity in the living"))
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();//change intent as above
-                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
-                    v.getContext().startActivity(new Intent(v.getContext(),landing.class));
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Diversity in the living";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.thelivingworld;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Taxonomic categories"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Taxonomic categories";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.thelivingworld;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Taxonomic Aids"))
+                {
+                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Taxonomic Aids";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.thelivingworld;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+
+
+                if(name[position].equals("Introduction Biological Classification"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Introduction Biological Classification";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Kingdom Monera"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Kingdom Monera";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Kingdom Protista"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Kingdom Protista";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Kingdom Fungi"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Kingdom Fungi";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Kingdom Plantae and Kingdom Animalia"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Kingdom Plantae and Kingdom Animalia";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
+                }
+                if(name[position].equals("Virus, viroids, prions, lichens"))
+                {
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Virus, viroids, prions, lichens";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.biologicalclassification;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
                 }
                 if(name[position].equals("Introduction Plantae"))
                 {
-                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
-                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+                    Intent i = new Intent(v.getContext(),landing.class);
+                    String subchap = "Introduction Plantae";
+                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+                    int subimage = R.drawable.plantkingdom;
+                    i.putExtra("sub_chap_name",subchap);
+                    i.putExtra("sub_chap_desc",subchapd);
+                    i.putExtra("sub_chap_img",subimage);
+                    v.getContext().startActivity(i);
                 }
                 if(name[position].equals("Basis of classification"))
                 {

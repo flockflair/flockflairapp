@@ -112,7 +112,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case "Biological Classification":
-                        String[] subchaptername1 = {"Introduction ","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia","Virus, viroids, prions, lichens"};
+                        String[] subchaptername1 = {"Introduction Biological Classification","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia","Virus, viroids, prions, lichens"};
                         int[] subchapImages1 = {R.drawable.biologicalclassification,R.drawable.biologicalclassification,R.drawable.biologicalclassification,R.drawable.biologicalclassification,R.drawable.biologicalclassification,R.drawable.biologicalclassification,R.drawable.biologicalclassification};
                         intent = new Intent(getApplicationContext(), listviewimg.class);
                         intent.putExtra("subchaptername",subchaptername1);
