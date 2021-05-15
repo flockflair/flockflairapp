@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
@@ -24,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +48,11 @@ public class UpdateProfile extends AppCompatActivity {
     DatabaseReference reference;
     AwesomeValidation awesomeValidation;
 
+    //FavRecycler
+    RecyclerView recyclerView;
+    ArrayList<FavModel> favModels;
+    FavAdapter favAdapter;
+
     String userID;
 
     //All_UserMember member;
@@ -60,6 +69,9 @@ public class UpdateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
+
+
         fAuth = FirebaseAuth.getInstance();
 
         logout = (Button)findViewById(R.id.logout_button);
@@ -216,6 +228,33 @@ public class UpdateProfile extends AppCompatActivity {
             }
 
         });
+
+        //FavPart
+        recyclerView = findViewById(R.id.recycler_view);
+
+        int[] favLogo = {R.drawable.evolution,R.drawable.excretoryproducts,R.drawable.humanhealthdiseases,
+                R.drawable.humanreproduction,R.drawable.molecularbasis};
+        String[] favModule = {"Moduele 1","Moduele 2","Moduele 3","Moduele 4","Moduele 5"};
+
+        //ArrayList
+        favModels = new ArrayList<>();
+        for (int k = 0;k<favLogo.length;k++){
+            FavModel model = new FavModel(favLogo[k],favModule[k]);
+            favModels.add(model);
+        }
+
+        //Design Horizontal
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                UpdateProfile.this,LinearLayoutManager.HORIZONTAL,false
+        );
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        //Initialize FavAdapter
+        favAdapter = new FavAdapter(UpdateProfile.this,favModels);
+        //Set FavAdapter
+        recyclerView.setAdapter(favAdapter);
+        //End FavPart
 
 
     }
