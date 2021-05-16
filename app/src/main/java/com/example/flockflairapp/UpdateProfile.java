@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class UpdateProfile extends AppCompatActivity {
     //private FirebaseAuth firebaseAuth;
     private TextInputEditText Ename;
     private TextInputEditText Ephone;
+    private TextView nofavtv;
     //private TextView Ephone;
     private Button save;
     private Button logout;
@@ -90,6 +92,7 @@ public class UpdateProfile extends AppCompatActivity {
         Ephone = (TextInputEditText) findViewById(R.id.EditPhone);
         back = (Button)findViewById(R.id.button_back);
         edit = (Button)findViewById(R.id.button_edit);
+        nofavtv = (TextView)findViewById(R.id.nofav);
         //firebaseAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         user = fAuth.getInstance().getCurrentUser();
@@ -234,7 +237,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         int[] favLogo = {R.drawable.evolution,R.drawable.excretoryproducts,R.drawable.humanhealthdiseases,
                 R.drawable.humanreproduction,R.drawable.molecularbasis};
-        String[] favModule = {"Moduele 1","Moduele 2","Moduele 3","Moduele 4","Moduele 5"};
+        String[] favModule = {"Module 1","Module 2","Module 3","Module 4","Module 5"};
 
         //ArrayList
         favModels = new ArrayList<>();
@@ -250,11 +253,18 @@ public class UpdateProfile extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //Initialize FavAdapter
-        favAdapter = new FavAdapter(UpdateProfile.this,favModels);
-        //Set FavAdapter
-        recyclerView.setAdapter(favAdapter);
-        //End FavPart
+        int j = 0;
+        if(j == 1){
+            nofavtv.setVisibility(View.VISIBLE);
+        }
+        if(j==0){
+
+            //Initialize FavAdapter
+            favAdapter = new FavAdapter(UpdateProfile.this, favModels);
+            //Set FavAdapter
+            recyclerView.setAdapter(favAdapter);
+            //End FavPart
+        }
 
 
     }

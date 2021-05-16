@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +35,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(favModels.get(position).getFavLogo());
+        holder.textView.setText(favModels.get(position).getFavModule());
     }
 
     @Override
@@ -43,10 +46,24 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         //Initialize Variable
         ImageView imageView;
+        TextView textView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //assign variable
             imageView = itemView.findViewById(R.id.image_fav);
+            textView = itemView.findViewById(R.id.name_fav);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    if (getAdapterPosition()== getAdapterPosition())
+                    {
+                        String message = favModels.get(getAdapterPosition()).getFavModule();
+                        Toast.makeText(v.getContext(), message, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
         }
     }
 }
