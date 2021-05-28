@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private Map<String , List<String>> moduleCollection;
     List<Integer> groupList;
     private List<String> moduleList;
+    Uri name;
 
 
     public MyExpandableListAdapter(Context context, List<String> moduleList, Map<String, List<String>> moduleCollection,List<Integer> groupList,Map<Integer,List<Integer>> imageCollection){

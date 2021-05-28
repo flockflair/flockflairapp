@@ -38,15 +38,6 @@ public class landing extends AppCompatActivity {
                onBackPressed();
             }
         });
-        startquiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i1 = new Intent();
-                i1 = new Intent(getApplicationContext(),DisplayQuestions.class);
-                i1.putExtra("chapter1", 1);
-                startActivity(i1);
-            }
-        });
 
        Bundle extras;
        extras = getIntent().getExtras();
@@ -57,8 +48,15 @@ public class landing extends AppCompatActivity {
        subchapterdesc.setText(chapd1);
        subchapterimage.setImageResource(chapimg1);
 
-
-
+        startquiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String subChapName = "What is living";
+                Intent i1 = new Intent(getApplicationContext(),DisplayQuestions.class);
+                i1.putExtra("subChapName", chap1);
+                startActivity(i1);
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.about);

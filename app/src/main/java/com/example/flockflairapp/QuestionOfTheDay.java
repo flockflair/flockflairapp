@@ -67,9 +67,15 @@ public class QuestionOfTheDay extends AppCompatActivity {
 
         DisplayQuestions questions = new DisplayQuestions();
 
-        questions.databaseConnection(ModuleOne[position], subchaptername[position], "question");
+        //questions.databaseConnection(ModuleOne[position], ,subchaptername[position], "question");
 
-        questions.databaseConnection(ModuleTwo[position], subchaptername4[position], "question");
+        //questions.databaseConnection(ModuleTwo[position], ,subchaptername4[position], "question");
+
+       // questions.databaseConnection(ModuleThree[position], subchaptername[position], "question");
+
+       // questions.databaseConnection(ModuleFour[position], subchaptername[position], "question");
+
+       // questions.databaseConnection(ModuleFive[position], subchaptername[position], "question");
 
     }
 

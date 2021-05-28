@@ -14,38 +14,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Favorite {
     public static FirebaseDatabase ds = FirebaseDatabase.getInstance();
     public static DatabaseReference favRef = ds.getReference("user");
     public static String uid = FirebaseAuth.getInstance().getUid();
-    boolean matched = false;
-    List<FavoriteModel> FavList = new ArrayList<>();
+    private static final String TAG = "Favorite";
 
     //SetData to database working
     public static void setFavorite(FavoriteModel favoriteModel){
         favRef.child(uid).child("Favorite").push().setValue(favoriteModel);
     }
 
-    //GetData from database Not Working
-    /*public List<FavoriteModel> getFavorite() {
-        favRef.child(uid).child("Favorite").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds:snapshot.getChildren()){
-                    FavoriteModel value = ds.getValue(FavoriteModel.class);
-                    FavList.add(value);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("error", error.getDetails());
-            }
-        });
-        return FavList;
-    }*/
 
     //Favorite removed from database
     public static void removeFavorite(FavoriteModel model){
@@ -62,7 +41,7 @@ public class Favorite {
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.d("ExpandableListView", error.getDetails());
+                Log.d(TAG,"ExpandableListView: "+ error.getDetails());
             }
         });
     }

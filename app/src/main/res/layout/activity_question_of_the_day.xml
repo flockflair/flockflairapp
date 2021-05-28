@@ -148,8 +148,9 @@
 
     <Button
         android:id="@+id/buttonExplain"
-        android:layout_width="193dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="52dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/rectanglebutton"

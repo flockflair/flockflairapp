@@ -2,7 +2,6 @@ package com.example.flockflairapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import static androidx.core.content.ContextCompat.startActivities;
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class ProgramAdapter extends ArrayAdapter<String> {
     Context context;
@@ -55,7 +50,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
-                    String subchap = "What is Living";
+                    String subchap = "What is living";
                     String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
                     int subimage = R.drawable.thelivingworld;
                     i.putExtra("sub_chap_name",subchap);
@@ -67,7 +62,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
-                    String subchap = "Diversity in the living";
+                    String subchap = "Diversity in the living world";
                     String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
                     int subimage = R.drawable.thelivingworld;
                     i.putExtra("sub_chap_name",subchap);

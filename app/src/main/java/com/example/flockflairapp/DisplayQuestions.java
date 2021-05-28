@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -35,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 public class DisplayQuestions extends AppCompatActivity {
@@ -66,10 +64,20 @@ public class DisplayQuestions extends AppCompatActivity {
 
     private List<QuestionModel> BookMarkList;
     //random number for question
-    Random rand = new Random();
-    int position= rand.nextInt(20-2)+2;
+    //Random rand = new Random();
+    //int position= rand.nextInt(20-2)+2;
+    int position = 0;
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+    String[] ModuleOneChapterName = {"The Living World", "Biological Classification", "Plant Kingdom", "Animal Kingdom"};
+    String[] ModuleTwoChapterName = {"Morphology of Flowering Plants", "Anatomy of Flowering Plants", "Structural Organisation in Animals"};
+    String[] ModuleThreeChapterName = {"Cell:The Unit of Life", "Biomolecules", "Cell Cycle"};
+    String[] ModuleFourChapterName = {"Transport in Plants", "Mineral Nutrition", "Photosynthesis in Higher Plants","Respiration in Plants", "Plant Growth and Development"};
+    String[] ModuleFiveChapterName = {"Digestion and Absorption", "Breathing and Exchange of Gases", "Body Fluids and Circulation", "Excretory Products and their Elimination",
+                                        "Locomotion and Movement", "Neural Control and Coordination", "Chemical Coordination and Integration"};
+
+    String[] ModuleName = {"Diversity In The Living World","Structural Organisation in Plants and Animals","Structure and Functions","Plant Physiology","Human Physiology"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +149,7 @@ public class DisplayQuestions extends AppCompatActivity {
                                 list.get(position).getOptionB(), list.get(position).getOptionC(), list.get(position).getOptionD(), list.get(position).getCorrectAnswer()
                                 ,list.get(position).getExplaination(), list.get(position).getDifficulty(), list.get(position).getChapterName(),list.get(position).getIndex());
 
-                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                        bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarknew));
                         dbBookmarks.child(uuid).child("Bookmarks").push().setValue(questionModel);
                         BookMarkList.add(questionModel);
                         Toast.makeText(DisplayQuestions.this, "Bookmarked", Toast.LENGTH_SHORT).show();
@@ -168,14 +176,69 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
 
-        //question from bookmarkAdapter
-        String Qpos = getIntent().getStringExtra("Qpos");
-        
-        int chapter1 = getIntent().getIntExtra("chapter1", 0);
-        if (chapter1 == 1){
+        String subChapName = getIntent().getStringExtra("subChapName");
+        switch (subChapName)
+        {
+            case "What is living":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "What is living");
+                break;
+            case "Diversity in the living world":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "Diversity in the living world");
+                break;
+            case "Taxonomic categories":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "Taxonomic categories");
+                break;
+            case "Taxonomic Aids":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "Taxonomic Aids");
+            case "Introduction Biological Classification":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Introduction Biological Classification");
+                break;
+            case "Kingdom Fungi":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Kingdom Fungi");
+                break;
+            case "Kingdom Monera":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Kingdom Monera");
+                break;
+            case "Kingdom Plantae and Kingdom Animalia":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Kingdom Plantae and Kingdom Animalia");
+                break;
+            case "Kingdom Protista":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Kingdom Protista");
+                break;
+            case "Virus, viroids, prions, lichens":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Kingdom Monera");
+                break;
+            case "Division Angiospermae":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Division Angiospermae");
+                break;
+            case "Division Bryophyta":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Division Bryophyta");
+                break;
+            case "Division Gymnospermae":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Division Gymnospermae");
+                break;
+            case "Division Pteridophyta":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Division Pteridophyta");
+                break;
+            case "Division Thallophyta(Algae)":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Division Thallophyta(Algae)");
+                break;
+            case "Introduction Plantae":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Introduction Plantae");
+                break;
+            case "Plant life cycle and alternation of generation":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[2], "Plant life cycle and alternation of generation");
+                break;
+            case "Basis of classification":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[3], "Basis of classification");
+                break;
+        }
+        /*if (subChapName.equalsIgnoreCase("What is living")){
             //databsae question fetch
-            databaseConnection("Diversity In The Living World","What is living","questions");
-        }else {
+            databaseConnection(ModuleName[0], ModuleOneChapterName[0], "What is living");
+        } else {
+                //question from bookmarkAdapter
+                String Qpos = getIntent().getStringExtra("Qpos");
                 dbRef.child("Diversity In The Living World").child("What is living").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -196,21 +259,17 @@ public class DisplayQuestions extends AppCompatActivity {
                         Bookanimation(tvQuestions,0,Qpos);
                         difficulty.setText(DDpos);
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Log.d("Bookmark Question", error.getMessage());
                     }
                 });
-            }
+            }*/
         }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        startActivity(intent);
     }
 
 
@@ -249,7 +308,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     try {
                         ((TextView)view).setText(data);
                         if (modelMatch()){
-                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarknew));
                         }else {
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
@@ -290,6 +349,7 @@ public class DisplayQuestions extends AppCompatActivity {
 
             Button correctOption = linearLayout.findViewWithTag(list.get(position).getCorrectAnswer());
             correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+            //correctOption.setTextColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
 
         }
     }
@@ -317,7 +377,7 @@ public class DisplayQuestions extends AppCompatActivity {
             linearLayout.getChildAt(i).setEnabled(enable);
 
             if (enable){
-                linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#bdc3c7")));
+                linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
             }
         }
     }
@@ -350,11 +410,12 @@ public class DisplayQuestions extends AppCompatActivity {
                     explanation_btn.setEnabled(false);
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
-                    position= rand.nextInt(20);
-
+                    //position= rand.nextInt(20);
+                    position++;
                     if (position == list.size()){
+                        String subChapName = getIntent().getStringExtra("subChapName");
                         //end of question index
-                        Toast.makeText(DisplayQuestions.this, "for more question please buy premium version", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DisplayQuestions.this, subChapName+" Finished", Toast.LENGTH_SHORT).show();
                         finish();
                         return;
                     }
@@ -389,15 +450,14 @@ public class DisplayQuestions extends AppCompatActivity {
     }
 
     //databaseFuction
-    public void databaseConnection(String Module, String Sub,String Questions){
+    public void databaseConnection(String Module, String ChapName, String Sub){
         //progressDialog
         pg.show();
             //database fetch child
-            dbRef.child(Module).child(Sub).child(Questions).orderByChild("index").limitToFirst(20).addListenerForSingleValueEvent(new ValueEventListener() {
+            dbRef.child(Module).child(ChapName).child(Sub).child("questions").orderByChild("index").limitToFirst(20).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    //data cache
-                    //for each loop get value
+                    list.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         list.add(snapshot1.getValue(QuestionModel.class));
                     }
@@ -450,7 +510,9 @@ public class DisplayQuestions extends AppCompatActivity {
                     try {
                         ((TextView)view).setText(data);
                         if (modelMatch()){
-                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarked));
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarknew));
+                        }else {
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
                         }
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
