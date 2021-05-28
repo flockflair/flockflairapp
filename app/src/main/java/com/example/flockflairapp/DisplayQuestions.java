@@ -233,39 +233,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 databaseConnection(ModuleName[0], ModuleOneChapterName[3], "Basis of classification");
                 break;
         }
-        /*if (subChapName.equalsIgnoreCase("What is living")){
-            //databsae question fetch
-            databaseConnection(ModuleName[0], ModuleOneChapterName[0], "What is living");
-        } else {
-                //question from bookmarkAdapter
-                String Qpos = getIntent().getStringExtra("Qpos");
-                dbRef.child("Diversity In The Living World").child("What is living").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String DDpos = getIntent().getStringExtra("DDpos");
-                        for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                            list.add(dataSnapshot.getValue(QuestionModel.class));
-                        }
-                        for (int i = 0; i < 4; i++){
-                            //clickListener on option button
-                            linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    //method to compare options with correctAnswer
-                                    BookcheckAnswer((Button) view);
-                                }
-                            });
-                        }
-                        Bookanimation(tvQuestions,0,Qpos);
-                        difficulty.setText(DDpos);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.d("Bookmark Question", error.getMessage());
-                    }
-                });
-            }*/
-        }
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
