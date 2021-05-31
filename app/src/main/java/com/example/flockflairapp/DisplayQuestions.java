@@ -178,7 +178,7 @@ public class DisplayQuestions extends AppCompatActivity {
         explanation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAboutDialog();
+                showAboutDialog(DisplayQuestions.this,list,position);
             }
         });
 
@@ -421,8 +421,8 @@ public class DisplayQuestions extends AppCompatActivity {
         }
     }
 
-    public void showAboutDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public static void showAboutDialog(Context context,List<QuestionModel> list, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Explanation");
         builder.setMessage(list.get(position).getExplaination());
         //builder.setView(R.layout.explain);

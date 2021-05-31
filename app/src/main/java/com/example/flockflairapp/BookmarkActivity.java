@@ -92,6 +92,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                 }
                 if (list.size()>0){
                     rv_bookmark.setVisibility(View.VISIBLE);
+                    dbR.keepSynced(true);
                     adapter.notifyDataSetChanged();
                 }else {
                     rv_bookmark.setVisibility(View.INVISIBLE);
@@ -283,6 +284,12 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
                 adapter.notifyDataSetChanged();
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dbR.keepSynced(true);
     }
 }
 

@@ -41,7 +41,7 @@ public class ExpandableModule2 extends AppCompatActivity {
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     FirebaseAuth firebaseAuth;
-    ImageView back;
+    ImageView back,questionofdayimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,17 @@ public class ExpandableModule2 extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expandablemodule);
+
+        questionofdayimg = findViewById(R.id.questionofdayimg);
+        questionofdayimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent qtd = new Intent(ExpandableModule2.this, QuestionOfTheDay.class);
+                startActivity(qtd);
+            }
+        });
+
+
         createmoduleList();
         createCollection();
         creategroupList();

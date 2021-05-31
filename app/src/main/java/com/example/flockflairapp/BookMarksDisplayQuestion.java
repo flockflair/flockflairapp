@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BookMarksDisplayQuestion extends AppCompatActivity {
 
-    LinearLayout linearLayout;
-    TextView tvQuestions, difficulty;
+    TextView tvQuestions, difficulty,tvTotal;
     Button optionA,optionB,optionC,optionD,explain;
 
     @Override
@@ -25,16 +23,15 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_marks_display_question);
 
-        linearLayout = findViewById(R.id.linearLayoutB);
         explain = findViewById(R.id.buttonExplainInB);
         tvQuestions = findViewById(R.id.tvQuestionsInB);
         difficulty = findViewById(R.id.difficultyInB);
+        tvTotal = findViewById(R.id.BookmarkTotalTv);
 
         optionA = findViewById(R.id.buttonOption1A);
         optionB = findViewById(R.id.buttonOption2B);
         optionC = findViewById(R.id.buttonOption3C);
         optionD = findViewById(R.id.buttonOption4D);
-
 
         //animation
         fade(difficulty);

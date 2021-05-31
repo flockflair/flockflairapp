@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="24dp"
             android:background="@drawable/circledifficulty"
             android:elevation="2dp"
             android:gravity="center"
@@ -29,35 +30,25 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:translationY="55dp"
             tools:ignore="ObsoleteLayoutParam" />
 
         <TextView
             android:id="@+id/tvQuestions"
-            android:layout_width="343dp"
-            android:layout_height="215dp"
-            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="24dp"
+            android:textSize="22sp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:translationY="-32dp"
+            android:layout_marginStart="24dp"
             android:background="@drawable/rounded_textview"
-            android:padding="50dp"
             android:text=""
             android:elevation="0dp"
-            android:textColor="#000000"
-            android:translationX="10dp"
-            android:translationY="1dp" />
+            android:textColor="#000000" />
 
-
-        <!--
-        <TextView
-            android:id="@+id/tvTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-            -->
     </LinearLayout>
 
     <LinearLayout
@@ -113,32 +104,14 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <!--<Button
-        android:id="@+id/buttonNext"
-        android:layout_width="107dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:alpha="0.7"
-        android:background="@drawable/rectanglebutton"
-        android:enabled="false"
-        android:text="@string/next"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonExplain"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.462" />-->
-
     <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
+        android:id="@+id/floatingACtionBtnQTD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
         app:borderWidth="3dp"
-        android:translationY="24dp"
+        android:translationY="-12dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
         android:backgroundTint="#ffffff"
@@ -162,19 +135,4 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.923" />
 
-    <!--
-    <TextView
-        android:id="@+id/difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="Difficulty"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonExplain"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
--->
 </androidx.constraintlayout.widget.ConstraintLayout>
