@@ -3,7 +3,9 @@ package com.example.flockflairapp;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -67,6 +69,9 @@ public class DisplayQuestions extends AppCompatActivity {
     //Random rand = new Random();
     //int position= rand.nextInt(20-2)+2;
     int position = 0;
+    public static final String FLOCKFLAIR = "Flockflair";
+    public static int POS = 0;
+    SharedPreferences sharedPreferences;
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -92,6 +97,7 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
+        sharedPreferences = getSharedPreferences(FLOCKFLAIR, Context.MODE_PRIVATE);
 
         BookMarkList = new ArrayList<>();
 
@@ -124,7 +130,7 @@ public class DisplayQuestions extends AppCompatActivity {
             public void onClick(View view) {
                 //bookmark & unbookmark
                 if (modelMatch()){
-                    bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                    bookMarks.setImageDrawable(getDrawable(R.drawable.ic_baseline_bookmark_border_24));
                     //Query for removing bookmarks for displayQuestion activity
                     Query displayQueryUnBookmark = dbBookmarks.child(uuid).child("Bookmarks").orderByChild("question").equalTo(list.get(position).getQuestion());
 
@@ -236,10 +242,22 @@ public class DisplayQuestions extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        POS = position;
+        editor.putInt("subChapName", POS);
+        editor.commit();
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sharedPreferences.getInt("subChapName", POS);
+        if (POS > 0){
+            position = POS;
+        }
+    }
 
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
@@ -264,7 +282,6 @@ public class DisplayQuestions extends AppCompatActivity {
                     }
                     animation(linearLayout.getChildAt(count),0,option);
                     count++;
-                    //to get difficulty onloading question
                 }
             }
 
@@ -278,9 +295,9 @@ public class DisplayQuestions extends AppCompatActivity {
                         if (modelMatch()){
                             bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarknew));
                         }else {
-                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
+                            bookMarks.setImageDrawable(getDrawable(R.drawable.ic_baseline_bookmark_border_24));
                         }
-                       // tvTotal.setText(position+1+"/"+list.size());
+                       //tvTotal.setText(position+1+"/"+list.size());
                     }catch (ClassCastException e){
                         ((Button)view).setText(data);
                     }
@@ -326,7 +343,7 @@ public class DisplayQuestions extends AppCompatActivity {
     boolean matched = false;
     int index;
     int matchedQuestionPosition;
-    private boolean modelMatch() {
+    public boolean modelMatch() {
         for (QuestionModel model:BookMarkList){
             if (model.getQuestion().equals(list.get(position).getQuestion())){
                 matched = true;
@@ -366,7 +383,9 @@ public class DisplayQuestions extends AppCompatActivity {
             //loading first question
             animation(difficulty, 0, list.get(position).getDifficulty());
             //animation for bookmarkBtn before NextBtn click
-            Animation an = AnimationUtils.loadAnimation(DisplayQuestions.this, R.anim.top_animation);
+            Animation an = AnimationUtils.loadAnimation(DisplayQuestions.this, R.anim.slide_in_right);
+            an.setDuration(1500);
+            an.setInterpolator(new DecelerateInterpolator());
             bookMarks.startAnimation(an);
 
             animation(tvQuestions, 0, list.get(position).getQuestion());
@@ -402,7 +421,7 @@ public class DisplayQuestions extends AppCompatActivity {
         }
     }
 
-    private void showAboutDialog() {
+    public void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Explanation");
         builder.setMessage(list.get(position).getExplaination());
@@ -429,7 +448,6 @@ public class DisplayQuestions extends AppCompatActivity {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         list.add(snapshot1.getValue(QuestionModel.class));
                     }
-                    //difficulty.setText(list.get(position).getDifficulty());
                     QuestionLoader();
                 }
                 @Override
@@ -440,7 +458,7 @@ public class DisplayQuestions extends AppCompatActivity {
             });
     }
 
-    //animation for loading new question
+    /*//animation for loading new question
     private void Bookanimation(final View view, final int value, final String data){
         next_btn.setVisibility(View.GONE);
         String OApos = getIntent().getStringExtra("OApos");
@@ -519,5 +537,5 @@ public class DisplayQuestions extends AppCompatActivity {
             correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
 
         }
-    }
+    }*/
 }

@@ -100,7 +100,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
             this.chapterName.setText(chapterName);
 
             linearLayout.setOnClickListener(view -> {
-                Intent intent = new Intent(view.getContext(), DisplayQuestions.class);
+                Intent intent = new Intent(view.getContext(), BookMarksDisplayQuestion.class);
                 intent.putExtra("Qpos", String.valueOf(booKlist.get(position).getQuestion()));
                 intent.putExtra("OApos", String.valueOf(booKlist.get(position).getOptionA()));
                 intent.putExtra("OBpos", String.valueOf(booKlist.get(position).getOptionB()));
@@ -108,6 +108,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                 intent.putExtra("ODpos", String.valueOf(booKlist.get(position).getOptionD()));
                 intent.putExtra("DDpos", String.valueOf(booKlist.get(position).getDifficulty()));
                 intent.putExtra("CApos", String.valueOf(booKlist.get(position).getCorrectAnswer()));
+                intent.putExtra("Expos", String.valueOf(booKlist.get(position).getExplaination()));
                 view.getContext().startActivity(intent);
             });
 
