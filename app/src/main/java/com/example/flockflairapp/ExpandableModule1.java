@@ -102,7 +102,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                 switch (selected) {
                     case "The Living World":
                         String name = selected;
-                        String[] subchaptername = {"What is living?","Diversity in the living","Taxonomic categories","Taxonomic Aids"};
+                        String[] subchaptername = {"What is living world?","Diversity in the living","Taxonomic categories","Taxonomic Aids"};
                         int[] subchapImages = {R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld};
                         intent = new Intent(getApplicationContext(), listviewimg.class);
                         intent.putExtra("subchaptername",subchaptername);
