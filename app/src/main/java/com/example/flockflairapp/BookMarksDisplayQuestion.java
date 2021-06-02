@@ -128,13 +128,33 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
 
                     if (count == 0){
                         option = bookmarkList.get(position).getOptionA();
+                        if (option.equals(bookmarkList.get(position).getCorrectAnswer())){
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+                        }else{
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                        }
                     }else if (count == 1){
                         option = bookmarkList.get(position).getOptionB();
+                        if (option.equals(bookmarkList.get(position).getCorrectAnswer())){
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+                        }else{
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                        }
                     }
                     else if (count == 2){
                         option = bookmarkList.get(position).getOptionC();
+                        if (option.equals(bookmarkList.get(position).getCorrectAnswer())){
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+                        }else{
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                        }
                     }else if (count == 3){
                         option = bookmarkList.get(position).getOptionD();
+                        if (option.equals(bookmarkList.get(position).getCorrectAnswer())){
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+                        }else {
+                            linearLayout.getChildAt(count).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                        }
                     }
                     bookMarkAnim(linearLayout.getChildAt(count),0,option);
                     count++;
@@ -171,13 +191,14 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         int pos = getIntent().getIntExtra("position", 0);
         if (bookmarkList.size()>0){
             for (int i=0;i<4;i++){
-                linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                linearLayout.getChildAt(i).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                /*linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         //check method
-                        checkAnswer((Button) view);
+                        //checkAnswer((Button) view);
                     }
-                });
+                });*/
             }
             //load data first time
             bookMarkAnim(difficulty, 0, bookmarkList.get(pos).getDifficulty());

@@ -5,9 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -69,9 +66,6 @@ public class DisplayQuestions extends AppCompatActivity {
     //Random rand = new Random();
     //int position= rand.nextInt(20-2)+2;
     int position = 0;
-    public static final String FLOCKFLAIR = "Flockflair";
-    public static int POS = 0;
-    SharedPreferences sharedPreferences;
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -97,7 +91,6 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
-        sharedPreferences = getSharedPreferences(FLOCKFLAIR, Context.MODE_PRIVATE);
 
         BookMarkList = new ArrayList<>();
 
@@ -185,8 +178,8 @@ public class DisplayQuestions extends AppCompatActivity {
         String subChapName = getIntent().getStringExtra("subChapName");
         switch (subChapName)
         {
-            case "What is living":
-                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "What is living");
+            case "What is living world?":
+                databaseConnection(ModuleName[0], ModuleOneChapterName[0], "What is living world?");
                 break;
             case "Diversity in the living world":
                 databaseConnection(ModuleName[0], ModuleOneChapterName[0], "Diversity in the living world");
@@ -242,21 +235,8 @@ public class DisplayQuestions extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        POS = position;
-        editor.putInt("subChapName", POS);
-        editor.commit();
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        sharedPreferences.getInt("subChapName", POS);
-        if (POS > 0){
-            position = POS;
-        }
     }
 
     //animation for loading new question
@@ -325,15 +305,18 @@ public class DisplayQuestions extends AppCompatActivity {
 
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
             //correct Answer
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+            //selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+            selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
 
         }else{
             //incorrect Answer
             vibrator.vibrate(100);
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
+            //selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
+            selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_wroung_answer));
 
             Button correctOption = linearLayout.findViewWithTag(list.get(position).getCorrectAnswer());
-            correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+            //correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
+            correctOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
             //correctOption.setTextColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
 
         }
@@ -362,7 +345,8 @@ public class DisplayQuestions extends AppCompatActivity {
             linearLayout.getChildAt(i).setEnabled(enable);
 
             if (enable){
-                linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+                //linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+                linearLayout.getChildAt(i).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
             }
         }
     }

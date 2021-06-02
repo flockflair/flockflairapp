@@ -50,7 +50,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 {
                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
-                    String subchap = "What is living world";
+                    String subchap = "What is living world?";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
                     int subimage = R.drawable.thelivingworld;
                     i.putExtra("sub_chap_name",subchap);
