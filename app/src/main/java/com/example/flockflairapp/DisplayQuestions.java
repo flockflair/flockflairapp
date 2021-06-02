@@ -317,7 +317,7 @@ public class DisplayQuestions extends AppCompatActivity {
             }
         });
     }
-    private void checkAnswer(final Button selectOption) {
+    public void checkAnswer(final Button selectOption) {
         enableOption(false);
         next_btn.setEnabled(true);
         explanation_btn.setEnabled(true);
