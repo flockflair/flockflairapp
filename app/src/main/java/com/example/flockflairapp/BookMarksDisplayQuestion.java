@@ -171,9 +171,13 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         int pos = getIntent().getIntExtra("position", 0);
         if (bookmarkList.size()>0){
             for (int i=0;i<4;i++){
-                if (bookmarkList.get(position).getCorrectAnswer().equalsIgnoreCase(linearLayout.getChildAt(i).toString())){
-                    linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-                }
+                linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //check method
+                        checkAnswer((Button) view);
+                    }
+                });
             }
             //load data first time
             bookMarkAnim(difficulty, 0, bookmarkList.get(pos).getDifficulty());
@@ -234,7 +238,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         }
     }
 
-    /*public void checkAnswer(final Button selectOption) {
+    public void checkAnswer(final Button selectOption) {
         if (selectOption.getText().toString().equals(bookmarkList.get(position).getCorrectAnswer())){
             //correct Answer
             selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
@@ -246,9 +250,8 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
             Button correctOption = linearLayout.findViewWithTag(bookmarkList.get(position).getCorrectAnswer());
             correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
             //correctOption.setTextColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
-
         }
-    }*/
+    }
 
     
     /*public void fade(View view ){
