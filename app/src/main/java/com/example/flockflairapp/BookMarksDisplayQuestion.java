@@ -1,10 +1,9 @@
 package com.example.flockflairapp;
 
 import android.animation.Animator;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -45,6 +44,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_marks_display_question);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         explain = findViewById(R.id.buttonExplainInB);
         tvQuestions = findViewById(R.id.tvQuestionsInB);
@@ -55,13 +55,6 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         prev = findViewById(R.id.btnPrev);
 
 
-
-        /*optionA = findViewById(R.id.buttonOption1A);
-        optionB = findViewById(R.id.buttonOption2B);
-        optionC = findViewById(R.id.buttonOption3C);
-        optionD = findViewById(R.id.buttonOption4D);*/
-
-
         dbRef.child(uid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -69,31 +62,6 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
                     bookmarkList.add(dataSnapshot.getValue(QuestionModel.class));
                 }
                 QuestionLoader();
-                /*fade(bookmarkList.get(position).getDifficulty());
-
-                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-
-                tvQuestions.startAnimation(animation);
-                optionA.startAnimation(animation);
-                optionB.startAnimation(animation);
-                optionC.startAnimation(animation);
-                optionD.startAnimation(animation);
-                explain.startAnimation(animation);
-
-                tvQuestions.setText(bookmarkList.get(position).getQuestion());
-                optionA.setText(bookmarkList.get(position).getOptionA());
-                optionB.setText(bookmarkList.get(position).getOptionB());
-                optionC.setText(bookmarkList.get(position).getOptionC());
-                optionD.setText(bookmarkList.get(position).getOptionD());
-
-                tvTotal.setText(position+1+"/"+bookmarkList.size());*/
-
-                /*explain.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        DisplayQuestions.showAboutDialog(BookMarksDisplayQuestion.this, bookmarkList, position);
-                    }
-                });*/
             }
 
             @Override
@@ -101,21 +69,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
 
             }
         });
-
-        /*//animation
-        fade(difficulty);
-        fade(tvQuestions);
-        fadeBtn(optionA);
-        CorrectAnswer();
-        explainButton();*/
     }
-
-    /*public void fade(String data ){
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-        difficulty.startAnimation(animation);
-        difficulty.setText(data);
-    }*/
-
 
     private void bookMarkAnim(final View view, final  int value, final String data){
 
@@ -192,17 +146,11 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         if (bookmarkList.size()>0){
             for (int i=0;i<4;i++){
                 linearLayout.getChildAt(i).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
-                /*linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //check method
-                        //checkAnswer((Button) view);
-                    }
-                });*/
             }
             //load data first time
             bookMarkAnim(difficulty, 0, bookmarkList.get(pos).getDifficulty());
             bookMarkAnim(tvQuestions, 0, bookmarkList.get(pos).getQuestion());
+            bookMarkAnim(tvTotal, 0, position+1+"/"+bookmarkList.size());
             explain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -224,6 +172,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
                         count=0;
                         bookMarkAnim(difficulty, 0, bookmarkList.get(position).getDifficulty());
                         bookMarkAnim(tvQuestions, 0, bookmarkList.get(position).getQuestion());
+                        bookMarkAnim(tvTotal, 0, position+1+"/"+bookmarkList.size());
 
                         explain.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -246,6 +195,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
                         count=0;
                         bookMarkAnim(difficulty, 0, bookmarkList.get(position).getDifficulty());
                         bookMarkAnim(tvQuestions, 0, bookmarkList.get(position).getQuestion());
+                        bookMarkAnim(tvTotal, 0, position+1+"/"+bookmarkList.size());
 
                         explain.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -258,94 +208,4 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
             });
         }
     }
-
-    public void checkAnswer(final Button selectOption) {
-        if (selectOption.getText().toString().equals(bookmarkList.get(position).getCorrectAnswer())){
-            //correct Answer
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-
-        }else{
-            //incorrect Answer
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
-
-            Button correctOption = linearLayout.findViewWithTag(bookmarkList.get(position).getCorrectAnswer());
-            correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-            //correctOption.setTextColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
-        }
-    }
-
-    
-    /*public void fade(View view ){
-        String DDpos = getIntent().getStringExtra("DDpos");
-        String Qpos = getIntent().getStringExtra("Qpos");
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-        difficulty.startAnimation(animation);
-        tvQuestions.startAnimation(animation);
-        difficulty.setText(DDpos);
-        tvQuestions.setText(Qpos);
-    }
-
-    public void fadeBtn(View view){
-        //buttons
-        String OApos = getIntent().getStringExtra("OApos");
-        String OBpos = getIntent().getStringExtra("OBpos");
-        String OCpos = getIntent().getStringExtra("OCpos");
-        String ODpos = getIntent().getStringExtra("ODpos");
-
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-
-        optionA.startAnimation(animation);
-        optionB.startAnimation(animation);
-        optionC.startAnimation(animation);
-        optionD.startAnimation(animation);
-        explain.startAnimation(animation);
-
-        optionA.setText(OApos);
-        optionB.setText(OBpos);
-        optionC.setText(OCpos);
-        optionD.setText(ODpos);
-    }
-
-    public void CorrectAnswer(){
-        String CApos = getIntent().getStringExtra("CApos");
-        String OApos = getIntent().getStringExtra("OApos");
-        String OBpos = getIntent().getStringExtra("OBpos");
-        String OCpos = getIntent().getStringExtra("OCpos");
-        String ODpos = getIntent().getStringExtra("ODpos");
-
-        if (OApos.equalsIgnoreCase(CApos)){
-            optionA.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-            //optionA.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        }else if (OBpos.equalsIgnoreCase(CApos)){
-            optionB.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-            //optionB.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        }else if (OCpos.equalsIgnoreCase(CApos)){
-            optionC.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-            //optionC.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        }else if (ODpos.equalsIgnoreCase(CApos)){
-            optionD.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-            //optionD.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-        }
-    }
-
-    public void explainButton(){
-        String Expos = getIntent().getStringExtra("Expos");
-        explain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(BookMarksDisplayQuestion.this);
-                builder.setTitle("Explanation");
-                builder.setMessage(Expos);
-                //builder.setView(R.layout.explain);
-                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // dismiss dialog
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.show();
-            }
-        });
-    }*/
 }

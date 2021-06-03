@@ -91,6 +91,7 @@ public class DisplayQuestions extends AppCompatActivity {
         next_btn = findViewById(R.id.buttonNext);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
+        explanation_btn = findViewById(R.id.buttonExplain);
 
         BookMarkList = new ArrayList<>();
 
@@ -109,13 +110,6 @@ public class DisplayQuestions extends AppCompatActivity {
 
         //prevent screenCapture
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
-
-
-        //explanation
-        explanation_btn = findViewById(R.id.buttonExplain);
-        //builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(R.layout.explain);
 
         //bookmark button on displayQuestion
         bookMarks.setOnClickListener(new View.OnClickListener() {
@@ -406,7 +400,7 @@ public class DisplayQuestions extends AppCompatActivity {
     }
 
     public static void showAboutDialog(Context context,List<QuestionModel> list, int position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.CustomDialogTheme);
         builder.setTitle("Explanation");
         builder.setMessage(list.get(position).getExplaination());
         //builder.setView(R.layout.explain);
