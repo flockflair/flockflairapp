@@ -1,6 +1,7 @@
 package com.example.flockflairapp;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,7 +29,7 @@ import java.util.List;
 public class BookMarksDisplayQuestion extends AppCompatActivity {
 
     TextView tvQuestions, difficulty,tvTotal;
-    Button explain,next,prev;
+    Button explain,next,prev,back;
     LinearLayout linearLayout;
     int position = 0;
 
@@ -53,6 +54,17 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayoutQTD);
         next = findViewById(R.id.btnNext);
         prev = findViewById(R.id.btnPrev);
+        back = findViewById(R.id.button_backInB);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(BookMarksDisplayQuestion.this,BookmarkActivity.class);
+                backIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(backIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
 
         dbRef.child(uid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -69,6 +81,12 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     private void bookMarkAnim(final View view, final  int value, final String data){
