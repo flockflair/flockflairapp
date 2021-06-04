@@ -2965,7 +2965,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Biodiversity";
                     String subchapd = "Biodiversity conservation refers to the protection, preservation, and management of ecosystems and natural habitats and ensuring that they are healthy and functional. To protect and preserve species diversity.";
-                    int subimage = R.drawable.biodiversity_r;
+                    int subimage = R.drawable.biodiversity_r_crop;
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
@@ -2976,7 +2976,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Patterns of Biodiversity";
                     String subchapd = "Biodiversity conservation refers to the protection, preservation, and management of ecosystems and natural habitats and ensuring that they are healthy and functional. To protect and preserve species diversity.";
-                    int subimage = R.drawable.biodiversity_r;
+                    int subimage = R.drawable.biodiversity_r_crop;
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
@@ -2987,7 +2987,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "The Importance of Species Diversity to the Ecosystem";
                     String subchapd = "Biodiversity conservation refers to the protection, preservation, and management of ecosystems and natural habitats and ensuring that they are healthy and functional. To protect and preserve species diversity.";
-                    int subimage = R.drawable.biodiversity_r;
+                    int subimage = R.drawable.biodiversity_r_crop;
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
@@ -2998,7 +2998,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Loss of Biodiversity";
                     String subchapd = "Biodiversity conservation refers to the protection, preservation, and management of ecosystems and natural habitats and ensuring that they are healthy and functional. To protect and preserve species diversity.";
-                    int subimage = R.drawable.biodiversity_r;
+                    int subimage = R.drawable.biodiversity_r_crop;
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
@@ -3009,7 +3009,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Biodiversity Conservation";
                     String subchapd = "Biodiversity conservation refers to the protection, preservation, and management of ecosystems and natural habitats and ensuring that they are healthy and functional. To protect and preserve species diversity.";
-                    int subimage = R.drawable.biodiversity_r;
+                    int subimage = R.drawable.biodiversity_r_crop;
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);

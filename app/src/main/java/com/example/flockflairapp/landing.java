@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +32,12 @@ public class landing extends AppCompatActivity {
         subchaptername=(TextView)findViewById(R.id.subchaptername);
         subchapterimage=(ImageView)findViewById(R.id.subchapterimage);
         subchapterdesc=(TextView)findViewById(R.id.subchapterdescription);
+        subchapterdesc.setMovementMethod(new ScrollingMovementMethod());
         startquiz=(Button)findViewById(R.id.startquiz);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               onBackPressed();
+                onBackPressed();
             }
         });
 

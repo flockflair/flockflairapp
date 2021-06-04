@@ -17,15 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/subchaptername"
-        android:layout_width="292dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="301dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
         android:autoSizeMaxTextSize="25sp"
-        android:autoSizeMinTextSize="19sp"
+        android:autoSizeMinTextSize="18sp"
         android:autoSizeTextType="uniform"
+        android:paddingTop="10dp"
         android:text="Sub Chapter Name"
         android:textColor="@color/color1"
         android:textSize="25sp"
@@ -33,6 +35,9 @@
         app:layout_constraintStart_toStartOf="@+id/landingback"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+
+
 
     <ImageView
         android:layout_width="301dp"
@@ -58,16 +63,14 @@
         android:id="@+id/subchapterdescription"
         android:layout_width="263dp"
         android:layout_height="145dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="464dp"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMaxTextSize="20sp"
-        android:autoSizeMinTextSize="15sp"
         android:background="@drawable/rectangle26"
+        android:scrollbars="vertical"
         android:text="Description  \nof the \nchapter"
         android:textAlignment="center"
         android:textColor="#060C8B"
-        android:textSize="18dp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
