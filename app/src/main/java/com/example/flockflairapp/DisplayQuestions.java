@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,8 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +55,7 @@ public class DisplayQuestions extends AppCompatActivity {
     //Bookmarks
     private FloatingActionButton bookMarks;
     //next button
-    private Button next_btn;
+    private Button next_btn,prev_btn;
     private Button explanation_btn;
     //question model list
     private List<QuestionModel> list;
@@ -93,6 +89,7 @@ public class DisplayQuestions extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayout);
         bookMarks = findViewById(R.id.floatingActionButton5);
         next_btn = findViewById(R.id.buttonNext);
+        prev_btn = findViewById(R.id.buttonPrev);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
         explanation_btn = findViewById(R.id.buttonExplain);
@@ -237,30 +234,6 @@ public class DisplayQuestions extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        dbRef.child("user").child(uuid).child("position").setValue(position);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        dbRef.child("user").child(uuid).child("position").addListenerForSingleValueEvent(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                long Spos = snapshot.getValue(Long.class);
-                position = Math.toIntExact(Spos);
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-    }
-
     //animation for loading new question
     private void animation(final View view, final int value, final String data){
 
@@ -322,6 +295,7 @@ public class DisplayQuestions extends AppCompatActivity {
     public void checkAnswer(final Button selectOption) {
         enableOption(false);
         next_btn.setEnabled(true);
+        prev_btn.setEnabled(true);
         explanation_btn.setEnabled(true);
         next_btn.setAlpha(1);
 
@@ -420,6 +394,27 @@ public class DisplayQuestions extends AppCompatActivity {
                     animation(tvQuestions, 0,list.get(position).getQuestion());
                 }
             });
+            prev_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    position--;
+                    if (position==-1){
+                        Toast.makeText(DisplayQuestions.this, "No previous Questions available", Toast.LENGTH_SHORT).show();
+                        position = 0;
+                    }
+                    count=0;
+                    animation(difficulty, 0, list.get(position).getDifficulty());
+                    animation(tvQuestions, 0, list.get(position).getQuestion());
+                    bookMarks.startAnimation(an);
+
+                    explanation_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            showAboutDialog(DisplayQuestions.this, list, position);
+                        }
+                    });
+                }
+            });
         }else {
             pg.dismiss();
             Toast.makeText(DisplayQuestions.this, "Empty Questions", Toast.LENGTH_SHORT).show();
@@ -431,7 +426,6 @@ public class DisplayQuestions extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.CustomDialogTheme);
         builder.setTitle("Explanation");
         builder.setMessage(list.get(position).getExplaination());
-        //builder.setView(R.layout.explain);
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -463,85 +457,4 @@ public class DisplayQuestions extends AppCompatActivity {
                 }
             });
     }
-
-    /*//animation for loading new question
-    private void Bookanimation(final View view, final int value, final String data){
-        next_btn.setVisibility(View.GONE);
-        String OApos = getIntent().getStringExtra("OApos");
-        String OBpos = getIntent().getStringExtra("OBpos");
-        String OCpos = getIntent().getStringExtra("OCpos");
-        String ODpos = getIntent().getStringExtra("ODpos");
-
-        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100)
-                .setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
-            @Override
-            //checking value and view count to start animation
-            public void onAnimationStart(Animator animator) {
-                if (value == 0 && count < 4){
-                    String option = ""; //check all option at location count value
-
-                    if (count == 0){
-                        option = OApos;
-                    }else if (count == 1){
-                        option = OBpos;
-                    }
-                    else if (count == 2){
-                        option = OCpos;
-                    }else if (count == 3){
-                        option = ODpos;
-                    }
-                    Bookanimation(linearLayout.getChildAt(count),0,option);
-                    count++;
-                }
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                //on question data changes
-                if (value == 0){
-                    try {
-                        ((TextView)view).setText(data);
-                        if (modelMatch()){
-                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmarknew));
-                        }else {
-                            bookMarks.setImageDrawable(getDrawable(R.drawable.bookmark));
-                        }
-                    }catch (ClassCastException e){
-                        ((Button)view).setText(data);
-                    }
-                    view.setTag(data);
-                    Bookanimation(view, 1,data);
-                }
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
-        });
-    }
-    private void BookcheckAnswer(final Button selectOption) {
-        String CApos = getIntent().getStringExtra("CApos");
-        enableOption(false);
-        explanation_btn.setEnabled(true);
-
-        if (selectOption.getText().toString().equals(CApos)){
-            //correct Answer
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-
-        }else{
-            //incorrect Answer
-            vibrator.vibrate(100);
-            selectOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#e74c3c")));
-
-            Button correctOption = linearLayout.findViewWithTag(CApos);
-            correctOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2ecc71")));
-
-        }
-    }*/
 }
