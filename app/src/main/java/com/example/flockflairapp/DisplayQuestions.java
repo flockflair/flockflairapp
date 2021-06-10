@@ -94,6 +94,10 @@ public class DisplayQuestions extends AppCompatActivity {
         difficulty = (TextView)findViewById(R.id.difficulty);
         explanation_btn = findViewById(R.id.buttonExplain);
 
+        next_btn.setAlpha(0.7f);
+        explanation_btn.setAlpha(0.7f);
+
+
         BookMarkList = new ArrayList<>();
 
         dbBookmarks.child(uuid).child("Bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -298,6 +302,7 @@ public class DisplayQuestions extends AppCompatActivity {
         prev_btn.setEnabled(true);
         explanation_btn.setEnabled(true);
         next_btn.setAlpha(1);
+        explanation_btn.setAlpha(1);
 
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
             //correct Answer
@@ -375,6 +380,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 public void onClick(View view) {
                     next_btn.setEnabled(false);
                     explanation_btn.setEnabled(false);
+                    explanation_btn.setAlpha(0.7f);
                     next_btn.setAlpha(0.7f);
                     enableOption(true);
                     //position= rand.nextInt(20);
