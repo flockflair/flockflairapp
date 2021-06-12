@@ -116,7 +116,7 @@
 
         <Button
             android:id="@+id/buttonOption4D"
-            android:layout_width="344dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"

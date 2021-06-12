@@ -102,17 +102,19 @@
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginStart="154dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/rectanglebutton"
-        android:text="logout"
 
+        android:text="logout"
         android:textColor="#ffffff"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

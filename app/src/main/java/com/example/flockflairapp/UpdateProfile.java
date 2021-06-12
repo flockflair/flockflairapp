@@ -61,6 +61,8 @@ public class UpdateProfile extends AppCompatActivity {
 
     //All_UserMember member;
     int position = 3;
+
+    //nofavholder
     int pointer = 1;
 
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -238,12 +240,10 @@ public class UpdateProfile extends AppCompatActivity {
         //FavPart
         recyclerView = findViewById(R.id.recycler_view);
 
-        //int[] favLogo = {R.drawable.evolution,R.drawable.excretoryproducts,R.drawable.humanhealthdiseases,R.drawable.humanreproduction,R.drawable.molecularbasis};
-        //String[] favModule = {"Module 1","Module 2","Module 3","Module 4","Module 5"};
-
         //ArrayList
         favModels = new ArrayList<>();
 
+        //fetching favourite chapter names
         reference.child(userID).child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -255,6 +255,8 @@ public class UpdateProfile extends AppCompatActivity {
                     DataSnapshot next = (DataSnapshot) iterator.next();
                     //Toast.makeText(getApplicationContext(), (String) next.child("favoriteName").getValue(),LENGTH_SHORT).show();
                     String value = (String) next.child("favoriteName").getValue();
+                    //adding drawable and Favourite chapter name to FavModel
+                    //pointer = 0 there is atleast one favourite chapter
                     if(value.equals("The Living World")){
                         FavModel model = new FavModel(R.drawable.livingworld,value);
                         favModels.add(model);
@@ -359,10 +361,106 @@ public class UpdateProfile extends AppCompatActivity {
                         pointer = 0;
                     }
 
+                    if(value.equals("Reproduction in Organism")){
+                        FavModel model = new FavModel(R.drawable.reproductioninorganism,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Sexual Reproduction in Flowering Plants")){
+                        FavModel model = new FavModel(R.drawable.sexualreproductioninflower,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Human Reproduction")){
+                        FavModel model = new FavModel(R.drawable.humanreproduction,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Reproductive Health")){
+                        FavModel model = new FavModel(R.drawable.reproductivehealth,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Principles of Inheritance and Variation")){
+                        FavModel model = new FavModel(R.drawable.principlesofinheritance,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Molecular Basis of Inheritance")){
+                        FavModel model = new FavModel(R.drawable.molecularbasis,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
 
 
+                    if(value.equals("Evolution")){
+                        FavModel model = new FavModel(R.drawable.evolution,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Human Health and Disease")){
+                        FavModel model = new FavModel(R.drawable.humanhealthdiseases,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Stratergies for Enhancement in Food Production")){
+                        FavModel model = new FavModel(R.drawable.stratergiesenchancement,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Microbes in Human Welfare")){
+                        FavModel model = new FavModel(R.drawable.microbesinwelfare,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Biotechnology:Principles and Processes")){
+                        FavModel model = new FavModel(R.drawable.biotechnology,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Biotechnology and its Applications")){
+                        FavModel model = new FavModel(R.drawable.bioapplications,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Organisms and Population")){
+                        FavModel model = new FavModel(R.drawable.population,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Ecosystem")){
+                        FavModel model = new FavModel(R.drawable.ecosystem,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Biodiversity and Conservation")){
+                        FavModel model = new FavModel(R.drawable.biodiversity,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+
+                    if(value.equals("Environmental Issues")){
+                        FavModel model = new FavModel(R.drawable.environmentalsys,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
 
                 }
+
+                //Initialize horizontal LinearLayout
                 LinearLayoutManager layoutManager = new LinearLayoutManager(
                         UpdateProfile.this,LinearLayoutManager.HORIZONTAL,false
                 );
@@ -371,6 +469,8 @@ public class UpdateProfile extends AppCompatActivity {
                 favAdapter = new FavAdapter(UpdateProfile.this, favModels);
                 //Set FavAdapter
                 recyclerView.setAdapter(favAdapter);
+
+                //pointer = 1 indicates there is no chapter marked as favourite and Set nofavtv as Visible
                 if(pointer == 1){
                     nofavtv.setVisibility(View.VISIBLE);
                 }
