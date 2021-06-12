@@ -3,6 +3,7 @@ package com.example.flockflairapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -59,6 +61,7 @@ public class UpdateProfile extends AppCompatActivity {
 
     //All_UserMember member;
     int position = 3;
+    int pointer = 1;
 
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference databaseReference;
@@ -235,37 +238,149 @@ public class UpdateProfile extends AppCompatActivity {
         //FavPart
         recyclerView = findViewById(R.id.recycler_view);
 
-        int[] favLogo = {R.drawable.evolution,R.drawable.excretoryproducts,R.drawable.humanhealthdiseases,
-                R.drawable.humanreproduction,R.drawable.molecularbasis};
-        String[] favModule = {"Module 1","Module 2","Module 3","Module 4","Module 5"};
+        //int[] favLogo = {R.drawable.evolution,R.drawable.excretoryproducts,R.drawable.humanhealthdiseases,R.drawable.humanreproduction,R.drawable.molecularbasis};
+        //String[] favModule = {"Module 1","Module 2","Module 3","Module 4","Module 5"};
 
         //ArrayList
         favModels = new ArrayList<>();
-        for (int k = 0;k<favLogo.length;k++){
-            FavModel model = new FavModel(favLogo[k],favModule[k]);
-            favModels.add(model);
-        }
 
-        //Design Horizontal
-        LinearLayoutManager layoutManager = new LinearLayoutManager(
-                UpdateProfile.this,LinearLayoutManager.HORIZONTAL,false
-        );
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        reference.child(userID).child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> snapshotIterator = dataSnapshot.getChildren();
+                Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
 
-        int j = 0;
-        if(j == 1){
-            nofavtv.setVisibility(View.VISIBLE);
-        }
-        if(j==0){
+                while (iterator.hasNext()) {
 
-            //Initialize FavAdapter
-            favAdapter = new FavAdapter(UpdateProfile.this, favModels);
-            //Set FavAdapter
-            recyclerView.setAdapter(favAdapter);
-            //End FavPart
-        }
+                    DataSnapshot next = (DataSnapshot) iterator.next();
+                    //Toast.makeText(getApplicationContext(), (String) next.child("favoriteName").getValue(),LENGTH_SHORT).show();
+                    String value = (String) next.child("favoriteName").getValue();
+                    if(value.equals("The Living World")){
+                        FavModel model = new FavModel(R.drawable.livingworld,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Biological Classification")){
+                        FavModel model = new FavModel(R.drawable.biologicalclassification,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }if(value.equals("Plant Kingdom")){
+                        FavModel model = new FavModel(R.drawable.plantkingdom,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }if(value.equals("Animal Kingdom")){
+                        FavModel model = new FavModel(R.drawable.animalkingdom,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Morphology of Flowering Plants")){
+                        FavModel model = new FavModel(R.drawable.morphologyoffloweringplants,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Anatomy of Flowering Plants")){
+                        FavModel model = new FavModel(R.drawable.anatomyoffloweringplants,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Structural Organisation in Animals")){
+                        FavModel model = new FavModel(R.drawable.structuralorganisation,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Cell:The Unit of Life")){
+                        FavModel model = new FavModel(R.drawable.cellunitoflife,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Biomolecules")){
+                        FavModel model = new FavModel(R.drawable.biomolecules,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Cell Cycle")){
+                        FavModel model = new FavModel(R.drawable.cellcycle,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Transport in Plants")){
+                        FavModel model = new FavModel(R.drawable.transportinplants,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Photosynthesis in Higher Plants")){
+                        FavModel model = new FavModel(R.drawable.photosynthesisinhigherplants,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Respiration in Plants")){
+                        FavModel model = new FavModel(R.drawable.respiration,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Plant Growth and Development")){
+                        FavModel model = new FavModel(R.drawable.plantgrowth,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Digestion and Absorption")){
+                        FavModel model = new FavModel(R.drawable.digestionandabsorption,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Breathing and Exchange of Gases")){
+                        FavModel model = new FavModel(R.drawable.breathing,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Body Fluids and Circulation")){
+                        FavModel model = new FavModel(R.drawable.bodyfluids,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Excretory Products and their Elimination")){
+                        FavModel model = new FavModel(R.drawable.excretoryproducts,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Locomotion and Movement")){
+                        FavModel model = new FavModel(R.drawable.locomotion,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Neural Control and Coordination")){
+                        FavModel model = new FavModel(R.drawable.neuralcontrol,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
+                    if(value.equals("Chemical Coordination and Integration")){
+                        FavModel model = new FavModel(R.drawable.chemicalcordination,value);
+                        favModels.add(model);
+                        pointer = 0;
+                    }
 
+
+
+
+                }
+                LinearLayoutManager layoutManager = new LinearLayoutManager(
+                        UpdateProfile.this,LinearLayoutManager.HORIZONTAL,false
+                );
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                favAdapter = new FavAdapter(UpdateProfile.this, favModels);
+                //Set FavAdapter
+                recyclerView.setAdapter(favAdapter);
+                if(pointer == 1){
+                    nofavtv.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

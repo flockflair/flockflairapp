@@ -42,7 +42,7 @@
             android:padding="50dp"
             android:text=""
             android:textAlignment="center"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000000"
             android:translationX="20dp"
