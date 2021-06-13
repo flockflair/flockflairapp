@@ -19,9 +19,9 @@
     </style>
 
     <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@color/colorPrimary</item>
-        <item name="colorAccent">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:windowBackground">@color/color2</item>
+        <item name="colorAccent">@color/color3</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
         <item name="android:textAppearanceMedium">?textAppearanceBody2</item>
     </style>
 

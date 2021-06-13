@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="310dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -30,7 +30,7 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:elevation="1dp"
-            android:translationY="95dp"
+            android:translationY="55dp"
             tools:ignore="ObsoleteLayoutParam" />
 
         <TextView
@@ -38,12 +38,15 @@
             android:layout_width="343dp"
             android:layout_height="215dp"
             android:layout_margin="16dp"
+            android:gravity="center"
             android:background="@drawable/rounded_textview"
             android:padding="50dp"
             android:text=""
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:translationX="20dp"
-            android:translationY="50dp" />
+            android:translationY="5dp" />
 
 
         <!--
@@ -74,7 +77,7 @@
 
         <Button
             android:id="@+id/buttonOption1"
-            android:layout_width="match_parent"
+            android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_gravity="center"
@@ -84,7 +87,7 @@
 
         <Button
             android:id="@+id/buttonOption2"
-            android:layout_width="match_parent"
+            android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_gravity="center"
@@ -94,7 +97,7 @@
 
         <Button
             android:id="@+id/buttonOption3"
-            android:layout_width="match_parent"
+            android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_gravity="center"
@@ -104,10 +107,10 @@
 
         <Button
             android:id="@+id/buttonOption4"
-            android:layout_width="344dp"
+            android:layout_width="357dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_gravity="center"
+            android:layout_margin="8dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -115,9 +118,10 @@
 
     <Button
         android:id="@+id/buttonNext"
-        android:layout_width="107dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rectanglebutton"
         android:enabled="false"
         android:text="@string/next"
@@ -146,22 +150,25 @@
     <Button
         android:id="@+id/buttonExplain"
         android:layout_width="148dp"
-        android:layout_height="32dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/rectanglebutton"
         android:text="Explaination"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrev"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonPrev"
-        android:layout_width="107dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rectanglebutton"
         android:enabled="false"
@@ -169,7 +176,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonExplain"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
