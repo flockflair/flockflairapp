@@ -1023,7 +1023,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     i.putExtra("sub_chap_img",subimage);
                     v.getContext().startActivity(i);
                 }
-                if(name[position].equals("Introduction Respiration in Plants "))
+                if(name[position].equals("Introduction Respiration in Plants"))
                 {
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Introduction Respiration in Plants ";
