@@ -99,6 +99,13 @@
             </intent-filter>
         </receiver>
 
+<!--        <receiver android:name=".RemainderBroadcastsecond">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>-->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

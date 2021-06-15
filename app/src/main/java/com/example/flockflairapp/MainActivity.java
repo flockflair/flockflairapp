@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
         registerAlarm();
+        //registerAlarmsecond();
+
         firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -79,21 +81,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+/*    private void registerAlarmsecond() {
+        Intent intent = new Intent(MainActivity.this, RemainderBroadcastsecond.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        long timeAtbuttonclick = System.currentTimeMillis();
+        long tenSecondsInMillis = 2000;
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
+        *//*Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(calendar.MINUTE,54);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*//*
+    }*/
+
     private void registerAlarm() {
 
 
         Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        /*long timeAtbuttonclick = System.currentTimeMillis();
-        long tenSecondsInMillis = 6000;
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);*/
-        Calendar calendar = Calendar.getInstance();
+        long timeAtbuttonclick = System.currentTimeMillis();
+        long tenSecondsInMillis = 2000;
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
+        /*Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY,22);
-        calendar.set(calendar.MINUTE,36);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(calendar.MINUTE,54);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/
     }
 
 
