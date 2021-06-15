@@ -186,6 +186,7 @@
         android:layout_marginStart="200dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="190dp"
+        android:gravity="center"
         android:background="@drawable/star1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView13"
