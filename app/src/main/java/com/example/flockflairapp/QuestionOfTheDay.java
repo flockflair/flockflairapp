@@ -1,5 +1,7 @@
 package com.example.flockflairapp;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -96,4 +98,15 @@ public class QuestionOfTheDay extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        if(am != null) {
+            List<ActivityManager.AppTask> tasks = am.getAppTasks();
+            if (tasks != null && tasks.size() > 0) {
+                tasks.get(0).setExcludeFromRecents(true);
+            }
+        }    }
 }

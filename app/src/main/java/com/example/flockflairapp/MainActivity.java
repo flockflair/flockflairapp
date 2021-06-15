@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
+
         firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
 
         Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         long timeAtbuttonclick = System.currentTimeMillis();
         long tenSecondsInMillis = 1000;
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
+
+
         Button button = (Button) findViewById(R.id.button_11);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     public void openModule_11() {
         Intent intent = new Intent(this, ExpandableModule1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -115,4 +120,6 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+
 }
