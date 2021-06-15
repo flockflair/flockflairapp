@@ -108,5 +108,6 @@ public class QuestionOfTheDay extends AppCompatActivity {
             if (tasks != null && tasks.size() > 0) {
                 tasks.get(0).setExcludeFromRecents(true);
             }
-        }    }
+        }
+    }
 }
