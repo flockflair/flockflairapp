@@ -1,5 +1,10 @@
 package com.example.flockflairapp;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,14 +23,21 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseAuth;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createNotificationChannel();
         firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
 
+        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        long timeAtbuttonclick = System.currentTimeMillis();
+        long tenSecondsInMillis = 1000;
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
         Button button = (Button) findViewById(R.id.button_11);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,36 +61,38 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId())
-                {
+                switch (menuItem.getItemId()) {
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
-                }return false;
-
                 }
+                return false;
+
+            }
         });
 
 
     }
-    public void openModule_11(){
+
+    public void openModule_11() {
         Intent intent = new Intent(this, ExpandableModule1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void openModule_12(){
+
+    public void openModule_12() {
         Intent intent = new Intent(this, ExpandableModule2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
@@ -86,5 +100,19 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "TheBotanistchannel";
+            String description = "Channel for TheBotanist";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("TheBotanist", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
