@@ -32,7 +32,7 @@ public class landing extends AppCompatActivity {
         subchaptername=(TextView)findViewById(R.id.subchaptername);
         subchapterimage=(ImageView)findViewById(R.id.subchapterimage);
         subchapterdesc=(TextView)findViewById(R.id.subchapterdescription);
-        subchapterdesc.setMovementMethod(new ScrollingMovementMethod());
+        subchapterdesc.setMovementMethod(new ScrollingMovementMethod()); //scroll for desc text view
         startquiz=(Button)findViewById(R.id.startquiz);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +43,9 @@ public class landing extends AppCompatActivity {
 
        Bundle extras;
        extras = getIntent().getExtras();
-       String chap1 = extras.getString("sub_chap_name");
-       String chapd1 = extras.getString("sub_chap_desc");
-       int chapimg1 = extras.getInt("sub_chap_img");
+       String chap1 = extras.getString("sub_chap_name"); //get chap name
+       String chapd1 = extras.getString("sub_chap_desc"); //get chap description
+       int chapimg1 = extras.getInt("sub_chap_img"); // get img
        subchaptername.setText(chap1);
        subchapterdesc.setText(chapd1);
        subchapterimage.setImageResource(chapimg1);
@@ -53,8 +53,7 @@ public class landing extends AppCompatActivity {
         startquiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String subChapName = "What is living";
-                Intent i1 = new Intent(getApplicationContext(),DisplayQuestions.class);
+                Intent i1 = new Intent(getApplicationContext(),DisplayQuestions.class); //intent displayquestions
                 i1.putExtra("subChapName", chap1);
                 startActivity(i1);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -62,22 +61,24 @@ public class landing extends AppCompatActivity {
             }
         });
 
+        //bottom nav
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.about);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.dashboard:
+                    case R.id.dashboard: //bookmark
                         startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
-                    case R.id.home:
+                    case R.id.home: //home
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
 
-                    case R.id.about:
+                    case R.id.about: //profile
                         startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;

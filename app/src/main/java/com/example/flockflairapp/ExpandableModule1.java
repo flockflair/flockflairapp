@@ -33,10 +33,10 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class ExpandableModule1 extends AppCompatActivity {
     private String user;
     private DatabaseReference reference;
-    List<Integer> groupList;
-    List<Integer> childList;
-    List<String> moduleList;
-    List<String> chapterList;
+    List<Integer> groupList; //image list for modules
+    List<Integer> childList; //image list for chapters
+    List<String> moduleList; //list of modules
+    List<String> chapterList; // list of chapters
     Map<Integer,List<Integer>> imageCollection;
     Map<String, List<String>> moduleCollection;
     ExpandableListView expandableListView;
@@ -49,8 +49,8 @@ public class ExpandableModule1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        reference = FirebaseDatabase.getInstance().getReference("user");
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid(); //get user
+        reference = FirebaseDatabase.getInstance().getReference("user"); //user refrence
         final TextView greet =findViewById(R.id.StudentName);
         item = (TextView)findViewById(R.id.modules);
         reference.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -59,7 +59,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                 final TextView greet =findViewById(R.id.StudentName);
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
-                greet.setText("Welcome "+hash.get("name") +"!");
+                greet.setText("Welcome "+hash.get("name") +"!");  //welcome text
                 reference.keepSynced(true);
             }
             @Override
@@ -85,8 +85,8 @@ public class ExpandableModule1 extends AppCompatActivity {
         creategroupList();
         createchildList();
         expandableListView = findViewById(R.id.Modules);
-        expandableListAdapter = new MyExpandableListAdapter(this, moduleList, moduleCollection,groupList,imageCollection);
-        expandableListView.setAdapter(expandableListAdapter);
+        expandableListAdapter = new MyExpandableListAdapter(this, moduleList, moduleCollection,groupList,imageCollection); //set adapter
+        expandableListView.setAdapter(expandableListAdapter); //set adapter
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             int lastExpandedPosition = -1;
@@ -110,12 +110,13 @@ public class ExpandableModule1 extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String selected = expandableListAdapter.getChild(i, i1).toString();
                 Intent intent;
+                //chapter names
 
                 switch (selected) {
-                    case "The Living World":
-                        String name = selected;
-                        String[] subchaptername = {"What is living world?","Diversity in the living","Taxonomic categories","Taxonomic Aids"};
-                        int[] subchapImages = {R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld};
+                    case "The Living World": //chapter name
+                        String name = selected; //string name
+                        String[] subchaptername = {"What is living world?","Diversity in the living","Taxonomic categories","Taxonomic Aids"}; //sub chapters
+                        int[] subchapImages = {R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld,R.drawable.livingworld}; //sub chapter images
                         intent = new Intent(getApplicationContext(), listviewimg.class);
                         intent.putExtra("subchaptername",subchaptername);
                         intent.putExtra("subchapImages",subchapImages);
@@ -338,7 +339,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                 return true;
             }
         });
-        back = (ImageView)findViewById(R.id.backbuttonimg);
+        back = (ImageView)findViewById(R.id.backbuttonimg); //back button
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -348,6 +349,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
+        //bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -355,15 +357,15 @@ public class ExpandableModule1 extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId())
                 {
-                    case R.id.dashboard:
+                    case R.id.dashboard: //bookmark
                         startActivity(new Intent(getApplicationContext(),BookmarkActivity.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
-                    case R.id.home:
+                    case R.id.home:  //home
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
-                    case R.id.about:
+                    case R.id.about:  //profile
                         startActivity(new Intent(getApplicationContext(),UpdateProfile.class));
                         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         return true;
@@ -376,6 +378,7 @@ public class ExpandableModule1 extends AppCompatActivity {
 
 
     private void createCollection() {
+        //chapter name list
         String[] ModuleOne = {"The Living World", "Biological Classification", "Plant Kingdom", "Animal Kingdom"};
         String[] ModuleTwo = {"Morphology of Flowering Plants", "Anatomy of Flowering Plants", "Structural Organisation in Animals"};
         String[] ModuleThree = {"Cell:The Unit of Life", "Biomolecules", "Cell Cycle"};
@@ -383,6 +386,7 @@ public class ExpandableModule1 extends AppCompatActivity {
         String[] ModuleFive = {"Digestion and Absorption", "Breathing and Exchange of Gases", "Body Fluids and Circulation", "Excretory Products and their Elimination", "Locomotion and Movement", "Neural Control and Coordination", "Chemical Coordination and Integration"};
         moduleCollection = new HashMap<String, List<String>>();
         for (String group : moduleList) {
+            //module list
             if (group.equals("Diversity in the living world")) {
                 loadChild(ModuleOne);
 
@@ -404,6 +408,7 @@ public class ExpandableModule1 extends AppCompatActivity {
     }
     private void createchildList()
     {
+        //chapter images
         Integer[] ChapterOne ={R.drawable.livingworld,R.drawable.biologicalclassification,R.drawable.plantkingdom,R.drawable.animalkingdom};
         Integer[] ChapterTwo ={R.drawable.morphologyoffloweringplants,R.drawable.anatomyoffloweringplants,R.drawable.structuralorganisation};
         Integer[] ChapterThree ={R.drawable.cellunitoflife,R.drawable.biomolecules,R.drawable.cellcycle};
@@ -412,6 +417,7 @@ public class ExpandableModule1 extends AppCompatActivity {
         imageCollection = new HashMap<Integer, List<Integer>>();
         for(Integer group1 : groupList)
         {
+            //module images
             if(group1.equals(R.drawable.atom))
             {
                 loadChild1(ChapterOne);
@@ -459,6 +465,7 @@ public class ExpandableModule1 extends AppCompatActivity {
     }
 
     private void createmoduleList() {
+        //module list
         moduleList = new ArrayList<>();
         moduleList.add("Diversity in the living world");
         moduleList.add("Structural Organisation in Plants and Animals");
@@ -468,6 +475,7 @@ public class ExpandableModule1 extends AppCompatActivity {
     }
 
     private void creategroupList() {
+        //module images to bind with chapters
         groupList = new ArrayList<>();
         groupList.add(R.drawable.atom);
         groupList.add(R.drawable.angular);

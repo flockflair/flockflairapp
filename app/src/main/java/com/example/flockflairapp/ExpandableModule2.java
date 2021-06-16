@@ -32,6 +32,8 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class ExpandableModule2 extends AppCompatActivity {
 
+    //same variables as expandablemodule2
+
     private String user;
     private DatabaseReference reference;
     List<Integer> groupList;
