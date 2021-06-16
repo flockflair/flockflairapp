@@ -11,6 +11,7 @@ import androidx.core.app.NotificationManagerCompat;
 public class RemainderBroadcastsecond extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+
         intent = new Intent(context, QuestionOfTheDay.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
