@@ -155,7 +155,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Favorite.setFavorite(favoriteModel);
-                Toast.makeText(context,"fav added",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Added to Favourite Part",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.VISIBLE);
                 star.setVisibility(View.INVISIBLE);
                 notifyDataSetChanged();
@@ -166,7 +166,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Favorite.removeFavorite(favoriteModel);
-                Toast.makeText(context,"removed from fav",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Removed from Favourite Part",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.INVISIBLE);
                 star.setVisibility(View.VISIBLE);
                 notifyDataSetChanged();

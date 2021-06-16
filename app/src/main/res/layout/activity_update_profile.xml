@@ -121,10 +121,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:itemBackground="@color/color1"
+        app:itemIconSize="50dp"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
-        app:itemIconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/module_5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -165,7 +166,7 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="117dp"
@@ -184,10 +185,12 @@
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="190dp"
-        android:gravity="center"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="3dp"
         android:background="@drawable/star1"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
@@ -213,7 +216,8 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/save"
@@ -223,15 +227,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         app:layout_constraintVertical_bias="0.112">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-
+            android:layout_height="270dp"
             />
+
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
