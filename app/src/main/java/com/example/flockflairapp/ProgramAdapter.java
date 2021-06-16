@@ -13,7 +13,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
     Context context;
     int[] images;
     String[] name;
-    public ProgramAdapter(Context context, String[] name,int[] images) {
+    public ProgramAdapter(Context context, String[] name,int[] images) { //name and image adapter
         super(context, R.layout.single_item,R.id.textvieww1,name);
         this.context = context;
         this.images = images;

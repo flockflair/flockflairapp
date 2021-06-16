@@ -18,8 +18,8 @@ public class RemainderBroadcastsecond extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanistnew")
                 .setSmallIcon(R.drawable.thebotanist)
-                .setContentTitle("Random Questions of Std12!")
-                .setContentText("Hey Students ! Can you solve this questions?")
+                .setContentTitle("Random Question of Std12!")
+                .setContentText("Hey Students ! Can you solve this question?")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);

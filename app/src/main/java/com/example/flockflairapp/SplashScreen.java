@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    public static int SPLASH_SCREEN = 3000;
-    ImageView physics , bacteria , testube ,dna , injection , logo;
+    public static int SPLASH_SCREEN = 3000; //ms
+    ImageView physics , bacteria , testube ,dna , injection , logo; //logo imgs
     TextView name;
 
 

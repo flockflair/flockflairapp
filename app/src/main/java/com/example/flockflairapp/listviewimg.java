@@ -35,11 +35,11 @@ public class listviewimg extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         String[] subchaptername = intent.getStringArrayExtra("subchaptername");
         int[] subchapImages = intent.getIntArrayExtra("subchapImages");
-        String name = intent.getStringExtra("name");
+        String name = intent.getStringExtra("name"); //get text from put intent
         name1.setText(name);
 
         lvProgram = findViewById(R.id.lvProgram);
-        ProgramAdapter programAdapter = new ProgramAdapter(this, subchaptername,subchapImages);
+        ProgramAdapter programAdapter = new ProgramAdapter(this, subchaptername,subchapImages); //set image and sub chap name
         lvProgram.setAdapter(programAdapter);
 
 
