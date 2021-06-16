@@ -1,0 +1,1341 @@
+Index: app/src/main/java/com/example/flockflairapp/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\nimport android.app.AlarmManager;\r\nimport android.app.NotificationChannel;\r\nimport android.app.NotificationManager;\r\nimport android.app.PendingIntent;\r\nimport android.content.Intent;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\n\r\nimport java.util.Calendar;\r\n\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    FirebaseUser firebaseAuth;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n        createNotificationChannel();\r\n        registerAlarm();\r\n        //registerAlarmsecond();\r\n\r\n        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();\r\n\r\n\r\n\r\n        Button button = (Button) findViewById(R.id.button_11);\r\n        button.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openModule_11();\r\n\r\n            }\r\n        });\r\n\r\n        Button button1 = (Button) findViewById(R.id.button_12);\r\n        button1.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                openModule_12();\r\n\r\n            }\r\n        });\r\n\r\n        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);\r\n        bottomNavigationView.setSelectedItemId(R.id.home);\r\n        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {\r\n            @Override\r\n            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {\r\n                switch (menuItem.getItemId()) {\r\n                    case R.id.dashboard:\r\n                        startActivity(new Intent(getApplicationContext(), BookmarkActivity.class));\r\n                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);\r\n                        return true;\r\n                    case R.id.home:\r\n                        return true;\r\n                    case R.id.about:\r\n                        startActivity(new Intent(getApplicationContext(), UpdateProfile.class));\r\n                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);\r\n                        return true;\r\n                }\r\n                return false;\r\n\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n\r\n/*    private void registerAlarmsecond() {\r\n        Intent intent = new Intent(MainActivity.this, RemainderBroadcastsecond.class);\r\n        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);\r\n\r\n        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);\r\n        long timeAtbuttonclick = System.currentTimeMillis();\r\n        long tenSecondsInMillis = 2000;\r\n        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);\r\n        *//*Calendar calendar = Calendar.getInstance();\r\n        calendar.setTimeInMillis(System.currentTimeMillis());\r\n        calendar.set(Calendar.HOUR_OF_DAY,0);\r\n        calendar.set(calendar.MINUTE,54);\r\n        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*//*\r\n    }*/\r\n\r\n    private void registerAlarm() {\r\n\r\n\r\n        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);\r\n        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);\r\n\r\n        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);\r\n        long timeAtbuttonclick = System.currentTimeMillis();\r\n        long tenSecondsInMillis = 2000;\r\n        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);\r\n        /*Calendar calendar = Calendar.getInstance();\r\n        calendar.setTimeInMillis(System.currentTimeMillis());\r\n        calendar.set(Calendar.HOUR_OF_DAY,0);\r\n        calendar.set(calendar.MINUTE,54);\r\n        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/\r\n    }\r\n\r\n\r\n    public void openModule_11() {\r\n        Intent intent = new Intent(this, ExpandableModule1.class);\r\n        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);\r\n        startActivity(intent);\r\n        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);\r\n    }\r\n\r\n    public void openModule_12() {\r\n        Intent intent = new Intent(this, ExpandableModule2.class);\r\n        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);\r\n        startActivity(intent);\r\n        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed() {\r\n        super.onBackPressed();\r\n        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);\r\n        finish();\r\n    }\r\n\r\n    private void createNotificationChannel() {\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\r\n            CharSequence name = \"TheBotanistchannel\";\r\n            String description = \"Channel for TheBotanist\";\r\n            int importance = NotificationManager.IMPORTANCE_DEFAULT;\r\n            NotificationChannel channel = new NotificationChannel(\"TheBotanist\", name, importance);\r\n            channel.setDescription(description);\r\n            // Register the channel with the system; you can't change the importance\r\n            // or other notification behaviors after this\r\n            NotificationManager notificationManager = getSystemService(NotificationManager.class);\r\n            notificationManager.createNotificationChannel(channel);\r\n        }\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/MainActivity.java	(revision 4f851eb7647b1909009b260b470145f2847ea443)
++++ app/src/main/java/com/example/flockflairapp/MainActivity.java	(date 1623829156584)
+@@ -4,8 +4,10 @@
+ import android.app.NotificationManager;
+ import android.app.PendingIntent;
+ import android.content.Intent;
++import android.content.SharedPreferences;
+ import android.os.Build;
+ import android.os.Bundle;
++import android.preference.PreferenceManager;
+ import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
+@@ -31,7 +33,20 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+         createNotificationChannel();
++
++     /*   SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
++        boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
++        SharedPreferences.Editor editor = wmbPreference.edit();
++
++        if (isFirstRun) {
++            // Code to run once
++            registerAlarm();
++            editor.putBoolean("FIRSTRUN", false);
++            editor.apply();
++        }*/
++
+         registerAlarm();
++
+         //registerAlarmsecond();
+ 
+         firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
+@@ -103,14 +118,14 @@
+         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+ 
+         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+-        long timeAtbuttonclick = System.currentTimeMillis();
+-        long tenSecondsInMillis = 2000;
+-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
+-        /*Calendar calendar = Calendar.getInstance();
++/*      long timeAtbuttonclick = System.currentTimeMillis();
++        long tenSecondsInMillis = 60000;
++        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);*/
++        Calendar calendar = Calendar.getInstance();
+         calendar.setTimeInMillis(System.currentTimeMillis());
+-        calendar.set(Calendar.HOUR_OF_DAY,0);
+-        calendar.set(calendar.MINUTE,54);
+-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/
++        calendar.set(Calendar.HOUR_OF_DAY,13);
++        calendar.set(calendar.MINUTE,10);
++        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+     }
+ 
+ 
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16__Default_Changelist_.xml	(revision 4f851eb7647b1909009b260b470145f2847ea443)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16__Default_Changelist_.xml	(revision 4f851eb7647b1909009b260b470145f2847ea443)
+@@ -1,194 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_09-06-2021_11_16_[Default_Changelist]" date="1623217564702" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 09-06-2021 11:16 [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/anatomy_flower.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/plantgrowth_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/plantkingdom_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/transportsinplants_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/breathing_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/humanrepr_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/digestionandabsorption_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/mineralnutrition_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/reproductivehealth_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/ecosystem_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/structuralorg_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/excretoryproducts_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/microbesinwelfare_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/photosysinhighplants_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/animalkingdom_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biomolecules_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/bodyfluids_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/sexualreproductioninflower_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/anatomy_flower_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biodiversity_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biotechnology_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/humanhealthdiseases_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biologicalclassification_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/thelivingworld_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/cellcyccle_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/evolution_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/cellunitoflife_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/neuralcontrol_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/principleofinheritance_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/molecularbasis_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/stratergiesenhancement_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/locomotion_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/population_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/bioapplications_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/environmentalsys_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/morphologyoffloweringplants_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/respiration_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/chemicalcordination_r.jpeg" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16_[Default_Changelist]/shelved.patch	(revision 4f851eb7647b1909009b260b470145f2847ea443)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_09-06-2021_11_16_[Default_Changelist]/shelved.patch	(revision 4f851eb7647b1909009b260b470145f2847ea443)
+@@ -1,1056 +0,0 @@
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM__Default_Changelist_.xml
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM__Default_Changelist_.xml	(revision 3c5936784b304dd0ee829086ec1f05a7e19cc4ae)
+-+++ .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM__Default_Changelist_.xml	(revision 3c5936784b304dd0ee829086ec1f05a7e19cc4ae)
+-@@ -1,194 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]" date="1622281918437" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Update at 29-05-2021 03:21 PM [Default Changelist]" />
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/bioapplications_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/bioapplications_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/chemicalcordination_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/chemicalcordination_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/microbesinwelfare_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/microbesinwelfare_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/molecularbasis_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/molecularbasis_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/morphologyoffloweringplants_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/morphologyoffloweringplants_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/breathing_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/breathing_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/principleofinheritance_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/principleofinheritance_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/humanrepr_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/humanrepr_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/stratergiesenhancement_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/stratergiesenhancement_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/biodiversity_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biodiversity_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/cellunitoflife_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/cellunitoflife_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/locomotion_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/locomotion_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/excretoryproducts_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/excretoryproducts_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/population_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/population_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/biomolecules_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biomolecules_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/reproductivehealth_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/reproductivehealth_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/digestionandabsorption_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/digestionandabsorption_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/anatomy_flower.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/anatomy_flower.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/animalkingdom_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/animalkingdom_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/biotechnology_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biotechnology_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/neuralcontrol_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/neuralcontrol_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/mineralnutrition_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/mineralnutrition_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/evolution_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/evolution_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/humanhealthdiseases_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/humanhealthdiseases_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/respiration_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/respiration_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/transportsinplants_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/transportsinplants_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/plantgrowth_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/plantgrowth_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/plantkingdom_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/plantkingdom_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/bodyfluids_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/bodyfluids_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/cellcyccle_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/cellcyccle_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/thelivingworld_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/thelivingworld_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/sexualreproductioninflower_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/sexualreproductioninflower_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/photosysinhighplants_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/photosysinhighplants_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/anatomy_flower_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/anatomy_flower_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/biologicalclassification_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/biologicalclassification_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/ecosystem_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/ecosystem_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/environmentalsys_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/environmentalsys_r.jpeg" />
+--  </binary>
+--  <binary>
+--    <option name="BEFORE_PATH" />
+--    <option name="AFTER_PATH" value="app/src/main/res/drawable-xxhdpi/structuralorg_r.jpeg" />
+--    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/structuralorg_r.jpeg" />
+--  </binary>
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/shelved.patch
+-===================================================================
+---- .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/shelved.patch	(revision 3c5936784b304dd0ee829086ec1f05a7e19cc4ae)
+-+++ .idea/shelf/Uncommitted_changes_before_Update_at_29-05-2021_03_21_PM_[Default_Changelist]/shelved.patch	(revision 3c5936784b304dd0ee829086ec1f05a7e19cc4ae)
+-@@ -1,834 +0,0 @@
+--Index: app/src/main/java/com/example/flockflairapp/ProgramAdapter.java
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+>package com.example.flockflairapp;\r\n\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\n\r\nimport static androidx.core.content.ContextCompat.startActivities;\r\nimport static androidx.core.content.ContextCompat.startActivity;\r\n\r\npublic class ProgramAdapter extends ArrayAdapter<String> {\r\n    Context context;\r\n    int[] images;\r\n    String[] name;\r\n    public ProgramAdapter(Context context, String[] name,int[] images) {\r\n        super(context, R.layout.single_item,R.id.textvieww1,name);\r\n        this.context = context;\r\n        this.images = images;\r\n        this.name = name;\r\n\r\n    }\r\n    @NonNull\r\n    @Override\r\n    public View getView(int position,  View convertView, ViewGroup parent) {\r\n        View singleItem = convertView;\r\n        ProgramViewHolder holder = null;\r\n        if(singleItem == null)\r\n        {\r\n            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);\r\n            singleItem = layoutInflater.inflate(R.layout.single_item, parent , false);\r\n            holder = new ProgramViewHolder(singleItem);\r\n            singleItem.setTag(holder);\r\n        }\r\n        else\r\n        {\r\n            holder = (ProgramViewHolder) singleItem.getTag();\r\n\r\n        }\r\n        holder.itemImage.setImageResource(images[position]);\r\n        holder.programTitle.setText(name[position]);\r\n        singleItem.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Toast.makeText(getContext(),\"You clicked \"+name[position],Toast.LENGTH_SHORT).show();\r\n\r\n\r\n                if(name[position].equals(\"What is living?\"))\r\n                {\r\n                    //Toast.makeText(getContext(),\"You clicked here\",Toast.LENGTH_SHORT).show();\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"What is Living\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.thelivingworld;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Diversity in the living\"))\r\n                {\r\n                    //Toast.makeText(getContext(),\"You clicked here\",Toast.LENGTH_SHORT).show();\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Diversity in the living\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.thelivingworld;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Taxonomic categories\"))\r\n                {\r\n                    //Toast.makeText(getContext(),\"You clicked here\",Toast.LENGTH_SHORT).show();\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Taxonomic categories\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.thelivingworld;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Taxonomic Aids\"))\r\n                {\r\n                    //Toast.makeText(getContext(),\"You clicked here\",Toast.LENGTH_SHORT).show();\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Taxonomic Aids\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.thelivingworld;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n\r\n\r\n                if(name[position].equals(\"Introduction Biological Classification\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Introduction Biological Classification\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Kingdom Monera\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Kingdom Monera\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Kingdom Protista\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Kingdom Protista\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Kingdom Fungi\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Kingdom Fungi\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Kingdom Plantae and Kingdom Animalia\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Kingdom Plantae and Kingdom Animalia\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Virus, viroids, prions, lichens\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Virus, viroids, prions, lichens\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.biologicalclassification;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Introduction Plantae\"))\r\n                {\r\n                    Intent i = new Intent(v.getContext(),landing.class);\r\n                    String subchap = \"Introduction Plantae\";\r\n                    String subchapd = \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.\";\r\n                    int subimage = R.drawable.plantkingdom;\r\n                    i.putExtra(\"sub_chap_name\",subchap);\r\n                    i.putExtra(\"sub_chap_desc\",subchapd);\r\n                    i.putExtra(\"sub_chap_img\",subimage);\r\n                    v.getContext().startActivity(i);\r\n                }\r\n                if(name[position].equals(\"Basis of classification\"))\r\n                {\r\n                    //Toast.makeText(getContext(),\"You clicked here\",Toast.LENGTH_SHORT).show();\r\n                    Intent intent = new Intent();\r\n                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);\r\n                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));\r\n                }\r\n\r\n\r\n\r\n            }\r\n        });\r\n        return singleItem;\r\n    }\r\n}\r\n
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- app/src/main/java/com/example/flockflairapp/ProgramAdapter.java	(revision 607330fbf8ca99aa4f8d2dc901c75a7f3137f7ef)
+--+++ app/src/main/java/com/example/flockflairapp/ProgramAdapter.java	(date 1622229017396)
+--@@ -2,7 +2,6 @@
+-- 
+-- import android.content.Context;
+-- import android.content.Intent;
+---import android.os.Bundle;
+-- import android.view.LayoutInflater;
+-- import android.view.View;
+-- import android.view.ViewGroup;
+--@@ -10,10 +9,6 @@
+-- import android.widget.Toast;
+-- 
+-- import androidx.annotation.NonNull;
+---import androidx.annotation.Nullable;
+---
+---import static androidx.core.content.ContextCompat.startActivities;
+---import static androidx.core.content.ContextCompat.startActivity;
+-- 
+-- public class ProgramAdapter extends ArrayAdapter<String> {
+--     Context context;
+--@@ -56,7 +51,7 @@
+--                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "What is Living";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+--+                    String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
+--                     int subimage = R.drawable.thelivingworld;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--@@ -68,7 +63,7 @@
+--                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Diversity in the living";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+--+                    String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
+--                     int subimage = R.drawable.thelivingworld;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--@@ -80,7 +75,7 @@
+--                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Taxonomic categories";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+--+                    String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
+--                     int subimage = R.drawable.thelivingworld;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--@@ -92,7 +87,7 @@
+--                     //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Taxonomic Aids";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+--+                    String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
+--                     int subimage = R.drawable.thelivingworld;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--@@ -105,8 +100,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Introduction Biological Classification";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -116,8 +111,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Kingdom Monera";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -127,8 +122,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Kingdom Protista";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -138,8 +133,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Kingdom Fungi";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -149,8 +144,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Kingdom Plantae and Kingdom Animalia";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -160,8 +155,8 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Virus, viroids, prions, lichens";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.biologicalclassification;
+--+                    String subchapd = "Robert Whittaker an American ecologist proposed five kingdom classification- Monera, Protista, Fungi, Plantae and Animalia";
+--+                    int subimage = R.drawable.biologicalclassification_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -171,8 +166,74 @@
+--                 {
+--                     Intent i = new Intent(v.getContext(),landing.class);
+--                     String subchap = "Introduction Plantae";
+---                    String subchapd = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit enim.";
+---                    int subimage = R.drawable.plantkingdom;
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Division Thallophyta(Algae)"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Division Thallophyta(Algae)";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Division Bryophyta"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Division Bryophyta";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Division Pteridophyta"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Division Pteridophyta";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Division Gymnospermae"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Division Gymnospermae";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Division Angiospermae"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Division Angiospermae";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Plant life cycle and alternation of generation"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Plant life cycle and alternation of generation";
+--+                    String subchapd = "Kingdom Plantae includes all the plants. They are eukaryotic, multicellular and autotrophic organisms. The plant cell contains a rigid cell wall. Plants have chlorophyll pigment, required for photosynthesis.";
+--+                    int subimage = R.drawable.plantkingdom_r;
+--                     i.putExtra("sub_chap_name",subchap);
+--                     i.putExtra("sub_chap_desc",subchapd);
+--                     i.putExtra("sub_chap_img",subimage);
+--@@ -180,11 +241,582 @@
+--                 }
+--                 if(name[position].equals("Basis of classification"))
+--                 {
+---                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
+---                    Intent intent = new Intent();
+---                    //intent = new Intent(context.getApplicationContext(),DisplayQuestions.class);
+---                    v.getContext().startActivity(new Intent(v.getContext(),DisplayQuestions.class));
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Basis of classification";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+
+--+                }
+--+                if(name[position].equals("Phylum Porifera"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Porifera";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+
+--+                }
+--+                if(name[position].equals("Phylum Coelenterata(Cnidaria)"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Coelenterata(Cnidaria)";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+
+--+                }
+--+                if(name[position].equals("Phylum platyhelminthes"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum platyhelminthes";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Aschelminthes"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Aschelminthes";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Annelida"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Annelida";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Arthropoda"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Arthropoda";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Mollusca"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Mollusca";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Echinodermata"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Echinodermata";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Hemichordata"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Hemichordata";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Phylum Chordata"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Phylum Chordata";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Super Class Pisces"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Super Class Pisces";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Super Class Tetrapoda"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Super Class Tetrapoda";
+--+                    String subchapd = "The kingdom Animalia, includes all animals. Animals are multicellular, eukaryotic organisms, which are heterotrophic. Most animals obtain nutrition by ingesting other organisms or decomposing organic material.";
+--+                    int subimage = R.drawable.animalkingdom_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("The Root"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The Root";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("The Stem"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The Stem";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("The Leaf"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The Leaf";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("The inflorescence and The Flower"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The inflorescence and The Flower";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--                 }
+--+                if(name[position].equals("The Fruit and The seed"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The Fruit and The seed";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Description of a typical flowering plant and some important families"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Description of a typical flowering plant and some important families";
+--+                    String subchapd = "Morphology is the name given to the science that deals with the study of the form and structure of things. Morphology of a flowering plant includes the roots, stem, leaves, flowers, and fruits.";
+--+                    int subimage = R.drawable.morphologyoffloweringplants_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Meristematic tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Meristematic tissue";
+--+                    String subchapd = "Study of internal structure and functional organization of an organism is defined as anatomy. It consists of simple tissues such as parenchyma, collenchyma and sclerenchyma. In leaves, the ground tissue consists cells and is called mesophyll.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Permanent tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Permanent tissue";
+--+                    String subchapd = "Study of internal structure and functional organization of an organism is defined as anatomy. It consists of simple tissues such as parenchyma, collenchyma and sclerenchyma. In leaves, the ground tissue consists cells and is called mesophyll.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("The tissue system"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "The tissue system";
+--+                    String subchapd = "Study of internal structure and functional organization of an organism is defined as anatomy. It consists of simple tissues such as parenchyma, collenchyma and sclerenchyma. In leaves, the ground tissue consists cells and is called mesophyll.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Anatomy of Dicotyledonous and Monocotyledonous Plants"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Anatomy of Dicotyledonous and Monocotyledonous Plants";
+--+                    String subchapd = "Study of internal structure and functional organization of an organism is defined as anatomy. It consists of simple tissues such as parenchyma, collenchyma and sclerenchyma. In leaves, the ground tissue consists cells and is called mesophyll.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Secondary growth"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Secondary growth";
+--+                    String subchapd = "Study of internal structure and functional organization of an organism is defined as anatomy. It consists of simple tissues such as parenchyma, collenchyma and sclerenchyma. In leaves, the ground tissue consists cells and is called mesophyll.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Epithelial Tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Epithelial Tissue";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Connective Tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Connective Tissue";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Muscular Tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Muscular Tissue";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Nervous Tissue"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Nervous Tissue";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Earthworm"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Earthworm";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Cockroach"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Cockroach";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Frog"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Frog";
+--+                    String subchapd = "Histology is the branch of biology which studies the microscopic anatomy of biological tissues. Animal tissues are grouped into four basic types: connective, muscle, nervous, and epithelial.";
+--+                    int subimage = R.drawable.anatomy_flower_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Cell theory, an overview of cell"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Cell theory, an overview of cell";
+--+                    String subchapd = "Cells are the smallest units of life, and hence are often referred to as the building blocks of life. The study of cells is called cell biology, cellular biology, or cytology.";
+--+                    int subimage = R.drawable.cellunitoflife_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Prokaryotic cell"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Prokaryotic cell";
+--+                    String subchapd = "Cells are the smallest units of life, and hence are often referred to as the building blocks of life. The study of cells is called cell biology, cellular biology, or cytology.";
+--+                    int subimage = R.drawable.cellunitoflife_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Eukaryotic cell- Cell membrane, Cell wall, Endomembrane system"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Eukaryotic cell- Cell membrane, Cell wall, Endomembrane system";
+--+                    String subchapd = "Cells are the smallest units of life, and hence are often referred to as the building blocks of life. The study of cells is called cell biology, cellular biology, or cytology.";
+--+                    int subimage = R.drawable.cellunitoflife_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Eukaryotic cell- Mitochondria, Plastids, Ribosomes, Cytoskeleton"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Eukaryotic cell- Cell membrane, Cell wall, Endomembrane system";
+--+                    String subchapd = "Cells are the smallest units of life, and hence are often referred to as the building blocks of life. The study of cells is called cell biology, cellular biology, or cytology.";
+--+                    int subimage = R.drawable.cellunitoflife_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Eukaryotic cell- Cilia and Flagella, Centrosome and Centrioles, Nucleus, Microbodies"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Eukaryotic cell- Cilia and Flagella, Centrosome and Centrioles, Nucleus, Microbodies";
+--+                    String subchapd = "Cells are the smallest units of life, and hence are often referred to as the building blocks of life. The study of cells is called cell biology, cellular biology, or cytology.";
+--+                    int subimage = R.drawable.cellunitoflife_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("How to analyse Chemical Composition?"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "How to analyse Chemical Composition?";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Primary and Secondary Metabolites, Biomacromolecules"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Primary and Secondary Metabolites, Biomacromolecules";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Proteins and Structure of Proteins"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Proteins and Structure of Proteins";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Polysaccharides"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Polysaccharides";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Nucleic Acids"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Nucleic Acids";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Nature of bond linking Monomers in a Polymer and Dynamic State of body constituents- Concepts of Metabolism"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Nature of bond linking Monomers in a Polymer and Dynamic State of body constituents- Concepts of Metabolism";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Metabolic Basis for living and The Living State"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Metabolic Basis for living and The Living State";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Enzymes and co-factors"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Enzymes and co-factors";
+--+                    String subchapd = "Biomolecule, also called biological molecule, any of numerous substances that are produced by cells and living organisms. They can be Carbohydrates, Proteins, Lipids and Nucleic acid.";
+--+                    int subimage = R.drawable.biomolecules_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Cell Cycle"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Cell Cycle";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Prophase"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Prophase";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Metaphase"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Metaphase";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Anaphase"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Anaphase";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Telophase, cytokinesis and significance of Mitosis"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Telophase, cytokinesis and significance of Mitosis";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Meiosis"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Meiosis";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Meiosis-1"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Meiosis-1";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+                if(name[position].equals("Meiosis- 2 and significance of Meiosis"))
+--+                {
+--+                    Intent i = new Intent(v.getContext(),landing.class);
+--+                    String subchap = "Meiosis- 2 and significance of Meiosis";
+--+                    String subchapd = "The cell cycle is an ordered series of events involving cell growth and cell division that produces two new daughter cells in mitosis; while meiosis produces four daughter cells.";
+--+                    int subimage = R.drawable.cellcyccle_r;
+--+                    i.putExtra("sub_chap_name",subchap);
+--+                    i.putExtra("sub_chap_desc",subchapd);
+--+                    i.putExtra("sub_chap_img",subimage);
+--+                    v.getContext().startActivity(i);
+--+                }
+--+
+--+
+--+
+-- 
+-- 
+-- 
+--Index: .idea/misc.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- .idea/misc.xml	(revision 607330fbf8ca99aa4f8d2dc901c75a7f3137f7ef)
+--+++ .idea/misc.xml	(date 1622207042520)
+--@@ -1,6 +1,6 @@
+-- <?xml version="1.0" encoding="UTF-8"?>
+-- <project version="4">
+---  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+--+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+--     <output url="file://$PROJECT_DIR$/build/classes" />
+--   </component>
+--   <component name="ProjectType">
+--Index: .idea/runConfigurations.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"RunConfigurationProducerService\">\r\n    <option name=\"ignoredProducers\">\r\n      <set>\r\n        <option value=\"com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+----- .idea/runConfigurations.xml	(revision 607330fbf8ca99aa4f8d2dc901c75a7f3137f7ef)
+--+++ .idea/runConfigurations.xml	(date 1622228940615)
+--@@ -3,7 +3,6 @@
+--   <component name="RunConfigurationProducerService">
+--     <option name="ignoredProducers">
+--       <set>
+---        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+--         <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+--         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+--         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_42__Default_Changelist_.xml
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_23-02-2021_22_05__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_23-02-2021_22_05__Default_Changelist_.xml
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_16-02-2021_00_04__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_16-02-2021_00_04__Default_Changelist_.xml
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_1.xml .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_1.xml
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_26-03-2021_23_59__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_26-03-2021_23_59__Default_Changelist_.xml
+--diff --git .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_14-02-2021_22_41__Default_Changelist_.xml
+-Index: .idea/runConfigurations.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"RunConfigurationProducerService\">\r\n    <option name=\"ignoredProducers\">\r\n      <set>\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/runConfigurations.xml	(revision 3c5936784b304dd0ee829086ec1f05a7e19cc4ae)
+-+++ .idea/runConfigurations.xml	(date 1622918196113)
+-@@ -3,6 +3,7 @@
+-   <component name="RunConfigurationProducerService">
+-     <option name="ignoredProducers">
+-       <set>
+-+        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+-         <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+-         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+-         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+Index: app/src/main/java/com/example/flockflairapp/RemainderBroadcastsecond.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.flockflairapp;\r\n\r\nimport android.app.PendingIntent;\r\nimport android.content.BroadcastReceiver;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\n\r\nimport androidx.core.app.NotificationCompat;\r\nimport androidx.core.app.NotificationManagerCompat;\r\n\r\npublic class RemainderBroadcastsecond extends BroadcastReceiver {\r\n    @Override\r\n    public void onReceive(Context context, Intent intent) {\r\n        intent = new Intent(context, QuestionOfTheDay.class);\r\n        // intent.putExtra(\"STD11\",11);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);\r\n        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);\r\n\r\n        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, \"TheBotanist\")\r\n                .setSmallIcon(R.drawable.thebotanist)\r\n                .setContentTitle(\"Question of the day\")\r\n                .setContentText(\"second notification\")\r\n                .setPriority(NotificationCompat.PRIORITY_DEFAULT)\r\n                .setContentIntent(pendingIntent)\r\n                .setAutoCancel(true);\r\n\r\n        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);\r\n\r\n        notificationManager.notify(1, builder.build());\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/flockflairapp/RemainderBroadcastsecond.java	(revision 4f851eb7647b1909009b260b470145f2847ea443)
++++ app/src/main/java/com/example/flockflairapp/RemainderBroadcastsecond.java	(date 1623785843227)
+@@ -15,7 +15,6 @@
+         // intent.putExtra("STD11",11);
+         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+-
+         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanist")
+                 .setSmallIcon(R.drawable.thebotanist)
+                 .setContentTitle("Question of the day")
