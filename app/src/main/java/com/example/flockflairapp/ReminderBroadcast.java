@@ -14,22 +14,24 @@ public class ReminderBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         intent = new Intent(context, QuestionOfTheDay.class);
-       // intent.putExtra("STD11",11);
+        intent.putExtra("STD11",11);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //context.startActivity(intent);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanist")
                 .setSmallIcon(R.drawable.thebotanist)
-                .setContentTitle("Question of the day")
-                .setContentText("Hey students! Try the Question of the day ")
+                .setContentTitle("Random Questions of Std11!")
+                .setContentText("Hey Students ! Can you solve this questions? ")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-
         notificationManager.notify(1, builder.build());
 
 
     }
+
+
 }

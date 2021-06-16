@@ -57,6 +57,8 @@ public class landing extends AppCompatActivity {
                 Intent i1 = new Intent(getApplicationContext(),DisplayQuestions.class);
                 i1.putExtra("subChapName", chap1);
                 startActivity(i1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 

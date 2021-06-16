@@ -4,8 +4,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +33,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
-        registerAlarm();
-        //registerAlarmsecond();
+        createNotificationChannelnew();
+
+     /*   SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+        SharedPreferences.Editor editor = wmbPreference.edit();
+
+        if (isFirstRun) {
+            // Code to run once
+            registerAlarm();
+            editor.putBoolean("FIRSTRUN", false);
+            editor.apply();
+        }*/
+
 
         firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openModule_11();
+                registerAlarm();
 
             }
         });
@@ -50,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openModule_12();
+                registerAlarmsecond();
+
 
             }
         });
@@ -79,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-/*    private void registerAlarmsecond() {
+
+
+    private void registerAlarmsecond() {
         Intent intent = new Intent(MainActivity.this, RemainderBroadcastsecond.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -87,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
         long timeAtbuttonclick = System.currentTimeMillis();
         long tenSecondsInMillis = 2000;
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
-        *//*Calendar calendar = Calendar.getInstance();
+       /* Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,0);
         calendar.set(calendar.MINUTE,54);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*//*
-    }*/
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/
+    }
 
     private void registerAlarm() {
 
@@ -106,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
         /*Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY,0);
-        calendar.set(calendar.MINUTE,54);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/
+        calendar.set(Calendar.HOUR_OF_DAY,13);
+        calendar.set(calendar.MINUTE,12);
+        alarmManager.setWindow(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);*/
     }
 
 
@@ -145,6 +165,21 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    private void createNotificationChannelnew() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "TheBotanistchannelnew";
+            String description = "Channel for TheBotanistnew";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("TheBotanistnew", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
     }
 
 

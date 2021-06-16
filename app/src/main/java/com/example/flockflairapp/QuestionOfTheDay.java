@@ -2,6 +2,7 @@ package com.example.flockflairapp;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -102,12 +103,17 @@ public class QuestionOfTheDay extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        /*ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
         if(am != null) {
             List<ActivityManager.AppTask> tasks = am.getAppTasks();
             if (tasks != null && tasks.size() > 0) {
                 tasks.get(0).setExcludeFromRecents(true);
             }
-        }
+        }*/
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

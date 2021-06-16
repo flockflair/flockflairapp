@@ -42,9 +42,12 @@ public class ProgramAdapter extends ArrayAdapter<String> {
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if(name[position].equals("What is living world?"))
                 {
                     Intent i = new Intent(v.getContext(),landing.class);
+
                     String subchap = "What is living world?";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
                     int subimage = R.drawable.thelivingworld;
@@ -52,6 +55,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
                     v.getContext().startActivity(i);
+
                 }
                 if(name[position].equals("Diversity in the living"))
                 {
@@ -73,8 +77,10 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     i.putExtra("sub_chap_name",subchap);
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
+
                     v.getContext().startActivity(i);
                 }
+
                 if(name[position].equals("Taxonomic Aids"))
                 {
                     Intent i = new Intent(v.getContext(),landing.class);
@@ -3094,6 +3100,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                     i.putExtra("sub_chap_desc",subchapd);
                     i.putExtra("sub_chap_img",subimage);
                     v.getContext().startActivity(i);
+
                 }
 
 
@@ -3112,7 +3119,11 @@ public class ProgramAdapter extends ArrayAdapter<String> {
 
 
             }
+
+
         });
         return singleItem;
+
     }
+
 }

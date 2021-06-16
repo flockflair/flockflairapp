@@ -12,21 +12,20 @@ public class RemainderBroadcastsecond extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         intent = new Intent(context, QuestionOfTheDay.class);
-        // intent.putExtra("STD11",11);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanist")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanistnew")
                 .setSmallIcon(R.drawable.thebotanist)
-                .setContentTitle("Question of the day")
-                .setContentText("second notification")
+                .setContentTitle("Random Questions of Std12!")
+                .setContentText("Hey Students ! Can you solve this questions?")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
-        notificationManager.notify(1, builder.build());
+        notificationManager.notify(2, builder.build());
 
     }
 }
