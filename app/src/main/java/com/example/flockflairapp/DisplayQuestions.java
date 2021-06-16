@@ -38,7 +38,7 @@ import java.util.List;
 public class DisplayQuestions extends AppCompatActivity {
 
     private final String TAG = "DisplayQuestions";
-    public static final int MAX_BOOKMARKS = 10;
+    public static final int MAX_BOOKMARKS = 50;
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = db.getReference();
@@ -1189,6 +1189,7 @@ public class DisplayQuestions extends AppCompatActivity {
             prev_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    enableOption(true);
                     position--;
                     if (position==-1){
                         Toast.makeText(DisplayQuestions.this, "No previous Questions available", Toast.LENGTH_SHORT).show();

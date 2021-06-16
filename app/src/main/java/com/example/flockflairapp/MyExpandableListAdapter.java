@@ -2,8 +2,8 @@ package com.example.flockflairapp;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +35,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private Map<String , List<String>> moduleCollection;
     List<Integer> groupList;
     private List<String> moduleList;
-    Uri name;
+    public static final int MAX_FavoriteChapter = 10;
 
 
     public MyExpandableListAdapter(Context context, List<String> moduleList, Map<String, List<String>> moduleCollection,List<Integer> groupList,Map<Integer,List<Integer>> imageCollection){
@@ -44,7 +44,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         this.moduleCollection = moduleCollection;
         this.groupList = groupList;
         this.moduleList = moduleList;
-
     }
 
 
@@ -100,8 +99,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         item.setTypeface(null, Typeface.BOLD);
         item.setText(Name);
         return view;
-
-
     }
 
     @Override
@@ -121,7 +118,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
         //Favorite favorite = new Favorite();
         FavoriteModel favoriteModel = new FavoriteModel(model);
-
         List<FavoriteModel> list = new ArrayList<>();
 
         Query check = favRef.child(uid).child("Favorite").orderByChild("favoriteName");
@@ -154,11 +150,19 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         star.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Favorite.setFavorite(favoriteModel);
-                Toast.makeText(context,"fav added",Toast.LENGTH_SHORT).show();
-                star_fav.setVisibility(View.VISIBLE);
-                star.setVisibility(View.INVISIBLE);
-                notifyDataSetChanged();
+                if (list.size()< MAX_FavoriteChapter){
+                    Favorite.setFavorite(favoriteModel);
+                    Toast.makeText(context,"Favorite Chapter Added",Toast.LENGTH_SHORT).show();
+                    star_fav.setVisibility(View.VISIBLE);
+                    star.setVisibility(View.INVISIBLE);
+                    notifyDataSetChanged();
+
+                }else {
+                    Toast.makeText(context,"Favorite Chapters "+list.size()+" MAX",Toast.LENGTH_SHORT).show();
+                    star.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    star_fav.setVisibility(View.INVISIBLE);
+                    star.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -166,7 +170,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Favorite.removeFavorite(favoriteModel);
-                Toast.makeText(context,"removed from fav",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Favorite Chapter Removed",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.INVISIBLE);
                 star.setVisibility(View.VISIBLE);
                 notifyDataSetChanged();

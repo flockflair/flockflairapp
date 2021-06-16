@@ -269,7 +269,6 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
         if (selectionList.isEmpty()){
             counter=0;
             for (int i = 0; i<list.size();i++){
-                //checkbox bug
                 selectionList.add(list.get(i));
                 counter++;
                 updateCounter(counter);

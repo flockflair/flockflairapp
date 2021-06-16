@@ -102,14 +102,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
             linearLayout.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), BookMarksDisplayQuestion.class);
                 intent.putExtra("position", position);
-                /*intent.putExtra("Qpos", String.valueOf(booKlist.get(position).getQuestion()));
-                intent.putExtra("OApos", String.valueOf(booKlist.get(position).getOptionA()));
-                intent.putExtra("OBpos", String.valueOf(booKlist.get(position).getOptionB()));
-                intent.putExtra("OCpos", String.valueOf(booKlist.get(position).getOptionC()));
-                intent.putExtra("ODpos", String.valueOf(booKlist.get(position).getOptionD()));
-                intent.putExtra("DDpos", String.valueOf(booKlist.get(position).getDifficulty()));
-                intent.putExtra("CApos", String.valueOf(booKlist.get(position).getCorrectAnswer()));
-                intent.putExtra("Expos", String.valueOf(booKlist.get(position).getExplaination()));*/
                 view.getContext().startActivity(intent);
             });
 
@@ -124,7 +116,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                             keyList.add(pushKey);
                         }
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setTitle("you are deleting Bookmark?");
+                        builder.setTitle("Deleting Bookmark?");
                         builder.setPositiveButton("Yes", (dialog, which) -> {
                             dbBookmarks.child("user").child(uuid).child("Bookmarks").child(keyList.get(position)).removeValue();
                             booKlist.remove(position);
@@ -132,6 +124,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.Viewho
                             Toast.makeText(view.getContext(), " Bookmark deleted", Toast.LENGTH_LONG).show();
                         });
                         builder.setNegativeButton("No", (dialogInterface, i) -> {
+                            dialogInterface.cancel();
                             Toast.makeText(view.getContext(), "Cancel", Toast.LENGTH_LONG).show();
                         });
                         builder.show();
