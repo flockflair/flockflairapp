@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--this layout is to display Image and Name of favourite chapter-->
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

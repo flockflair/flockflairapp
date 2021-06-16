@@ -20,9 +20,6 @@
         <activity android:name=".listviewimg" />
         <activity android:name=".landing" />
         <activity
-            android:name=".subtopic"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".BookmarkActivity"
             android:label="Bookmarks"
             android:parentActivityName=".MainActivity"
@@ -58,15 +55,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".About"
-            android:screenOrientation="portrait"
-            android:theme="@style/Splash" />
-        <activity
             android:name=".DisplayQuestions"
-            android:screenOrientation="portrait"
-            android:theme="@style/Splash" />
-        <activity
-            android:name=".subtopic_2_11"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
@@ -91,7 +80,21 @@
         <activity
             android:name=".phonenumber"
             android:screenOrientation="portrait" />
-<receiver android:name=".ReminderBroadcast"/>
+
+        <receiver android:name=".ReminderBroadcast">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+<!--        <receiver android:name=".RemainderBroadcastsecond">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>-->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

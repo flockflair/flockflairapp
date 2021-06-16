@@ -3,7 +3,6 @@ package com.example.flockflairapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,11 +36,10 @@ import java.util.Map;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class UpdateProfile extends AppCompatActivity {
-    //private FirebaseAuth firebaseAuth;
+
     private TextInputEditText Ename;
     private TextInputEditText Ephone;
     private TextView nofavtv;
-    //private TextView Ephone;
     private Button save;
     private Button logout;
     private Button back;
@@ -52,7 +50,7 @@ public class UpdateProfile extends AppCompatActivity {
     DatabaseReference reference;
     AwesomeValidation awesomeValidation;
 
-    //FavRecycler
+    //Requirements for Favourite Recycler
     RecyclerView recyclerView;
     ArrayList<FavModel> favModels;
     FavAdapter favAdapter;
@@ -62,22 +60,14 @@ public class UpdateProfile extends AppCompatActivity {
     //All_UserMember member;
     int position = 3;
 
-    //nofavholder
+    //holder when there are no favourite chapters in the database for the particular user
     int pointer = 1;
-
-    //FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference databaseReference;
-    //DocumentReference documentReference;
-    //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-
-
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -88,7 +78,6 @@ public class UpdateProfile extends AppCompatActivity {
                 fAuth.signOut();
                 finish();
                 startActivity(new Intent(getApplicationContext(),phonenumber.class));
-
             }
         });
 
@@ -98,16 +87,11 @@ public class UpdateProfile extends AppCompatActivity {
         back = (Button)findViewById(R.id.button_back);
         edit = (Button)findViewById(R.id.button_edit);
         nofavtv = (TextView)findViewById(R.id.nofav);
-        //firebaseAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         user = fAuth.getInstance().getCurrentUser();
         reference = database.getInstance().getReference("user");
         userID = user.getUid();
-       awesomeValidation.addValidation(this, R.id.EditName, "[a-zA-Z\\s]+", R.string.invalid_name);
-       //awesomeValidation.addValidation(this,R.id.EditPhone, "((\\+*)((0[ -]+)*|(91 )*)(\\d{12}|\\d{10}))|\\d{5}([- ]*)\\d{6}", R.string.invalid_phone);
-
-
-
+        awesomeValidation.addValidation(this, R.id.EditName, "[a-zA-Z\\s]+", R.string.invalid_name);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -129,7 +113,6 @@ public class UpdateProfile extends AppCompatActivity {
             }
         });
 
-        //}
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,18 +135,11 @@ public class UpdateProfile extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 if(awesomeValidation.validate()) {
-                    Toast.makeText(getApplicationContext(),"Successful Operation", LENGTH_SHORT).show();
                     uploadData();
                 }
                 else
@@ -177,20 +153,10 @@ public class UpdateProfile extends AppCompatActivity {
                 Ename.setFocusableInTouchMode(false);
                 Ename.setCursorVisible(false);
                 Ename.setFocusable(false);
-
-
-
-
-
-
             }
-
-
 
             private void uploadData()
             {
-
-
                 if(!TextUtils.isEmpty(Ename.getText().toString()) || !TextUtils.isEmpty(Ephone.getText().toString()))
                 {
                     Java_SignUp obj = new Java_SignUp(Ename.getText().toString(),Ephone.getText().toString());
@@ -198,17 +164,13 @@ public class UpdateProfile extends AppCompatActivity {
                     profile.put("name",obj.getName());
                     reference.child(userID).updateChildren(profile);
                     Toast.makeText(getApplicationContext(),"Your Profile is Updated", Toast.LENGTH_SHORT).show();
-
                 }
                 else
                     {
                         Toast.makeText(getApplicationContext(),"Please provide correct Information", Toast.LENGTH_SHORT).show();
-
                 }
 
             }
-
-
         });
 
 
@@ -229,15 +191,12 @@ public class UpdateProfile extends AppCompatActivity {
 
                     case R.id.about:
                         return true;
-
                 }
                 return false;
-
             }
-
         });
 
-        //FavPart
+        //Recycler for Favourite Part
         recyclerView = findViewById(R.id.recycler_view);
 
         //ArrayList
@@ -251,9 +210,7 @@ public class UpdateProfile extends AppCompatActivity {
                 Iterator<DataSnapshot> iterator = snapshotIterator.iterator();
 
                 while (iterator.hasNext()) {
-
                     DataSnapshot next = (DataSnapshot) iterator.next();
-                    //Toast.makeText(getApplicationContext(), (String) next.child("favoriteName").getValue(),LENGTH_SHORT).show();
                     String value = (String) next.child("favoriteName").getValue();
                     //adding drawable and Favourite chapter name to FavModel
                     //pointer = 0 there is atleast one favourite chapter
@@ -460,7 +417,7 @@ public class UpdateProfile extends AppCompatActivity {
 
                 }
 
-                //Initialize horizontal LinearLayout
+                //Initializing horizontal LinearLayout inorder to display favourite chapters
                 LinearLayoutManager layoutManager = new LinearLayoutManager(
                         UpdateProfile.this,LinearLayoutManager.HORIZONTAL,false
                 );
@@ -478,7 +435,6 @@ public class UpdateProfile extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

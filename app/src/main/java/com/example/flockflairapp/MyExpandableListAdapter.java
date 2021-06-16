@@ -116,7 +116,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         int id = imageCollection.get(groupList.get(i)).get(i1);
         imageView.setImageResource(id);
 
-        //Favorite favorite = new Favorite();
         FavoriteModel favoriteModel = new FavoriteModel(model);
         List<FavoriteModel> list = new ArrayList<>();
 
@@ -163,6 +162,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                     star_fav.setVisibility(View.INVISIBLE);
                     star.setVisibility(View.VISIBLE);
                 }
+                Favorite.setFavorite(favoriteModel);
+                Toast.makeText(context,"Added to Favourite Part",Toast.LENGTH_SHORT).show();
+                star_fav.setVisibility(View.VISIBLE);
+                star.setVisibility(View.INVISIBLE);
+                notifyDataSetChanged();
             }
         });
 
@@ -170,7 +174,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Favorite.removeFavorite(favoriteModel);
-                Toast.makeText(context,"Favorite Chapter Removed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Removed from Favourite Part",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.INVISIBLE);
                 star.setVisibility(View.VISIBLE);
                 notifyDataSetChanged();

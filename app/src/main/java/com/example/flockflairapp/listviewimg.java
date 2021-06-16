@@ -1,15 +1,12 @@
 package com.example.flockflairapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,15 +17,7 @@ public class listviewimg extends AppCompatActivity {
 
     ListView lvProgram;
     ImageView backbutton;
-    ImageView star;
     TextView name1;
-
-    //String[] subchaptername = {"Introduction","Kingdom Monera","Kingdom Protista","Kingdom Fungi","Kingdom Plantae and Kingdom Animalia",
-            //"Virus, viroids, prions, lichens"};
-    //int[] subchapImages = {R.drawable.android_1,R.drawable.angular,R.drawable.paint,R.drawable.atom,R.drawable.android_1,R.drawable.paint,R.drawable.angular};
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
