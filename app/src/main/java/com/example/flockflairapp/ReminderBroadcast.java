@@ -21,8 +21,8 @@ public class ReminderBroadcast extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "TheBotanist")
                 .setSmallIcon(R.drawable.thebotanist)
-                .setContentTitle("Random Questions of Std11!")
-                .setContentText("Hey Students ! Can you solve this questions? ")
+                .setContentTitle("Random Question of Std11!")
+                .setContentText("Hey Students ! Can you solve this question? ")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
