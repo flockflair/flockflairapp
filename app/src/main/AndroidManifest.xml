@@ -20,9 +20,6 @@
         <activity android:name=".listviewimg" />
         <activity android:name=".landing" />
         <activity
-            android:name=".subtopic"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".BookmarkActivity"
             android:label="Bookmarks"
             android:parentActivityName=".MainActivity"
@@ -58,15 +55,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".About"
-            android:screenOrientation="portrait"
-            android:theme="@style/Splash" />
-        <activity
             android:name=".DisplayQuestions"
-            android:screenOrientation="portrait"
-            android:theme="@style/Splash" />
-        <activity
-            android:name=".subtopic_2_11"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity

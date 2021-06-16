@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -43,12 +42,8 @@ public class ProgramAdapter extends ArrayAdapter<String> {
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"You clicked "+name[position],Toast.LENGTH_SHORT).show();
-
-
                 if(name[position].equals("What is living world?"))
                 {
-                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "What is living world?";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
@@ -60,7 +55,6 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 }
                 if(name[position].equals("Diversity in the living"))
                 {
-                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Diversity in the living world";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
@@ -72,7 +66,6 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 }
                 if(name[position].equals("Taxonomic categories"))
                 {
-                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Taxonomic categories";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";
@@ -84,7 +77,6 @@ public class ProgramAdapter extends ArrayAdapter<String> {
                 }
                 if(name[position].equals("Taxonomic Aids"))
                 {
-                    //Toast.makeText(getContext(),"You clicked here",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(v.getContext(),landing.class);
                     String subchap = "Taxonomic Aids";
                     String subchapd = "Taxonomy is a branch of biology which deals with identification, nomenclature and classification of an organism.";

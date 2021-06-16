@@ -3,7 +3,6 @@ package com.example.flockflairapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,11 +36,10 @@ import java.util.Map;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class UpdateProfile extends AppCompatActivity {
-    //private FirebaseAuth firebaseAuth;
+
     private TextInputEditText Ename;
     private TextInputEditText Ephone;
     private TextView nofavtv;
-    //private TextView Ephone;
     private Button save;
     private Button logout;
     private Button back;
@@ -64,12 +62,6 @@ public class UpdateProfile extends AppCompatActivity {
 
     //nofavholder
     int pointer = 1;
-
-    //FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference databaseReference;
-    //DocumentReference documentReference;
-    //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -98,13 +90,11 @@ public class UpdateProfile extends AppCompatActivity {
         back = (Button)findViewById(R.id.button_back);
         edit = (Button)findViewById(R.id.button_edit);
         nofavtv = (TextView)findViewById(R.id.nofav);
-        //firebaseAuth = FirebaseAuth.getInstance();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         user = fAuth.getInstance().getCurrentUser();
         reference = database.getInstance().getReference("user");
         userID = user.getUid();
        awesomeValidation.addValidation(this, R.id.EditName, "[a-zA-Z\\s]+", R.string.invalid_name);
-       //awesomeValidation.addValidation(this,R.id.EditPhone, "((\\+*)((0[ -]+)*|(91 )*)(\\d{12}|\\d{10}))|\\d{5}([- ]*)\\d{6}", R.string.invalid_phone);
 
 
 

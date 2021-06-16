@@ -1,14 +1,8 @@
 package com.example.flockflairapp;
 
-import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
@@ -30,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +59,6 @@ public class ExpandableModule1 extends AppCompatActivity {
                 final TextView greet =findViewById(R.id.StudentName);
                 HashMap<String,String> hash = new HashMap<>();
                 hash.put("name",snapshot.child("name").getValue(String.class));
-                //hash.put("phone",snapshot.child("phone").getValue(String.class));
                 greet.setText("Welcome "+hash.get("name") +"!");
                 reference.keepSynced(true);
             }
@@ -117,7 +109,6 @@ public class ExpandableModule1 extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
                 String selected = expandableListAdapter.getChild(i, i1).toString();
-                Toast.makeText(getApplicationContext(), "Selected " + selected, Toast.LENGTH_SHORT).show();
                 Intent intent;
 
                 switch (selected) {
@@ -129,7 +120,6 @@ public class ExpandableModule1 extends AppCompatActivity {
                         intent.putExtra("subchaptername",subchaptername);
                         intent.putExtra("subchapImages",subchapImages);
                         intent.putExtra("name",name);
-                        //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
                     case "Biological Classification":
@@ -140,7 +130,6 @@ public class ExpandableModule1 extends AppCompatActivity {
                         intent.putExtra("subchapImages",subchapImages1);
                         String name1 = selected;
                         intent.putExtra("name",name1);
-                        //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
                     case "Plant Kingdom":
@@ -152,7 +141,6 @@ public class ExpandableModule1 extends AppCompatActivity {
                         intent.putExtra("subchapImages",subchapImages2);
                         String name2 = selected;
                         intent.putExtra("name",name2);
-                        //intent.putExtra("sub1","sub1");
                         startActivity(intent);
                         break;
 
@@ -257,7 +245,7 @@ public class ExpandableModule1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case "Respiration in Plants":
-                        String[] subchaptername13 = {"Introduction Respiration in Plants ","Glycolysis","Fermentation","Aerobic Respiration","Tricarboxylic Acid Cycle","Electron Transport System (ETS) and oxidative Phosphorylation","The Respiratory Balance Sheet,  Amphibolic Pathway and Respiratory Quotient"};
+                        String[] subchaptername13 = {"Introduction Respiration in Plants","Glycolysis","Fermentation","Aerobic Respiration","Tricarboxylic Acid Cycle","Electron Transport System (ETS) and oxidative Phosphorylation","The Respiratory Balance Sheet,  Amphibolic Pathway and Respiratory Quotient"};
                         int[] subchapImages13 = {R.drawable.respiration,R.drawable.respiration,R.drawable.respiration,R.drawable.respiration,R.drawable.respiration,R.drawable.respiration,R.drawable.respiration};
                         intent = new Intent(getApplicationContext(), listviewimg.class);
                         intent.putExtra("subchaptername",subchaptername13);
@@ -346,21 +334,10 @@ public class ExpandableModule1 extends AppCompatActivity {
                         intent.putExtra("name",name21);
                         startActivity(intent);
                         break;
-
-
-
-
-
-
-
                 }
-
                 return true;
             }
         });
-
-
-
         back = (ImageView)findViewById(R.id.backbuttonimg);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

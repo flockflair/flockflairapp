@@ -9,25 +9,6 @@
     android:textAlignment="center"
     tools:context=".SplashScreen">
 
-
-    <!--- <ImageView
-        android:id="@+id/logomain"
-        android:layout_width="113dp"
-        android:layout_height="318dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="100dp"
-        android:src="@drawable/logo2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311"
-        />
-        -->
-
-
     <ImageView
         android:id="@+id/dna"
         android:layout_width="wrap_content"
@@ -169,17 +150,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/appname"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="224dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
