@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -102,6 +103,8 @@ public class DisplayQuestions extends AppCompatActivity {
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         difficulty = (TextView)findViewById(R.id.difficulty);
         explanation_btn = findViewById(R.id.buttonExplain);
+        tvQuestions.setMovementMethod(new ScrollingMovementMethod());
+
 
         next_btn.setAlpha(0.7f);
         explanation_btn.setAlpha(0.7f);

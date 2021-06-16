@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +52,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
         linearLayout = findViewById(R.id.linearLayout);
         difficulty = findViewById(R.id.difficulty);
         explanation_btn = findViewById(R.id.buttonExplain);
+        tvQuestions.setMovementMethod(new ScrollingMovementMethod());
 
         int STD11 = getIntent().getIntExtra("STD11", 0);
 
