@@ -162,11 +162,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                     star_fav.setVisibility(View.INVISIBLE);
                     star.setVisibility(View.VISIBLE);
                 }
-                Favorite.setFavorite(favoriteModel);
+               /* Favorite.setFavorite(favoriteModel);
                 Toast.makeText(context,"Added to Favourite Part",Toast.LENGTH_SHORT).show();
                 star_fav.setVisibility(View.VISIBLE);
                 star.setVisibility(View.INVISIBLE);
-                notifyDataSetChanged();
+                notifyDataSetChanged();*/
             }
         });
 
