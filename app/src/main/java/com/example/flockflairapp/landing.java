@@ -7,10 +7,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +23,7 @@ public class landing extends AppCompatActivity {
     TextView subchaptername;
     TextView subchapterdesc;
     Button startquiz;
+    ConstraintLayout constraintLayout;
 
 
 
@@ -29,10 +32,13 @@ public class landing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
         back = (ImageView)findViewById(R.id.landingback);
+        constraintLayout=(ConstraintLayout) findViewById(R.id.constraint);
         subchaptername=(TextView)findViewById(R.id.subchaptername);
         subchapterimage=(ImageView)findViewById(R.id.subchapterimage);
         subchapterdesc=(TextView)findViewById(R.id.subchapterdescription);
         subchapterdesc.setMovementMethod(new ScrollingMovementMethod()); //scroll for desc text view
+        //constraintLayout.setMovementMethod(new ScrollingMovementMethod()); //scroll for desc text view
+
         startquiz=(Button)findViewById(R.id.startquiz);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
