@@ -59,7 +59,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
         int STD11 = getIntent().getIntExtra("STD11", 0);
 
         if (STD11 == 11){
-            dbRef.child("QuestionOfTheDay").child("11").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+            dbRef.child("QuestionOfTheDay").child("Q11").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
@@ -81,7 +81,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
                 }
             });
         }else {
-            dbRef.child("QuestionOfTheDay").child("12").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+            dbRef.child("QuestionOfTheDay").child("Q12").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
