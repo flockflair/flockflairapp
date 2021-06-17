@@ -45,7 +45,7 @@ public class BookMarksDisplayQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_marks_display_question);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         explain = findViewById(R.id.buttonExplainInB);
         tvQuestions = findViewById(R.id.tvQuestionsInB);

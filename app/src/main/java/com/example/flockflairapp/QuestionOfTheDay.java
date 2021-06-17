@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_of_the_day);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         tvQuestions = findViewById(R.id.tvQuestions);
         linearLayout = findViewById(R.id.linearLayout);
@@ -93,6 +95,13 @@ public class QuestionOfTheDay extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        /*ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+        if(am != null) {
+            List<ActivityManager.AppTask> tasks = am.getAppTasks();
+            if (tasks != null && tasks.size() > 0) {
+                tasks.get(0).setExcludeFromRecents(true);
+            }
+        }*/
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
