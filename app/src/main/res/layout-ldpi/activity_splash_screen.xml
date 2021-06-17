@@ -9,24 +9,26 @@
     android:textAlignment="center"
     tools:context=".SplashScreen">
 
+
     <ImageView
         android:id="@+id/dna"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/dnaa"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/logo"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/thebotanist"
+        app:layout_constraintBottom_toTopOf="@+id/bacteria2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,9 +36,11 @@
         android:id="@+id/dna2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/dnaa"
+        app:layout_constraintBottom_toTopOf="@+id/physics3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,10 +48,12 @@
         android:id="@+id/bacteria"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="20dp"
         android:rotation="350"
         android:src="@drawable/bacteria"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,10 +61,12 @@
         android:id="@+id/bacteria2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginBottom="15dp"
         android:rotation="320"
         android:src="@drawable/bacteria"
+        app:layout_constraintBottom_toTopOf="@+id/testube2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,8 +74,8 @@
         android:id="@+id/testube"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="150dp"
         android:rotation="346"
         android:src="@drawable/tt"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +86,10 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/tt"
+        app:layout_constraintBottom_toTopOf="@+id/physics2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,10 +97,12 @@
         android:id="@+id/testube2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="10dp"
         android:rotation="346"
         android:src="@drawable/tt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,10 +110,12 @@
         android:id="@+id/physics"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="34dp"
         android:rotation="150"
         android:src="@drawable/phy"
+        app:layout_constraintBottom_toTopOf="@+id/testube"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -110,9 +124,11 @@
         android:id="@+id/physics2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/phy"
+        app:layout_constraintBottom_toTopOf="@+id/injection2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -122,8 +138,10 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="292dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/phy"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -132,20 +150,24 @@
         android:id="@+id/injection"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/injection"
+        app:layout_constraintBottom_toTopOf="@+id/dna2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testube"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/injection2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/injection"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
