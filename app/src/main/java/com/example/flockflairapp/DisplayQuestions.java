@@ -200,6 +200,7 @@ public class DisplayQuestions extends AppCompatActivity {
                 break;
             case "Taxonomic Aids":
                 databaseConnection(ModuleName[0], ModuleOneChapterName[0], "Taxonomic Aids");
+                break;
             case "Introduction Biological Classification":
                 databaseConnection(ModuleName[0], ModuleOneChapterName[1], "Introduction Biological Classification");
                 break;
@@ -677,7 +678,7 @@ public class DisplayQuestions extends AppCompatActivity {
             case "Ovary":
                 databaseConnection(ModuleName[4],ModuleFiveChapterName[6],"Ovary");
                 break;
-            case "Hormones of Heart, Kidney, Gastrointestinal tract and Mechanism of Hormone Action":
+            case "Hormones of Heart, Kidney, Gastrointestinal tract and Mechanism of Hormone Action": //Hormones of Heart, Kidney, Gastrointestinal tract and Mechanism of Hormone Action
                 databaseConnection(ModuleName[4],ModuleFiveChapterName[6],"Hormones of Heart, Kidney, Gastrointestinal tract and Mechanism of Hormone Action");
                 break;
             case "Introduction Reproduction in Organism":

@@ -1,10 +1,14 @@
 package com.example.flockflairapp;
 
+import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,7 +39,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
     int count = 0;
     //random number for question
     Random rand = new Random();
-    int position= 0;//rand.nextInt(20-2)+2;
+    int position= 0;
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -55,20 +59,13 @@ public class QuestionOfTheDay extends AppCompatActivity {
         int STD11 = getIntent().getIntExtra("STD11", 0);
 
         if (STD11 == 11){
-            dbRef.child("QuestionOfTheDay").child("11").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+            dbRef.child("QuestionOfTheDay").child("Q11").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                         list.add(dataSnapshot.getValue(QuestionModel.class));
                     }
-                    tvQuestions.setText(list.get(position).getQuestion());
-                    difficulty.setText(list.get(position).getDifficulty());
-                    explanation_btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            DisplayQuestions.showAboutDialog(QuestionOfTheDay.this, list, position);
-                        }
-                    });
+                    loader();
                 }
 
                 @Override
@@ -77,20 +74,13 @@ public class QuestionOfTheDay extends AppCompatActivity {
                 }
             });
         }else {
-            dbRef.child("QuestionOfTheDay").child("12").child("questions").addListenerForSingleValueEvent(new ValueEventListener() {
+            dbRef.child("QuestionOfTheDay").child("Q12").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                         list.add(dataSnapshot.getValue(QuestionModel.class));
                     }
-                    tvQuestions.setText(list.get(position).getQuestion());
-                    difficulty.setText(list.get(position).getDifficulty());
-                    explanation_btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            DisplayQuestions.showAboutDialog(QuestionOfTheDay.this, list, position);
-                        }
-                    });
+                    loader();
                 }
                 @Override
                 public void onCancelled(@NonNull @NotNull DatabaseError error) {
@@ -103,17 +93,102 @@ public class QuestionOfTheDay extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        /*ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
-        if(am != null) {
-            List<ActivityManager.AppTask> tasks = am.getAppTasks();
-            if (tasks != null && tasks.size() > 0) {
-                tasks.get(0).setExcludeFromRecents(true);
-            }
-        }*/
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
     }
+
+    //animation for loading new question
+    private void animation(final View view, final int value, final String data){
+        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100)
+                .setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
+            @Override
+            //checking value and view count to start animation
+            public void onAnimationStart(Animator animator) {
+                if (value == 0 && count < 4){
+                    String option = ""; //check all option at location count value
+
+                    if (count == 0){
+                        option = list.get(position).getOptionA();
+                    }else if (count == 1){
+                        option = list.get(position).getOptionB();
+                    }
+                    else if (count == 2){
+                        option = list.get(position).getOptionC();
+                    }else if (count == 3){
+                        option = list.get(position).getOptionD();
+                    }
+                    animation(linearLayout.getChildAt(count),0,option);
+                    count++;
+                }
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                //on question data changes
+                if (value == 0){
+                    try {
+                        ((TextView)view).setText(data);
+                    }catch (ClassCastException e){
+                        ((Button)view).setText(data);
+                    }
+                    view.setTag(data);
+                    animation(view, 1,data);
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+    }
+
+    public void checkAnswer(final Button selectOption) {
+        if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
+            //correct Answer
+            selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+
+        }else{
+            //incorrect Answer
+            selectOption.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+            selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_wroung_answer));
+
+            Button correctOption = linearLayout.findViewWithTag(list.get(position).getCorrectAnswer());
+
+            correctOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
+        }
+    }
+
+    public void loader(){
+        if (list.size()>0) {
+            for (int i = 0; i < 4; i++) {
+                //clickListener on option button
+                linearLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //method to compare options with correctAnswer
+                        checkAnswer((Button) view);
+                    }
+                });
+            }
+            position = rand.nextInt(list.size());
+            animation(difficulty, 0, list.get(position).getDifficulty());
+            animation(tvQuestions, 0, list.get(position).getQuestion());
+            explanation_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DisplayQuestions.showAboutDialog(QuestionOfTheDay.this, list, position);
+                }
+            });
+        }
+    }
+
 }
