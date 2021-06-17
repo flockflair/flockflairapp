@@ -125,9 +125,7 @@
         app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/module_5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
 
