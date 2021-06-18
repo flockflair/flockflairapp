@@ -127,16 +127,16 @@
         android:id="@+id/floatingActionButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:backgroundTint="#ffffff"
         android:clickable="true"
-        app:borderWidth="3dp"
+        android:focusable="true"
+        android:padding="10dp"
         android:translationY="24dp"
+        app:borderWidth="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-        android:backgroundTint="#ffffff"
-        app:srcCompat="@drawable/bookmarknew"
         app:maxImageSize="35dp"
-        android:focusable="true"/>
+        app:srcCompat="@drawable/bookmarknew" />
 
 
     <Button

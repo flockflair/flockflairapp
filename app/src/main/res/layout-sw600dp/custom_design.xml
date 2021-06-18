@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/textid1"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="70dp"
         android:layout_gravity="center"
         android:background="#FFFFFF"
         android:backgroundTint="#5D6FD3"

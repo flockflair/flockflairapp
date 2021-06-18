@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         long timeAtbuttonclick = System.currentTimeMillis();
-        long tenSecondsInMillis = 7200000;
+        long tenSecondsInMillis = 1000;
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
        /* Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         long timeAtbuttonclick = System.currentTimeMillis();
-        long tenSecondsInMillis = 7200000;
+        long tenSecondsInMillis = 1000;
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtbuttonclick + tenSecondsInMillis, pendingIntent);
         /*Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());

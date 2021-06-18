@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="700dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
         <TextView
             android:id="@+id/difficulty"
-            android:layout_width="69dp"
-            android:layout_height="69dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:background="@drawable/circledifficulty"
             android:elevation="1dp"
@@ -36,19 +36,20 @@
 
         <TextView
             android:id="@+id/tvQuestions"
-            android:layout_width="343dp"
-            android:layout_height="215dp"
+            android:layout_width="800dp"
+            android:layout_height="550dp"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_textview"
-            android:gravity="center"
-            android:padding="50dp"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
             android:scrollbars="vertical"
             android:text=""
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:translationX="20dp"
-            android:translationY="5dp"
+            android:translationX="60dp"
+            android:translationY="-20dp"
             tools:ignore="MissingConstraints" />
 
     </LinearLayout>
@@ -56,7 +57,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="700dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonNext"
@@ -67,8 +68,8 @@
 
         <Button
             android:id="@+id/buttonOption1"
-            android:layout_width="357dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
@@ -77,8 +78,8 @@
 
         <Button
             android:id="@+id/buttonOption2"
-            android:layout_width="357dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
@@ -87,8 +88,8 @@
 
         <Button
             android:id="@+id/buttonOption3"
-            android:layout_width="357dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
@@ -97,8 +98,8 @@
 
         <Button
             android:id="@+id/buttonOption4"
-            android:layout_width="357dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
@@ -108,8 +109,8 @@
 
     <Button
         android:id="@+id/buttonNext"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
@@ -117,7 +118,7 @@
         android:enabled="false"
         android:text="@string/next"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonExplain"
@@ -125,31 +126,31 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#ffffff"
         android:clickable="true"
-        app:borderWidth="3dp"
-        android:translationY="24dp"
+        android:focusable="true"
+        android:translationY="30dp"
+        app:borderWidth="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-        android:backgroundTint="#ffffff"
-        app:srcCompat="@drawable/bookmarknew"
-        app:maxImageSize="35dp"
-        android:focusable="true"/>
+        app:maxImageSize="70dp"
+        app:srcCompat="@drawable/bookmarknew" />
 
 
     <Button
         android:id="@+id/buttonExplain"
-        android:layout_width="148dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rectanglebutton"
         android:text="Explaination"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonNext"
         app:layout_constraintStart_toEndOf="@+id/buttonPrev"
@@ -157,8 +158,8 @@
 
     <Button
         android:id="@+id/buttonPrev"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="20dp"
@@ -166,7 +167,7 @@
         android:enabled="false"
         android:text="@string/prev"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonExplain"
         app:layout_constraintHorizontal_bias="0.313"

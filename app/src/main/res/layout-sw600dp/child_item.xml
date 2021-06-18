@@ -10,11 +10,12 @@
 
     <TextView
         android:id="@+id/model"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="800dp"
+        android:layout_height="150dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_modules"
+        android:gravity="center"
         android:layoutDirection="ltr"
         android:padding="15dp"
         android:paddingStart="70dp"
@@ -22,17 +23,19 @@
         android:paddingEnd="40dp"
         android:paddingRight="10dp"
         android:text="Living world"
+        android:textAlignment="center"
         android:textColor="#060C8B"
-        android:textSize="20sp"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlHardcoded" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/childitem_image"
-        android:layout_width="56dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layoutDirection="ltr"
@@ -45,9 +48,9 @@
 
     <ImageView
         android:id="@+id/star"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="340dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="700dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:backgroundTintMode="multiply"
@@ -62,9 +65,9 @@
 
     <ImageView
         android:id="@+id/star_fav"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="340dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="700dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:backgroundTintMode="multiply"

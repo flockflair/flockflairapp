@@ -23,9 +23,9 @@
         android:id="@+id/textView6"
         android:layout_width="277dp"
         android:layout_height="60dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="100dp"
         android:text="Verify Phone"
         android:textAlignment="center"
         android:textColor="#5B60DA"
@@ -50,14 +50,13 @@
         android:id="@+id/imageView2"
         android:layout_width="220dp"
         android:layout_height="215dp"
-        android:layout_marginStart="95dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="140dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/phone_verify"
         app:layout_constraintBottom_toTopOf="@+id/editTextCode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -66,9 +65,9 @@
         android:layout_width="330dp"
         android:layout_height="56dp"
 
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="41dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/verify_edit"
         android:hint="Enter OTP"
@@ -77,7 +76,6 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/progressbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -91,7 +89,7 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCode" />
 
@@ -124,7 +122,6 @@
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 

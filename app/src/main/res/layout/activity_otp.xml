@@ -105,6 +105,7 @@
         android:textAlignment="center"
         android:textColor="#5B60DA"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buttonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

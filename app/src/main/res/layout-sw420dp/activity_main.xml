@@ -10,59 +10,56 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="420dp"
+        android:layout_height="56dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="107dp"
         android:text="Welcome Future Doctor"
         android:textAlignment="center"
         android:textColor="#5B60DA"
-        android:textSize="80sp"
+        android:textSize="36dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="249dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="192dp"
+        android:src="@drawable/stethoscope1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="356dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="355dp"
-        android:layout_marginBottom="420dp"
-        android:src="@drawable/stethoscope1"
-        app:layout_constraintBottom_toTopOf="@+id/button_11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.388" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:itemBackground="@color/color1"
-        app:itemIconSize="50dp"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
+        app:itemIconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/module_5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
 
+
     <Button
         android:id="@+id/button_11"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginBottom="145dp"
+        android:layout_width="143dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/button11_shape"
         android:drawableTintMode="add"
         android:text="11"
@@ -71,17 +68,18 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <Button
         android:id="@+id/button_12"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="145dp"
+        android:layout_width="144dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/button12_shape"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#090909"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

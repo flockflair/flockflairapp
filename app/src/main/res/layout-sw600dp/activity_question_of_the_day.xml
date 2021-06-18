@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="700dp"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -21,8 +21,8 @@
 
         <TextView
             android:id="@+id/difficulty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:background="@drawable/circledifficulty"
@@ -57,7 +57,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="700dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonExplain"
@@ -68,40 +68,40 @@
 
         <Button
             android:id="@+id/buttonOption1"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption2"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/buttonOption3"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="#000000" />
 
         <Button
             android:id="@+id/buttonOption4"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
+            android:layout_width="800dp"
+            android:layout_height="120dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
+            android:layout_margin="20dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -124,13 +124,16 @@
 
     <Button
         android:id="@+id/buttonExplain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/rectanglebutton"
         android:paddingHorizontal="52dp"
         android:text="Explaination"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="50sp
+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
