@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fs"
+    tools:context=".UpdateProfile"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="148dp"
+        android:gravity="center"
+        android:text="Profile"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#5B60DA"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditName"
+        android:layout_width="600dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/aboutedit"
+        android:ems="10"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:focusable="false"
+        android:freezesText="true"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="60dp"
+        android:textColor="#5B60DA"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <Button
+        android:id="@+id/button_edit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="524dp"
+        android:background="@drawable/edit"
+        app:layout_constraintStart_toStartOf="@+id/EditName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="134dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditPhone"
+        android:layout_width="600dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/aboutedit"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Mobile Number"
+        android:inputType="phone"
+        android:paddingLeft="60dp"
+        android:textColor="#5B60DA"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditName" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="137dp"
+        android:background="@drawable/rectanglebutton"
+        android:text="SAVE"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="10dp"
+
+        android:background="@drawable/rectanglebutton"
+        android:text="logout"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/color1"
+        app:itemIconSize="50dp"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_navigation"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/customerprofile"
+        app:layout_constraintStart_toStartOf="@+id/EditName"
+        tools:layout_editor_absoluteY="135dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="29dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/phone"
+        app:layout_constraintStart_toStartOf="@+id/EditPhone"
+        app:layout_constraintTop_toTopOf="@+id/EditPhone" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="6dp"
+        android:text="Favourite Chapters"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="158dp"
+        android:background="@drawable/star1"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/EditPhone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/nofav"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="145dp"
+        android:text="No Favourite Found"
+        android:textColor="#5B60DA"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.527" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.112">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

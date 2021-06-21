@@ -10,40 +10,42 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="390dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="100dp"
         android:text="Welcome Future Doctor"
         android:textAlignment="center"
         android:textColor="#5B60DA"
-        android:textSize="36dp"
+        android:textSize="80sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="249dp"
-        android:layout_height="247dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="80dp"
-        android:src="@drawable/stethoscope1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="356dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="355dp"
+        android:layout_marginBottom="420dp"
+        android:src="@drawable/stethoscope1"
+        app:layout_constraintBottom_toTopOf="@+id/button_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.388" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemBackground="@color/color1"
         app:itemIconSize="50dp"
@@ -51,17 +53,16 @@
         app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/module_5"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation"
         tools:ignore="MissingConstraints" />
 
-
     <Button
         android:id="@+id/button_11"
-        android:layout_width="143dp"
-        android:layout_height="142dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="145dp"
         android:background="@drawable/button11_shape"
         android:drawableTintMode="add"
         android:text="11"
@@ -72,10 +73,10 @@
 
     <Button
         android:id="@+id/button_12"
-        android:layout_width="144dp"
-        android:layout_height="142dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="145dp"
         android:background="@drawable/button12_shape"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#090909"

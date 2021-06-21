@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutB"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="350dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutQTD"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutQTD"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="350dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="#000000" />
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />

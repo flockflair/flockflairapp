@@ -58,7 +58,7 @@ public class BookmarkActivity extends AppCompatActivity implements View.OnLongCl
 
 
         //prevent screenCapture
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         rv_bookmark = findViewById(R.id.rv_bookmarks);
         noBookmarksTv = findViewById(R.id.noBookmarks);

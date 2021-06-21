@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutB"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="600dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutQTD"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,31 +20,33 @@
 
         <Button
             android:id="@+id/button_backInB"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/back" />
 
         <TextView
             android:id="@+id/BookmarkTotalTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
             android:layout_gravity="end"
-            android:layout_marginTop="-45dp"
+            android:layout_marginTop="-120dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_textview"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="1/50"
+            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/difficultyInB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="-25dp"
             android:background="@drawable/circledifficulty"
@@ -76,7 +78,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutQTD"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +89,9 @@
         <Button
             android:id="@+id/buttonOption1A"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -97,9 +99,9 @@
         <Button
             android:id="@+id/buttonOption2B"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -107,9 +109,9 @@
         <Button
             android:id="@+id/buttonOption3C"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="#000000" />
@@ -117,9 +119,9 @@
         <Button
             android:id="@+id/buttonOption4D"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_buttons_in_display_questions"
             android:text=""
             android:textColor="@android:color/black" />
@@ -142,13 +144,14 @@
 
     <Button
         android:id="@+id/btnPrev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rectanglebutton"
         android:paddingHorizontal="24dp"
         android:text="PREV"
+        android:textSize="30sp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -156,26 +159,28 @@
     <Button
         android:id="@+id/buttonExplainInB"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rectanglebutton"
         android:paddingHorizontal="24dp"
         android:text="Explaination"
+        android:textSize="30sp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPrev" />
 
     <Button
         android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rectanglebutton"
         android:paddingHorizontal="24dp"
         android:text="NEXT"
+        android:textSize="30sp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
