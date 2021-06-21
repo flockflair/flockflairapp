@@ -63,9 +63,6 @@ public class DisplayQuestions extends AppCompatActivity {
     int count = 0;
 
     private List<QuestionModel> BookMarkList;
-    //random number for question
-    //Random rand = new Random();
-    //int position= rand.nextInt(20-2)+2;
     int position = 0;
     //for user id
      String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -1087,7 +1084,7 @@ public class DisplayQuestions extends AppCompatActivity {
         });
     }
     public void checkAnswer(final Button selectOption) {
-        enableOption(false);
+        enableOption(false,linearLayout);
         next_btn.setEnabled(true);
         prev_btn.setEnabled(true);
         explanation_btn.setEnabled(true);
@@ -1131,13 +1128,12 @@ public class DisplayQuestions extends AppCompatActivity {
         return matched;
     }
     
-    private void enableOption(boolean enable) {
+    public static void enableOption(boolean enable,LinearLayout linearLayout) {
         for (int i = 0; i < 4; i++){
             linearLayout.getChildAt(i).setEnabled(enable);
 
             if (enable){
-                //linearLayout.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
-                linearLayout.getChildAt(i).setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions));
+                linearLayout.getChildAt(i).setBackgroundResource(R.drawable.rounded_buttons_in_display_questions);
             }
         }
     }
@@ -1172,7 +1168,7 @@ public class DisplayQuestions extends AppCompatActivity {
                     explanation_btn.setEnabled(false);
                     explanation_btn.setAlpha(0.7f);
                     next_btn.setAlpha(0.7f);
-                    enableOption(true);
+                    enableOption(true,linearLayout);
                     //position= rand.nextInt(20);
                     position++;
                     if (position == list.size()){
@@ -1193,7 +1189,7 @@ public class DisplayQuestions extends AppCompatActivity {
             prev_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    enableOption(true);
+                    enableOption(true,linearLayout);
                     position--;
                     if (position==-1){
                         Toast.makeText(DisplayQuestions.this, "No previous Questions available", Toast.LENGTH_SHORT).show();

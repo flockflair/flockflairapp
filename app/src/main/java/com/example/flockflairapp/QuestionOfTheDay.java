@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -161,6 +160,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
     }
 
     public void checkAnswer(final Button selectOption) {
+        DisplayQuestions.enableOption(false, linearLayout);
         if (selectOption.getText().toString().equals(list.get(position).getCorrectAnswer())){
             //correct Answer
             selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
