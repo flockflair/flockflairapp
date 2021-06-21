@@ -59,17 +59,23 @@ public class SignUp extends AppCompatActivity {
         ButtonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 name = edit_name.getText().toString();
                 phoneNum = edit_phone.getText().toString().trim();
+                if (edit_name.length() == 0){
+                    edit_name.setError("Name cannot be Empty");
+                }
+                else {
+                    Java_SignUp n = new Java_SignUp(name, phoneNum);
+                    databaseReference.child(uid).setValue(n);
+                    Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
-                Java_SignUp n = new Java_SignUp(name, phoneNum);
+                }
 
-                databaseReference.child(uid).setValue(n);
-                Toast.makeText(getApplicationContext(), "Data inserted Successfully", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+
+
 
 
             }

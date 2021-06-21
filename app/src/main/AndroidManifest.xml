@@ -10,9 +10,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/thebotanist"
+        android:icon="@drawable/logofinal"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/thebotanist"
+        android:roundIcon="@drawable/logofinal"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".BookMarksDisplayQuestion"></activity>

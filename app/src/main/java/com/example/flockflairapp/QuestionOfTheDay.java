@@ -4,10 +4,12 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -40,6 +42,8 @@ public class QuestionOfTheDay extends AppCompatActivity {
     //random number for question
     Random rand = new Random();
     int position= 0;
+    private Vibrator vibrator;
+
 
     //instance of firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -50,6 +54,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_of_the_day);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+        vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
         tvQuestions = findViewById(R.id.tvQuestions);
         linearLayout = findViewById(R.id.linearLayout);
@@ -166,6 +171,7 @@ public class QuestionOfTheDay extends AppCompatActivity {
             selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_correct_answer));
 
         }else{
+            vibrator.vibrate(100);
             //incorrect Answer
             selectOption.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             selectOption.setBackgroundDrawable(getDrawable(R.drawable.rounded_buttons_in_display_questions_wroung_answer));
