@@ -157,7 +157,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                     notifyDataSetChanged();
 
                 }else {
-                    Toast.makeText(context,"Favorite Chapters "+list.size()+" MAX",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Maximum Favourite Limit is "+list.size()+"",Toast.LENGTH_SHORT).show();
                     star.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                     star_fav.setVisibility(View.INVISIBLE);
                     star.setVisibility(View.VISIBLE);
