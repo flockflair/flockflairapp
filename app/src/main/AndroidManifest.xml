@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.flockflairapp">
+    package="com.eosphorus.flockflairapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,21 +15,21 @@
         android:roundIcon="@drawable/logofinal"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookMarksDisplayQuestion"></activity>
-        <activity android:name=".QuestionOfTheDay" />
-        <activity android:name=".listviewimg" />
-        <activity android:name=".landing" />
+        <activity android:name="com.eosphorus.flockflairapp.BookMarksDisplayQuestion"></activity>
+        <activity android:name="com.eosphorus.flockflairapp.QuestionOfTheDay" />
+        <activity android:name="com.eosphorus.flockflairapp.listviewimg" />
+        <activity android:name="com.eosphorus.flockflairapp.landing" />
         <activity
-            android:name=".BookmarkActivity"
+            android:name="com.eosphorus.flockflairapp.BookmarkActivity"
             android:label="Bookmarks"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.eosphorus.flockflairapp.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".UpdateProfile"
+            android:name="com.eosphorus.flockflairapp.UpdateProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUp"
+            android:name="com.eosphorus.flockflairapp.SignUp"
             android:screenOrientation="portrait" />
 
 
@@ -43,31 +43,31 @@
         </service>
 
         <activity
-            android:name=".ExpandableModule2"
+            android:name="com.eosphorus.flockflairapp.ExpandableModule2"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".ExpandableModule1"
+            android:name="com.eosphorus.flockflairapp.ExpandableModule1"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.eosphorus.flockflairapp.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".DisplayQuestions"
+            android:name="com.eosphorus.flockflairapp.DisplayQuestions"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.eosphorus.flockflairapp.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".OtpActivity"
+            android:name="com.eosphorus.flockflairapp.OtpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.eosphorus.flockflairapp.SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Splash">
             <intent-filter>
@@ -78,17 +78,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".phonenumber"
+            android:name="com.eosphorus.flockflairapp.phonenumber"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".ReminderBroadcast">
+        <receiver android:name="com.eosphorus.flockflairapp.ReminderBroadcast">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".RemainderBroadcastsecond">
+        <receiver android:name="com.eosphorus.flockflairapp.RemainderBroadcastsecond">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION"/>
                 <category android:name="android.intent.category.DEFAULT"/>

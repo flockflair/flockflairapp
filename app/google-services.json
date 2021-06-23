@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:961106814716:android:c8eab9642b2c54bf3fd979",
+        "android_client_info": {
+          "package_name": "com.eosphorus.flockflairapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcGDW4jG2x-goujV3CJQ1n2jmm357ZNds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:961106814716:android:f0884ce43e97c8323fd979",
         "android_client_info": {
           "package_name": "com.example.flockflairapp"
@@ -15,10 +44,111 @@
       },
       "oauth_client": [
         {
-          "client_id": "961106814716-6rndffh86hs50qmal5bg642ha3chr0e9.apps.googleusercontent.com",
+          "client_id": "961106814716-327jcjpg5l74vkucjkcdl5556p8cmqi2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.flockflairapp",
+            "certificate_hash": "dfc0c8ec0959ae63ffb58a692a90729c7da90229"
+          }
+        },
+        {
+          "client_id": "961106814716-7n9nse8lnsfqup0a816q52fgu6ke3j70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flockflairapp",
+            "certificate_hash": "54e3604fa81980531b4960d429995173001dd6c2"
+          }
+        },
+        {
+          "client_id": "961106814716-srlcntnl1108h9es3rinc6f33t8a5iqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flockflairapp",
+            "certificate_hash": "70472c77d4f55725a9c2e27ff8d96841b05d72de"
+          }
+        },
+        {
+          "client_id": "961106814716-u4jvq4f96obtq558peoo9ko0s4vvb515.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flockflairapp",
+            "certificate_hash": "7d7982a8aebaef44b4844227da6910cc55d56e24"
+          }
+        },
+        {
+          "client_id": "961106814716-vvb348a23v1ube96fehj3ni9ovqlrq0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flockflairapp",
+            "certificate_hash": "1e27b38c33f8900b4fa5095171393118113d37a0"
+          }
+        },
+        {
+          "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcGDW4jG2x-goujV3CJQ1n2jmm357ZNds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961106814716-p640p0dv6e4214g9cr8ca0q1msbjitnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961106814716:android:08270169605dfc873fd979",
+        "android_client_info": {
+          "package_name": "com.flockflairadmin.flockflair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961106814716-0b57j7n6mo7p2l62fm90h0jkes7eiguj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flockflairadmin.flockflair",
+            "certificate_hash": "1e27b38c33f8900b4fa5095171393118113d37a0"
+          }
+        },
+        {
+          "client_id": "961106814716-1jjjfpu4qjcpmvh53vcnkcfhlnlqinbl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flockflairadmin.flockflair",
+            "certificate_hash": "dfc0c8ec0959ae63ffb58a692a90729c7da90229"
+          }
+        },
+        {
+          "client_id": "961106814716-1qppihvvfa9s0vnuouivdft2i1elidkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flockflairadmin.flockflair",
+            "certificate_hash": "7d7982a8aebaef44b4844227da6910cc55d56e24"
+          }
+        },
+        {
+          "client_id": "961106814716-385vhs408v8mavhovusqahhobc2fcps9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flockflairadmin.flockflair",
+            "certificate_hash": "54e3604fa81980531b4960d429995173001dd6c2"
+          }
+        },
+        {
+          "client_id": "961106814716-uh2q7bm6rv9cngsm1mdatm02bhqp267e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flockflairadmin.flockflair",
             "certificate_hash": "70472c77d4f55725a9c2e27ff8d96841b05d72de"
           }
         },
